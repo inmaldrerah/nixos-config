@@ -1,66 +1,66 @@
 {
-  description = "flake NixOS system config";
+  description = "NixOS system config";
 
   inputs = {
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
-      # url = "github:inmaldrerah/nixpkgs/nixos-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      # url = "github:inmaldrerah/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
       url = "github:nix-community/impermanence";
     };
+    private = {
+      url = "path:/etc/nixos/private";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence }:
+  outputs = { self, nixpkgs, home-manager, impermanence, private }:
   let
     hostName = "thinkbook-16-plus-nixos";
-    pkgsGnu = (import nixpkgs {
-      localSystem.config = "x86_64-unknown-linux-gnu";
-      config = {
-        inherit packageOverrides;
-      };
-    }) // { inherit pkgsGnu; };
-    pkgsMusl = (import nixpkgs {
-      localSystem.config = "x86_64-unknown-linux-musl";
-      config = {
-        packageOverrides = pkgs:
-        let
-          specialOverrides = {
-            inherit (pkgsGnu) greetd wlroots hyprland mesa cage pipewire libopus libpulseaudio ffmpeg_4 openldap xorgserver fftwFloat gtk4 libyaml;
-          };
-        in specialOverrides // (packageOverrides pkgs // specialOverrides);
-      };
-    }) // { inherit pkgsGnu; };
-    packageOverrides = pkgs: {
-      waybar = pkgs.waybar.overrideAttrs (oldAttrs: rec {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
+    nixpkgsGnu = {
+      hostPlatform.config = "x86_64-unknown-linux-gnu";
+      overlays = gnuOverlays ++ packageOverlays;
     };
-    pkgs = pkgsGnu;
+    nixpkgsMusl = {
+      hostPlatform.config = "x86_64-unknown-linux-musl";
+      overlays = gnuOverlays ++ muslOverlays ++ packageOverlays;
+    };
+    gnuOverlays = [
+      (self: super: rec {
+        pkgsGnu = import nixpkgs { localSystem.config = "x86_64-unknown-linux-gnu"; } // { inherit pkgsGnu; };
+      })
+    ];
+    packageOverlays = [
+      (self: super: {
+        waybar = super.waybar.overrideAttrs (oldAttrs: rec {
+          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
+      })
+    ];
+    muslOverlays = [
+      (self: super: {
+        inherit (super.pkgsGnu) greetd wlroots hyprland mesa cage pipewire libopus libpulseaudio ffmpeg_4 openldap xorgserver fftwFloat gtk4 libyaml;
+      })
+    ];
   in
   {
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
-      pkgs = pkgs;
       modules = [
+        {
+          nixpkgs = nixpkgsGnu;
+          networking.hostName = hostName; # Define your hostname.
+        }
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
+        private.nixosModules.default
         ./configuration.nix
         ./hardware.nix
         ./network.nix
         ./storage.nix
         ./users.nix
-        ./user-secrets.nix
-        {
-          nixpkgs = {
-            pkgs = pkgs;
-          };
-          networking.hostName = hostName; # Define your hostname.
-        }
       ];
     };
   };

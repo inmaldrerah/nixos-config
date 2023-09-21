@@ -26,6 +26,10 @@
             | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
             | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
         }
+        function rebuild-system {
+          nom build "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
+          nixos-rebuild --use-remote-sudo --flake /etc/nixos $@
+        }
       '';
     };
 
@@ -41,19 +45,15 @@
       };
     };
 
-    # services.network-manager-applet.enable = true;
-
     home.packages = with pkgs; [
+      nix-output-monitor
       firefox-wayland
-      # podman-compose
       wl-clipboard
       alacritty
       git-graph
-      # chromium
       htop-vim
       swayidle
       swaylock
-      # vscodium
       ripgrep
       wlogout
       waybar

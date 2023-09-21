@@ -51,11 +51,24 @@
         "type": "github"
       }
     },
+    "private": {
+      "locked": {
+        "lastModified": 1695275952,
+        "narHash": "sha256-86SS9vPANVMLZ5sYYvUICdt7qCmRoMIwL7VmkrlFvxI=",
+        "path": "/etc/nixos/private",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/private",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "private": "private"
       }
     }
   },

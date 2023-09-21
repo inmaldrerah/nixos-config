@@ -64,8 +64,8 @@ rec {
   '';
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
-  # hardware.sane.enable = true;
+  services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
+  hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;
 
   services.tlp.enable = true;
 
@@ -95,7 +95,7 @@ rec {
   # Allow swaylock to check password
   security.pam.services.swaylock = {};
 
-  # virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
   # Keyring management
@@ -116,12 +116,6 @@ rec {
   # Disable nscd
   services.nscd.enable = false;
   system.nssModules = lib.mkForce [];
-
-  # virtualisation.podman = {
-  #   enable = true;
-  #   dockerCompat = true;
-  #   defaultNetwork.settings.dns_enabled = true;
-  # };
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
