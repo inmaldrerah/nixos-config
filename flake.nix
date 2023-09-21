@@ -22,22 +22,15 @@
     hostName = "thinkbook-16-plus-nixos";
     nixpkgsGnu = {
       hostPlatform.config = "x86_64-unknown-linux-gnu";
-      overlays = gnuOverlays ++ packageOverlays;
+      overlays = gnuOverlays;
     };
     nixpkgsMusl = {
       hostPlatform.config = "x86_64-unknown-linux-musl";
-      overlays = gnuOverlays ++ muslOverlays ++ packageOverlays;
+      overlays = gnuOverlays ++ muslOverlays;
     };
     gnuOverlays = [
       (self: super: rec {
         pkgsGnu = import nixpkgs { localSystem.config = "x86_64-unknown-linux-gnu"; } // { inherit pkgsGnu; };
-      })
-    ];
-    packageOverlays = [
-      (self: super: {
-        waybar = super.waybar.overrideAttrs (oldAttrs: rec {
-          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
       })
     ];
     muslOverlays = [
@@ -53,6 +46,7 @@
           nixpkgs = nixpkgsGnu;
           networking.hostName = hostName; # Define your hostname.
         }
+        ./overlays.nix
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         private.nixosModules.default
