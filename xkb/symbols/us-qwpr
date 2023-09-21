@@ -1,0 +1,42 @@
+xkb_symbols "us-qwpr" {
+  include "us(basic)"
+  include "level3(ralt_switch)"
+
+  key <AD01> { [         q,          Q,         equal,       numbersign ] };
+  key <AD02> { [         w,          W,     backslash,       numbersign ] };
+  key <AD03> { [         p,          P,   bracketleft,    guillemotleft ] };
+  key <AD04> { [         r,          R,  bracketright,   guillemotright ] };
+  key <AD05> { [         f,          F,         grave,       numbersign ] };
+  key <AD06> { [         y,          Y,   asciicircum,  dead_circumflex ] };
+  key <AD07> { [         u,          U,  ISO_Left_Tab,     ISO_Left_Tab ] };
+  key <AD08> { [         k,          K,            Up,               Up ] };
+  key <AD09> { [         l,          L,           Tab,              Tab ] };
+  key <AD10> { [ semicolon,      colon,    asciitilde,       dead_tilde ] };
+  key <AD11> { [ bracketleft,  braceleft,  leftdoublequotemark,  leftsinglequotemark ] };
+  key <AD12> { [bracketright, braceright, rightdoublequotemark, rightsinglequotemark ] };
+  key <BKSL> { [ backslash,        bar,       notsign,        brokenbar ] };
+
+  key <AC01> { [         a,          A,            at,          percent ] };
+  key <AC02> { [         s,          S,          plus,       numbersign ] };
+  key <AC03> { [         d,          D,     parenleft,  leftdoublequotemark ] };
+  key <AC04> { [         t,          T,    parenright, rightdoublequotemark ] };
+  key <AC05> { [         g,          G,     ampersand,   dead_abovering ] };
+  key <AC06> { [         h,          H,    numbersign,         sterling ] };
+  key <AC07> { [         n,          N,          Left,             Left ] };
+  key <AC08> { [         i,          I,          Down,             Down ] };
+  key <AC09> { [         o,          O,         Right,            Right ] };
+  key <AC10> { [         e,          E,    dead_acute,         EuroSign ] };
+  key <AC11> { [apostrophe,   quotedbl,    dead_grave,      dead_macron ] };
+
+  key <AB01> { [         z,          Z,       percent,          percent ] };
+  key <AB02> { [         x,          X,      asterisk, dead_doubleacute ] };
+  key <AB03> { [         c,          C,     braceleft,       dead_breve ] };
+  key <AB04> { [         v,          V,    braceright,    dead_abovedot ] };
+  key <AB05> { [         b,          B,           bar,       dead_caron ] };
+  key <AB06> { [         j,          J,        dollar,     dead_cedilla ] };
+  key <AB07> { [         m,          M,            mu,      dead_ogonek ] };
+  key <AB08> { [     comma,       less,    exclamdown,          percent ] };
+  key <AB09> { [    period,    greater,        exclam,          percent ] };
+  key <AB10> { [     slash,   question,         minus,     questiondown ] };
+};
+
