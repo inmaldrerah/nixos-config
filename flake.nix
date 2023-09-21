@@ -19,32 +19,16 @@
 
   outputs = { self, nixpkgs, home-manager, impermanence, private }:
   let
-    hostName = "thinkbook-16-plus-nixos";
-    nixpkgsGnu = {
-      hostPlatform.config = "x86_64-unknown-linux-gnu";
-      overlays = gnuOverlays;
-    };
-    nixpkgsMusl = {
-      hostPlatform.config = "x86_64-unknown-linux-musl";
-      overlays = gnuOverlays ++ muslOverlays;
-    };
-    gnuOverlays = [
-      (self: super: rec {
-        pkgsGnu = import nixpkgs { localSystem.config = "x86_64-unknown-linux-gnu"; } // { inherit pkgsGnu; };
-      })
-    ];
-    muslOverlays = [
-      (self: super: {
-        inherit (super.pkgsGnu) greetd wlroots hyprland mesa cage pipewire libopus libpulseaudio ffmpeg_4 openldap xorgserver fftwFloat gtk4 libyaml;
-      })
-    ];
+    hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
+    triple = "x86_64-unknown-linux-gnu";
   in
   {
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       modules = [
         {
-          nixpkgs = nixpkgsGnu;
-          networking.hostName = hostName; # Define your hostname.
+          _module.args.nixpkgsFun = import nixpkgs;
+          nixpkgs.hostPlatform.config = triple;
+          networking.hostName = hostName;
         }
         ./overlays.nix
         home-manager.nixosModules.home-manager

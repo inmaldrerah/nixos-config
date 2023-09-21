@@ -13,6 +13,13 @@ rec {
       keep-derivations = true
       keep-going = true
     '';
+    settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
+    daemonCPUSchedPolicy = "idle";
+  };
+
+  programs.ccache = {
+    enable = true;
+    cacheDir = "/nix/ccache";
   };
 
   # Use EFI boot loader.
