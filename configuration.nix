@@ -67,6 +67,7 @@ rec {
 
   environment.etc."greetd/environments".text = ''
     Hyprland
+    hikari
     bash
   '';
 
@@ -127,8 +128,9 @@ rec {
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     brightnessctl
-    # virt-manager
+    virt-manager
     alsa-utils # for amixer
+    hikari
     neovim
     wget
   ];
@@ -149,14 +151,15 @@ rec {
       fira-code-symbols
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       font-awesome
-    ] ++ [ # Default font packages except noto-fonts-emoji
+    ] ++ [
+      # Default font packages except noto-fonts-emoji
       dejavu_fonts
       freefont_ttf
       gyre-fonts # TrueType substitutes for standard PostScript fonts
       liberation_ttf
       unifont
     ];
-    enableDefaultPackages = false;
+    enableDefaultPackages = false; # Disable because noto-fonts-emoji relies on glibc (even if the target is musl)
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif" "Noto Serif CJK SC" ];
       sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];

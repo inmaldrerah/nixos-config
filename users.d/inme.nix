@@ -101,6 +101,7 @@
       ".config/fontconfig"
       ".config/gtk-3.0"
       ".config/hypr"
+      ".config/hikari"
       ".config/libvirt"
       ".config/nixpkgs"
       ".config/nvim"
