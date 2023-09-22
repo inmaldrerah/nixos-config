@@ -19,7 +19,7 @@ rec {
 
   programs.ccache = {
     enable = true;
-    cacheDir = "/nix/ccache";
+    cacheDir = "/var/cache/ccache";
   };
 
   # Use EFI boot loader.

@@ -24,6 +24,12 @@
       fsType = "vfat";
     };
 
+  fileSystems."/var/cache/ccache" =
+    { device = "/nix/ccache";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/b56a944d-29ba-4866-87ed-18100e4c608f"; }
     ];
@@ -41,5 +47,5 @@
     files = [
       "/etc/machine-id"
     ];
-  }; 
+  };
 }
