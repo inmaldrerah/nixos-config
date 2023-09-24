@@ -24,9 +24,11 @@
   in
   {
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        nixpkgsFun = import nixpkgs;
+      };
       modules = [
         {
-          _module.args.nixpkgsFun = import nixpkgs;
           nixpkgs.hostPlatform.config = triple;
           networking.hostName = hostName;
         }

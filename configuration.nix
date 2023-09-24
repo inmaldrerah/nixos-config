@@ -67,7 +67,6 @@ rec {
 
   environment.etc."greetd/environments".text = ''
     Hyprland
-    hikari
     bash
   '';
 
@@ -130,12 +129,12 @@ rec {
     brightnessctl
     virt-manager
     alsa-utils # for amixer
-    hikari
     neovim
     wget
   ];
 
   environment.variables = {
+    TERMINAL = "alacritty";
     EDITOR = "nvim";
     HTTP_PROXY = "http://localhost:1081";
     HTTPS_PROXY = "http://localhost:1081";

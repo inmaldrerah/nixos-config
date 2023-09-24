@@ -54,6 +54,7 @@
       htop-vim
       swayidle
       swaylock
+      neovide
       ripgrep
       wlogout
       waybar
@@ -101,7 +102,6 @@
       ".config/fontconfig"
       ".config/gtk-3.0"
       ".config/hypr"
-      ".config/hikari"
       ".config/libvirt"
       ".config/nixpkgs"
       ".config/nvim"
