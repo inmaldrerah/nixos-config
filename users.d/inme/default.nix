@@ -18,7 +18,7 @@
         export PATH=~/.local/bin:$PATH
         export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib.outPath}/lib"
         ulimit -Sn 524288
-        function typst {
+        typst () {
           sh -c "typst $* \
             $(fc-list \
             | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
@@ -26,9 +26,12 @@
             | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
             | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
         }
-        function rebuild-system {
+        rebuild-system () {
           nom build "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
-          nixos-rebuild --use-remote-sudo --flake /etc/nixos $@
+          nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
+        }
+        nvim () {
+          nix develop /etc/nixos/users.d/inme/fhs/neovim --command "nvim $@"
         }
       '';
     };
