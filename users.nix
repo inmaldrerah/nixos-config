@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  userconf.inme = import users.d/inme.nix;
+  userconf.inme = import users.d/inme/default.nix;
 in
 rec {
   # Configure users
