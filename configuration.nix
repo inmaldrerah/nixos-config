@@ -64,7 +64,6 @@ rec {
       };
     };
   };
-
   environment.etc."greetd/environments".text = ''
     Hyprland
     bash

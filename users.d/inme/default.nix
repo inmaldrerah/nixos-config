@@ -30,9 +30,6 @@
           nom build "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
           nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
         }
-        nvim () {
-          nix develop /etc/nixos/users.d/inme/fhs/neovim --command "nvim $@"
-        }
       '';
     };
 
