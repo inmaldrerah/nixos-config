@@ -13,7 +13,16 @@ rec {
       keep-derivations = true
       keep-going = true
     '';
-    settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
+    settings = {
+      extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
     daemonCPUSchedPolicy = "idle";
   };
 

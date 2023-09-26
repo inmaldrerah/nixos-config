@@ -46,6 +46,7 @@
     };
 
     home.packages = with pkgs; [
+      lua-language-server
       nix-output-monitor
       firefox-wayland
       wl-clipboard
@@ -60,17 +61,17 @@
       waybar
       nodejs
       swappy
-      cargo
-      rustc
+      # cargo
+      # rustc
       slurp
       typst
       unzip
       grim
       wofi
-      gcc
+      # gcc
       git
-      zig
-      zls
+      # zig
+      # zls
     ];
   };
 

@@ -1,4 +1,4 @@
-{ config, lib, nixpkgsFun, ... }:
+{ config, lib, nixpkgsFun, neovim-nightly-overlay, ... }:
 
 let
   packageOverlays = [
@@ -32,6 +32,7 @@ let
         '';
       };
     })
+    neovim-nightly-overlay.overlay
   ];
   stdenv = (nixpkgsFun {
     localSystem = config.nixpkgs.hostPlatform;

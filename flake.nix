@@ -12,12 +12,15 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
     private = {
       url = "path:/etc/nixos/private";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, private }:
+  outputs = { self, nixpkgs, home-manager, impermanence, neovim-nightly-overlay, private }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -26,6 +29,7 @@
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
         nixpkgsFun = import nixpkgs;
+        inherit neovim-nightly-overlay;
       };
       modules = [
         {
