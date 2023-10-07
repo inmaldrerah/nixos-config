@@ -110,7 +110,6 @@ rec {
   # Allow swaylock to check password
   security.pam.services.swaylock = {};
 
-  virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
   # Keyring management
@@ -135,7 +134,6 @@ rec {
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     brightnessctl
-    virt-manager
     alsa-utils # for amixer
     neovim
     wget

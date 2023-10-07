@@ -61,17 +61,12 @@
       waybar
       nodejs
       swappy
-      # cargo
-      # rustc
       slurp
       typst
       unzip
       grim
       wofi
-      # gcc
       git
-      # zig
-      # zls
     ];
   };
 
