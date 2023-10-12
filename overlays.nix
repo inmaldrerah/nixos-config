@@ -59,8 +59,4 @@ in {
     gnuOverlays ++ muslOverlays ++ packageOverlays
   else
     gnuOverlays ++ packageOverlays;
-  nixpkgs.config.replaceStdenv = if stdenv.hostPlatform.isMusl then
-    { pkgs }: pkgs.ccacheStdenv
-  else
-    { pkgs }: pkgs.stdenv;
 }

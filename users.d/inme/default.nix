@@ -26,9 +26,13 @@
             | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
             | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
         }
-        rebuild-system () {
+        rebuild-system-local () {
           nom build "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
           nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
+        }
+        rebuild-system () {
+          nom build -j0 "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
+          nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos $*
         }
       '';
     };

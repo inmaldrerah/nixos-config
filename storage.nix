@@ -52,6 +52,8 @@
       "/var/lib/iwd"
       "/var/lib/libvirt"
       "/var/lib/systemd"
+      "/var/lib/tailscale"
+      "/root/.ssh"
     ];
     files = [
       "/etc/machine-id"

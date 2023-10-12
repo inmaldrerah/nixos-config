@@ -7,29 +7,39 @@
 rec {
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
-      keep-going = true
-    '';
+    buildMachines = [{
+	    hostName = "router.local";
+	    systems = [
+        "x86_64-linux"
+      ];
+      protocol = "ssh-ng";
+      sshUser = "nixos";
+	    maxJobs = 36;
+	    speedFactor = 2;
+	    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+	    mandatoryFeatures = [ ];
+	  }];
+    distributedBuilds = true;
     settings = {
-      extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
+      experimental-features = [ "nix-command" "flakes" ];
+      keep-outputs = true;
+      keep-derivations = true;
+      keep-going = true;
+      builders-use-substitutes = true;
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
+        "ssh-ng://nixos@router.local"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "router:XaQUUJ1AWd1+1JZ9CjYdMs/WoKstGyD5gD/r4gE2HQw="
       ];
     };
     daemonCPUSchedPolicy = "idle";
   };
 
-  programs.ccache = {
-    enable = true;
-    cacheDir = "/var/cache/ccache";
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # Use EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
@@ -127,6 +137,8 @@ rec {
     pkgs.android-udev-rules
   ];
 
+  services.tailscale.enable = true;
+
   # Disable nscd
   services.nscd.enable = false;
   system.nssModules = lib.mkForce [];
@@ -156,19 +168,11 @@ rec {
       fira-code-symbols
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       font-awesome
-    ] ++ [
-      # Default font packages except noto-fonts-emoji
-      dejavu_fonts
-      freefont_ttf
-      gyre-fonts # TrueType substitutes for standard PostScript fonts
-      liberation_ttf
-      unifont
     ];
-    enableDefaultPackages = false; # Disable because noto-fonts-emoji relies on glibc (even if the target is musl)
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Noto Serif CJK SC" ];
-      sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
-      monospace = [ "Fira Code" "Fira Code Symbols" "Noto Sans Mono" "Noto Sans Mono CJK SC" ];
+      serif = [ "Noto Serif" "Noto Serif CJK SC" "Symbols Nerd Font" ];
+      sansSerif = [ "Noto Sans" "Noto Sans CJK SC" "Symbols Nerd Font" ];
+      monospace = [ "Fira Code Symbols" "Noto Sans Mono" "Noto Sans Mono CJK SC" "Symbols Nerd Fonts Mono" ];
     };
   };
 
