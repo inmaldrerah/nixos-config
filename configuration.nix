@@ -29,6 +29,8 @@ rec {
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
+      ];
+      trusted-substituters = [
         "ssh-ng://nixos@router.local"
       ];
       trusted-public-keys = [
