@@ -82,7 +82,7 @@ rec {
     enable = true;
     settings = {
       default_session = {
-      	command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.gtkgreet}/bin/gtkgreet";
+      	command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet --config ${./regreet.toml}";
       };
     };
   };
@@ -122,6 +122,7 @@ rec {
 
   # Allow swaylock to check password
   security.pam.services.swaylock = {};
+  security.pam.services.gtklock = {};
 
   programs.dconf.enable = true;
 

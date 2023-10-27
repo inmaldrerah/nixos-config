@@ -37,6 +37,12 @@
       '';
     };
 
+    gtk = {
+      enable = true;
+      theme.name = "Adwaita-dark";
+      theme.package = pkgs.gnome.gnome-themes-extra;
+    };
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
@@ -50,6 +56,7 @@
     };
 
     home.packages = with pkgs; [
+      swaynotificationcenter
       lua-language-server
       nix-output-monitor
       firefox-wayland
@@ -59,6 +66,7 @@
       htop-vim
       swayidle
       swaylock
+      gtklock
       neovide
       ripgrep
       wlogout

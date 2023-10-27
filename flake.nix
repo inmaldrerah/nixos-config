@@ -44,7 +44,7 @@
         ./hardware.nix
         ./network.nix
         ./storage.nix
-        ./users.nix
+        ./users
       ];
     };
   };
