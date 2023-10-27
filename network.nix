@@ -25,8 +25,13 @@ rec {
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [  ];
-  networking.firewall.allowedUDPPorts = [  ];
+  networking.firewall = {
+    allowedTCPPorts = [  ];
+    allowedUDPPorts = [  ];
+    trustedInterfaces = [ "tailscale0" ];
+    interfaces."wlan0".allowedUDPPorts = [ 41641 ];
+    interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 }

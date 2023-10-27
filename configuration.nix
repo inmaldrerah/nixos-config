@@ -12,7 +12,7 @@ rec {
 	    systems = [
         "x86_64-linux"
       ];
-      protocol = "ssh-ng";
+      protocol = "ssh";
       sshUser = "nixos";
 	    maxJobs = 36;
 	    speedFactor = 2;
@@ -29,6 +29,7 @@ rec {
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
+        "http://nix-serve.router.local/"
       ];
       trusted-substituters = [
         "ssh-ng://nixos@router.local"

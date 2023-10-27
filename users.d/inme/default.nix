@@ -65,9 +65,9 @@
       waybar
       nodejs
       swappy
+      p7zip
       slurp
       typst
-      unzip
       grim
       wofi
       git
