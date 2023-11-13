@@ -77,18 +77,13 @@ rec {
       version = "0.0";
     };
 
-  # Enable greetd for Wayland greeter
-  services.greetd = {
+  # Enable regreet for Wayland greeter
+  programs.regreet = {
     enable = true;
-    settings = {
-      default_session = {
-      	command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet --config ${./regreet.toml}";
-      };
-    };
+    settings.GTK.theme_name = "Adwaita-dark";
   };
   environment.etc."greetd/environments".text = ''
     Hyprland
-    bash
   '';
 
   # Enable CUPS to print documents.
