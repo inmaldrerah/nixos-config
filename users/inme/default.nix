@@ -63,6 +63,8 @@
       wl-clipboard
       alacritty
       git-graph
+      keepassxc
+      syncthing
       htop-vim
       swayidle
       swaylock
@@ -101,6 +103,7 @@
       "Builds"
       "Downloads"
       "Pictures"
+      "Sync"
       "VirtualMachine"
       ".config/alacritty"
       ".config/coc"
@@ -110,12 +113,14 @@
       ".config/fontconfig"
       ".config/gtk-3.0"
       ".config/hypr"
+      ".config/keepassxc"
       ".config/libvirt"
       ".config/nixpkgs"
       ".config/nvim"
       ".config/pulse"
       ".config/qtile"
       ".config/swappy"
+      ".config/syncthing"
       ".config/VSCodium"
       ".config/waybar"
       ".config/wofi"
