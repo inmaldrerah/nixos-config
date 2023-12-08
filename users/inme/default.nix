@@ -56,14 +56,17 @@
     };
 
     home.packages = with pkgs; [
+      wineWowPackages.waylandFull
       swaynotificationcenter
       lua-language-server
       nix-output-monitor
       firefox-wayland
       wl-clipboard
+      winetricks
       alacritty
       git-graph
       keepassxc
+      libnotify
       syncthing
       htop-vim
       swayidle
@@ -100,6 +103,7 @@
       ".ssh"
       ".texlive2022"
       ".vscode-oss"
+      ".wine"
       "Builds"
       "Downloads"
       "Pictures"
