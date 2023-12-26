@@ -75,9 +75,7 @@
       winetricks
       alacritty
       git-graph
-      keepassxc
       libnotify
-      syncthing
       htop-vim
       swayidle
       swaylock
@@ -102,7 +100,6 @@
       ".android"
       ".cache"
       ".cargo"
-      ".ccache"
       ".gnupg"
       ".gradle"
       ".local"
@@ -112,30 +109,24 @@
       ".rustup"
       ".ssh"
       ".texlive2022"
-      ".vscode-oss"
       ".wine"
       "Builds"
       "Downloads"
       "Pictures"
-      "Sync"
       "VirtualMachine"
       ".config/alacritty"
-      ".config/coc"
       ".config/dconf"
       ".config/environment.d"
       ".config/fcitx5"
       ".config/fontconfig"
       ".config/gtk-3.0"
       ".config/hypr"
-      ".config/keepassxc"
       ".config/libvirt"
       ".config/nixpkgs"
       ".config/nvim"
       ".config/pulse"
       ".config/qtile"
       ".config/swappy"
-      ".config/syncthing"
-      ".config/VSCodium"
       ".config/waybar"
       ".config/wofi"
     ];
