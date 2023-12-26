@@ -7,10 +7,17 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
+  fileSystems."/mnt/root" = {
+    device = "/dev/disk/by-uuid/922264b4-c192-4b3b-8e5d-a4c902c002eb";
+    fsType = "bcachefs";
+    neededForBoot = true;
+    options = [ "compression=zstd" ];
+  };
+
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/85cbadbd-85a6-420b-8534-2597d9f8da21";
-    fsType = "btrfs";
-    options = [ "subvol=@nixos/nix" "compress=zstd" ];
+    device = "/mnt/root/@nixos";
+    fsType = "none";
+    options = [ "bind" ];
   };
 
   fileSystems."/mnt/shared" = {
@@ -23,19 +30,6 @@
     device = "/dev/disk/by-uuid/56F6-1AA8";
     fsType = "vfat";
   };
-
-  fileSystems."/var/cache/ccache" = {
-    device = "/nix/ccache";
-    fsType = "none";
-    options = [ "bind" ];
-  };
-
-  # fileSystems."/mnt/root" = {
-  #   device = "/";
-  #   fsType = "none";
-  #   depends = [ "/" ];
-  #   options = [ "rbind" ];
-  # };
 
   swapDevices = [
     {

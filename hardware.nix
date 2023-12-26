@@ -11,8 +11,9 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
+  boot.supportedFilesystems = [ "bcachefs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [  ];
-  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
+  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_testing;
   boot.kernelParams = [
     "amd_pstate=active"
   ];

@@ -128,7 +128,6 @@ rec {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    enableNvidiaPatches = false;
   };
 
   # Set adb/fastboot udev rules
