@@ -42,6 +42,7 @@
     directories = [
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
+      "/var/cache"
       "/var/log"
       "/var/lib/iwd"
       "/var/lib/libvirt"

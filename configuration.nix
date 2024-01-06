@@ -82,9 +82,9 @@ rec {
     enable = true;
     settings.GTK.theme_name = "Adwaita-dark";
   };
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-  '';
+  services.greetd.settings.default_session.command = let
+    cfg = config.programs.regreet;
+  in "${pkgs.dbus}/bin/dbus-run-session -- sh -c 'XKB_DEFAULT_LAYOUT=us XKB_DEFAULT_VARIANT=colemak ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
 
   # Enable CUPS to print documents.
   services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
@@ -113,6 +113,12 @@ rec {
     mouse.naturalScrolling = true;
     touchpad.tapping = true;
     touchpad.naturalScrolling = true;
+  };
+
+  services.xserver.xkb.extraLayouts.us-qwpr = {
+    description = "US QWPR layout";
+    languages = [ "eng" ];
+    symbolsFile = xkb/symbols/us-qwpr;
   };
 
   # Allow swaylock to check password
