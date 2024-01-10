@@ -12,8 +12,8 @@ xkb_symbols "us-qwpr" {
   key <AD08> { [         k,          K,            Up,               Up ] };
   key <AD09> { [         l,          L,           Tab,              Tab ] };
   key <AD10> { [ semicolon,      colon,    asciitilde,       dead_tilde ] };
-  key <AD11> { [ bracketleft,  braceleft, leftdoublequotemark, rightdoublequotemark ] };
-  key <AD12> { [bracketright, braceright, leftsinglequotemark, rightsinglequotemark ] };
+  key <AD11> { [ bracketleft,  braceleft,  leftdoublequotemark,  leftsinglequotemark ] };
+  key <AD12> { [bracketright, braceright, rightdoublequotemark, rightsinglequotemark ] };
   key <BKSL> { [ backslash,        bar,       notsign,        brokenbar ] };
 
   key <AC01> { [         a,          A,            at,          percent ] };
