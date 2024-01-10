@@ -112,7 +112,6 @@
       ".wine"
       "Builds"
       "Downloads"
-      "Pictures"
       "VirtualMachine"
       ".config/alacritty"
       ".config/dconf"
@@ -134,6 +133,12 @@
       ".bash_history"
       ".gitconfig"
       ".repo_.gitconfig.json"
+    ];
+  };
+
+  shared-persistence = {
+    directories = [
+      "Pictures"
     ];
   };
 }
