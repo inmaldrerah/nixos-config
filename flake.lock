@@ -195,6 +195,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-dae-0_4_0": {
+      "locked": {
+        "lastModified": 1704371841,
+        "narHash": "sha256-ScUTxDRvgEK6W0hJqzodk4VZM1pqVJO3o/Ru99Oc7mI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "526411af967efacb9f1efefe9c8664bede47b8b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "526411af967efacb9f1efefe9c8664bede47b8b8",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1704538339,
@@ -212,9 +228,12 @@
       }
     },
     "private": {
+      "inputs": {
+        "nixpkgs-dae-0_4_0": "nixpkgs-dae-0_4_0"
+      },
       "locked": {
-        "lastModified": 1704094547,
-        "narHash": "sha256-ZDozP+tjlTegkvURtMq/oDqZSSQkp/sNZ+KmhOBKPyk=",
+        "lastModified": 1705296229,
+        "narHash": "sha256-L/erqNJ8K5k+JRIvLtXG2e2mTZW2/hZjKLSLPtEnXFE=",
         "path": "/etc/nixos/private",
         "type": "path"
       },
