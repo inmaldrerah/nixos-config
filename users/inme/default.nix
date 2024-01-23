@@ -42,7 +42,7 @@
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-gstreamer
-        obs-backgroundremoval
+        # obs-backgroundremoval
         obs-pipewire-audio-capture
       ];
     };
@@ -79,8 +79,8 @@
       htop-vim
       swayidle
       swaylock
+      vscodium
       gtklock
-      neovide
       ripgrep
       wlogout
       waybar
@@ -109,6 +109,7 @@
       ".rustup"
       ".ssh"
       ".texlive2022"
+      ".vscode-oss"
       ".wine"
       "Builds"
       "Downloads"
@@ -126,6 +127,7 @@
       ".config/pulse"
       ".config/qtile"
       ".config/swappy"
+      ".config/VSCodium"
       ".config/waybar"
       ".config/wofi"
     ];
