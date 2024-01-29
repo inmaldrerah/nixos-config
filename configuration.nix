@@ -8,17 +8,17 @@ rec {
   nix = {
     package = pkgs.nixFlakes;
     buildMachines = [{
-	    hostName = "router.local";
-	    systems = [
+      hostName = "router.local";
+      systems = [
         "x86_64-linux"
       ];
       protocol = "ssh";
       sshUser = "nixos";
-	    maxJobs = 36;
-	    speedFactor = 2;
-	    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-	    mandatoryFeatures = [ ];
-	  }];
+      maxJobs = 36;
+      speedFactor = 2;
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      mandatoryFeatures = [ ];
+    }];
     distributedBuilds = true;
     settings = {
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
@@ -31,6 +31,8 @@ rec {
         "https://cache.nixos.org/"
       ];
       trusted-substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
         "http://nix-serve.router.local/"
         "ssh-ng://nixos@router.local"
       ];

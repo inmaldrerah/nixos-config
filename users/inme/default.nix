@@ -31,7 +31,8 @@
           nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
         }
         rebuild-system () {
-          nom build -j0 "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
+          nom build -j0 "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" --option substituters \
+            "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/" &&
           nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos $*
         }
       '';
@@ -72,6 +73,7 @@
       nix-output-monitor
       firefox-wayland
       wl-clipboard
+      libreoffice
       winetricks
       alacritty
       git-graph
@@ -92,6 +94,7 @@
       grim
       wofi
       git
+      zig
     ];
   };
 
@@ -121,6 +124,7 @@
       ".config/fontconfig"
       ".config/gtk-3.0"
       ".config/hypr"
+      ".config/libreoffice"
       ".config/libvirt"
       ".config/nixpkgs"
       ".config/nvim"
