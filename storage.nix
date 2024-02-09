@@ -4,6 +4,7 @@
   fileSystems."/" = {
     device = "tmpfs";
     fsType = "tmpfs";
+    neededForBoot = true;
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
@@ -11,18 +12,23 @@
     device = "/dev/disk/by-uuid/922264b4-c192-4b3b-8e5d-a4c902c002eb";
     fsType = "bcachefs";
     neededForBoot = true;
+    depends = [ "/" ];
     options = [ "compression=zstd" ];
   };
 
   fileSystems."/nix" = {
     device = "/mnt/root/@nixos";
     fsType = "none";
+    neededForBoot = true;
+    depends = [ "/mnt/root" ];
     options = [ "bind" ];
   };
 
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/4b501aec-8608-486f-a51c-d5af4312c8b1";
     fsType = "btrfs";
+    neededForBoot = true;
+    depends = [ "/" ];
     options = [ "nofail" ];
   };
 

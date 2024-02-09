@@ -38,6 +38,16 @@
       '';
     };
 
+    programs.kitty = {
+      enable = true;
+      font.name = "Fira Code";
+      font.size = 14;
+      shellIntegration.enableBashIntegration = true;
+      settings = {
+        background_opacity = "0.8";
+      };
+    };
+
     programs.obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
@@ -46,6 +56,16 @@
         # obs-backgroundremoval
         obs-pipewire-audio-capture
       ];
+    };
+
+    programs.yazi = {
+      enable = true;
+      enableBashIntegration = true;
+      settings = {
+        manager.sort_by = "natural";
+        manager.sort_reverse = false;
+        manager.sort_sensitive = true;
+      };
     };
 
     gtk = {
@@ -58,6 +78,7 @@
       enable = true;
       defaultApplications = {
         "text/html" = "firefox.desktop";
+        "application/pdf" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
         "x-scheme-handler/https" = "firefox.desktop";
         "x-scheme-handler/about" = "firefox.desktop";
