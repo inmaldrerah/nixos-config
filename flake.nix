@@ -14,13 +14,19 @@
     };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     private = {
       url = "path:/etc/nixos/private";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, neovim-nightly-overlay, private }:
+  outputs = { self, nixpkgs, home-manager, impermanence, neovim-nightly-overlay, nixvim, private }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -30,6 +36,7 @@
       specialArgs = {
         nixpkgsFun = import nixpkgs;
         inherit neovim-nightly-overlay;
+        inherit (nixvim.homeManagerModules) nixvim;
       };
       modules = [
         {

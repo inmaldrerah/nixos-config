@@ -1,5 +1,10 @@
+{ nixvim, ... }:
 {
   home-manager = { pkgs, ... }: {
+    imports = [
+      nixvim
+    ];
+
     home.stateVersion = "22.11";
     programs.home-manager.enable = true;
 
@@ -46,6 +51,43 @@
       settings = {
         background_opacity = "0.8";
       };
+    };
+
+    programs.nixvim = {
+      enable = true;
+
+      # Color Scheme
+      colorschemes.base16 = {
+        enable = true;
+        colorscheme = "material";
+      };
+
+      # Clipboard
+      clipboard.register = "unnamedplus";
+      clipboard.providers.wl-copy.enable = true;
+			globals.clipboard = {
+				name = "wl-copy";
+				copy."+" = [ "wl-copy" ];
+				copy."*" = [ "wl-copy" ];
+				paste."+" = [ "wl-paste" "-n" ];
+				paste."*" = [ "wl-paste" "-n" ];
+				cache_enabled = true;
+			};
+
+      # Options
+      options = {
+        number = true;
+        relativenumber = true;
+        tabstop = 2;
+        shiftwidth = 2;
+        softtabstop = 2;
+        expandtab = true;
+        cursorline = true;
+      };
+
+      # Plugins
+      plugins.neo-tree.enable = true;
+      plugins.persistence.enable = true;
     };
 
     programs.obs-studio = {
@@ -148,7 +190,7 @@
       ".config/libreoffice"
       ".config/libvirt"
       ".config/nixpkgs"
-      ".config/nvim"
+      # ".config/nvim"
       ".config/pulse"
       ".config/qtile"
       ".config/swappy"

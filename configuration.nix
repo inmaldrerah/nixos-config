@@ -153,7 +153,6 @@ rec {
   environment.systemPackages = with pkgs; [
     brightnessctl
     alsa-utils # for amixer
-    neovim
     wget
   ];
 
