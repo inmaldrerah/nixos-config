@@ -135,7 +135,7 @@ rec {
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
   };
 
   # Set adb/fastboot udev rules
@@ -162,6 +162,10 @@ rec {
     HTTP_PROXY = "http://localhost:1081";
     HTTPS_PROXY = "http://localhost:1081";
     FTP_PROXY = "http://localhost:1081";
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
   };
 
   fonts = {

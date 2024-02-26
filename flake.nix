@@ -36,7 +36,7 @@
       specialArgs = {
         nixpkgsFun = import nixpkgs;
         inherit neovim-nightly-overlay;
-        inherit (nixvim.homeManagerModules) nixvim;
+        inherit nixvim;
       };
       modules = [
         {

@@ -13,7 +13,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [  ];
-  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_testing;
+  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
     "amd_pstate=active"
   ];

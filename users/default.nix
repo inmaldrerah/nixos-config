@@ -1,6 +1,6 @@
-{ config, nixvim, ... }:
+{ config, nixvim, ... }@args:
 let
-  userconf.inme = import inme/default.nix { inherit nixvim; };
+  userconf.inme = import inme/default.nix args;
 in
 rec {
   # Configure users
