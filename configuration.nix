@@ -135,7 +135,7 @@ rec {
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = false;
+    xwayland.enable = true;
   };
 
   # Set adb/fastboot udev rules
@@ -155,6 +155,16 @@ rec {
     alsa-utils # for amixer
     wget
   ];
+
+  # Install darling
+  # Require a wrapper due to the requirement of setuid
+  security.wrappers.darling = {
+    source = "${pkgs.darling}/bin/darling";
+    owner = "root";
+    group = "root";
+    setuid = true;
+    permissions = "u+rx,g+x,o+x";
+  };
 
   environment.variables = {
     TERMINAL = "alacritty";
