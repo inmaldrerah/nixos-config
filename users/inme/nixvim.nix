@@ -95,6 +95,7 @@
         pick = "<C-p>";
         silent = true;
       };
+    };
 
     # Keymaps
     keymaps = [

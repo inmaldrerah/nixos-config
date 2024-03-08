@@ -24,7 +24,7 @@
         export PATH=~/.local/bin:$PATH
         export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib.outPath}/lib"
         ulimit -Sn 524288
-        typst () {
+        function typst () {
           sh -c "typst $* \
             $(fc-list \
             | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
@@ -32,14 +32,34 @@
             | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
             | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
         }
-        rebuild-system-local () {
-          nom build "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
+        function __rebuild_system_local () {
+          nom build --builders "" "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
           nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
         }
-        rebuild-system () {
+        function __rebuild_system_remote () {
           nom build -j0 "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" --option substituters \
             "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/" &&
           nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos $*
+        }
+        function __commit_nixos_config () {
+          current_pwd="$PWD"
+          cd /etc/nixos
+          current_branch="$(git rev-parse --abbrev-ref HEAD)"
+          git checkout snapshot
+          git add .
+          git commit -m "snapshot@$(date -u +%m/%d/%Y-%T)"
+          git checkout $current_branch
+          cd $current_pwd
+        }
+        function rebuild-system () {
+          __commit_nixos_config
+          if [ -f "$HOME/.nix-local" ]; then __rebuild_system_local $@; else __rebuild_system_remote $@; fi
+        }
+        function toggle-nix-local () {
+          if [ ! -z "$HOME" ] && [ -f "$HOME/.nix-local" ]; then rm "$HOME/.nix-local"; else touch "$HOME/.nix-local"; fi
+        }
+        function nix () {
+          if [ -f "$HOME/.nix-local" ]; then /usr/bin/env nix --builders "" $@; else /usr/bin/env nix $@; fi
         }
       '';
     };
@@ -122,10 +142,12 @@
       waybar
       nodejs
       swappy
+      trashy
       p7zip
       samba
       typst
       wofi
+      dex
       git
       zig
     ];
@@ -148,13 +170,16 @@
       ".vscode-oss"
       ".wine"
       "Builds"
+      "Desktop"
       "Downloads"
+      "Share"
       "VirtualMachine"
       ".config/alacritty"
       ".config/dconf"
       ".config/environment.d"
       ".config/fcitx5"
       ".config/fontconfig"
+      ".config/Google"
       ".config/gtk-3.0"
       ".config/hypr"
       ".config/libreoffice"

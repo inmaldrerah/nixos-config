@@ -32,6 +32,12 @@
     options = [ "nofail" ];
   };
 
+  fileSystems."/home/inme/.local/share/waydroid/data/media/0/Share" = {
+    device = "/home/inme/Share/Waydroid";
+    fsType = "none";
+    options = [ "bind" "user" "noauto" ];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/56F6-1AA8";
     fsType = "vfat";
@@ -54,6 +60,7 @@
       "/var/lib/libvirt"
       "/var/lib/systemd"
       "/var/lib/tailscale"
+      "/var/lib/waydroid"
       "/root/.ssh"
     ];
     files = [

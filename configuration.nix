@@ -138,6 +138,11 @@ rec {
     xwayland.enable = true;
   };
 
+  services.xserver.windowManager.qtile = {
+    enable = true;
+    backend = "wayland";
+  };
+
   # Set adb/fastboot udev rules
   services.udev.packages = [
     pkgs.android-udev-rules
@@ -148,6 +153,8 @@ rec {
   # Disable nscd
   services.nscd.enable = false;
   system.nssModules = lib.mkForce [];
+
+  virtualisation.waydroid.enable = true;
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
