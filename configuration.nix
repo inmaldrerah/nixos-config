@@ -47,14 +47,8 @@ rec {
   nixpkgs.config.allowUnfree = true;
 
   # Use EFI boot loader.
-  # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    useOSProber = true;
-  };
 
   # Set your time zone.
   time.timeZone = "UTC";
