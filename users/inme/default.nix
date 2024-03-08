@@ -44,11 +44,8 @@
         function __commit_nixos_config () {
           current_pwd="$PWD"
           cd /etc/nixos
-          current_branch="$(git rev-parse --abbrev-ref HEAD)"
-          git checkout snapshot
           git add .
           git commit -m "snapshot@$(date -u +%m/%d/%Y-%T)"
-          git checkout $current_branch
           cd $current_pwd
         }
         function rebuild-system () {
