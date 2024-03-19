@@ -81,7 +81,7 @@
               __rebuild_system_remote(args)
 
           def toggle-nix-local(args):
-            if "HOME" in ${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
+            if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
               ![rm "{$HOME}/.nix-local"]
             else:
               ![touch "{$HOME}/.nix-local"]
