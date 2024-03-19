@@ -58,11 +58,11 @@
       rcFiles."nix-helper.xsh".text = ''
         def init():
           def __rebuild_system_local(args):
-            ![nom build --builders "" "/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel"] && \
+            ![nom build --builders "" f"/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel"] && \
               ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
 
           def __rebuild_system_remote(args):
-            ![nom build -j0 "/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel" --option substituters \
+            ![nom build -j0 f"/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel" --option substituters \
               "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/"] && \
               ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
 
