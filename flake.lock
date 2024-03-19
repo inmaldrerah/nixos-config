@@ -236,17 +236,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1710862629,
-        "narHash": "sha256-DNDwHv/kwKSQ3V4AUWnLuAhAtwUqv2+8oXIe11myDag=",
-        "owner": "inmaldrerah",
-        "repo": "home-manager",
-        "rev": "9693e7c474e3a70caae86e2eaaf739446dbcaa0b",
-        "type": "github"
+        "lastModified": 1710866060,
+        "narHash": "sha256-23Dc7fFWO+Sfr6dWtQM8DbtaDtuegIEjTCA5ydJN1C4=",
+        "path": "/home/inme/Builds/home-manager",
+        "type": "path"
       },
       "original": {
-        "owner": "inmaldrerah",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/home/inme/Builds/home-manager",
+        "type": "path"
       }
     },
     "home-manager_2": {
