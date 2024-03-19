@@ -69,7 +69,7 @@
         $TERM = "xterm-256color"
         $LD_LIBRARY_PATH.append("${pkgs.stdenv.cc.cc.lib.outPath}/lib")
         def typst(*args):
-          ![sh -c "typst @(" ".join(args)) \
+          ![sh -c r"typst @(" ".join(args)) \
             $(fc-list \
             | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
             | sort \
