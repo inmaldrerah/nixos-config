@@ -128,8 +128,8 @@
       executable = true;
       text = ''
         #!/bin/sh
-        sh -c "${pkgs.typst} $@ \
-          $(fc-list \
+        /bin/sh -c "${pkgs.typst}/bin/typst $@ \
+          $(${pkgs.fontconfig}/bin/fc-list \
           | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
           | sort \
           | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
