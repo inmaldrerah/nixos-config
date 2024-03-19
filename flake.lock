@@ -236,17 +236,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1710062421,
-        "narHash": "sha256-FiCNRfyUgJOLYIokLiFsfI7B+Zn9HDnOzFR3uVr5qsQ=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "36f873dfc8e2b6b89936ff3e2b74803d50447e0a",
-        "type": "github"
+        "lastModified": 1710830985,
+        "narHash": "sha256-JXi4cljGNIACJb3G5FpMwltthAhQ93MNvbICvkZvs0Y=",
+        "path": "/home/inme/Builds/home-manager",
+        "type": "path"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/home/inme/Builds/home-manager",
+        "type": "path"
       }
     },
     "home-manager_2": {
