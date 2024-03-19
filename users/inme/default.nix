@@ -67,10 +67,10 @@
               ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
 
           def __commit_nixos_config(args):
-            current_pwd = "$PWD"
+            current_pwd = $PWD
             cd /etc/nixos
             ![git add .]
-            ![git commit -m "snapshot@$(date -u +%m/%d/%Y-%T)"]
+            ![git commit -m f"snapshot@{$(date -u +%m/%d/%Y-%T)}"]
             cd current_pwd
 
           def rebuild_system(args):
