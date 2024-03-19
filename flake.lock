@@ -236,8 +236,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1710850586,
-        "narHash": "sha256-SiOQ96+dFArqbXdzq/p4o9FU7SeFUduef3upOGZC1jI=",
+        "lastModified": 1710855298,
+        "narHash": "sha256-DBLTE4gzbPZ0S7GvtHLEiQhK59oLrKcTwY7UzurPqFI=",
         "path": "/home/inme/Builds/home-manager",
         "type": "path"
       },
