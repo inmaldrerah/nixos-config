@@ -7,7 +7,7 @@
     };
     home-manager = {
       #url = "github:nix-community/home-manager";
-      url = "path+git:/home/inme/Build/home-manager";
+      url = "path:/home/inme/Build/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
