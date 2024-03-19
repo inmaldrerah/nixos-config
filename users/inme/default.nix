@@ -63,7 +63,7 @@
 
     programs.xonsh = {
       enable = true;
-      rcFile = ''
+      extraConfig = ''
         execx($(${pkgs.any-nix-shell}/bin/any-nix-shell xonsh --info-right))
       '';
     };
