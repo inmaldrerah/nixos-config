@@ -58,13 +58,13 @@
       rcFiles."nix-helper.xsh".text = ''
         def init():
           def __rebuild_system_local(args):
-            ![nom build --builders "" "/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel" && \
-            nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
+            ![nom build --builders "" "/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel"] && \
+              ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
 
           def __rebuild_system_remote(args):
             ![nom build -j0 "/etc/nixos#nixosConfigurations.\"{$(uname -n)}\".config.system.build.toplevel" --option substituters \
-              "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/" && \
-            nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
+              "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/"] && \
+              ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
 
           def __commit_nixos_config(args):
             current_pwd = "$PWD"
