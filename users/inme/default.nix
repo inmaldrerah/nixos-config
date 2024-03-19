@@ -68,13 +68,6 @@
         $PATH.insert(0, f"{$HOME}/.local/bin")
         $TERM = "xterm-256color"
         $LD_LIBRARY_PATH.append("${pkgs.stdenv.cc.cc.lib.outPath}/lib")
-        def typst(*args):
-          ![sh -c r"typst @(" ".join(args)) \
-            $(fc-list \
-            | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
-            | sort \
-            | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
-            | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"]
       '';
     };
 
@@ -129,6 +122,59 @@
         "x-scheme-handler/mailto" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
       };
+    };
+
+    home.file.".local/bin/typst" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
+        sh -c "${pkgs.typst} $@ \
+          $(fc-list \
+          | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
+          | sort \
+          | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
+          | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
+      '';
+    };
+
+    home.file.".local/bin/caffine" = {
+      executable = true;
+      text = ''
+        #!/bin/sh
+        case "$@" in 
+          "toggle"|"")
+            if [ -f "$HOME/.caffine" ]; then
+              err="$(rm "$HOME/.caffine" 2>&1 > /dev/null)"
+            else
+              err="$(touch "$HOME/.caffine" 2>&1 > /dev/null)"
+            fi
+            if [ "$err" == "" ]; then
+              if [[ -f "$HOME/.caffine" ]]; then
+                notify-send "Caffine ON" "Caffine is toggled on." --icon=dialog-information
+              else
+                notify-send "Caffine OFF" "Caffine is toggled off." --icon=dialog-information
+              fi
+            else
+              notify-send "Caffine Toggle Error" "Error: $err" --icon=dialog-error
+            fi;;
+          "waybar")
+            prev="none"
+            while :; do
+              if [ -f "$HOME/.caffine" ]; then
+                if [ $prev != "on" ]; then
+                  echo '{"text": "on", "alt": "on", "tooltip": "", "class": "on"}'
+                  prev="on"
+                fi
+              else
+                if [ $prev != "off" ]; then
+                  echo '{"text": "off", "alt": "off", "tooltip": "", "class": "off"}'
+                  prev="off"
+                fi
+              fi
+              sleep 1
+            done;;
+        esac
+      '';
     };
 
     home.packages = with pkgs; [
