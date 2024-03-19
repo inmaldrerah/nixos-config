@@ -65,6 +65,16 @@
     programs.xonsh = {
       enable = true;
       extraConfig = ''
+        $PATH.insert(0, f"{$HOME}/.local/bin")
+        $TERM = "xterm-256color"
+        $LD_LIBRARY_PATH.append(${pkgs.stdenv.cc.cc.lib.outPath}/lib)
+        def typst(*args):
+          ![sh -c "typst @(" ".join(args)) \
+            $(fc-list \
+            | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
+            | sort \
+            | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
+            | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"]
       '';
     };
 
