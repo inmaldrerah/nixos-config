@@ -6,7 +6,8 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      #url = "github:nix-community/home-manager";
+      url = "path+git:/home/inme/Build/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
