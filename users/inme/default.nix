@@ -23,7 +23,6 @@
       bashrcExtra = ''
         export TERM=xterm-256color
         export PATH=~/.local/bin:$PATH
-        export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib.outPath}/lib"
         ulimit -Sn 524288
         function __rebuild_system_local () {
           nom build --builders "" "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
@@ -56,10 +55,46 @@
 
     programs.xonsh = {
       enable = true;
+      rcFiles."nix-helper.xsh".text = ''
+        def init():
+          def __rebuild_system_local(args):
+            nom build --builders "" "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" && \
+            nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)
+
+          def __rebuild_system_remote(args):
+            nom build -j0 "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" --option substituters \
+              "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/" &&
+            nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)
+
+          def __commit_nixos_config(args):
+            current_pwd = "$PWD"
+            cd /etc/nixos
+            git add .
+            git commit -m "snapshot@$(date -u +%m/%d/%Y-%T)"
+            cd $current_pwd
+
+          def rebuild-system(args):
+            __commit_nixos_config(args)
+            if pf"{$HOME}/.nix-local".is_file():
+              __rebuild_system_local(args)
+            else:
+              __rebuild_system_remote(args)
+
+          def toggle-nix-local(args):
+            if "HOME" in ${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
+              ![rm "{$HOME}/.nix-local"]
+            else:
+              ![touch "{$HOME}/.nix-local"]
+
+          aliases["rebuild-system"] = rebuild-system
+          aliases["toggle-nix-local"] = toggle-nix-local
+
+        init()
+        del init
+      '';
       extraConfig = ''
         $PATH.insert(0, f"{$HOME}/.local/bin")
         $TERM = "xterm-256color"
-        $LD_LIBRARY_PATH.append("${pkgs.stdenv.cc.cc.lib.outPath}/lib")
       '';
     };
 
