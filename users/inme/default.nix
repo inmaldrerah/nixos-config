@@ -25,14 +25,6 @@
         export PATH=~/.local/bin:$PATH
         export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib.outPath}/lib"
         ulimit -Sn 524288
-        function typst () {
-          sh -c "typst $* \
-            $(fc-list \
-            | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
-            | sort \
-            | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
-            | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
-        }
         function __rebuild_system_local () {
           nom build --builders "" "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
           nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
@@ -75,7 +67,6 @@
       enable = true;
       font.name = "Fira Code";
       font.size = 14;
-      shellIntegration.enableBashIntegration = true;
       settings = {
         background_opacity = "0.8";
       };
@@ -93,7 +84,7 @@
 
     programs.yazi = {
       enable = true;
-      enableBashIntegration = true;
+      enableXonshIntegration = true;
       settings = {
         manager.sort_by = "natural";
         manager.sort_reverse = false;
@@ -101,9 +92,7 @@
       };
     };
 
-    programs.zoxide = {
-      enable = true;
-    };
+    programs.zoxide.enable = true;
 
     gtk = {
       enable = true;
