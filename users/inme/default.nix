@@ -63,6 +63,9 @@
 
     programs.xonsh = {
       enable = true;
+      rcFile = ''
+        execx($(${pkgs.any-nix-shell}/bin/any-nix-shell xonsh --info-right))
+      '';
     };
 
     programs.kitty = {
