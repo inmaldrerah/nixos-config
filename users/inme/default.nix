@@ -68,10 +68,10 @@
           
           def __commit_nixos_config(args):
             current_pwd = $PWD
-            cd /etc/nixos
-            ![git add .]
-            ![git commit -m f"snapshot@{str($(date -u +%m/%d/%Y-%T)).strip()}"]
-            cd current_pwd
+            $[cd /etc/nixos]
+            $[git add .]
+            $[git commit -m f"snapshot@{str($(date -u +%m/%d/%Y-%T)).strip()}"]
+            $[cd @(current_pwd)]
           
           def rebuild_system(args):
             __commit_nixos_config(args)
@@ -82,9 +82,9 @@
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
-              ![rm "{$HOME}/.nix-local"]
+              $[rm "{$HOME}/.nix-local"]
             else:
-              ![touch "{$HOME}/.nix-local"]
+              $[touch "{$HOME}/.nix-local"]
           
           aliases["rebuild-system"] = rebuild_system
           aliases["toggle-nix-local"] = toggle_nix_local
