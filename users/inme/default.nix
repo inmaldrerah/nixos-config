@@ -1,5 +1,6 @@
-{ lib, nixvim, ... }:
+{ pkgs, lib, nixvim, ... }:
 {
+  shell = pkgs.xonsh;
   home-manager = { pkgs, ... }: {
     imports = [
       nixvim.homeManagerModules.nixvim
@@ -99,7 +100,6 @@
 
     programs.zoxide = {
       enable = true;
-      enableBashIntegration = true;
     };
 
     gtk = {

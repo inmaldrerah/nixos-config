@@ -18,6 +18,7 @@ rec {
       "scanner" "lp"
       "networkmanager"
     ];
+    shell = userconf.inme.shell;
   };
   
   home-manager.useUserPackages = true;

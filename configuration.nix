@@ -83,6 +83,8 @@ rec {
     cfg = config.programs.regreet;
   in "${pkgs.dbus}/bin/dbus-run-session -- sh -c 'XKB_DEFAULT_LAYOUT=us-qwpr ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
 
+  programs.xonsh.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
   hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;
