@@ -15,7 +15,7 @@
     };
 
     programs.bash = {
-      enable = true;
+      enable = false;
       shellOptions = [ "globstar" ];
       shellAliases = {
       };
@@ -59,6 +59,10 @@
           if [ -f "$HOME/.nix-local" ]; then /usr/bin/env nix --builders "" $@; else /usr/bin/env nix $@; fi
         }
       '';
+    };
+
+    programs.xonsh = {
+      enable = true;
     };
 
     programs.kitty = {
