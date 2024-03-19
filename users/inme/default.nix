@@ -61,6 +61,10 @@
       '';
     };
 
+    programs.xonsh = {
+      enable = true;
+    };
+
     programs.kitty = {
       enable = true;
       font.name = "Fira Code";
@@ -143,7 +147,6 @@
       p7zip
       samba
       typst
-      xonsh
       wofi
       dex
       git
