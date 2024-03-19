@@ -15,7 +15,7 @@
     };
 
     programs.bash = {
-      enable = false;
+      enable = true;
       shellOptions = [ "globstar" ];
       shellAliases = {
       };
@@ -59,10 +59,6 @@
           if [ -f "$HOME/.nix-local" ]; then /usr/bin/env nix --builders "" $@; else /usr/bin/env nix $@; fi
         }
       '';
-    };
-
-    programs.xonsh = {
-      enable = true;
     };
 
     programs.kitty = {
@@ -147,6 +143,7 @@
       p7zip
       samba
       typst
+      xonsh
       wofi
       dex
       git
