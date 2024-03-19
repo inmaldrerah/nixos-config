@@ -73,21 +73,21 @@
             ![git commit -m "snapshot@$(date -u +%m/%d/%Y-%T)"]
             cd current_pwd
 
-          def rebuild-system(args):
+          def rebuild_system(args):
             __commit_nixos_config(args)
             if pf"{$HOME}/.nix-local".is_file():
               __rebuild_system_local(args)
             else:
               __rebuild_system_remote(args)
 
-          def toggle-nix-local(args):
+          def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
               ![rm "{$HOME}/.nix-local"]
             else:
               ![touch "{$HOME}/.nix-local"]
 
-          aliases["rebuild-system"] = rebuild-system
-          aliases["toggle-nix-local"] = toggle-nix-local
+          aliases["rebuild-system"] = rebuild_system
+          aliases["toggle-nix-local"] = toggle_nix_local
 
         init()
         del init
