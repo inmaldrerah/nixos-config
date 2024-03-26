@@ -55,7 +55,6 @@
 
     programs.xonsh = {
       enable = true;
-      rcFiles."test.xsh".text = "";
       rcFiles."nix-helper.xsh".text = ''
         def init():
           def __rebuild_system_local(args):
