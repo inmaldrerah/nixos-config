@@ -11,8 +11,8 @@
       #url = "github:inmaldrerah/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hm-extensions = {
-      url = "path:/home/inme/Builds/hm-extensions";
+    hm-extension = {
+      url = "path:/home/inme/Builds/hm-extension";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
@@ -32,7 +32,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, neovim-nightly-overlay, nixvim, private }:
+  outputs = { self, nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -43,6 +43,7 @@
         nixpkgsFun = import nixpkgs;
         inherit neovim-nightly-overlay;
         inherit nixvim;
+        inherit hm-extension;
       };
       modules = [
         {
