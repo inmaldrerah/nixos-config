@@ -237,8 +237,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1711521303,
-        "narHash": "sha256-JT3DGb8elVzaUzP7T79I4Xnx50MujizEjz64dt7AvQ0=",
+        "lastModified": 1711521407,
+        "narHash": "sha256-WPi8XLrPMrJncFKVS6Lq5GUy5CYBRJUbNib5W1gbfZ0=",
         "path": "/home/inme/Builds/hm-extension",
         "type": "path"
       },
