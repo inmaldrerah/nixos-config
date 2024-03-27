@@ -6,9 +6,13 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     home-manager = {
-      #url = "github:nix-community/home-manager";
-      url = "path:/home/inme/Builds/home-manager";
+      url = "github:nix-community/home-manager";
+      #url = "path:/home/inme/Builds/home-manager";
       #url = "github:inmaldrerah/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hm-extensions = {
+      url = "path:/home/inme/Builds/hm-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
