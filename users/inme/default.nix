@@ -4,9 +4,7 @@
   home-manager = { pkgs, ... }: {
     imports = [
       nixvim.homeManagerModules.nixvim
-      hm-extension.homeManagerModules.xonsh
-      hm-extension.homeManagerModules.yazi
-      hm-extension.homeManagerModules.zoxide
+      hm-extension.homeManagerModules.default
       ./nixvim.nix
     ];
 
