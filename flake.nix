@@ -13,7 +13,6 @@
     };
     hm-extension = {
       url = "path:/home/inme/Builds/hm-extension";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
       url = "github:nix-community/impermanence";
