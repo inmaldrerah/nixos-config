@@ -56,8 +56,7 @@
               return __rebuild_system_remote(args)
           
           def rebuild_system(args):
-            if __rebuild_system(args):
-              $[sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf']
+            return __rebuild_system(args) && ![sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf']
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
