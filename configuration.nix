@@ -47,8 +47,11 @@ rec {
   nixpkgs.config.allowUnfree = true;
 
   # Use EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 8;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 8;
+    sortKey = "zz~nixos";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Set your time zone.
