@@ -25,32 +25,6 @@
         export TERM=xterm-256color
         export PATH=~/.local/bin:$PATH
         ulimit -Sn 524288
-        function __rebuild_system_local () {
-          nom build --builders "" "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" &&
-          nixos-rebuild --use-remote-sudo --flake /etc/nixos $*
-        }
-        function __rebuild_system_remote () {
-          nom build -j0 "/etc/nixos#nixosConfigurations.\"$(uname -n)\".config.system.build.toplevel" --option substituters \
-            "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/" &&
-          nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos $*
-        }
-        function __commit_nixos_config () {
-          current_pwd="$PWD"
-          cd /etc/nixos
-          git add .
-          git commit -m "snapshot@$(date -u +%m/%d/%Y-%T)"
-          cd $current_pwd
-        }
-        function rebuild-system () {
-          __commit_nixos_config
-          if [ -f "$HOME/.nix-local" ]; then __rebuild_system_local $@; else __rebuild_system_remote $@; fi
-        }
-        function toggle-nix-local () {
-          if [ ! -z "$HOME" ] && [ -f "$HOME/.nix-local" ]; then rm "$HOME/.nix-local"; else touch "$HOME/.nix-local"; fi
-        }
-        function nix () {
-          if [ -f "$HOME/.nix-local" ]; then /usr/bin/env nix --builders "" $@; else /usr/bin/env nix $@; fi
-        }
       '';
     };
 
@@ -80,6 +54,9 @@
               __rebuild_system_local(args)
             else:
               __rebuild_system_remote(args)
+            $[sudo echo """timeout 5
+                           default @saved
+                           console-mode keep""" > /boot/loader/loader.conf]
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
