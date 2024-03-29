@@ -33,11 +33,11 @@
       rcFiles."nix-helper.xsh".text = ''
         def init():
           def __rebuild_system_local(args):
-            ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
+            return ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
               ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __rebuild_system_remote(args):
-            ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters \
+            return ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters \
               "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/"] && \
               ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
           
@@ -47,14 +47,17 @@
             $[git add .]
             $[git commit -m f"snapshot@{str($(date -u +%m/%d/%Y-%T)).strip()}"]
             $[cd @(current_pwd)]
-          
-          def rebuild_system(args):
+         
+          def __rebuild_system(args):
             __commit_nixos_config(args)
             if pf"{$HOME}/.nix-local".is_file():
-              __rebuild_system_local(args)
+              return __rebuild_system_local(args)
             else:
-              __rebuild_system_remote(args)
-            $[sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf']
+              return __rebuild_system_remote(args)
+          
+          def rebuild_system(args):
+            if __rebuild_system(args):
+              $[sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf']
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
