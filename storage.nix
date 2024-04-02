@@ -8,20 +8,12 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
-  fileSystems."/mnt/root" = {
-    device = "/dev/disk/by-uuid/922264b4-c192-4b3b-8e5d-a4c902c002eb";
-    fsType = "bcachefs";
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/85cbadbd-85a6-420b-8534-2597d9f8da21";
+    fsType = "btrfs";
     neededForBoot = true;
     depends = [ "/" ];
-    options = [ "compression=zstd" ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/mnt/root/@nixos";
-    fsType = "none";
-    neededForBoot = true;
-    depends = [ "/mnt/root" ];
-    options = [ "bind" ];
+    options = [ "subvol=@nixos/nix,compress=zstd" ];
   };
 
   fileSystems."/mnt/shared" = {
