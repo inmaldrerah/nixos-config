@@ -50,7 +50,7 @@ rec {
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 8;
-    sortKey = "zz-nixos";
+    sortKey = "00-nixos";
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
