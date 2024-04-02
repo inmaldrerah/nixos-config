@@ -7,12 +7,11 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      #url = "path:/home/inme/Builds/home-manager";
-      #url = "github:inmaldrerah/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hm-extension = {
-      url = "path:/home/inme/Builds/hm-extension";
+      # url = "path:/home/inme/Builds/hm-extension";
+      url = "github:inmaldrerah/hm-extension";
     };
     impermanence = {
       url = "github:nix-community/impermanence";
