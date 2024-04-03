@@ -6,7 +6,8 @@
       url = "github:nixos/nixpkgs/nixos-unstable-small";
     };
     xonsh-pinned-nixpkgs = {
-      url = "github:nixos/nixpkgs/d8fe5e6c92d0d190646fb9f1056741a229980089";
+      # url = "github:nixos/nixpkgs/d8fe5e6c92d0d190646fb9f1056741a229980089";
+      url = "github:nixos/nixpkgs/8db50d6f207f6e6bea072986fe5abfc955f04bfc";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
