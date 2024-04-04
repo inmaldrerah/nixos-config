@@ -59,7 +59,7 @@
             if __rebuild_system(args):
               target = f"/boot/loader/loader.conf".read_text().split()[4]
               ![sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf'] && \
-                ![sudo bootctl set-default @(target)]
+                ![sudo bootctl set-oneshot @(target)]
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
