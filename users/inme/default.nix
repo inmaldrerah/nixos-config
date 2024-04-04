@@ -31,7 +31,7 @@
     programs.xonsh = {
       enable = true;
       rcFiles."nix-helper.xsh".text = ''
-        def init():
+        def __nix_helper_init():
           def __rebuild_system_local(args):
             return ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
               ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
@@ -56,7 +56,10 @@
               return __rebuild_system_remote(args)
           
           def rebuild_system(args):
-            return __rebuild_system(args) && ![sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf']
+            if __rebuild_system(args):
+              target = f"/boot/loader/loader.conf".read_text().split()[4]
+              ![sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf'] && \
+                ![sudo bootctl set-default @(target)]
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
@@ -67,8 +70,8 @@
           aliases["rebuild-system"] = rebuild_system
           aliases["toggle-nix-local"] = toggle_nix_local
         
-        init()
-        del init
+        __nix_helper_init()
+        del __nix_helper_init
       '';
       extraConfig = ''
         $PATH.insert(0, f"{$HOME}/.local/bin")
