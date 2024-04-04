@@ -57,7 +57,7 @@
           
           def rebuild_system(args):
             if __rebuild_system(args):
-              target = f"/boot/loader/loader.conf".read_text().split()[4]
+              target = p"/boot/loader/loader.conf".read_text().split()[4]
               ![sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf'] && \
                 ![sudo bootctl set-oneshot @(target)]
           
