@@ -58,7 +58,7 @@
           def rebuild_system(args):
             if __rebuild_system(args):
               target = p"/boot/loader/loader.conf".read_text().split()[4]
-              ![sudo sh -c 'echo "timeout 5\ndefault @saved\nconsole-mode keep" > /boot/loader/loader.conf'] && \
+              ![sudo bootctl set-default "@saved"] && \
                 ![sudo bootctl set-oneshot @(target)]
           
           def toggle_nix_local(args):
