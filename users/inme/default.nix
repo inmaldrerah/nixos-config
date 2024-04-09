@@ -63,9 +63,9 @@
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
-              $[rm "{$HOME}/.nix-local"]
+              $[rm f"{$HOME}/.nix-local"]
             else:
-              $[touch "{$HOME}/.nix-local"]
+              $[touch f"{$HOME}/.nix-local"]
           
           aliases["rebuild-system"] = rebuild_system
           aliases["toggle-nix-local"] = toggle_nix_local
