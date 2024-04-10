@@ -58,7 +58,7 @@
           def rebuild_system(args):
             if __rebuild_system(args):
               target = p"/boot/loader/loader.conf".read_text().split()[3]
-              print(f"Setting default to @saved and oneshot to {target}")
+              print(f"setting default to @saved and oneshot to {target}")
               ![sudo bootctl set-default "@saved"] && \
                 ![sudo bootctl set-oneshot @(target)]
           
