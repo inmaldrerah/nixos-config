@@ -5,9 +5,6 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable-small";
     };
-    xonsh-pinned-nixpkgs = {
-      url = "github:nixos/nixpkgs/8db50d6f207f6e6bea072986fe5abfc955f04bfc";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +30,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, xonsh-pinned-nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private }:
+  outputs = { self, nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -42,7 +39,6 @@
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
         nixpkgsInput = nixpkgs;
-        inherit xonsh-pinned-nixpkgs;
         inherit neovim-nightly-overlay;
         inherit nixvim;
         inherit hm-extension;

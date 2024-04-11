@@ -1,4 +1,4 @@
-{ config, lib, nixpkgsInput, xonsh-pinned-nixpkgs, neovim-nightly-overlay, ... }:
+{ config, lib, nixpkgsInput, neovim-nightly-overlay, ... }:
 
 let
   packageOverlays = [
@@ -33,9 +33,6 @@ let
       };
     })
     neovim-nightly-overlay.overlay
-    (self: super: let pkgs = xonsh-pinned-nixpkgs.legacyPackages.x86_64-linux; in {
-      # inherit (pkgs) xonsh;
-    })
   ];
   stdenv = (import nixpkgsInput {
     localSystem = config.nixpkgs.hostPlatform;
