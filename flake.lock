@@ -464,8 +464,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "private": "private",
-        "xonsh-pinned-nixpkgs": "xonsh-pinned-nixpkgs"
+        "private": "private"
       }
     },
     "systems": {
@@ -510,22 +509,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "xonsh-pinned-nixpkgs": {
-      "locked": {
-        "lastModified": 1708773810,
-        "narHash": "sha256-J8/0QZY6Vfc+Xz2YD8ZR/YTWpRU7FocZEn0MGiBSDmc=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8db50d6f207f6e6bea072986fe5abfc955f04bfc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8db50d6f207f6e6bea072986fe5abfc955f04bfc",
         "type": "github"
       }
     }
