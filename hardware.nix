@@ -13,7 +13,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [ "overlay" "btrfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [  ];
-  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
+  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_6_7_hardened;
   boot.kernelParams = [
     "amd_pstate=active"
   ];
