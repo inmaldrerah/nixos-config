@@ -17,6 +17,7 @@
   boot.kernelParams = [
     "amd_pstate=active"
     "security=selinux"
+    "lsm=landlock,lockdown,yama,integrity,selinux,bpf"
   ];
   boot.kernelPatches = [
     {
