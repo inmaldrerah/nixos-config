@@ -16,21 +16,6 @@
   boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
     "amd_pstate=active"
-    "security=selinux"
-    "lsm=landlock,lockdown,yama,integrity,selinux,bpf"
-  ];
-  boot.kernelPatches = [
-    {
-      name = "selinux-config";
-      patch = null;
-      extraConfig = ''
-        SECURITY_SELINUX y
-        SECURITY_SELINUX_BOOTPARAM n
-        SECURITY_SELINUX_DEVELOP y
-        SECURITY_SELINUX_AVC_STATS y
-        DEFAULT_SECURITY_SELINUX n
-      '';
-    }
   ];
 
   hardware.opengl.driSupport = true;
