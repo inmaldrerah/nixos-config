@@ -34,8 +34,7 @@ let
     })
     neovim-nightly-overlay.overlay
     (self: super: let pkgs = xonsh-pinned-nixpkgs.legacyPackages.x86_64-linux; in {
-      xonsh = pkgs.xonsh;
-      greetd.regreet = pkgs.greetd.regreet;
+      inherit (pkgs) xonsh, greetd;
     })
   ];
   stdenv = (import nixpkgsInput {
