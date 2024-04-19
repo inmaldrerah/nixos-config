@@ -128,7 +128,7 @@ in
     };
 
     services.xserver = {
-      xkb.dir = "${xkb_patched}/etc/X11/xkb";
+      xkb.dir = lib.mkForce "${xkb_patched}/etc/X11/xkb";
       exportConfiguration = config.services.xserver.displayManager.startx.enable
         || config.services.xserver.displayManager.sx.enable;
     };
