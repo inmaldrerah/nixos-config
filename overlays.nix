@@ -28,8 +28,8 @@ let
       };
     })
     neovim-nightly-overlay.overlay
-    (self: super: { 
-      xorg = lib.recursiveUpdate super.xorg {
+    (self: super: {
+      xorg_ext = lib.recursiveUpdate super.xorg {
         xkeyboardconfig_custom2 = { layouts ? { }, options ? { } }:
         let
           patchIn = filename: option:
