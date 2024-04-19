@@ -134,7 +134,7 @@ rec {
         symbolsFile = xkb/symbols/super;
       };
     };
-    xkbPatched = pkgs.xkeyboardconfig_custom { inherit layouts; };
+    xkbPatched = pkgs.xorg.xkeyboardconfig_custom { inherit layouts; };
   in "${xkbPatched}/etc/X11/xkb";
   environment.sessionVariables = {
     # runtime override supported by multiple libraries e. g. libxkbcommon
