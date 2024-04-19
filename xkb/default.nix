@@ -3,8 +3,8 @@
 with lib;
 
 let
-  layouts = config.services.xserver.xkb.extraLayouts;
-  options = config.services.xserver.xkb.extraOptions;
+  layouts = config.services.xserver.xkb.extraConfig.layouts;
+  options = config.services.xserver.xkb.extraConfig.options;
 
   sharedOpts = {
     options = {
@@ -71,6 +71,16 @@ let
     };
   };
 
+  layoutOpts = recursiveUpdate sharedOpts {
+    languages = {
+      type = types.listOf types.str;
+      description =
+        lib.mdDoc ''
+          A list of languages provided by the layout.
+        '';
+    };
+  };
+
   optionOpts = recursiveUpdate sharedOpts {
     options = {
       optionDescriptions = mkOption {
@@ -92,8 +102,11 @@ in
 
 {
 
-  options.services.xserver.xkb = {
-    extraOptions = mkOption {
+  options.services.xserver.xkb.extraConfig = {
+    layouts = mkOption {
+      type = types.attrsOf (types.submodule layoutOpts)
+    };
+    options = mkOption {
       type = types.attrsOf (types.submodule optionOpts);
       default = { };
       description = lib.mdDoc ''
@@ -107,7 +120,7 @@ in
     environment.sessionVariables = {
       # runtime override supported by multiple libraries e. g. libxkbcommon
       # https://xkbcommon.org/doc/current/group__include-path.html
-      XKB_CONFIG_ROOT = mkForce config.services.xserver.xkb.dir;
+      XKB_CONFIG_ROOT = config.services.xserver.xkb.dir;
     };
 
     services.xserver = {
