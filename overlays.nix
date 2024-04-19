@@ -61,7 +61,7 @@ let
                   <description>${value}</description>
                 </configItem>
               </option>
-        '') option.optionDescriptions) ++ ''
+        '') option.optionDescriptions)) ++ ''
             </group>
             .
             w
