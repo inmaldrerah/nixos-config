@@ -75,6 +75,7 @@ let
     options = {
       languages = {
         type = types.listOf types.str;
+        default = [];
         description =
           lib.mdDoc ''
             A list of languages provided by the layout.
