@@ -69,7 +69,7 @@ let
         '';
       in
         (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
-          buildInputs = old.buildInputs ++ [ automake ];
+          buildInputs = old.buildInputs ++ [ self.automake ];
           postPatch   = with lib; concatStrings (mapAttrsToList patchIn options);
         });
     })
