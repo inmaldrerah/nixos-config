@@ -73,9 +73,8 @@ let
 
   layoutOpts = recursiveUpdate sharedOpts {
     options = {
-      languages = {
+      languages = mkOption {
         type = types.listOf types.str;
-        default = [];
         description =
           lib.mdDoc ''
             A list of languages provided by the layout.
