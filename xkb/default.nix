@@ -85,7 +85,7 @@ let
 
   xkb_patched = pkgs.xorg.xkeyboardconfig_custom {
     inherit layouts;
-    # inherit options;
+    inherit options;
   };
 
 in
@@ -102,7 +102,7 @@ in
     };
   };
 
-  config = /*recursiveUpdate*/ {
+  config = recursiveUpdate {
     services.xserver.xkb = {
       extraLayouts = {
         us-qwpr = {
@@ -119,7 +119,7 @@ in
         };
       };
     };
-  } /* (mkIf (false && (layouts != { } || options != { })) {
+  } (mkIf (false && (layouts != { } || options != { })) {
 
     environment.sessionVariables = {
       # runtime override supported by multiple libraries e. g. libxkbcommon
@@ -133,5 +133,5 @@ in
         || config.services.xserver.displayManager.sx.enable;
     };
 
-  });*/;
+  });;
 }
