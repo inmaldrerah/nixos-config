@@ -28,7 +28,7 @@ let
       };
     })
     neovim-nightly-overlay.overlay
-    (self: super: {
+    /* (self: super: {
       xorg_ext = lib.recursiveUpdate super.xorg {
         xkeyboardconfig_custom2 = { layouts ? { }, options ? { } }:
         let
@@ -71,7 +71,7 @@ let
             postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
           });
       };
-    })
+    })*/
   ];
   stdenv = (import nixpkgsInput {
     localSystem = config.nixpkgs.hostPlatform;
