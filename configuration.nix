@@ -126,6 +126,7 @@ rec {
       symbolsFile = xkb/symbols/us-qwpr;
     };
     super = {
+      description = "";
       symbolsFile = xkb/symbols/super;
     };
   };
