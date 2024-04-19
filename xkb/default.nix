@@ -95,16 +95,7 @@ let
     };
   };
 
-  xkb_patched = pkgs.xorg.xkeyboardconfig_custom {
-    inherit layouts;
-    inherit options;
-  };
-
-in
-
-{
-
-  options.services.xserver.xkb.extraConfig = {
+  configOpts = {
     layouts = mkOption {
       type = types.attrsOf (types.submodule layoutOpts);
       default = { };
@@ -117,6 +108,25 @@ in
       default = { };
       description = lib.mdDoc ''
         Extra custom options that will be included in the xkb configuration.
+      '';
+    };
+  };
+
+  xkb_patched = pkgs.xorg.xkeyboardconfig_custom {
+    inherit layouts;
+    inherit options;
+  };
+
+in
+
+{
+
+  options.services.xserver.xkb = {
+    extraConfig = mkOption {
+      type = types.submodule configOpts;
+      default = { };
+      tescription = lib.mdDoc ''
+        Extra custom configurations that will be included in the xkb configuration.
       '';
     };
   };
