@@ -68,7 +68,7 @@ let
           '';
         in
           (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
-            postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
+            postPatch = with lib; old.postPatch ++ (concatStrings (mapAttrsToList patchIn options));
           });
       };
     })
