@@ -49,7 +49,7 @@ rec {
   # Use EFI boot loader.
   boot.loader.systemd-boot = {
     enable = true;
-    configurationLimit = 8;
+    # configurationLimit = 8;
     sortKey = "00-nixos";
   };
   boot.loader.efi.canTouchEfiVariables = true;
