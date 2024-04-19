@@ -83,8 +83,9 @@ let
     };
   };
 
-  xkb_patched = pkgs.xorg.xkeyboardconfig_custom2 {
-    layouts = config.services.xserver.xkb.extraLayouts;
+  xkb_patched = pkgs.xorg.xkeyboardconfig_custom {
+    inherit layouts;
+    # inherit options;
   };
 
 in
