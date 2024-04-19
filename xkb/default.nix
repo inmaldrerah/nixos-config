@@ -104,7 +104,11 @@ in
 
   options.services.xserver.xkb.extraConfig = {
     layouts = mkOption {
-      type = types.attrsOf (types.submodule layoutOpts)
+      type = types.attrsOf (types.submodule layoutOpts);
+      default = { };
+      description = lib.mdDoc ''
+        Extra custom layouts that will be included in the xkb configuration.
+      '';
     };
     options = mkOption {
       type = types.attrsOf (types.submodule optionOpts);
