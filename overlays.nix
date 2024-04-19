@@ -67,10 +67,9 @@ let
               EOF
           '';
         in
-          # (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
-          #   postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
-          # });
-          super.xorg.xkeyboardconfig_custom { inherit layouts; };
+          (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
+            postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
+          });
       };
     })
   ];
