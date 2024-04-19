@@ -119,7 +119,7 @@ in
     };
   };
 
-  config = (mkIf (false && (layouts != { } || options != { })) {
+  config = (mkIf (layouts != { } || options != { }) {
 
     environment.sessionVariables = {
       # runtime override supported by multiple libraries e. g. libxkbcommon
