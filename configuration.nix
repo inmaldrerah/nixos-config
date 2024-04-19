@@ -127,6 +127,7 @@ rec {
     };
     super = {
       description = "";
+      languages = [];
       symbolsFile = xkb/symbols/super;
     };
   };
