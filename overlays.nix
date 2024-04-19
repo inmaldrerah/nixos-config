@@ -53,7 +53,7 @@ let
                   <name>${filename}</name>
                   <description>${option.description}</description>
                 </configItem>
-          '' ++ (concatStrings (attrset.mapAttrsToList (name: value: ''
+          '' ++ (concatStrings (mapAttrsToList (name: value: ''
                 <option>
                   <configItem>
                     <name>${filename}:${name}</name>
