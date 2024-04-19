@@ -79,7 +79,7 @@ rec {
 
   # Enable regreet for Wayland greeter
   programs.regreet = {
-    enable = true;
+    enable = false;
     settings.GTK.theme_name = "Adwaita-dark";
   };
   services.greetd.settings.default_session.command = let
