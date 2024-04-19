@@ -134,7 +134,7 @@ rec {
         symbolsFile = xkb/symbols/super;
       };
     };
-    xkbPatched = pkgs.xkeyboardconfig_custom { layouts, options };
+    xkbPatched = pkgs.xkeyboardconfig_custom { inherit layouts; inherit options; };
   in "${xkbPatched}/etc/X11/xkb";
 
   # Allow swaylock to check password
