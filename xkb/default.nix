@@ -118,7 +118,7 @@ in
       description = lib.mdDoc ''
         Extra custom options that will be included in the xkb configuration.
       '';
-    }
+    };
   };
 
   config = recursiveUpdate {
