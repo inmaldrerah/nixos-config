@@ -29,9 +29,7 @@ let
     })
     neovim-nightly-overlay.overlay
     (self: super: { 
-      # xkeyboardconfig variant extensible with custom layouts.
-      # See nixos/modules/services/x11/extra-layouts.nix
-      xorg.xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
+      xorg = super.xorg // { xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
       let
         patchIn = filename: option:
         with option;
@@ -71,6 +69,7 @@ let
         (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
           postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
         });
+    };
     })
   ];
   stdenv = (import nixpkgsInput {
