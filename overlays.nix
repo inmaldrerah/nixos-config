@@ -37,11 +37,11 @@ let
           with lib;
           ''
               # install layout files
-              ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${name}'"}
-              ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${name}'"}
-              ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${name}'"}
-              ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${name}'"}
-              ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${name}'"}
+              ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${filename}'"}
+              ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${filename}'"}
+              ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${filename}'"}
+              ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${filename}'"}
+              ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${filename}'"}
 
               # add model description
               ${ed}/bin/ed -v rules/base.xml <<EOF
