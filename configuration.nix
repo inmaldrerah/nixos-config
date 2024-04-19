@@ -139,15 +139,15 @@ rec {
   };
 
 
-  services.xserver.xkb = {
-    extraLayouts = {
+  services.xserver.xkb.extraConfig = {
+    layouts = {
       us-qwpr = {
         description = "US QWPR layout";
         languages = [ "eng" ];
         symbolsFile = xkb/symbols/us-qwpr;
       };
     };
-    extraOptions = {
+    options = {
       super = {
         description = "Super behavior";
         optionDescriptions.arrow_keys = "Super + Up/Down/Left/Right is mapped to PageUp/PageDown/Home/End";
