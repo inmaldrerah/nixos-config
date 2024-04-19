@@ -88,8 +88,6 @@ rec {
 
   programs.xonsh.enable = true;
 
-  programs.ydotool.enable = true;
-
   # Enable CUPS to print documents.
   services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
   hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;
@@ -158,16 +156,6 @@ rec {
     alsa-utils # for amixer
     wget
   ];
-
-  # Install darling
-  # Require a wrapper due to the requirement of setuid
-  #security.wrappers.darling = {
-  #  source = "${pkgs.darling}/bin/darling";
-  #  owner = "root";
-  #  group = "root";
-  #  setuid = true;
-  #  permissions = "u+rx,g+x,o+x";
-  #};
 
   environment.variables = {
     TERMINAL = "alacritty";
