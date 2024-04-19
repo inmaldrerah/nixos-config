@@ -96,19 +96,21 @@ let
   };
 
   configOpts = {
-    layouts = mkOption {
-      type = types.attrsOf (types.submodule layoutOpts);
-      default = { };
-      description = lib.mdDoc ''
-        Extra custom layouts that will be included in the xkb configuration.
-      '';
-    };
-    options = mkOption {
-      type = types.attrsOf (types.submodule optionOpts);
-      default = { };
-      description = lib.mdDoc ''
-        Extra custom options that will be included in the xkb configuration.
-      '';
+    options = {
+      layouts = mkOption {
+        type = types.attrsOf (types.submodule layoutOpts);
+        default = { };
+        description = lib.mdDoc ''
+          Extra custom layouts that will be included in the xkb configuration.
+        '';
+      };
+      options = mkOption {
+        type = types.attrsOf (types.submodule optionOpts);
+        default = { };
+        description = lib.mdDoc ''
+          Extra custom options that will be included in the xkb configuration.
+        '';
+      };
     };
   };
 
