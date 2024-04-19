@@ -134,7 +134,8 @@ rec {
         symbolsFile = xkb/symbols/super;
       };
     };
-  "${xkbPatched}/etc/X11/xkb" 
+    xkbPatched = pkgs.xkeyboardconfig_custom layouts options;
+  in "${xkbPatched}/etc/X11/xkb";
 
   # Allow swaylock to check password
   security.pam.services.swaylock = {};
