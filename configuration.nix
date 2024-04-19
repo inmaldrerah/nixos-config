@@ -88,6 +88,8 @@ rec {
 
   programs.xonsh.enable = true;
 
+  programs.ydotool.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
   hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;

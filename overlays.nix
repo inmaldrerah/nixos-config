@@ -2,11 +2,6 @@
 
 let
   packageOverlays = [
-    #(self: super: {
-    #  waybar = super.waybar.overrideAttrs (oldAttrs: rec {
-    #    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    #  });
-    #})
     (self: super: {
       ccacheWrapper = super.ccacheWrapper.override {
         extraConfig = ''

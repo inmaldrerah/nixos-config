@@ -10,12 +10,14 @@ rec {
   users.users.inme = {
     isNormalUser = true;
     extraGroups = [
+      "lp"
       "input"
       "wheel"
       "rfkill"
+      "uinput"
+      "scanner"
       "adbusers"
       "libvirtd"
-      "scanner" "lp"
       "networkmanager"
     ];
     shell = userconf.inme.shell;
