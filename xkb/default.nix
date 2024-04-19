@@ -1,4 +1,5 @@
 { config, pkgs, ... }:
+{
   services.xserver.xkb.dir = let
     layouts = {
       us-qwpr = {
@@ -19,3 +20,4 @@
   environment.sessionVariables.XKB_CONFIG_ROOT = config.services.xserver.xkb.dir;
   services.xserver.exportConfiguration = config.services.xserver.displayManager.startx.enable
       || config.services.xserver.displayManager.sx.enable;
+}
