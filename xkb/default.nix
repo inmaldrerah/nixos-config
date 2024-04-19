@@ -119,7 +119,7 @@ in
         };
       };
     };
-  } (mkIf false && (layouts != { } || options != { }) {
+  } (mkIf (false && layouts != { } || options != { }) {
 
     environment.sessionVariables = {
       # runtime override supported by multiple libraries e. g. libxkbcommon
