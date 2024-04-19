@@ -15,7 +15,6 @@ rec {
       "wheel"
       "rfkill"
       "scanner"
-      "ydotool"
       "adbusers"
       "libvirtd"
       "networkmanager"

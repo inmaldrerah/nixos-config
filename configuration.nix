@@ -84,7 +84,8 @@ rec {
   };
   services.greetd.settings.default_session.command = let
     cfg = config.programs.regreet;
-  in "${pkgs.dbus}/bin/dbus-run-session -- sh -c 'XKB_DEFAULT_LAYOUT=us-qwpr ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
+  # in "${pkgs.dbus}/bin/dbus-run-session -- sh -c 'XKB_DEFAULT_LAYOUT=us-qwpr ${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
+  in "${pkgs.dbus}/bin/dbus-run-session -- sh -c '${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
 
   programs.xonsh.enable = true;
 
