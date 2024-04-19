@@ -29,47 +29,48 @@ let
     })
     neovim-nightly-overlay.overlay
     (self: super: { 
-      xorg = super.xorg // { xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
-      let
-        patchIn = filename: option:
-        with option;
-        with lib;
-        ''
-            # install layout files
-            ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${name}'"}
-            ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${name}'"}
-            ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${name}'"}
-            ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${name}'"}
-            ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${name}'"}
+      xorg = super.xorg // {
+        xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
+        let
+          patchIn = filename: option:
+          with option;
+          with lib;
+          ''
+              # install layout files
+              ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${name}'"}
+              ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${name}'"}
+              ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${name}'"}
+              ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${name}'"}
+              ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${name}'"}
 
-            # add model description
-            ${ed}/bin/ed -v rules/base.xml <<EOF
-            /<\/optionList>
-            -
-            a
-            <group allowMultipleSelection="true">
-              <configItem>
-                <name>${filename}</name>
-                <description>${option.description}</description>
-              </configItem>
-        '' ++ (concatStrings (attrset.mapAttrsToList (name: value: ''
-              <option>
+              # add model description
+              ${ed}/bin/ed -v rules/base.xml <<EOF
+              /<\/optionList>
+              -
+              a
+              <group allowMultipleSelection="true">
                 <configItem>
-                  <name>${filename}:${name}</name>
-                  <description>${value}</description>
+                  <name>${filename}</name>
+                  <description>${option.description}</description>
                 </configItem>
-              </option>
-        '') option.optionDescriptions)) ++ ''
-            </group>
-            .
-            w
-            EOF
-        '';
-      in
-        (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
-          postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
-        });
-    };
+          '' ++ (concatStrings (attrset.mapAttrsToList (name: value: ''
+                <option>
+                  <configItem>
+                    <name>${filename}:${name}</name>
+                    <description>${value}</description>
+                  </configItem>
+                </option>
+          '') option.optionDescriptions)) ++ ''
+              </group>
+              .
+              w
+              EOF
+          '';
+        in
+          (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
+            postPatch = with lib; concatStrings (mapAttrsToList patchIn options);
+          });
+      };
     })
   ];
   stdenv = (import nixpkgsInput {
