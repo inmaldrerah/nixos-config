@@ -71,19 +71,6 @@ let
     };
   };
 
-  layoutOpts = recursiveUpdate sharedOpts {
-    options = {
-      languages = mkOption {
-        type = types.listOf types.str;
-        description =
-          lib.mdDoc ''
-            A list of languages provided by the layout.
-            (Use ISO 639-2 codes, for example: "eng" for english)
-          '';
-      };
-    };
-  };
-
   optionOpts = recursiveUpdate sharedOpts {
     options = {
       optionDescriptions = mkOption {
@@ -105,13 +92,6 @@ in
 {
 
   options.services.xserver.xkb = {
-    extraLayouts = mkOption {
-      type = types.attrsOf (types.submodule layoutOpts);
-      default = { };
-      description = lib.mdDoc ''
-        Extra custom layouts that will be included in the xkb configuration.
-      '';
-    };
     extraOptions = mkOption {
       type = types.attrsOf (types.submodule optionOpts);
       default = { };
