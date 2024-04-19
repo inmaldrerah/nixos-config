@@ -33,41 +33,41 @@ let
         xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
         let
           patchIn = filename: option:
-          with option;
-          with lib;
-          ''
-              # install layout files
-              ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${filename}'"}
-              ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${filename}'"}
-              ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${filename}'"}
-              ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${filename}'"}
-              ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${filename}'"}
+            with option;
+            with lib;
+            ''
+                # install layout files
+                ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${filename}'"}
+                ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${filename}'"}
+                ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${filename}'"}
+                ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${filename}'"}
+                ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${filename}'"}
 
-              # add model description
-              ${ed}/bin/ed -v rules/base.xml <<EOF
-              /<\/optionList>
-              -
-              a
-              <group allowMultipleSelection="true">
-                <configItem>
-                  <name>${filename}</name>
-                  <description>${option.description}</description>
-                </configItem>
-          '' + (concatStrings (mapAttrsToList (name: value: ''
-                <option>
+                # add model description
+                ${ed}/bin/ed -v rules/base.xml <<EOF
+                /<\/optionList>
+                -
+                a
+                <group allowMultipleSelection="true">
                   <configItem>
-                    <name>${filename}:${name}</name>
-                    <description>${value}</description>
+                    <name>${filename}</name>
+                    <description>${option.description}</description>
                   </configItem>
-                </option>
-          '') option.optionDescriptions)) + ''
-              </group>
-              .
-              w
-              EOF
-          '';
+            '' + (concatStrings (mapAttrsToList (name: value: ''
+                  <option>
+                    <configItem>
+                      <name>${filename}:${name}</name>
+                      <description>${value}</description>
+                    </configItem>
+                  </option>
+            '') option.optionDescriptions)) + ''
+                </group>
+                .
+                w
+                EOF
+            '';
         in
-          (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
+          (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: old // {
             postPatch = with lib; old.postPatch + (concatStrings (mapAttrsToList patchIn options));
           });
       };
