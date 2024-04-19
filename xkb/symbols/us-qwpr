@@ -1,7 +1,6 @@
 xkb_symbols "us-qwpr" {
   include "us(basic)"
   include "level3(ralt_switch)"
-  include "super(arrow_keys)"
 
   key <AD01> { [         q,          Q,         equal,       numbersign ] };
   key <AD02> { [         w,          W,     backslash,       numbersign ] };
