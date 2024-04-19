@@ -125,7 +125,7 @@ in
     extraConfig = mkOption {
       type = types.submodule configOpts;
       default = { };
-      tescription = lib.mdDoc ''
+      description = lib.mdDoc ''
         Extra custom configurations that will be included in the xkb configuration.
       '';
     };
