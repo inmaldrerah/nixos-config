@@ -144,14 +144,14 @@ rec {
       us-qwpr = {
         description = "US QWPR layout";
         languages = [ "eng" ];
-        symbolsFile = symbols/us-qwpr;
+        symbolsFile = xkb/symbols/us-qwpr;
       };
     };
     extraOptions = {
       super = {
         description = "Super behavior";
         optionDescriptions.arrow_keys = "Super + Up/Down/Left/Right is mapped to PageUp/PageDown/Home/End";
-        symbolsFile = symbols/super;
+        symbolsFile = xkb/symbols/super;
       };
     };
   };
