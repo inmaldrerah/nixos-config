@@ -59,6 +59,7 @@
         ./network.nix
         ./storage.nix
         ./users
+        ./xkb
       ];
     };
   };
