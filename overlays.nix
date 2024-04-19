@@ -53,14 +53,14 @@ let
                   <name>${filename}</name>
                   <description>${option.description}</description>
                 </configItem>
-          '' ++ (concatStrings (mapAttrsToList (name: value: ''
+          '' + (concatStrings (mapAttrsToList (name: value: ''
                 <option>
                   <configItem>
                     <name>${filename}:${name}</name>
                     <description>${value}</description>
                   </configItem>
                 </option>
-          '') option.optionDescriptions)) ++ ''
+          '') option.optionDescriptions)) + ''
               </group>
               .
               w
@@ -68,7 +68,7 @@ let
           '';
         in
           (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
-            postPatch = with lib; old.postPatch ++ (concatStrings (mapAttrsToList patchIn options));
+            postPatch = with lib; old.postPatch + (concatStrings (mapAttrsToList patchIn options));
           });
       };
     })
