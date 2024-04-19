@@ -119,18 +119,22 @@ rec {
     touchpad.naturalScrolling = true;
   };
 
-  services.xserver.xkb.extraLayouts = {
-    us-qwpr = {
-      description = "US QWPR layout";
-      languages = [ "eng" ];
-      symbolsFile = xkb/symbols/us-qwpr;
+  services.xserver.xkb.dir = let
+    layouts = {
+      us-qwpr = {
+        description = "US QWPR layout";
+        languages = [ "eng" ];
+        symbolsFile = xkb/symbols/us-qwpr;
+      };
     };
-    super = {
-      description = "";
-      languages = [];
-      symbolsFile = xkb/symbols/super;
+    options = {
+      super = {
+        description = "Super behavior";
+        optionDescriptions.arrow_keys = "Super + Up/Down/Left/Right is mapped to PageUp/PageDown/Home/End";
+        symbolsFile = xkb/symbols/super;
+      };
     };
-  };
+  "${xkbPatched}/etc/X11/xkb" 
 
   # Allow swaylock to check password
   security.pam.services.swaylock = {};
