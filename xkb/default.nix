@@ -102,24 +102,7 @@ in
     };
   };
 
-  config = /*recursiveUpdate*/ {
-    services.xserver.xkb = {
-      extraLayouts = {
-        us-qwpr = {
-          description = "US QWPR layout";
-          languages = [ "eng" ];
-          symbolsFile = symbols/us-qwpr;
-        };
-      };
-      extraOptions = {
-        super = {
-          description = "Super behavior";
-          optionDescriptions.arrow_keys = "Super + Up/Down/Left/Right is mapped to PageUp/PageDown/Home/End";
-          symbolsFile = symbols/super;
-        };
-      };
-    };
-  } /*(mkIf (false && (layouts != { } || options != { })) {
+  config = (mkIf (false && (layouts != { } || options != { })) {
 
     environment.sessionVariables = {
       # runtime override supported by multiple libraries e. g. libxkbcommon
@@ -133,5 +116,5 @@ in
         || config.services.xserver.displayManager.sx.enable;
     };
 
-  })*/;
+  });
 }
