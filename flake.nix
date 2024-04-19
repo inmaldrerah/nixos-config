@@ -49,7 +49,7 @@
           networking.hostName = hostName;
 
         }
-        ./ydotools.nix
+        ./ydotool.nix
         ./overlays.nix
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
