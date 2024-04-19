@@ -29,7 +29,7 @@ let
     })
     neovim-nightly-overlay.overlay
     (self: super: {
-      xorg = super.xorg // {
+      xorg = lib.mkMerge super.xorg {
         xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
         let
           patchIn = filename: option:
