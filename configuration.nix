@@ -134,8 +134,17 @@ rec {
         symbolsFile = xkb/symbols/super;
       };
     };
-    xkbPatched = pkgs.xkeyboardconfig_custom { inherit layouts; inherit options; };
+    xkbPatched = pkgs.xkeyboardconfig_custom { inherit layouts; };
   in "${xkbPatched}/etc/X11/xkb";
+  environment.sessionVariables = {
+    # runtime override supported by multiple libraries e. g. libxkbcommon
+    # https://xkbcommon.org/doc/current/group__include-path.html
+    XKB_CONFIG_ROOT = config.services.xserver.xkb.dir;
+  };
+  services.xserver = {
+    exportConfiguration = config.services.xserver.displayManager.startx.enable
+      || config.services.xserver.displayManager.sx.enable;
+  };
 
   # Allow swaylock to check password
   security.pam.services.swaylock = {};
