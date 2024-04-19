@@ -119,10 +119,15 @@ rec {
     touchpad.naturalScrolling = true;
   };
 
-  services.xserver.xkb.extraLayouts.us-qwpr = {
-    description = "US QWPR layout";
-    languages = [ "eng" ];
-    symbolsFile = xkb/symbols/us-qwpr;
+  services.xserver.xkb.extraLayouts = {
+    us-qwpr = {
+      description = "US QWPR layout";
+      languages = [ "eng" ];
+      symbolsFile = xkb/symbols/us-qwpr;
+    };
+    super = {
+      symbolsFile = xkb/symbols/super;
+    };
   };
 
   # Allow swaylock to check password
