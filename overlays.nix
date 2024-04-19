@@ -44,7 +44,7 @@ let
                 ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${filename}'"}
 
                 # add model description
-                ${ed}/bin/ed -v rules/base.xml <<EOF
+                ${super.ed}/bin/ed -v rules/base.xml <<EOF
                 /<\/optionList>
                 -
                 a
