@@ -91,7 +91,7 @@ let
         description =
           lib.mdDoc ''
             An attrset of options provided by the option file.
-          ''
+          '';
       };
     };
   };
