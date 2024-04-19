@@ -133,5 +133,5 @@ in
         || config.services.xserver.displayManager.sx.enable;
     };
 
-  });;
+  });
 }
