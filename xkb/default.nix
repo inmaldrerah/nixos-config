@@ -72,12 +72,14 @@ let
   };
 
   layoutOpts = recursiveUpdate sharedOpts {
-    languages = {
-      type = types.listOf types.str;
-      description =
-        lib.mdDoc ''
-          A list of languages provided by the layout.
-        '';
+    options = {
+      languages = {
+        type = types.listOf types.str;
+        description =
+          lib.mdDoc ''
+            A list of languages provided by the layout.
+          '';
+      };
     };
   };
 
