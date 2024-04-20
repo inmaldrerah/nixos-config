@@ -1,4 +1,4 @@
-xkb_symbols "us-qwpr" {
+xkb_symbols "us-custom" {
   include "us(basic)"
   include "level3(ralt_switch)"
 

@@ -145,10 +145,10 @@ rec {
       languages = [ "eng" ];
       symbolsFile = xkb/symbols/us-qwpr;
     };
-    custom = {
-      description = "Custom layout";
+    us-custom = {
+      description = "US Custom layout";
       languages = [ "eng" ];
-      symbolsFile = xkb/symbols/custom;
+      symbolsFile = xkb/symbols/us-custom;
     };
   };
 
