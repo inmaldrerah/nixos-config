@@ -53,8 +53,8 @@ let
                     <name>${filename}</name>
                     <description>${option.description}</description>
                   </configItem>
-            '' + (concatStrings (mapAttrsToList (name: value: ''
-                  <option>
+            '' + (concatStrings (mapAttrsToList (name: value:
+              ''  <option>
                     <configItem>
                       <name>${filename}:${name}</name>
                       <description>${value}</description>
@@ -67,12 +67,12 @@ let
                 EOF
 
                 # add option
-                ${super.ed}/bin/ed -v rules/base << EOF
-                /! option[:blank:]* = symbols
+                ${super.ed}/bin/ed -v rules/0042-o_s.part << EOF
+                $
                 a
             '' + (concatStrings (mapAttrsToList (name: value:
-                "  ${filename}:${name} = +${filename}(${name})\n"
-            ) option.optionDescriptions)) + ''
+              ''  ${filename}:${name} = +${filename}(${name})
+            '') option.optionDescriptions)) + ''
                 .
                 w
                 EOF
