@@ -139,20 +139,16 @@ rec {
   };
 
 
-  services.xserver.xkb.extraConfig = {
-    layouts = {
-      us-qwpr = {
-        description = "US QWPR layout";
-        languages = [ "eng" ];
-        symbolsFile = xkb/symbols/us-qwpr;
-      };
+  services.xserver.xkb.extraLayouts = {
+    us-qwpr = {
+      description = "US QWPR layout";
+      languages = [ "eng" ];
+      symbolsFile = xkb/symbols/us-qwpr;
     };
-    options = {
-      super = {
-        description = "Super behavior";
-        optionDescriptions.arrow_keys = "Super + Up/Down/Left/Right is mapped to PageUp/PageDown/Home/End";
-        symbolsFile = xkb/symbols/super;
-      };
+    custom = {
+      description = "Custom layout";
+      languages = [ "eng" ];
+      symbolsFile = xkb/symbols/custom;
     };
   };
 

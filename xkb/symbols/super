@@ -1,7 +1,0 @@
-partial modifier_keys
-xkb_symbols "arrow_keys" {
-    replace key <LEFT>  {[ Left,  Home  ], type[group1] = "PC_SUPER_LEVEL2"};
-    replace key <RIGHT> {[ Right, End   ], type[group1] = "PC_SUPER_LEVEL2"};
-    replace key <UP>    {[ Up,    Prior ], type[group1] = "PC_SUPER_LEVEL2"};
-    replace key <DOWN>  {[ Down,  Next  ], type[group1] = "PC_SUPER_LEVEL2"};
-};
