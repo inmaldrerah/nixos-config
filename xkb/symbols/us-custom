@@ -1,7 +1,8 @@
 xkb_symbols "us-custom" {
   include "us(basic)"
   include "level3(ralt_switch)"
-  include "level3(caps_switch_latch)"
+
+  key <CAPS> { [ ISO_Level3_Latch ], type[group1]="ONE_LEVEL" };
 
   key <AD01> { [         q,          Q, semicolon,      colon ] };
   key <AD02> { [         w,          W,         l,          L ] };
@@ -41,9 +42,9 @@ xkb_symbols "us-custom" {
   key <BKSL> { [     backslash,         bar ] };
   key <AC11> { [    apostrophe,    quotedbl ] };
 
-  replace key <LEFT>  {[ Left,  Home  ], type[group1] = "PC_SUPER_LEVEL2"};
-  replace key <RIGHT> {[ Right, End   ], type[group1] = "PC_SUPER_LEVEL2"};
-  replace key <UP>    {[ Up,    Prior ], type[group1] = "PC_SUPER_LEVEL2"};
-  replace key <DOWN>  {[ Down,  Next  ], type[group1] = "PC_SUPER_LEVEL2"};
+  replace key <LEFT>  {[ Left,  Home  ], type[group1]="PC_SUPER_LEVEL2"};
+  replace key <RIGHT> {[ Right, End   ], type[group1]="PC_SUPER_LEVEL2"};
+  replace key <UP>    {[ Up,    Prior ], type[group1]="PC_SUPER_LEVEL2"};
+  replace key <DOWN>  {[ Down,  Next  ], type[group1]="PC_SUPER_LEVEL2"};
 };
 
