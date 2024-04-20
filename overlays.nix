@@ -43,7 +43,7 @@ let
                 ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${filename}'"}
                 ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${filename}'"}
 
-                # add model description
+                # add option description
                 ${super.ed}/bin/ed -v rules/base.xml <<EOF
                 /<\/optionList>
                 -
@@ -62,6 +62,17 @@ let
                   </option>
             '') option.optionDescriptions)) + ''
                 </group>
+                .
+                w
+                EOF
+
+                # add option
+                ${super.ed}/bin/ed -v rules/base << EOF
+                /! option[:blank:]* = symbols
+                a
+            '' + (concatStrings (mapAttrsToList (name: value:
+                "  ${filename}:${name} = +${filename}(${name})\n"
+            ) option.optionDescriptions)) + ''
                 .
                 w
                 EOF
