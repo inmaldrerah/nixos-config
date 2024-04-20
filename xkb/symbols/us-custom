@@ -1,9 +1,7 @@
-modifier_keys
 xkb_symbols "us-custom" {
   include "us(basic)"
   include "level3(ralt_switch)"
-
-  replace key <CAPS> { [ ISO_Level_3_Switch, ISO_Level_3_Latch ], type[group1] = "PC_SUPER_LEVEL2" };
+  include "level3(caps_switch_latch)"
 
   key <AD01> { [         q,          Q, semicolon,      colon ] };
   key <AD02> { [         w,          W,         l,          L ] };
