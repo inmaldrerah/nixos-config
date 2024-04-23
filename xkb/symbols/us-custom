@@ -30,7 +30,7 @@ xkb_symbols "us-custom" {
   key <AB04> { [         m,          M,         v,          V ] };
   key <AB05> { [         b,          B,         k,          K ] };
   key <AB06> { [         k,          K,         b,          B ] };
-  key <AB07> { [         v,          B,         m,          M ] };
+  key <AB07> { [         v,          V,         m,          M ] };
   key <AB08> { [     comma,       less,         c,          C ] };
   key <AB09> { [    period,    greater,         x,          X ] };
   key <AB10> { [     slash,   question,         z,          Z ] };
