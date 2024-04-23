@@ -22,7 +22,7 @@
     };
 
     # Options
-    options = {
+    opts = {
       number = true;
       relativenumber = true;
       tabstop = 2;
@@ -53,7 +53,7 @@
     plugins.persistence.enable = true;
     plugins.telescope = {
       enable = true;
-      defaults.layout_strategy = "bottom_pane";
+      settings.defaults.layout_strategy = "bottom_pane";
     };
     plugins.alpha = {
       enable = true;
