@@ -3,34 +3,34 @@ xkb_symbols "us-custom" {
   include "level3(ralt_switch)"
 
   key <AD01> { [         q,          Q, semicolon,      colon ] };
-  key <AD02> { [         w,          W,         l,          L ] };
-  key <AD03> { [         p,          P,         k,          K ] };
-  key <AD04> { [         r,          R,         u,          U ] };
-  key <AD05> { [         f,          F,         y,          Y ] };
-  key <AD06> { [         y,          Y,         f,          F ] };
-  key <AD07> { [         u,          U,         r,          R ] };
-  key <AD08> { [         k,          K,         p,          P ] };
-  key <AD09> { [         l,          L,         w,          W ] };
+  key <AD02> { [         w,          W,         y,          Y ] };
+  key <AD03> { [         l,          L,         u,          U ] };
+  key <AD04> { [         p,          P,         f,          F ] };
+  key <AD05> { [         g,          G,         j,          J ] };
+  key <AD06> { [         j,          J,         g,          G ] };
+  key <AD07> { [         f,          F,         p,          P ] };
+  key <AD08> { [         u,          U,         l,          L ] };
+  key <AD09> { [         y,          Y,         w,          W ] };
   key <AD10> { [ semicolon,      colon,         q,          Q ] };
 
-  key <AC01> { [         a,          A,         e,          E ] };
-  key <AC02> { [         s,          S,         o,          O ] };
-  key <AC03> { [         d,          D,         i,          I ] };
-  key <AC04> { [         t,          T,         n,          N ] };
-  key <AC05> { [         g,          G,         h,          H ] };
-  key <AC06> { [         h,          H,         g,          G ] };
-  key <AC07> { [         n,          N,         t,          T ] };
-  key <AC08> { [         i,          I,         d,          D ] };
-  key <AC09> { [         o,          O,         s,          S ] };
-  key <AC10> { [         e,          E,         a,          A ] };
+  key <AC01> { [         s,          S,         i,          I ] };
+  key <AC02> { [         r,          R,         o,          O ] };
+  key <AC03> { [         n,          N,         e,          E ] };
+  key <AC04> { [         t,          T,         a,          A ] };
+  key <AC05> { [         d,          D,         h,          H ] };
+  key <AC06> { [         h,          H,         d,          D ] };
+  key <AC07> { [         a,          A,         t,          T ] };
+  key <AC08> { [         e,          E,         n,          N ] };
+  key <AC09> { [         o,          O,         r,          R ] };
+  key <AC10> { [         i,          I,         s,          S ] };
 
   key <AB01> { [         z,          Z,     slash,   question ] };
   key <AB02> { [         x,          X,    period,    greater ] };
   key <AB03> { [         c,          C,     comma,       less ] };
-  key <AB04> { [         v,          V,         m,          M ] };
-  key <AB05> { [         b,          B,         j,          J ] };
-  key <AB06> { [         j,          J,         b,          B ] };
-  key <AB07> { [         m,          M,         v,          V ] };
+  key <AB04> { [         m,          M,         v,          V ] };
+  key <AB05> { [         b,          B,         k,          K ] };
+  key <AB06> { [         k,          K,         b,          B ] };
+  key <AB07> { [         v,          B,         m,          M ] };
   key <AB08> { [     comma,       less,         c,          C ] };
   key <AB09> { [    period,    greater,         x,          X ] };
   key <AB10> { [     slash,   question,         z,          Z ] };
