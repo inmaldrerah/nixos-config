@@ -11,14 +11,14 @@ xkb_symbols "us-custom" {
   key <AD07> { [         u,          U,         p,          P ] };
   key <AD08> { [         k,          K,         l,          L ] };
   key <AD09> { [         l,          L,         w,          W ] };
-  key <AD10> { [         y,          Y,         q,          Q ] };
+  key <AD10> { [ semicolon,      colon,         d,          D ] };
 
   key <AC01> { [         n,          N,         i,          I ] };
   key <AC02> { [         s,          S,         o,          O ] };
   key <AC03> { [         r,          R,         e,          E ] };
   key <AC04> { [         t,          T,         a,          A ] };
   key <AC05> { [         g,          G,         h,          H ] };
-  key <AC06> { [ semicolon,      colon,         d,          D ] };
+  key <AC06> { [         y,          Y,         q,          Q ] };
   key <AC07> { [         a,          A,         t,          T ] };
   key <AC08> { [         e,          E,         n,          N ] };
   key <AC09> { [         o,          O,         r,          R ] };
