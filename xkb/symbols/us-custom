@@ -8,10 +8,10 @@ xkb_symbols "us-custom" {
   key <AD04> { [         m,          M,         f,          F ] };
   key <AD05> { [         b,          B,         j,          J ] };
   key <AD06> { [         j,          J,         c,          C ] };
-  key <AD07> { [         h,          H,         p,          P ] };
-  key <AD08> { [         u,          U,         l,          L ] };
-  key <AD09> { [         y,          Y,         w,          W ] };
-  key <AD10> { [         l,          L,         q,          Q ] };
+  key <AD07> { [         u,          U,         p,          P ] };
+  key <AD08> { [         k,          K,         l,          L ] };
+  key <AD09> { [         l,          L,         w,          W ] };
+  key <AD10> { [         y,          Y,         q,          Q ] };
 
   key <AC01> { [         n,          N,         i,          I ] };
   key <AC02> { [         s,          S,         o,          O ] };
@@ -30,7 +30,7 @@ xkb_symbols "us-custom" {
   key <AB04> { [         v,          V,         v,          V ] };
   key <AB05> { [         p,          P,         k,          K ] };
   key <AB06> { [         w,          W,         b,          B ] };
-  key <AB07> { [         k,          J,         m,          M ] };
+  key <AB07> { [         h,          H,         m,          M ] };
   key <AB08> { [     comma,       less,         x,          X ] };
   key <AB09> { [    period,    greater,         z,          Z ] };
   key <AB10> { [     slash,   question,         g,          G ] };
