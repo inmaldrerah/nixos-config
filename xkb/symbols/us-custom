@@ -3,10 +3,10 @@ xkb_symbols "us-custom" {
   include "level3(ralt_switch)"
 
   key <AD01> { [         q,          Q, semicolon,      colon ] };
-  key <AD02> { [         f,          F,         y,          Y ] };
-  key <AD03> { [         d,          D,         u,          U ] };
-  key <AD04> { [         m,          M,         f,          F ] };
-  key <AD05> { [         b,          B,         j,          J ] };
+  key <AD02> { [         m,          M,         y,          Y ] };
+  key <AD03> { [         p,          P,         u,          U ] };
+  key <AD04> { [         d,          D,         f,          F ] };
+  key <AD05> { [         f,          F,         j,          J ] };
   key <AD06> { [         j,          J,         c,          C ] };
   key <AD07> { [         u,          U,         p,          P ] };
   key <AD08> { [         k,          K,         l,          L ] };
@@ -18,7 +18,7 @@ xkb_symbols "us-custom" {
   key <AC03> { [         r,          R,         e,          E ] };
   key <AC04> { [         t,          T,         a,          A ] };
   key <AC05> { [         g,          G,         h,          H ] };
-  key <AC06> { [         y,          Y,         q,          Q ] };
+  key <AC06> { [         h,          H,         q,          Q ] };
   key <AC07> { [         a,          A,         t,          T ] };
   key <AC08> { [         e,          E,         n,          N ] };
   key <AC09> { [         o,          O,         r,          R ] };
@@ -28,9 +28,9 @@ xkb_symbols "us-custom" {
   key <AB02> { [         x,          X,    period,    greater ] };
   key <AB03> { [         c,          C,     comma,       less ] };
   key <AB04> { [         v,          V,         v,          V ] };
-  key <AB05> { [         p,          P,         k,          K ] };
-  key <AB06> { [         w,          W,         b,          B ] };
-  key <AB07> { [         h,          H,         m,          M ] };
+  key <AB05> { [         b,          B,         k,          K ] };
+  key <AB06> { [         y,          Y,         b,          B ] };
+  key <AB07> { [         w,          W,         m,          M ] };
   key <AB08> { [     comma,       less,         x,          X ] };
   key <AB09> { [    period,    greater,         z,          Z ] };
   key <AB10> { [     slash,   question,         g,          G ] };
