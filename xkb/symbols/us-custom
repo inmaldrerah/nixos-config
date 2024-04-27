@@ -20,9 +20,9 @@ xkb_symbols "us-custom" {
   key <AC05> { [         g,          G,         h,          H ] };
   key <AC06> { [         h,          H,         q,          Q ] };
   key <AC07> { [         a,          A,         t,          T ] };
-  key <AC08> { [         e,          E,         n,          N ] };
+  key <AC08> { [         i,          I,         n,          N ] };
   key <AC09> { [         o,          O,         r,          R ] };
-  key <AC10> { [         i,          I,         s,          S ] };
+  key <AC10> { [         e,          E,         s,          S ] };
 
   key <AB01> { [         z,          Z,     slash,   question ] };
   key <AB02> { [         x,          X,    period,    greater ] };
