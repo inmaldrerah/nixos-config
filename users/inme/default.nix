@@ -81,7 +81,7 @@
         if not ''${...}.get(f"__USER_{$USER}_SETUP_DONE"):
           $PATH.insert(0, f"{$HOME}/.local/bin")
           $TERM = "xterm-256color"
-          ${...}.set(f"__USER_{$USER}_SETUP_DONE", "1")
+          ''${...}.set(f"__USER_{$USER}_SETUP_DONE", "1")
       '';
     };
 
