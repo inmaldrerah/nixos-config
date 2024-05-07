@@ -7,7 +7,7 @@ xkb_symbols "us-custom" {
   key <AD03> { [         p,          P,         u,          U ] };
   key <AD04> { [         d,          D,         f,          F ] };
   key <AD05> { [         f,          F,         j,          J ] };
-  key <AD06> { [         j,          J,         c,          C ] };
+  key <AD06> { [         y,          Y,         c,          C ] };
   key <AD07> { [         u,          U,         p,          P ] };
   key <AD08> { [         k,          K,         l,          L ] };
   key <AD09> { [         l,          L,         w,          W ] };
@@ -29,7 +29,7 @@ xkb_symbols "us-custom" {
   key <AB03> { [         c,          C,     comma,       less ] };
   key <AB04> { [         v,          V,         v,          V ] };
   key <AB05> { [         b,          B,         k,          K ] };
-  key <AB06> { [         y,          Y,         b,          B ] };
+  key <AB06> { [         j,          J,         b,          B ] };
   key <AB07> { [         w,          W,         m,          M ] };
   key <AB08> { [     comma,       less,         x,          X ] };
   key <AB09> { [    period,    greater,         z,          Z ] };
