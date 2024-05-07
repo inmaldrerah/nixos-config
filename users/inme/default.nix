@@ -200,10 +200,11 @@
       git-graph
       libnotify
       htop-vim
+      hyprshot
       swayidle
       swaylock
+      tinymist
       vscodium
-      hyprshot
       gtklock
       ripgrep
       wlogout
