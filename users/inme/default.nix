@@ -1,7 +1,4 @@
 { pkgs, lib, nixvim, hm-extension, ... }:
-let
-  username = "inme";
-in
 {
   shell = pkgs.xonsh;
   home-manager = { config, pkgs, ... }: {
@@ -81,10 +78,10 @@ in
         del __nix_helper_init
       '';
       extraConfig = ''
-        if not ''${...}.get("__USER_${username}_SETUP_DONE"):
+        if not ''${...}.get(f"__USER_{$USER}_SETUP_DONE"):
           $PATH.insert(0, f"{$HOME}/.local/bin")
           $TERM = "xterm-256color"
-          $__USER_${username}_SETUP_DONE = "1"
+          ${...}.set(f"__USER_{$USER}_SETUP_DONE", "1")
       '';
     };
 
