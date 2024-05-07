@@ -138,19 +138,6 @@ in
       };
     };
 
-    home.file.".local/bin/typst" = {
-      executable = true;
-      text = ''
-        #!/bin/sh
-        /bin/sh -c "${pkgs.typst}/bin/typst $@ \
-          $(${pkgs.fontconfig}/bin/fc-list \
-          | sed 's/^\(\/.*\/\).*$/--font-path \1/' \
-          | sort \
-          | sed '$!N; /^\(.*\)\n\1$/!P; D;' \
-          | sed -e ':a; $!{N;ba;}' -e 's/\n/ /g')"
-      '';
-    };
-
     home.file.".local/bin/caffine" = {
       executable = true;
       text = ''
