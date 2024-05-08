@@ -29,59 +29,7 @@ let
     })
     neovim-nightly-overlay.overlay
     (self: super: {
-      xorg = lib.recursiveUpdate super.xorg {
-        xkeyboardconfig_custom = { layouts ? { }, options ? { } }:
-        let
-          patchIn = filename: option:
-            with option;
-            with lib;
-            ''
-                # install layout files
-                ${optionalString (compatFile   != null) "cp '${compatFile}'   'compat/${filename}'"}
-                ${optionalString (geometryFile != null) "cp '${geometryFile}' 'geometry/${filename}'"}
-                ${optionalString (keycodesFile != null) "cp '${keycodesFile}' 'keycodes/${filename}'"}
-                ${optionalString (symbolsFile  != null) "cp '${symbolsFile}'  'symbols/${filename}'"}
-                ${optionalString (typesFile    != null) "cp '${typesFile}'    'types/${filename}'"}
-
-                # add option description
-                ${super.ed}/bin/ed -v rules/base.xml <<EOF
-                /<\/optionList>
-                -
-                a
-                <group allowMultipleSelection="true">
-                  <configItem>
-                    <name>${filename}</name>
-                    <description>${option.description}</description>
-                  </configItem>
-            '' + (concatStrings (mapAttrsToList (name: value: ''
-                ${"  "}<option>
-                    <configItem>
-                      <name>${filename}:${name}</name>
-                      <description>${value}</description>
-                    </configItem>
-                  </option>
-            '') option.optionDescriptions)) + ''
-                </group>
-                .
-                w
-                EOF
-
-                # add option
-                ${super.ed}/bin/ed -v rules/0042-o_s.part << EOF
-                $
-                a
-            '' + (concatStrings (mapAttrsToList (name: value: ''
-                ${"  "}${filename}:${name} = +${filename}(${name})
-            '') option.optionDescriptions)) + ''
-                .
-                w
-                EOF
-            '';
-        in
-          (super.xorg.xkeyboardconfig_custom { inherit layouts; }).overrideAttrs (old: {
-            postPatch = with lib; old.postPatch + (concatStrings (mapAttrsToList patchIn options));
-          });
-      };
+      vscodium = super.vscodium.override { commandLineArgs = "--enable-wayland-ime"; };
     })
   ];
   stdenv = (import nixpkgsInput {
