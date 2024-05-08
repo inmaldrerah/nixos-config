@@ -37,12 +37,13 @@
       suda-vim
     ];
     plugins.transparent.enable = true;
+    plugins.treesitter.enable = true;
+    plugins.persistence.enable = true;
     plugins.neo-tree = {
       enable = true;
       filesystem.filteredItems.visible = true;
       sourceSelector.statusline = true;
     };
-    plugins.persistence.enable = true;
     plugins.telescope = {
       enable = true;
       settings.defaults.layout_strategy = "bottom_pane";
