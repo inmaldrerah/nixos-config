@@ -35,16 +35,8 @@
     # Plugins
     extraPlugins = with pkgs.vimPlugins; [
       suda-vim
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "transparent.nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "xiyaowong";
-          repo = "transparent.nvim";
-          rev = "fd35a46f4b7c1b244249266bdcb2da3814f01724";
-          hash = "sha256-wT+7rmp08r0XYGp+MhjJX8dsFTar8+nf10CV9OdkOSk=";
-        };
-      })
     ];
+    plugins.transparent.enable = true;
     plugins.neo-tree = {
       enable = true;
       filesystem.filteredItems.visible = true;
