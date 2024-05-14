@@ -34,7 +34,7 @@
 
     # Plugins
     extraPlugins = with pkgs.vimPlugins; [
-      suda-vim
+      # suda-vim
     ];
     plugins.transparent.enable = true;
     plugins.treesitter.enable = true;
