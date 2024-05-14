@@ -37,7 +37,10 @@
       # suda-vim
     ];
     plugins.transparent.enable = true;
-    plugins.treesitter.enable = true;
+    plugins.treesitter = {
+      enable = true;
+      nixGrammars = false;
+    };
     plugins.persistence.enable = true;
     plugins.neo-tree = {
       enable = true;
