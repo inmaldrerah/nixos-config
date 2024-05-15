@@ -63,10 +63,13 @@ rec {
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-rime
-      fcitx5-configtool
-    ];
+    fcitx5 = {
+      addons = with pkgs; [
+        fcitx5-rime
+        fcitx5-configtool
+      ];
+      waylandFrontend = true;
+    };
   };
 
   # Fake glibc locales package
