@@ -57,13 +57,11 @@
           
           def rebuild_system(args):
             rebuild_status = __rebuild_system(args)
-            if rebuild_status:
-              target = p"/boot/loader/loader.conf".read_text().split()[3]
-              print(f"setting default to @saved and oneshot to {target}")
-              return ![sudo bootctl set-default "@saved"] && \
-                ![sudo bootctl set-oneshot @(target)]
-            else:
-              return rebuild_status
+            target = p"/boot/loader/loader.conf".read_text().split()[3]
+            print(f"setting default to @saved and oneshot to {target}")
+            return rebuild_status && \
+              ![sudo bootctl set-default "@saved"] && \
+              ![sudo bootctl set-oneshot @(target)]
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
