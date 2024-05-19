@@ -143,7 +143,7 @@ rec {
     backend = "wayland";
   };
 
-  services.sway = {
+  programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
   };
