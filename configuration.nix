@@ -143,6 +143,11 @@ rec {
     backend = "wayland";
   };
 
+  services.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
 
   services.xserver.xkb.extraLayouts = {
     us-qwpr = {
