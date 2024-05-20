@@ -27,7 +27,7 @@ let
         '';
       };
     })
-    neovim-nightly-overlay.overlay
+    # neovim-nightly-overlay.overlay
     (self: super: {
       vscodium = super.vscodium.override { commandLineArgs = "--enable-wayland-ime"; };
     })
