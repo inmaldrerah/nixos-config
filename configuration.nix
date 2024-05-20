@@ -68,7 +68,7 @@ rec {
         fcitx5-rime
         fcitx5-configtool
       ];
-      waylandFrontend = true;
+      # waylandFrontend = true;
     };
   };
 
