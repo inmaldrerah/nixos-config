@@ -245,6 +245,7 @@
       ".config/pulse"
       ".config/qtile"
       ".config/swappy"
+      ".config/sway"
       ".config/VSCodium"
       ".config/waybar"
       ".config/wofi"
