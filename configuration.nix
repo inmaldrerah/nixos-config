@@ -29,10 +29,13 @@ rec {
       substituters = [
         "https://cache.lix.systems"
         "https://nix-community.cachix.org"
+        "https://daeuniverse.cachix.org"
         "https://cache.nixos.org/"
       ];
       trusted-substituters = [
+        "https://cache.lix.systems"
         "https://nix-community.cachix.org"
+        "https://daeuniverse.cachix.org"
         "https://cache.nixos.org/"
         "http://nix-serve.router.local/"
         "ssh-ng://nixos@router.local"
@@ -40,6 +43,7 @@ rec {
       trusted-public-keys = [
         "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "daeuniverse.cachix.org-1:8hRIzkQmAKxeuYY3c/W1I7QbZimYphiPX/E7epYNTeM="
         "router:XaQUUJ1AWd1+1JZ9CjYdMs/WoKstGyD5gD/r4gE2HQw="
       ];
     };

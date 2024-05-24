@@ -37,8 +37,8 @@
               ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __rebuild_system_remote(args):
-            return ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters \
-              "https://nix-community.cachix.org https://cache.nixos.org/ http://nix-serve.router.local/"] && \
+            substituters = tuple(map(lambda s: s[len("trusted-substituters = "):], filter(lambda s: s.startswith("trusted-substituters = "), p"/etc/nix/nix.conf".read_text().split("\n"))))[0]
+            return ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters @(" ".join(substituters))] && \
               ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __commit_nixos_config(args):
@@ -59,8 +59,9 @@
             rebuild_status = __rebuild_system(args)
             target = p"/boot/loader/loader.conf".read_text().split()[3]
             print(f"setting default to @saved and oneshot to {target}")
-            return ![sudo bootctl set-default "@saved"] && \
-              ![sudo bootctl set-oneshot @(target)] && rebuild_status
+            ![sudo bootctl set-default "@saved"] && \
+              ![sudo bootctl set-oneshot @(target)]
+            return rebuild_status
           
           def toggle_nix_local(args):
             if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
