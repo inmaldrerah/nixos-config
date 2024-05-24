@@ -39,7 +39,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, daeuniverse, lix-module, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, ... }:
+  outputs = { self, nixpkgs, lix-module, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, ... }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
