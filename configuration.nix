@@ -120,7 +120,7 @@ rec {
   services.blueman.enable = true;
 
   # Enable touchpad support
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     mouse.naturalScrolling = true;
     touchpad.tapping = true;

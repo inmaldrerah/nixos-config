@@ -33,13 +33,15 @@
       rcFiles."nix-helper.xsh".text = ''
         def __nix_helper_init():
           def __rebuild_system_local(args):
-            return ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
-              ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
+            # return ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
+            #   ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
+            return ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __rebuild_system_remote(args):
             substituters = tuple(map(lambda s: s[len("trusted-substituters = "):], filter(lambda s: s.startswith("trusted-substituters = "), p"/etc/nix/nix.conf".read_text().split("\n"))))[0]
-            return ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters @(substituters)] && \
-              ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
+            # return ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters @(substituters)] && \
+            #   ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
+            return ![nixos-rebuild -j0 -v --option substituters @(substituters) --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __commit_nixos_config(args):
             current_pwd = $PWD
