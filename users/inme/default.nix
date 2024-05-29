@@ -59,7 +59,7 @@
           
           def rebuild_system(args):
             rebuild_status = __rebuild_system(args)
-            if any(lambda x: x in args, ["switch", "boot"]):
+            if any(map(lambda x: x in args, ["switch", "boot"])):
               target = p"/boot/loader/loader.conf".read_text().split()[3]
               print(f"setting default to @saved and oneshot to {target}")
               ![sudo bootctl set-default "@saved"] && \
