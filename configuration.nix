@@ -177,6 +177,13 @@ rec {
   services.nscd.enable = false;
   system.nssModules = lib.mkForce [];
 
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
   virtualisation.waydroid.enable = true;
 
   # List packages installed in system profile.
