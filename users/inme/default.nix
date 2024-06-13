@@ -232,6 +232,7 @@
       "Builds"
       "Desktop"
       "Downloads"
+      "Games"
       "Share"
       "VirtualMachine"
       ".config/alacritty"
