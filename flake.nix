@@ -5,15 +5,6 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable-small";
     };
-    lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
-      flake = false;
-    };
-    lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.lix.follows = "lix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +30,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, ... }:
+  outputs = { self, nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, ... }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -58,7 +49,6 @@
           networking.hostName = hostName;
         }
         ./overlays.nix
-        lix-module.nixosModules.default
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         private.nixosModules.default
