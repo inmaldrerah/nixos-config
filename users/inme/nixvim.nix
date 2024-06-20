@@ -71,7 +71,7 @@
       '';
     };
     plugins.barbar = {
-      enable = true;
+      enable = false;
       keymaps = {
         close = "<A-w>";
         goTo1 = "<A-1>";
