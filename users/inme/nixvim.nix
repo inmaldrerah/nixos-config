@@ -90,7 +90,6 @@
         moveNext = "<A->>";
         pin = "<A-p>";
         pick = "<C-p>";
-        silent = true;
       };
     };
 

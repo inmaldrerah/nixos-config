@@ -139,10 +139,7 @@ rec {
     xwayland.enable = true;
   };
 
-  services.xserver.windowManager.qtile = {
-    enable = true;
-    backend = "wayland";
-  };
+  services.xserver.windowManager.qtile.enable = true;
 
   programs.sway = {
     enable = true;
