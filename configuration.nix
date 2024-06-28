@@ -218,7 +218,7 @@ rec {
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif" "Noto Serif CJK SC" "Symbols Nerd Font" ];
       sansSerif = [ "Noto Sans" "Noto Sans CJK SC" "Symbols Nerd Font" ];
-      monospace = [ "Fira Code Symbols" "Noto Sans Mono" "Noto Sans Mono CJK SC" "Symbols Nerd Fonts Mono" ];
+      monospace = [ "Fira Code Symbol" "Noto Sans Mono" "Noto Sans Mono CJK SC" "Symbols Nerd Fonts Mono" ];
     };
   };
 
