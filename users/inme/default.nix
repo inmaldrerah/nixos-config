@@ -35,7 +35,7 @@
           def __rebuild_system_local(args):
             # return ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
             #   ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
-            return ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
+            return ![nixos-rebuild -v --builders "" --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __rebuild_system_remote(args):
             substituters = tuple(map(lambda s: s[len("trusted-substituters = "):], filter(lambda s: s.startswith("trusted-substituters = "), p"/etc/nix/nix.conf".read_text().split("\n"))))[0]
