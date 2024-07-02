@@ -18,7 +18,7 @@
     "amd_pstate=active"
   ];
 
-  hardware.opengl.driSupport = true;
+  # hardware.opengl.driSupport = true;
   # hardware.opengl.driSupport32Bit = true;
 
   hardware.bluetooth.enable = true;
