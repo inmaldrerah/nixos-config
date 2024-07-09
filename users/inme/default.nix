@@ -183,7 +183,6 @@
       nix-output-monitor
       firefox-wayland
       onlyoffice-bin
-      typst-preview
       wl-clipboard
       libreoffice
       winetricks
@@ -194,6 +193,7 @@
       hyprshot
       swayidle
       swaylock
+      tinymist
       vscodium
       gtklock
       ripgrep
