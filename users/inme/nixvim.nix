@@ -40,7 +40,7 @@
     plugins.treesitter = {
       enable = true;
       nixGrammars = true;
-      ensureInstalled = [ "nix" "c" "zig" "python" "typst" ];
+      ensureInstalled = [ "nix" "c" "zig" "python" ];
     };
     plugins.persistence.enable = true;
     plugins.neo-tree = {
