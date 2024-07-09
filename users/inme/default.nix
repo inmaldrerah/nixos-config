@@ -194,7 +194,6 @@
       hyprshot
       swayidle
       swaylock
-      tinymist
       vscodium
       gtklock
       ripgrep
