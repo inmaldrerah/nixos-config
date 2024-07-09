@@ -33,26 +33,23 @@
       rcFiles."nix-helper.xsh".text = ''
         def __nix_helper_init():
           def __rebuild_system_local(args):
-            # return ![nom build --builders "" f'/etc/nixos#nixosConfigurations."{$(uname -n).strip()}".config.system.build.toplevel'] && \
-            #   ![nixos-rebuild --use-remote-sudo --flake /etc/nixos @(args)]
             return ![nixos-rebuild -v --builders "" --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __rebuild_system_remote(args):
             substituters = tuple(map(lambda s: s[len("trusted-substituters = "):], filter(lambda s: s.startswith("trusted-substituters = "), p"/etc/nix/nix.conf".read_text().split("\n"))))[0]
-            # return ![nom build -j0 f'/etc/nixos#nixosConfigurations."{str($(uname -n)).strip()}".config.system.build.toplevel' --option substituters @(substituters)] && \
-            #   ![nixos-rebuild -j0 --use-remote-sudo --flake /etc/nixos @(args)]
             return ![nixos-rebuild -j0 -v --option substituters @(substituters) --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __commit_nixos_config(args):
             current_pwd = $PWD
             $[cd /etc/nixos]
             $[git add .]
-            $[git commit -m f"snapshot@{str($(date -u +%m/%d/%Y-%T)).strip()}"]
+            $[git commit -m @("snapshot@{}".format(str($(date -u +%m/%d/%Y-%T)).strip()))]
             $[cd @(current_pwd)]
          
           def __rebuild_system(args):
             __commit_nixos_config(args)
-            if pf"{$HOME}/.nix-local".is_file():
+            home = $HOME
+            if pf"{home}/.nix-local".is_file():
               return __rebuild_system_local(args)
             else:
               return __rebuild_system_remote(args)
@@ -67,10 +64,12 @@
             return rebuild_status
           
           def toggle_nix_local(args):
-            if "HOME" in ''${...} and $HOME != "" and pf"{$HOME}/.nix-local".is_file():
-              $[rm f"{$HOME}/.nix-local"]
-            else:
-              $[touch f"{$HOME}/.nix-local"]
+            if "HOME" in ''${...} and $HOME != "":
+              home = $HOME
+              if pf"{home}/.nix-local".is_file():
+                $[rm f"{home}/.nix-local"]
+              else:
+                $[touch f"{home}/.nix-local"]
           
           aliases["rebuild-system"] = rebuild_system
           aliases["toggle-nix-local"] = toggle_nix_local
@@ -79,10 +78,16 @@
         del __nix_helper_init
       '';
       extraConfig = ''
-        if not ''${...}.get(f"__USER_{$USER}_SETUP_DONE"):
-          $PATH.insert(0, f"{$HOME}/.local/bin")
-          $TERM = "xterm-256color"
-          ''${f"__USER_{$USER}_SETUP_DONE"} = "1"
+        def __env_setup():
+          user = $USER
+          if not ''${...}.get(f"__USER_{user}_SETUP_DONE"):
+            home = $HOME
+            $PATH.insert(0, f"{home}/.local/bin")
+            $TERM = "xterm-256color"
+            ''${f"__USER_{user}_SETUP_DONE"} = "1"
+
+        __env_setup()
+        del __env_setup
       '';
     };
 
