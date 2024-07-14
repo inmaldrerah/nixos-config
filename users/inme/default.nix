@@ -210,6 +210,7 @@
       p7zip
       samba
       typst
+      mono
       wofi
       dex
       git
