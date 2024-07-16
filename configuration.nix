@@ -146,6 +146,10 @@ rec {
     wrapperFeatures.gtk = true;
   };
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   services.xserver.xkb.extraLayouts = {
     us-qwpr = {
@@ -160,7 +164,7 @@ rec {
     };
   };
 
-# Set adb/fastboot udev rules
+  # Set adb/fastboot udev rules
   services.udev.packages = [
     pkgs.android-udev-rules
   ];
