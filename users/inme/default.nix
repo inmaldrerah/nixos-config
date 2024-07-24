@@ -186,6 +186,7 @@
       wineWowPackages.waylandFull
       swaynotificationcenter
       lua-language-server
+      lxqt.lxqt-policykit
       nix-output-monitor
       firefox-wayland
       onlyoffice-bin
