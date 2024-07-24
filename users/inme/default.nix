@@ -184,7 +184,7 @@
     home.packages = with pkgs; [
       linyinfeng.wemeet
       lxqt.lxqt-policykit
-      lxqt.lxsession
+      lxde.lxsession
       wineWowPackages.waylandFull
       swaynotificationcenter
       lua-language-server
