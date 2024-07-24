@@ -1,4 +1,4 @@
-{ config, lib, nixpkgsInput, neovim-nightly-overlay, ... }:
+{ config, lib, nixpkgsInput, neovim-nightly-overlay, nur-linyinfeng, ... }:
 
 let
   packageOverlays = [
@@ -31,6 +31,7 @@ let
     (self: super: {
       vscodium = super.vscodium.override { commandLineArgs = "--enable-wayland-ime"; };
     })
+    nur-linyinfeng.overlay
   ];
   stdenv = (import nixpkgsInput {
     localSystem = config.nixpkgs.hostPlatform;

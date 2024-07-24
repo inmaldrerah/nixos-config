@@ -28,9 +28,13 @@
       url = "path:/etc/nixos/private";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur-linyinfeng = {
+      url = "github:linyinfeng/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, ... }:
+  outputs = { self, nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, nur-linyinfeng, ... }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -42,6 +46,7 @@
         inherit neovim-nightly-overlay;
         inherit nixvim;
         inherit hm-extension;
+        inherit nur-linyinfeng;
       };
       modules = [
         {
