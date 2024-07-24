@@ -128,6 +128,9 @@ rec {
   security.pam.services.swaylock = {};
   security.pam.services.gtklock = {};
 
+  # For OBS virtual camera
+  security.polkit.enable = true;
+
   programs.dconf.enable = true;
 
   # Keyring management
