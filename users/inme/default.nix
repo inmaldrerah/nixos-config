@@ -183,10 +183,11 @@
 
     home.packages = with pkgs; [
       linyinfeng.wemeet
+      lxqt.lxqt-policykit
+      lxqt.lxsession
       wineWowPackages.waylandFull
       swaynotificationcenter
       lua-language-server
-      lxqt.lxqt-policykit
       nix-output-monitor
       firefox-wayland
       onlyoffice-bin
