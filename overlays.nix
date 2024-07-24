@@ -31,7 +31,7 @@ let
     (self: super: {
       vscodium = super.vscodium.override { commandLineArgs = "--enable-wayland-ime"; };
     })
-    nur-linyinfeng.overlay
+    nur-linyinfeng.overlays.default
   ];
   stdenv = (import nixpkgsInput {
     localSystem = config.nixpkgs.hostPlatform;
