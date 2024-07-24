@@ -182,7 +182,7 @@
     };
 
     home.packages = with pkgs; [
-      wemeet
+      nur.linyinfeng.wemeet
       wineWowPackages.waylandFull
       swaynotificationcenter
       lua-language-server
