@@ -25,6 +25,13 @@
 
   # hardware.opengl.driSupport = true;
   # hardware.opengl.driSupport32Bit = true;
+  hardware.hardware.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  # For 32 bit applications 
+  hardware.hardware.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
 
   hardware.bluetooth.enable = true;
 
