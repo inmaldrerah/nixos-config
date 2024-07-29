@@ -188,7 +188,6 @@
       wineWowPackages.waylandFull
       swaynotificationcenter
       lua-language-server
-      xwaylandvideobridge
       nix-output-monitor
       firefox-wayland
       onlyoffice-bin
