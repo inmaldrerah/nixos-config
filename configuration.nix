@@ -174,6 +174,13 @@ rec {
 
   services.tailscale.enable = true;
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   # Disable nscd
   services.nscd.enable = false;
   system.nssModules = lib.mkForce [];
