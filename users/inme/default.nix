@@ -255,6 +255,7 @@
       ".config/libvirt"
       ".config/nixpkgs"
       # ".config/nvim"
+      ".config/obs-studio"
       ".config/pulse"
       ".config/qtile"
       ".config/swappy"
