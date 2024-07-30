@@ -12,7 +12,8 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [ "overlay" "btrfs" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ 
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    amdgpu-pro
     v4l2loopback
   ];
   boot.extraModprobeConfig = ''
