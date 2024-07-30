@@ -25,8 +25,7 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.graphics.extraPackages = [ pkgs.amdvlk ];
-  hardware.graphics.extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+  hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
   hardware.amdgpu.initrd.enable = true;
 
   hardware.bluetooth.enable = true;
