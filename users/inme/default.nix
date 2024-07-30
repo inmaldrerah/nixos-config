@@ -105,8 +105,8 @@
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-gstreamer
-        # obs-backgroundremoval
         obs-pipewire-audio-capture
+        obs-vaapi
       ];
     };
 
