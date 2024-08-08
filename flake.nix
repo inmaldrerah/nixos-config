@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/d2f733efb4962903b77af330c4c03a63f2f72968";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     private = {
