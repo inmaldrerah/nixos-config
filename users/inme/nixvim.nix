@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
 
     # Color Scheme
     colorschemes.base16 = {
@@ -38,7 +38,7 @@
     ];
     plugins.transparent.enable = true;
     plugins.treesitter = {
-      enable = false;
+      enable = true;
       nixGrammars = true;
       settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
     };
