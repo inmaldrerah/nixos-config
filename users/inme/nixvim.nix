@@ -38,7 +38,7 @@
     ];
     plugins.transparent.enable = true;
     plugins.treesitter = {
-      enable = true;
+      enable = false;
       nixGrammars = true;
       settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
     };
