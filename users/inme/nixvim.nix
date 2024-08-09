@@ -5,13 +5,13 @@
 
     # Color Scheme
     colorschemes.base16 = {
-      enable = false;
+      enable = true;
       colorscheme = "material";
     };
 
     # Clipboard
     clipboard.register = "unnamedplus";
-    clipboard.providers.wl-copy.enable = false;
+    clipboard.providers.wl-copy.enable = true;
     globals.clipboard = {
       name = "wl-copy";
       copy."+" = [ "wl-copy" ];
@@ -92,7 +92,6 @@
         pick = "<C-p>";
       };
     };
-    plugins.lsp.servers.astro.package = pkgs.hello;
 
     # Keymaps
     keymaps = [
