@@ -92,7 +92,7 @@
         pick = "<C-p>";
       };
     };
-    plugins.lsp.servers.astro.package = null;
+    plugins.lsp.servers.astro.package = pkgs.lib.mkForce null;
 
     # Keymaps
     keymaps = [
