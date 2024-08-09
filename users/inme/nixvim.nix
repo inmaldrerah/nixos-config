@@ -92,7 +92,8 @@
         pick = "<C-p>";
       };
     };
-    plugins.lsp.servers.astro.cmd = [];
+    plugins.lsp.servers.astro.cmd = pkgs.mkDefault [];
+    plugins.lsp.servers.astro.package = {};
 
     # Keymaps
     keymaps = [
