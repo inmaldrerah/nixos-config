@@ -33,16 +33,16 @@
     };
 
     # Plugins
-    extraPlugins = with pkgs.vimPlugins; [
+    # extraPlugins = with pkgs.vimPlugins; [
       # suda-vim
-    ];
-    plugins.transparent.enable = true;
+    # ];
+    plugins.transparent.enable = false;
     plugins.treesitter = {
       enable = false;
       nixGrammars = true;
       settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
     };
-    plugins.persistence.enable = true;
+    plugins.persistence.enable = false;
     plugins.neo-tree = {
       enable = false;
       filesystem.filteredItems.visible = true;
