@@ -53,7 +53,7 @@
       settings.defaults.layout_strategy = "bottom_pane";
     };
     plugins.alpha = {
-      enable = true;
+      enable = false;
       theme.__raw = ''
         (function()
           local dashboard = require("alpha.themes.dashboard")
