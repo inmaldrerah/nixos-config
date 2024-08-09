@@ -33,27 +33,27 @@
     };
 
     # Plugins
-    # extraPlugins = with pkgs.vimPlugins; [
+    extraPlugins = with pkgs.vimPlugins; [
       # suda-vim
-    # ];
-    plugins.transparent.enable = false;
+    ];
+    plugins.transparent.enable = true;
     plugins.treesitter = {
-      enable = false;
+      enable = true;
       nixGrammars = true;
       settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
     };
-    plugins.persistence.enable = false;
+    plugins.persistence.enable = true;
     plugins.neo-tree = {
-      enable = false;
+      enable = true;
       filesystem.filteredItems.visible = true;
       sourceSelector.statusline = true;
     };
     plugins.telescope = {
-      enable = false;
+      enable = true;
       settings.defaults.layout_strategy = "bottom_pane";
     };
     plugins.alpha = {
-      enable = false;
+      enable = true;
       theme.__raw = ''
         (function()
           local dashboard = require("alpha.themes.dashboard")
@@ -92,6 +92,7 @@
         pick = "<C-p>";
       };
     };
+    plugins.lsp.servers.astro.package = null;
 
     # Keymaps
     keymaps = [
