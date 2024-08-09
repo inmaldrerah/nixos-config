@@ -92,6 +92,7 @@
         pick = "<C-p>";
       };
     };
+    plugins.lsp.servers.astro.package = pkgs.hello;
 
     # Keymaps
     keymaps = [
