@@ -5,13 +5,13 @@
 
     # Color Scheme
     colorschemes.base16 = {
-      enable = true;
+      enable = false;
       colorscheme = "material";
     };
 
     # Clipboard
     clipboard.register = "unnamedplus";
-    clipboard.providers.wl-copy.enable = true;
+    clipboard.providers.wl-copy.enable = false;
     globals.clipboard = {
       name = "wl-copy";
       copy."+" = [ "wl-copy" ];
