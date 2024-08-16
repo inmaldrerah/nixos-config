@@ -52,7 +52,11 @@
             if pf"{home}/.nix-local".is_file():
               return __rebuild_system_local(args)
             else:
-              return __rebuild_system_remote(args)
+              status = !(curl http://nix-serve.router.local/ --noproxy nix-serve.router.local --connect-timeout 1)
+              if not status:
+                return __rebuild_system_local(args)
+              else:
+                return __rebuild_system_remote(args)
           
           def rebuild_system(args):
             rebuild_status = __rebuild_system(args)
