@@ -71,25 +71,25 @@
       '';
     };
     plugins.barbar = {
-      enable = true;
+      enable = false;
       keymaps = {
-        close = "<A-w>";
-        goTo1 = "<A-1>";
-        goTo2 = "<A-2>";
-        goTo3 = "<A-3>";
-        goTo4 = "<A-4>";
-        goTo5 = "<A-5>";
-        goTo6 = "<A-6>";
-        goTo7 = "<A-7>";
-        goTo8 = "<A-8>";
-        goTo9 = "<A-9>";
-        last = "<A-0>";
-        previous = "<A-,>";
-        next = "<A-.>";
-        movePrevious = "<A-<>";
-        moveNext = "<A->>";
-        pin = "<A-p>";
-        pick = "<C-p>";
+        close.key = "<A-w>";
+        goTo1.key = "<A-1>";
+        goTo2.key = "<A-2>";
+        goTo3.key = "<A-3>";
+        goTo4.key = "<A-4>";
+        goTo5.key = "<A-5>";
+        goTo6.key = "<A-6>";
+        goTo7.key = "<A-7>";
+        goTo8.key = "<A-8>";
+        goTo9.key = "<A-9>";
+        last.key = "<A-0>";
+        previous.key = "<A-,>";
+        next.key = "<A-.>";
+        movePrevious.key = "<A-<>";
+        moveNext.key = "<A->>";
+        pin.key = "<A-p>";
+        pick.key = "<C-p>";
       };
     };
 
