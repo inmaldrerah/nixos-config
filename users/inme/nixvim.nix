@@ -96,7 +96,7 @@
     # Keymaps
     keymaps = [
       {
-        key = "<A-m>";
+        key = "<A-n>";
         action = "<cmd>Neotree toggle<CR>";
         mode = ["n" "v" "i"];
         options = {
