@@ -34,7 +34,7 @@
 
     # Plugins
     extraPlugins = with pkgs.vimPlugins; [
-      suda-vim
+      vim-suda
     ];
     plugins.transparent.enable = true;
     plugins.treesitter = {
@@ -78,6 +78,7 @@
         goTo2 = "<A-2>";
         goTo3 = "<A-3>";
         goTo4 = "<A-4>";
+        "http://nix-serve.router.local/"
         goTo5 = "<A-5>";
         goTo6 = "<A-6>";
         goTo7 = "<A-7>";
