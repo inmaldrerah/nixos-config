@@ -194,6 +194,7 @@
       lua-language-server
       nix-output-monitor
       firefox-wayland
+      mission-center
       onlyoffice-bin
       wl-clipboard
       libreoffice
