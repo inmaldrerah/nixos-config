@@ -33,11 +33,11 @@
       rcFiles."nix-helper.xsh".text = ''
         def __nix_helper_init():
           def __rebuild_system_local(args):
-            return ![nixos-rebuild -v --builders "" --use-remote-sudo --flake /etc/nixos @(args)]
+            return ![nixos-rebuild -v --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __rebuild_system_remote(args):
             substituters = tuple(map(lambda s: s[len("trusted-substituters = "):], filter(lambda s: s.startswith("trusted-substituters = "), p"/etc/nix/nix.conf".read_text().split("\n"))))[0]
-            return ![nixos-rebuild -j0 -v --option substituters @(substituters) --use-remote-sudo --flake /etc/nixos @(args)]
+            return ![nixos-rebuild -j0 -v --option substituters @(substituters) --builders ssh://nixos@router.local --use-remote-sudo --flake /etc/nixos @(args)]
           
           def __commit_nixos_config(args):
             current_pwd = $PWD
