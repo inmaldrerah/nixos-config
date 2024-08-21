@@ -21,6 +21,7 @@ rec {
     }];
     distributedBuilds = true;
     settings = {
+      builders = [];
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       keep-outputs = true;
       keep-derivations = true;
