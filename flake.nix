@@ -6,6 +6,10 @@
       # url = "github:nixos/nixpkgs/nixos-unstable-small";
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nixpkgs-extension = {
+      url = "path:/home/inme/Builds/nixpkgs-extension";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +39,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, hm-extension, impermanence, neovim-nightly-overlay, nixvim, private, nur-linyinfeng, ... }:
+  outputs = {
+    self,
+    nixpkgs, nixpkgs-extension,
+    home-manager, hm-extension,
+    impermanence,
+    neovim-nightly-overlay,
+    nixvim,
+    private,
+    nur-linyinfeng, ... }:
   let
     hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
@@ -44,6 +56,7 @@
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
         nixpkgsInput = nixpkgs;
+        inherit nixpkgs-extension;
         inherit neovim-nightly-overlay;
         inherit nixvim;
         inherit hm-extension;
