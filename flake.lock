@@ -661,11 +661,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1724747923,
-        "narHash": "sha256-U5jFUgvkFTyjJOZEgJOPlubBq3zRPkMD9+Nw07+5NZE=",
+        "lastModified": 1724748503,
+        "narHash": "sha256-m5hdjSiURQncE2Ycu9KON9ngxJ3kIX1P5KUuQbyFKnY=",
         "owner": "inmaldrerah",
         "repo": "nixpkgs",
-        "rev": "6da21e0ce12ae7dd4163dc1da3a2d264f71161b2",
+        "rev": "ea53286e1467b226acbe67da4cb8853bc45a03b1",
         "type": "github"
       },
       "original": {
@@ -682,8 +682,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1724736401,
-        "narHash": "sha256-tivGu4jpIgXyNUUSDO2RWBhpg6zMc8JOjS+6va/Z53w=",
+        "lastModified": 1724746160,
+        "narHash": "sha256-qG0p9czKlhgDALjvRTrqKnGZwuxIs+v3LwjI5Nz2bZg=",
         "path": "/home/inme/Builds/nixpkgs-extension",
         "type": "path"
       },
