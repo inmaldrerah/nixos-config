@@ -50,8 +50,8 @@ rec {
 
   nixpkgs.config.allowUnfree = true;
 
-  # system.switch.enable = false;
-  # system.switch.enableNg = true;
+  system.switch.enable = false;
+  system.switch.enableNg = true;
 
   # Use EFI boot loader.
   boot.loader.systemd-boot = {
