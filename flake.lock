@@ -675,6 +675,23 @@
         "type": "github"
       }
     },
+    "nixpkgs-extension": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724734462,
+        "narHash": "sha256-rNGNvgtST4Z2lVHG5ukquSq+6VCVp+Jm9ls78CnqXJ0=",
+        "path": "/home/inme/Builds/nixpkgs-extension",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/inme/Builds/nixpkgs-extension",
+        "type": "path"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1722555339,
@@ -907,6 +924,7 @@
         "impermanence": "impermanence",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-extension": "nixpkgs-extension",
         "nixvim": "nixvim",
         "nur-linyinfeng": "nur-linyinfeng",
         "private": "private"
