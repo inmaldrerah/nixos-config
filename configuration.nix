@@ -29,19 +29,19 @@ rec {
       builders-use-substitutes = true;
       substituters = [
         "https://nix-community.cachix.org"
-        "https://daeuniverse.cachix.org"
-        "https://cache.nixos.org/"
+        "https://cache.garnix.io"
+        "https://cache.nixos.org"
       ];
       trusted-substituters = [
         "https://nix-community.cachix.org"
-        "https://daeuniverse.cachix.org"
-        "https://cache.nixos.org/"
-        "http://nix-serve.router.local/"
+        "https://cache.garnix.io"
+        "https://cache.nixos.org"
+        "http://nix-serve.router.local"
         "ssh-ng://nixos@router.local"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "daeuniverse.cachix.org-1:8hRIzkQmAKxeuYY3c/W1I7QbZimYphiPX/E7epYNTeM="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "router:XaQUUJ1AWd1+1JZ9CjYdMs/WoKstGyD5gD/r4gE2HQw="
       ];
     };

@@ -50,6 +50,7 @@
       "/var/log"
       "/var/lib/iwd"
       "/var/lib/libvirt"
+      "/var/lib/nixos"
       "/var/lib/systemd"
       "/var/lib/tailscale"
       "/var/lib/waydroid"
