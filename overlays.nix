@@ -33,7 +33,7 @@ let
     })
     nur-linyinfeng.overlays.default
     (self: super: {
-      inherit (nixpkgs-extension.packages."${config.nixpkgs.hostPlatform}") switch-to-configuration-ng;
+      inherit (nixpkgs-extension.packages."x86_64-linux") switch-to-configuration-ng;
     })
   ];
   stdenv = (import nixpkgsInput {
