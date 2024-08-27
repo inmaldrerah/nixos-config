@@ -682,8 +682,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1724736096,
-        "narHash": "sha256-/WlWnAUJZnig1LF0OdwouGj7MDTwzS0k59edl6TYttg=",
+        "lastModified": 1724736216,
+        "narHash": "sha256-wVjXV8XBY6NFDJzwfsFL+6g7QgtI6HX7qT565XZ/S8Q=",
         "path": "/home/inme/Builds/nixpkgs-extension",
         "type": "path"
       },
