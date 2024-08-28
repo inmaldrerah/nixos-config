@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs = {
       # url = "github:nixos/nixpkgs/nixos-unstable-small";
-      # url = "github:nixos/nixpkgs/nixos-unstable";
-      url = "github:inmaldrerah/nixpkgs/stc-merge-restart-start";
+      url = "github:nixos/nixpkgs/nixos-unstable";
+      # url = "github:inmaldrerah/nixpkgs/stc-merge-restart-start";
     };
     nixpkgs-extension = {
       url = "path:/home/inme/Builds/nixpkgs-extension";
@@ -16,7 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hm-extension = {
-      # url = "path:/home/inme/Builds/hm-extension";
       url = "github:inmaldrerah/hm-extension";
     };
     impermanence = {

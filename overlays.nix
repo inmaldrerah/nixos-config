@@ -32,9 +32,9 @@ let
       vscodium = super.vscodium.override { commandLineArgs = "--enable-wayland-ime"; };
     })
     nur-linyinfeng.overlays.default
-    # (self: super: {
-    #   switch-to-configuration-ng = nixpkgs-extension.packages."x86_64-linux".switch-to-configuration-ng;
-    # })
+    (self: super: {
+      switch-to-configuration-ng = nixpkgs-extension.packages."x86_64-linux".switch-to-configuration-ng;
+    })
   ];
   stdenv = (import nixpkgsInput {
     localSystem = config.nixpkgs.hostPlatform;
