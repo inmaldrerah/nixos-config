@@ -7,6 +7,7 @@ in {
     enable = true;
 
     plugins.lsp.servers.eslint.package = null;
+    plugins.efmls-configs.package = null;
 
     # Color Scheme
     colorschemes.base16 = {
