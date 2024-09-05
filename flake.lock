@@ -820,7 +820,7 @@
         "flake-utils": "flake-utils_2",
         "nixos-stable": "nixos-stable",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
         "nvfetcher": "nvfetcher",
         "treefmt-nix": "treefmt-nix_2"
