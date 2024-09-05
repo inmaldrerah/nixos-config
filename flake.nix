@@ -7,6 +7,9 @@
       # url = "github:nixos/nixpkgs/nixos-unstable";
       # url = "github:inmaldrerah/nixpkgs/stc-merge-restart-start";
     };
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
     nixpkgs-extension = {
       url = "path:/home/inme/Builds/nixpkgs-extension";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +34,7 @@
     };
     private = {
       url = "path:/etc/nixos/private";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
