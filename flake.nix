@@ -7,8 +7,8 @@
       # url = "github:nixos/nixpkgs/nixos-unstable";
       # url = "github:inmaldrerah/nixpkgs/stc-merge-restart-start";
     };
-    nixpkgs-unstable = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs/nixos-24.05";
     };
     nixpkgs-extension = {
       url = "path:/home/inme/Builds/nixpkgs-extension";
@@ -29,8 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/nixvim/nixos-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     private = {
       url = "path:/etc/nixos/private";
@@ -44,7 +44,7 @@
 
   outputs = {
     self,
-    nixpkgs, nixpkgs-unstable, nixpkgs-extension,
+    nixpkgs, nixpkgs-stable, nixpkgs-extension,
     home-manager, hm-extension,
     impermanence,
     neovim-nightly-overlay,
@@ -59,7 +59,7 @@
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
         nixpkgsInput = nixpkgs;
-        inherit nixpkgs-unstable;
+        inherit nixpkgs-stable;
         inherit nixpkgs-extension;
         inherit neovim-nightly-overlay;
         inherit nixvim;
