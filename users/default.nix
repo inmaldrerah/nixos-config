@@ -1,4 +1,4 @@
-{ config, pkgs, ... }@args:
+{ config, pkgs, lib, ... }@args:
 let
   userconf.inme = import ./inme args;
 in
@@ -22,9 +22,11 @@ rec {
     shell = userconf.inme.shell;
   };
 
-  home-manager.extraSpecialArgs = {
-    inherit (args) nixpkgs-unstable, nixvim, hm-extension;
-  };
+  home-manager.extraSpecialArgs = lib.getAttrs [
+    "nixpkgs-unstable"
+    "nixvim"
+    "hm-extension"
+  ] args;
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.inme = userconf.inme.home-manager;
