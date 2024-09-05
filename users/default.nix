@@ -1,6 +1,6 @@
 { config, pkgs, ... }@args:
 let
-  userconf.inme = ./inme args;
+  userconf.inme = import ./inme args;
 in
 rec {
   # Configure users
