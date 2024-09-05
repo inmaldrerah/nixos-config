@@ -1,4 +1,7 @@
 { config, pkgs, ... }@args:
+let
+  userconf.inme = ./inme args;
+in
 rec {
   # Configure users
   users.mutableUsers = false;
