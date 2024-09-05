@@ -38,7 +38,7 @@
     };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
