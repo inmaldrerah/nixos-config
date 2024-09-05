@@ -1,4 +1,7 @@
-{ pkgs, ... }: {
+{ nixpkgs-unstable, ... }:
+let
+  pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
+in {
 
   programs.nixvim = {
     enable = true;

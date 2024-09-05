@@ -1,7 +1,11 @@
-{ pkgs, lib, nixvim, hm-extension, ... }:
+{ pkgs, lib, nixvim, hm-extension, nixpkgs-unstable, ... }:
 {
   shell = pkgs.xonsh;
   home-manager = { config, pkgs, ... }: {
+    extraSpecialArgs = {
+      inherit nixpkgs-unstable;
+    };
+
     imports = [
       nixvim.homeManagerModules.nixvim
       hm-extension.homeManagerModules.default

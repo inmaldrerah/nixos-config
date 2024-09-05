@@ -30,7 +30,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     private = {
       url = "path:/etc/nixos/private";
@@ -44,7 +44,7 @@
 
   outputs = {
     self,
-    nixpkgs, nixpkgs-extension,
+    nixpkgs, nixpkgs-unstable, nixpkgs-extension,
     home-manager, hm-extension,
     impermanence,
     neovim-nightly-overlay,
@@ -59,6 +59,7 @@
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
         nixpkgsInput = nixpkgs;
+        inherit nixpkgs-unstable;
         inherit nixpkgs-extension;
         inherit neovim-nightly-overlay;
         inherit nixvim;
