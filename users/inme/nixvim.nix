@@ -4,7 +4,7 @@ let
 in {
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
 
     # Color Scheme
     colorschemes.base16 = {
