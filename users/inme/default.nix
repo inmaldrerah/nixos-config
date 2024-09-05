@@ -1,7 +1,7 @@
-{ pkgs, lib, nixvim, hm-extension, ... }:
+{ pkgs, lib, ... }:
 {
   shell = pkgs.xonsh;
-  home-manager = { config, pkgs, ... }: {
+  home-manager = { config, pkgs, nixvim, hm-extension, ... }: {
     imports = [
       nixvim.homeManagerModules.nixvim
       hm-extension.homeManagerModules.default

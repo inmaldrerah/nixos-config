@@ -1,7 +1,4 @@
-{ config, pkgs, nixvim, ... }@args:
-let
-  userconf.inme = import inme/default.nix args;
-in
+{ config, pkgs, ... }@args:
 rec {
   # Configure users
   users.mutableUsers = false;
@@ -22,6 +19,7 @@ rec {
     shell = userconf.inme.shell;
   };
 
+  home-manager.extraSpecialArgs = args
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.inme = userconf.inme.home-manager;
