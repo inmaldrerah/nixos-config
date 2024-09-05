@@ -1,4 +1,4 @@
-{ nixpkgs-unstable, ... }:
+{ nixpkgs-stable, ... }:
 let
   pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
 in {
