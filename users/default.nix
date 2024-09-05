@@ -21,7 +21,7 @@ rec {
     ];
     shell = userconf.inme.shell;
   };
-  
+
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.inme = userconf.inme.home-manager;
