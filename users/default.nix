@@ -22,7 +22,9 @@ rec {
     shell = userconf.inme.shell;
   };
 
-  home-manager.extraSpecialArgs = args;
+  home-manager.extraSpecialArgs = {
+    inherit (args) nixpkgs-unstable, nixvim, hm-extension;
+  };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.inme = userconf.inme.home-manager;
