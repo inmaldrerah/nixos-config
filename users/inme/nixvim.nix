@@ -4,7 +4,9 @@ let
 in {
 
   programs.nixvim = {
-    enable = false;
+    enable = true;
+
+    plugins.lsp.servers.eslint.package = null;
 
     # Color Scheme
     colorschemes.base16 = {
