@@ -19,7 +19,7 @@ rec {
     shell = userconf.inme.shell;
   };
 
-  home-manager.extraSpecialArgs = args
+  home-manager.extraSpecialArgs = args;
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.inme = userconf.inme.home-manager;
