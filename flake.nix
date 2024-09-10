@@ -76,10 +76,10 @@
         impermanence.nixosModules.impermanence
         private.nixosModules.default
         ./configuration.nix
-        ./hardware-configuration.nix
-        # ./hardware.nix
+        # ./hardware-configuration.nix
+        ./hardware.nix
         ./network.nix
-        # ./storage.nix
+        ./storage.nix
         ./users
         ./xkb
       ];

@@ -9,8 +9,8 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.kernelModules = [  ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.supportedFilesystems = [ "overlay" "btrfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -20,16 +20,15 @@
   '';
   boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
-    "amd_pstate=active"
   ];
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
+  hardware.graphics.extraPackages = [  ];
   hardware.amdgpu.initrd.enable = true;
 
   hardware.bluetooth.enable = true;
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.enableRedistributableFirmware = true;
 }

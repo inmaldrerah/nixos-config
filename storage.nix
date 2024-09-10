@@ -8,20 +8,16 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/85cbadbd-85a6-420b-8534-2597d9f8da21";
-    fsType = "btrfs";
-    neededForBoot = true;
-    depends = [ "/" ];
-    options = [ "subvol=@nixos/nix,compress=zstd" ];
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/1F04-28C6";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
-  fileSystems."/mnt/shared" = {
-    device = "/dev/disk/by-uuid/4b501aec-8608-486f-a51c-d5af4312c8b1";
+  fileSystems."/nix" = { device = "/dev/disk/by-uuid/da3111a8-4051-4066-a015-ecf824b26757";
     fsType = "btrfs";
     neededForBoot = true;
     depends = [ "/" ];
-    options = [ "nofail" ];
   };
 
   fileSystems."/home/inme/.local/share/waydroid/data/media/0/Share" = {
@@ -30,15 +26,8 @@
     options = [ "bind" "user" "noauto" ];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/56F6-1AA8";
-    fsType = "vfat";
-  };
-
   swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/b56a944d-29ba-4866-87ed-18100e4c608f";
-    }
+    { device = "/dev/disk/by-uuid/6188da8f-6481-43e8-8aa2-fb83d60b2e7f"; }
   ];
 
   # Enable persistent storage
