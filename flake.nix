@@ -11,7 +11,7 @@
       url = "github:nixos/nixpkgs/nixos-24.05";
     };
     nixpkgs-extension = {
-      url = "path:/home/inme/Builds/nixpkgs-extension";
+      url = "github:inmaldrerah/nixos-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -52,7 +52,7 @@
     private,
     nur-linyinfeng, ... }:
   let
-    hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
+    hostName = "dell-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
   in
   {
@@ -76,9 +76,10 @@
         impermanence.nixosModules.impermanence
         private.nixosModules.default
         ./configuration.nix
-        ./hardware.nix
+        ./hardware-configuration.nix
+        # ./hardware.nix
         ./network.nix
-        ./storage.nix
+        # ./storage.nix
         ./users
         ./xkb
       ];
