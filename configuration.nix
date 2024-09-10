@@ -146,13 +146,6 @@ rec {
     xwayland.enable = true;
   };
 
-  services.xserver.windowManager.qtile.enable = true;
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
   programs.appimage = {
     enable = true;
     binfmt = true;
