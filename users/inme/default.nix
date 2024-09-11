@@ -82,6 +82,9 @@
     home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
     home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
 
+    home.file.".config/waybar/config".source = ./waybar/config;
+    home.file.".config/waybar/style.css".source = ./waybar/style.css;
+
     home.file.".local/bin/caffine" = {
       executable = true;
       text = ''
