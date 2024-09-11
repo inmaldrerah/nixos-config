@@ -79,6 +79,10 @@
       };
     };
 
+    wayland.windowManager.enable = true;
+    home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
+    home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
+
     home.file.".local/bin/caffine" = {
       executable = true;
       text = ''
@@ -188,11 +192,9 @@
       ".config/fontconfig"
       ".config/Google"
       ".config/gtk-3.0"
-      ".config/hypr"
       ".config/libreoffice"
       ".config/libvirt"
       ".config/nixpkgs"
-      # ".config/nvim"
       ".config/obs-studio"
       ".config/pulse"
       ".config/swappy"
