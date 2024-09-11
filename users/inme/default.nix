@@ -79,7 +79,7 @@
       };
     };
 
-    wayland.windowManager.enable = true;
+    wayland.windowManager.hyprland.enable = true;
     home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
     home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
 
