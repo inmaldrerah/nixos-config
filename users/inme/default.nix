@@ -131,6 +131,7 @@
       lxde.lxsession
       wineWowPackages.waylandFull
       swaynotificationcenter
+      networkmanagerapplet
       lua-language-server
       nix-output-monitor
       firefox-wayland
