@@ -76,8 +76,6 @@
         impermanence.nixosModules.impermanence
         private.nixosModules.default
         ./configuration.nix
-        # ./hardware-configuration.nix
-        ./hardware.nix
         ./network.nix
         ./storage.nix
         ./users

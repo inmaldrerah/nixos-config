@@ -630,8 +630,8 @@
     },
     "private": {
       "locked": {
-        "lastModified": 1725979198,
-        "narHash": "sha256-JRW91RsRdb5Si1YPS26nlG2aImQrYex7oXboSZd8fHU=",
+        "lastModified": 1726215620,
+        "narHash": "sha256-vWyjL8vZhElHH1MPZjexU8TYQXTdujjxNvodw+gq1NU=",
         "path": "/etc/nixos/private",
         "type": "path"
       },
