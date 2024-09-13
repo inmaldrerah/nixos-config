@@ -629,9 +629,14 @@
       }
     },
     "private": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1726215620,
-        "narHash": "sha256-vWyjL8vZhElHH1MPZjexU8TYQXTdujjxNvodw+gq1NU=",
+        "lastModified": 1726215884,
+        "narHash": "sha256-rzo9dFu7Gwqb8kRlHHjXq91z21fsxI+kjtiHp00ZkQk=",
         "path": "/etc/nixos/private",
         "type": "path"
       },
