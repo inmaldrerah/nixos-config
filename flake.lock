@@ -9,11 +9,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1725458614,
-        "narHash": "sha256-ln88BxFwYmIRuUVPj14hpBoDc34KP8T837EW7swL2Gs=",
+        "lastModified": 1726613977,
+        "narHash": "sha256-cStMWd6/0p3oicpzyUb4nC+6tJ6VVWmBt1h6LiaQvrg=",
         "owner": "daeuniverse",
         "repo": "flake.nix",
-        "rev": "6b8bde96dabf6eace89b71929be967d15e379ce2",
+        "rev": "f7269d23b8fe86d8bccf31c3fe2202d3c9128666",
         "type": "github"
       },
       "original": {
@@ -897,8 +897,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1725781101,
-        "narHash": "sha256-6hrkjP/iuYHMnnmGZ05FEZz/5E70tU6lYZ28ylclEQI=",
+        "lastModified": 1726619895,
+        "narHash": "sha256-vnv9pizj+LvkMMW/fLNn1xA0CnPd8oq6fTgunL7ryEA=",
         "path": "/etc/nixos/private",
         "type": "path"
       },
