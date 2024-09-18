@@ -138,7 +138,6 @@
       nix-output-monitor
       firefox-wayland
       mission-center
-      onlyoffice-bin
       wl-clipboard
       libreoffice
       winetricks
