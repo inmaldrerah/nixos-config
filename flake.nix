@@ -52,7 +52,7 @@
     private,
     nur-linyinfeng, ... }:
   let
-    hostName = "dell-nixos"; # Define your hostname.
+    hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
   in
   {
