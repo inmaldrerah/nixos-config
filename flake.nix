@@ -52,37 +52,42 @@
     private,
     nur-linyinfeng, ... }:
   let
-    hostName = "thinkbook-16-plus-nixos"; # Define your hostname.
     triple = "x86_64-unknown-linux-gnu";
-  in
-  {
-    nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit hostName;
-        nixpkgsInput = nixpkgs;
-        inherit nixpkgs-stable;
-        inherit nixpkgs-extension;
-        inherit neovim-nightly-overlay;
-        inherit nixvim;
-        inherit hm-extension;
-        inherit nur-linyinfeng;
+
+    nixosConfig = hostName: {
+      name = hostName;
+      value = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit hostName;
+          nixpkgsInput = nixpkgs;
+          inherit nixpkgs-stable;
+          inherit nixpkgs-extension;
+          inherit neovim-nightly-overlay;
+          inherit nixvim;
+          inherit hm-extension;
+          inherit nur-linyinfeng;
+        };
+        modules = [
+          {
+            nixpkgs.hostPlatform.config = triple;
+            networking.hostName = hostName;
+          }
+          ./overlays.nix
+          home-manager.nixosModules.home-manager
+          impermanence.nixosModules.impermanence
+          private.nixosModules.default
+          ./configuration.nix
+          ./hardware
+          ./network.nix
+          ./storage.nix
+          ./users
+          ./xkb
+        ];
       };
-      modules = [
-        {
-          nixpkgs.hostPlatform.config = triple;
-          networking.hostName = hostName;
-        }
-        ./overlays.nix
-        home-manager.nixosModules.home-manager
-        impermanence.nixosModules.impermanence
-        private.nixosModules.default
-        ./configuration.nix
-        ./hardware
-        ./network.nix
-        ./storage.nix
-        ./users
-        ./xkb
-      ];
     };
-  };
+  in
+  listToAttrs map nixosConfig [
+    "thinkbook-16-plus-nixos"
+    "dell-nixos"
+  ];
 }
