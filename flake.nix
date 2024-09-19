@@ -91,5 +91,5 @@
       "thinkbook-16-plus-nixos"
       "dell-nixos"
     ]);
-  }
+  };
 }
