@@ -58,6 +58,7 @@
   {
     nixosConfigurations."${hostName}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
+        inherit hostName;
         nixpkgsInput = nixpkgs;
         inherit nixpkgs-stable;
         inherit nixpkgs-extension;
@@ -76,6 +77,7 @@
         impermanence.nixosModules.impermanence
         private.nixosModules.default
         ./configuration.nix
+        ./hardware
         ./network.nix
         ./storage.nix
         ./users
