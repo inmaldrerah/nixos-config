@@ -86,7 +86,7 @@
       };
     };
   in
-  listToAttrs map nixosConfig [
+  builtins.listToAttrs map nixosConfig [
     "thinkbook-16-plus-nixos"
     "dell-nixos"
   ];
