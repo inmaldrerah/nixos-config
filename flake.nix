@@ -86,8 +86,10 @@
       };
     };
   in
-  builtins.listToAttrs (builtins.map nixosConfig [
-    "thinkbook-16-plus-nixos"
-    "dell-nixos"
-  ]);
+  {
+    nixosConfigurations = builtins.listToAttrs (builtins.map nixosConfig [
+      "thinkbook-16-plus-nixos"
+      "dell-nixos"
+    ]);
+  }
 }
