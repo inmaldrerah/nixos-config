@@ -189,7 +189,7 @@ rec {
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  virtualisation.waydroid.enable = true;
+  # virtualisation.waydroid.enable = true;
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
