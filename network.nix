@@ -24,7 +24,7 @@ rec {
     Defaults env_keep += "http_proxy https_proxy ftp_proxy rsync_proxy no_proxy"
   '';
 
-  services.dnsmasq.enable = true;
+  services.dnsmasq.enable = false;
   services.dnsmasq.settings = {
     listen-address = [ "::1" ];
     no-dhcp-interface = [ "*" ];
@@ -34,6 +34,19 @@ rec {
       "/nju.edu.cn/210.28.129.251"
       "::1#5553"
       "223.5.5.5"
+    ];
+  };
+
+  services.dnsproxy.enable = true;
+  services.dnsproxy.settings = {
+    bootstrap = [ "https://223.5.5.5/dns-query" ];
+    listen-addrs = [ "::1" ];
+    listen-ports = [ 53 ];
+    upstream = [
+      "[/centaur-centauri.ts.net/]100.100.100.100:53"
+      "[/nju.edu.cn/]210.28.129.251:53"
+      "[/cn/]https://223.5.5.5/dns-query"
+      "udp://[::1]:53"
     ];
   };
 
