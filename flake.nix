@@ -60,7 +60,8 @@
         specialArgs = {
           inherit hostName;
           nixpkgsInput = nixpkgs;
-          inherit nixpkgs-stable;
+          # inherit nixpkgs-stable;
+          nixpkgs-stable = nixpkgs;
           inherit nixpkgs-extension;
           inherit neovim-nightly-overlay;
           inherit nixvim;
