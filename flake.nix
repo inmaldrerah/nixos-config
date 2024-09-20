@@ -8,7 +8,7 @@
       # url = "github:inmaldrerah/nixpkgs/stc-merge-restart-start";
     };
     nixpkgs-stable = {
-      url = "github:nixos/nixpkgs/nixos-24.05";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nixpkgs-extension = {
       url = "github:inmaldrerah/nixos-extensions";
@@ -29,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     private = {
@@ -60,8 +60,7 @@
         specialArgs = {
           inherit hostName;
           nixpkgsInput = nixpkgs;
-          # inherit nixpkgs-stable;
-          nixpkgs-stable = nixpkgs;
+          inherit nixpkgs-stable;
           inherit nixpkgs-extension;
           inherit neovim-nightly-overlay;
           inherit nixvim;
