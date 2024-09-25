@@ -55,6 +55,7 @@ in {
       enable = true;
       settings.defaults.layout_strategy = "bottom_pane";
     };
+    plugins.web-devicons.enable = true;
     plugins.alpha = {
       enable = true;
       theme.__raw = ''
