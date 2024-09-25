@@ -42,6 +42,7 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/1F04-28C6";
     fsType = "vfat";
+    options = [ "umask=0077" ];
   };
 
   fileSystems."/nix" = { device = "/dev/disk/by-uuid/da3111a8-4051-4066-a015-ecf824b26757";
