@@ -923,7 +923,6 @@
         "impermanence": "impermanence",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-extension": "nixpkgs-extension",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
         "nur-linyinfeng": "nur-linyinfeng",
