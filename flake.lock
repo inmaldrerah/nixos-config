@@ -675,26 +675,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-extension": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1724746420,
-        "narHash": "sha256-2GpuFYW4hjAp5Mh+vQYHoADhTveIyt88gjvY1YlCl7U=",
-        "owner": "inmaldrerah",
-        "repo": "nixos-extensions",
-        "rev": "37be752c1f11e357ce7f9aacde422d1dead45bc3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "inmaldrerah",
-        "repo": "nixos-extensions",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1722555339,
