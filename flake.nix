@@ -10,10 +10,6 @@
     nixpkgs-stable = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    nixpkgs-extension = {
-      url = "github:inmaldrerah/nixos-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,7 +57,6 @@
           inherit hostName;
           nixpkgsInput = nixpkgs;
           inherit nixpkgs-stable;
-          inherit nixpkgs-extension;
           inherit neovim-nightly-overlay;
           inherit nixvim;
           inherit hm-extension;
@@ -71,6 +66,7 @@
           {
             nixpkgs.hostPlatform.config = triple;
             networking.hostName = hostName;
+            systemd.services.tailscaled.after = ["NetworkManager-wait-online.service"];
           }
           ./overlays.nix
           home-manager.nixosModules.home-manager
