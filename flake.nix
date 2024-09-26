@@ -40,7 +40,7 @@
 
   outputs = {
     self,
-    nixpkgs, nixpkgs-stable, nixpkgs-extension,
+    nixpkgs, nixpkgs-stable,
     home-manager, hm-extension,
     impermanence,
     neovim-nightly-overlay,
