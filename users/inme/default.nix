@@ -203,7 +203,6 @@
       ".config/pulse"
       ".config/swappy"
       ".config/VSCodium"
-      ".config/waybar"
     ];
     files = [
       ".bash_history"
