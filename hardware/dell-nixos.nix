@@ -26,7 +26,6 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = [  ];
-  hardware.amdgpu.initrd.enable = true;
 
   hardware.bluetooth.enable = true;
 
