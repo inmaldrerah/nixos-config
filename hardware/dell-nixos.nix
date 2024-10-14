@@ -21,6 +21,7 @@
   boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
   ];
+  boot.xbootldrMountPoint = "/xbootldr";
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -41,6 +42,12 @@
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/1F04-28C6";
+    fsType = "vfat";
+    options = [ "umask=0077" ];
+  };
+
+  fileSystems."/xbootldr" = {
+    device = "/dev/disk/by-uuid/AE38-AB09";
     fsType = "vfat";
     options = [ "umask=0077" ];
   };
