@@ -21,7 +21,7 @@
   boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
   ];
-  boot.xbootldrMountPoint = "/xbootldr";
+  boot.loader.systemd-boot.xbootldrMountPoint = "/xbootldr";
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
