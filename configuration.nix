@@ -22,7 +22,7 @@ rec {
     distributedBuilds = true;
     settings = {
       builders = [];
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" ];
       keep-outputs = true;
       keep-derivations = true;
       keep-going = true;
