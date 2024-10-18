@@ -46,7 +46,7 @@ rec {
     enable = true;
     allowedTCPPorts = [ 12345 ];
     allowedUDPPorts = [ 12345 ];
-    trustedInterfaces = [ "tailscale0" "waydroid0" ];
+    trustedInterfaces = [ "tailscale0" ];
     interfaces."wlan0".allowedUDPPorts = [ 41641 ];
     interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
   };
