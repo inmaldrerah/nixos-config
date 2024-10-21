@@ -60,6 +60,14 @@
 
     programs.zoxide.enable = true;
 
+    wayland.windowManager.hyprland = {
+      enable = true;
+      plugins = with pkgs.hyprlandPlugins; [
+        hyprscroller
+      ];
+      extraConfig = builtins.readFile ./hypr/hyprland.conf;
+    };
+
     gtk = {
       enable = true;
       theme.name = "Adwaita-dark";
@@ -79,7 +87,7 @@
       };
     };
 
-    home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
+    # home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
     home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
 
     home.file.".config/waybar/config".source = ./waybar/config;
