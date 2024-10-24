@@ -55,6 +55,7 @@
     fsType = "btrfs";
     neededForBoot = true;
     depends = [ "/" ];
+    options = [ "subvol=@nixos/nix,compress=zstd" ];
   };
 
   swapDevices = [
