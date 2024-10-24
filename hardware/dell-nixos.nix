@@ -51,11 +51,18 @@
     options = [ "umask=0077" ];
   };
 
-  fileSystems."/nix" = { device = "/dev/disk/by-uuid/da3111a8-4051-4066-a015-ecf824b26757";
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/da3111a8-4051-4066-a015-ecf824b26757";
     fsType = "btrfs";
     neededForBoot = true;
     depends = [ "/" ];
     options = [ "subvol=@nixos/nix,compress=zstd" ];
+  };
+
+  fileSystems."/mnt/shared" = {
+    device = "/dev/disk/by-uuid/da3111a8-4051-4066-a015-ecf824b26757";
+    fsType = "btrfs";
+    options = [ "subvol=@shared,compress=zstd" ];
   };
 
   swapDevices = [
