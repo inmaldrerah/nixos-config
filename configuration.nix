@@ -156,6 +156,8 @@ rec {
     binfmt = true;
   };
 
+  programs.nix-ld.enable = true;
+
   services.xserver.xkb.extraLayouts = {
     us-qwpr = {
       description = "US QWPR layout";
