@@ -2,7 +2,23 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, pkgs, lib, modulesPath, ... }:
-
+let
+  isUnstable = config.boot.zfs.package == pkgs.zfsUnstable;
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (
+      (!isUnstable && !kernelPackages.zfs.meta.broken)
+      || (isUnstable && !kernelPackages.zfs_unstable.meta.broken)
+    )
+  ) pkgs.pkgsGnu.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
+in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -18,7 +34,7 @@
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
-  boot.kernelPackages = pkgs.pkgsGnu.linuxPackages_latest;
+  boot.kernelPackages = latestKernelPackage; # pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
     "amd_pstate=active"
   ];
