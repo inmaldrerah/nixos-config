@@ -66,13 +66,11 @@ in
     options = [ "subvol=@nixos/nix,compress=zstd" ];
   };
 
-  # fileSystems."/mnt/shared" = {
-  #   device = "/dev/disk/by-uuid/4b501aec-8608-486f-a51c-d5af4312c8b1";
-  #   fsType = "btrfs";
-  #   neededForBoot = true;
-  #   depends = [ "/" ];
-  #   options = [ "nofail" ];
-  # };
+  fileSystems."/mnt/shared" = {
+    device = "zpool-shared/root";
+    fsType = "zfs";
+    options = [ "zfsutil" "nofail" ];
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/56F6-1AA8";
