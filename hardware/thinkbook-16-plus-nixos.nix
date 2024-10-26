@@ -11,7 +11,7 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.supportedFilesystems = [ "overlay" "btrfs" ];
+  boot.supportedFilesystems = [ "overlay" "btrfs" "zfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
@@ -22,6 +22,8 @@
   boot.kernelParams = [
     "amd_pstate=active"
   ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "4ce220a9";
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
