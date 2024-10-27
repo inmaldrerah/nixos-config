@@ -84,4 +84,8 @@ in
     }
   ];
 
+  environment.persistence."/nix/persist".files = [
+    "/etc/zfs/zpool.cache"
+  ];
+
 }
