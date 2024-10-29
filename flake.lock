@@ -468,11 +468,11 @@
     },
     "hm-extension": {
       "locked": {
-        "lastModified": 1730200231,
-        "narHash": "sha256-ToPPQBcOqp9dm8ydYEbBzOulKBuVtEjY8Es6uGyeXWo=",
+        "lastModified": 1730212695,
+        "narHash": "sha256-QFJeDM46BCE5H1L8XB2WhlP/qC+UCkhcuQG6T6Ta894=",
         "owner": "inmaldrerah",
         "repo": "hm-extension",
-        "rev": "2741610fb13e3e46d923702e575d1484b86cb0f9",
+        "rev": "44ab609bb27bf8e08286d0f88702fb34cd18f581",
         "type": "github"
       },
       "original": {
