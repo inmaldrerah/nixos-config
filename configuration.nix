@@ -93,6 +93,8 @@ rec {
       version = "0.0";
     };
 
+  programs.command-not-found.enable = false;
+
   # Enable regreet for Wayland greeter
   programs.regreet = {
     enable = true;
@@ -200,6 +202,7 @@ rec {
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    neovim # make sure other users have this
     brightnessctl
     alsa-utils # for amixer
     wget
