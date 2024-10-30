@@ -18,7 +18,7 @@
     };
 
     programs.bash = {
-      enable = true;
+      enable = false;
       shellOptions = [ "globstar" ];
       shellAliases = {
       };
@@ -88,6 +88,14 @@
         "x-scheme-handler/unknown" = "firefox.desktop";
       };
     };
+
+    home.file.".bashrc".text = ''
+        [[ $- == *i* ]] || return
+        shopt -s globstar
+        export TERM=xterm-256color
+        export PATH=~/.local/bin:$PATH
+        ulimit -Sn 524288
+    '';
 
     # home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
     home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
