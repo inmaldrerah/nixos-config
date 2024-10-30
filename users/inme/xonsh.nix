@@ -7,10 +7,6 @@
         def __rebuild_system_local(args):
           return ![nixos-rebuild -v --use-remote-sudo --flake /etc/nixos @(args)]
         
-        def __rebuild_system_remote(args):
-          substituters = tuple(map(lambda s: s[len("trusted-substituters = "):], filter(lambda s: s.startswith("trusted-substituters = "), p"/etc/nix/nix.conf".read_text().split("\n"))))[0]
-          return ![nixos-rebuild -j0 -v --option substituters @(substituters) --builders ssh://nixos@router.local --use-remote-sudo --flake /etc/nixos @(args)]
-        
         def __commit_nixos_config(args):
           current_pwd = $PWD
           $[cd /etc/nixos]
@@ -20,15 +16,7 @@
        
         def __rebuild_system(args):
           __commit_nixos_config(args)
-          home = $HOME
-          if pf"{home}/.nix-local".is_file():
-            return __rebuild_system_local(args)
-          else:
-            status = !(curl http://nix-serve.router.local/ --noproxy nix-serve.router.local --connect-timeout 1)
-            if not status:
-              return __rebuild_system_local(args)
-            else:
-              return __rebuild_system_remote(args)
+          return __rebuild_system_local(args)
         
         def rebuild_system(args):
           rebuild_status = __rebuild_system(args)
@@ -39,16 +27,7 @@
               ![sudo bootctl set-oneshot @(target)]
           return rebuild_status
         
-        def toggle_nix_local(args):
-          if "HOME" in ''${...} and $HOME != "":
-            home = $HOME
-            if pf"{home}/.nix-local".is_file():
-              $[rm f"{home}/.nix-local"]
-            else:
-              $[touch f"{home}/.nix-local"]
-        
         aliases["rebuild-system"] = rebuild_system
-        aliases["toggle-nix-local"] = toggle_nix_local
       
       __nix_helper_init()
       del __nix_helper_init
