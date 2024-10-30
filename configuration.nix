@@ -2,24 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixpkgsInput, ... }:
 
 rec {
   nix = {
+    nixPath = [ "nixpkgs=${nixpkgsInput}" ];
     package = pkgs.nixFlakes;
-    buildMachines = [{
-      hostName = "router.local";
-      systems = [
-        "x86_64-linux"
-      ];
-      protocol = "ssh";
-      sshUser = "nixos";
-      maxJobs = 36;
-      speedFactor = 2;
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      mandatoryFeatures = [ ];
-    }];
-    distributedBuilds = true;
     settings = {
       builders = [];
       experimental-features = [ "nix-command" "flakes" ];
@@ -36,13 +24,10 @@ rec {
         "https://nix-community.cachix.org"
         "https://cache.garnix.io"
         "https://cache.nixos.org"
-        "http://nix-serve.router.local"
-        "ssh-ng://nixos@router.local"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-        "router:XaQUUJ1AWd1+1JZ9CjYdMs/WoKstGyD5gD/r4gE2HQw="
       ];
     };
     daemonCPUSchedPolicy = "idle";
