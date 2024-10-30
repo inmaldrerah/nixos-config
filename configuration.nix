@@ -9,7 +9,6 @@ rec {
     nixPath = [ "nixpkgs=${nixpkgsInput}" ];
     package = pkgs.nixFlakes;
     settings = {
-      builders = [];
       experimental-features = [ "nix-command" "flakes" ];
       keep-outputs = true;
       keep-derivations = true;
