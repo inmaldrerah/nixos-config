@@ -67,7 +67,7 @@ in
   };
 
   fileSystems."/mnt/shared" = {
-    device = "shared/root";
+    device = "zpool/shared";
     fsType = "zfs";
     options = [ "zfsutil" "nofail" ];
   };
