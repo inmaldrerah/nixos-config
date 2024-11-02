@@ -67,7 +67,7 @@ in
   };
 
   fileSystems."/mnt/shared" = {
-    device = "zpool/shared";
+    device = "topmore-aquarius-zpool/shared";
     fsType = "zfs";
     options = [ "zfsutil" "nofail" ];
   };
