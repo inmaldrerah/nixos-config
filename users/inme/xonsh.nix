@@ -21,8 +21,8 @@
         def __rebuild_system(args):
           __commit_nixos_config()
           if "--update" in args:
-            args.remove("--update")
             __update_system()
+            args.remove("--update")
           return __rebuild_system_local(args)
         
         def rebuild_system(args):
