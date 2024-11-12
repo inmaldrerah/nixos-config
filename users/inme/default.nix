@@ -154,6 +154,7 @@
       networkmanagerapplet
       lua-language-server
       nix-output-monitor
+      deltachat-desktop 
       firefox-wayland
       mission-center
       wl-clipboard
@@ -209,6 +210,7 @@
       "Share"
       "VirtualMachine"
       ".config/dconf"
+      ".config/DeltaChat"
       ".config/environment.d"
       ".config/fcitx5"
       ".config/fontconfig"
