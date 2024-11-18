@@ -7,7 +7,7 @@
 rec {
   nix = {
     nixPath = [ "nixpkgs=${nixpkgsInput}" ];
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.latest;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       keep-outputs = true;
