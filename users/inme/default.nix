@@ -86,6 +86,29 @@
         "x-scheme-handler/about" = "firefox.desktop";
         "x-scheme-handler/mailto" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
+        
+        "application/msword" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.template" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-word.document.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-word.template.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+
+        "application/vnd.ms-excel" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.template" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-excel.sheet.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-excel.template.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-excel.addin.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-excel.sheet.binary.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+
+        "application/vnd.ms-powerpoint" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.presentationml.template" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.openxmlformats-officedocument.presentationml.slideshow" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-powerpoint.addin.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-powerpoint.presentation.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-powerpoint.template.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
+        "application/vnd.ms-powerpoint.slideshow.macroEnabled.12" = "onlyoffice-desktopeditors.desktop";
       };
     };
 
