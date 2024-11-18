@@ -38,6 +38,9 @@ rec {
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-30.5.1" # for deltachat
+  ];
 
   system.switch.enable = false;
   system.switch.enableNg = true;
