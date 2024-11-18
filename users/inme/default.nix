@@ -179,7 +179,7 @@
       nix-output-monitor
       deltachat-desktop 
       firefox-wayland
-      mission-center
+      # mission-center # broken
       onlyoffice-bin
       wl-clipboard
       libreoffice
