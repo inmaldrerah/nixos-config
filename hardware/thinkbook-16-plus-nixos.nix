@@ -34,11 +34,12 @@ in
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
-  boot.kernelPackages = latestKernelPackage; # pkgs.pkgsGnu.linuxPackages_latest;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages; # latestKernelPackage; # pkgs.pkgsGnu.linuxPackages_latest;
   boot.kernelParams = [
     "amd_pstate=active"
   ];
   boot.zfs.forceImportRoot = false;
+  boot.zfs.unstable = true;
   networking.hostId = "4ce220a9";
 
   hardware.graphics.enable = true;
