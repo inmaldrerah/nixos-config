@@ -39,7 +39,7 @@ in
     "amd_pstate=active"
   ];
   boot.zfs.forceImportRoot = false;
-  boot.zfs.unstable = true;
+  boot.zfs.package = pkgs.zfsUnstable;
   networking.hostId = "4ce220a9";
 
   hardware.graphics.enable = true;
