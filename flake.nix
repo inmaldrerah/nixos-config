@@ -41,7 +41,6 @@
     impermanence,
     neovim-nightly-overlay,
     nixvim,
-    private,
     nur-linyinfeng, ... }:
   let
     triple = "x86_64-unknown-linux-gnu";
