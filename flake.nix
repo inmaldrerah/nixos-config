@@ -28,10 +28,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    private = {
-      url = "path:/etc/nixos/private";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,7 +67,7 @@
           ./overlays.nix
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
-          private.nixosModules.default
+          (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
           ./configuration.nix
           ./hardware
           ./network.nix
