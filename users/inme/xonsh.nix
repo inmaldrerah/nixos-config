@@ -5,17 +5,24 @@
     rcFiles."nix-helper.xsh".text = ''
       def __nix_helper_init():
         def __rebuild_system_local(args):
-          return ![nixos-rebuild -v --use-remote-sudo --flake /etc/nixos @(args)]
+          return ![nixos-rebuild -v --use-remote-sudo --flake /etc/nixos --impure @(args)]
         
-        def __commit_nixos_config(args):
+        def __commit_nixos_config():
           current_pwd = $PWD
           $[cd /etc/nixos]
           $[git add .]
           $[git commit -m @("snapshot@{}".format(str($(date -u +%m/%d/%Y-%T)).strip()))]
           $[cd @(current_pwd)]
-       
+        
+        def __update_system():
+          $[nix flake update --flake "/etc/nixos"]
+          $[nix flake update --flake "path:/etc/nixos/private"]
+        
         def __rebuild_system(args):
-          __commit_nixos_config(args)
+          __commit_nixos_config()
+          if "--update" in args:
+            args.remove("--update")
+            __update_system()
           return __rebuild_system_local(args)
         
         def rebuild_system(args):
