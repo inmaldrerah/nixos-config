@@ -19,10 +19,10 @@
           $[nix flake update --flake "path:/etc/nixos/private"]
         
         def __rebuild_system(args):
-          __commit_nixos_config()
           if "--update" in args:
             __update_system()
             args.remove("--update")
+          __commit_nixos_config()
           return __rebuild_system_local(args)
         
         def rebuild_system(args):
