@@ -220,7 +220,8 @@ rec {
       noto-fonts-cjk-serif
       fira-code
       fira-code-symbols
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      nerd-fonts.symbols-only
       font-awesome
     ];
     fontconfig.defaultFonts = {
