@@ -36,18 +36,6 @@ let
   stdenv = (import nixpkgsInput {
     localSystem = config.nixpkgs.hostPlatform;
   }).stdenv;
-  gnuOverlays = [
-    (self: super: rec {
-      pkgsGnu = import nixpkgsInput {
-        overlays = [ (self': super': {
-          pkgsGnu = super';
-        }) ];
-        localSystem.parsed = stdenv.hostPlatform.parsed // {
-          abi = lib.systems.parse.abis.gnu;
-        };
-      };
-    })
-  ];
   muslOverlays = [
     (self: super: {
       inherit (super.pkgsGnu) greetd libopus mesa pipewire samba direnv xray grub libinput virglrenderer libjxl wayland libproxy libqmi wayland-protocols graphviz glib-networking ffmpeg_4 ffmpeg_5 libcanberra gtk3 gtk4 swaybg wl-clipboard slurp grim swaylock swayidle gst_all_1 xwayland qtbase_6 qttools_6 wlroots_0_15 wlroots_0_16 networkmanager gtk-layer-shell wlroots-hyprland_0_17 wireplumber swappy wlogout wofi libjack2 libdbusmenu-gtk3 cage ;
