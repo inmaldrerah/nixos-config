@@ -169,9 +169,9 @@ rec {
 
   services.sunshine = {
     enable = true;
-    autoStart = true;
+    autoStart = false;
     capSysAdmin = true;
-    openFirewall = true;
+    openFirewall = false;
   };
 
   # Disable nscd
