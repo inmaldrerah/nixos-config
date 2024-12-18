@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs = {
+      # url = "github:nixos/nixpkgs/nixos-unstable-small";
       url = "github:nixos/nixpkgs/nixos-unstable";
-      # url = "github:nixos/nixpkgs/nixos-unstable";
       # url = "github:inmaldrerah/nixpkgs/stc-merge-restart-start";
     };
     nixpkgs-stable = {
