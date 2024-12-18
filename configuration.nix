@@ -42,9 +42,6 @@ rec {
     "electron-30.5.1" # for deltachat
   ];
 
-  system.switch.enable = false;
-  system.switch.enableNg = true;
-
   # Use EFI boot loader.
   boot.loader.systemd-boot = {
     enable = true;
