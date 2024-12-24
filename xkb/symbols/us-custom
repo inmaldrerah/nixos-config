@@ -3,7 +3,7 @@ xkb_symbols "us-custom" {
   include "level3(ralt_switch)"
 
   key <AD01> { [         q,          Q, semicolon,      colon ] };
-  key <AD02> { [         m,          M,         y,          Y ] };
+  key <AD02> { [         w,          W,         y,          Y ] };
   key <AD03> { [         d,          D,         u,          U ] };
   key <AD04> { [         p,          P,         f,          F ] };
   key <AD05> { [         f,          F,         j,          J ] };
@@ -30,7 +30,7 @@ xkb_symbols "us-custom" {
   key <AB04> { [         v,          V,         v,          V ] };
   key <AB05> { [         b,          B,         k,          K ] };
   key <AB06> { [         j,          J,         b,          B ] };
-  key <AB07> { [         w,          W,         m,          M ] };
+  key <AB07> { [         m,          M,         m,          M ] };
   key <AB08> { [     comma,       less,         x,          X ] };
   key <AB09> { [    period,    greater,         z,          Z ] };
   key <AB10> { [     slash,   question,         g,          G ] };
