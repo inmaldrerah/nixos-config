@@ -27,14 +27,12 @@
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = [
     pkgs.amdvlk # for Vulkan
-    pkgs.rocmPackages.clr.icd # for OpenCL support
+    # pkgs.rocmPackages.clr.icd # for OpenCL support
   ];
   hardware.graphics.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk # for Vulkan
   ];
   hardware.amdgpu.initrd.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
 
   hardware.bluetooth.enable = true;
 
