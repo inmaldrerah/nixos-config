@@ -37,6 +37,7 @@ rec {
       "udp://[::1]:5553"
       "https://1.1.1.1/dns-query"
     ];
+    upstream-mode = "fastest_addr";
   };
 
   # Enable the OpenSSH daemon.
