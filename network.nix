@@ -32,12 +32,13 @@ rec {
     upstream = [
       "[/centaur-centauri.ts.net/]100.100.100.100:53"
       "[/nju.edu.cn/]210.28.129.251:53"
-      "[/nju.edu.cn/]https://223.5.5.5/dns-query"
       "[/cn/]https://223.5.5.5/dns-query"
       "udp://[::1]:5553"
+    ];
+    fallback = [
+      "[/nju.edu.cn/]https://223.5.5.5/dns-query"
       "https://1.1.1.1/dns-query"
     ];
-    upstream-mode = "parallel";
   };
 
   # Enable the OpenSSH daemon.
