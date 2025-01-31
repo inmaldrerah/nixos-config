@@ -67,7 +67,7 @@
       plugins = with pkgs.hyprlandPlugins; [
         (hyprscroller.overrideAttrs (old: {
           version = "0-unstable-2025-01-30";
-          src = lib.fetchFromGitHub {
+          src = pkgs.fetchFromGitHub {
             owner = "dawsers";
             repo = "hyprscroller";
             rev = "e4b13544ef3cc235eb9ce51e0856ba47eb36e8ac";
