@@ -258,6 +258,7 @@
   shared-persistence = {
     directories = [
       "Pictures"
+      "Videos"
     ];
   };
 }
