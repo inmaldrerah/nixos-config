@@ -23,7 +23,7 @@
   ];
   networking.hostId = "4ce220a9";
 
-  boot.zfs.enable = true;
+  boot.zfs.enabled = true;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
