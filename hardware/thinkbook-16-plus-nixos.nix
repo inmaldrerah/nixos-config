@@ -10,18 +10,20 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.supportedFilesystems = [ "overlay" "btrfs" ];
+  boot.supportedFilesystems = [ "overlay" "btrfs" "zfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.kernelParams = [
     "amd_pstate=active"
   ];
   networking.hostId = "4ce220a9";
+
+  boot.zfs.enable = true;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
