@@ -23,6 +23,71 @@
   ];
   networking.hostId = "4ce220a9";
 
+  boot.zfs.requestEncryptionCredentials = [];
+
+  boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.services = let
+      zfsCmd = "${config.boot.zfs.package}/sbin/zfs";
+      askPasswd = "${config.boot.initrd.systemd.package}/bin/systemd-ask-password";
+  in {
+    zfs-unlock-zpool-keys = {
+      wants = [
+        "zfs-import-zpool.service"
+        "-.mount"
+      ];
+      after = [
+        "zfs-import-zpool.service"
+        "-.mount"
+      ];
+      requiredBy = [
+        "mnt-keys.mount"
+      ];
+      before = [
+        "mnt-keys.mount"
+        "shutdown.target"
+      ];
+      conflicts = [ "shutdown.target" ];
+      unitConfig = {
+        DefaultDependencies = "no";
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        ${askPasswd} --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for zpool/keys:" | ${zfsCmd} load-key "zpool/keys"
+      '';
+    };
+    zfs-unlock-zpool-nixos = {
+      wants = [
+        "zfs-import-zpool.service"
+        "mnt-keys.mount"
+      ];
+      after = [
+        "zfs-import-zpool.service"
+        "mnt-keys.mount"
+      ];
+      requiredBy = [
+        "nix.mount"
+      ];
+      before = [
+        "nix.mount"
+        "shutdown.target"
+      ];
+      conflicts = [ "shutdown.target" ];
+      unitConfig = {
+        DefaultDependencies = "no";
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        ${zfsCmd} load-key "zpool/nixos"
+      '';
+    };
+  };
+
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = [
@@ -54,7 +119,7 @@
   };
 
   fileSystems."/nix" = {
-    device = "zpool/nix";
+    device = "zpool/nixos";
     fsType = "zfs";
     neededForBoot = true;
     depends = [ "/mnt/keys" ];
