@@ -46,12 +46,18 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/85cbadbd-85a6-420b-8534-2597d9f8da21";
-    fsType = "btrfs";
+  fileSystems."/mnt/keys" = {
+    device = "zpool/keys";
+    fsType = "zfs";
     neededForBoot = true;
     depends = [ "/" ];
-    options = [ "subvol=@nixos/nix,compress=zstd" ];
+  };
+
+  fileSystems."/nix" = {
+    device = "zpool/nix";
+    fsType = "zfs";
+    neededForBoot = true;
+    depends = [ "/mnt/keys" ];
   };
 
   fileSystems."/mnt/shared" = {
@@ -61,7 +67,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/56F6-1AA8";
+    device = "/dev/disk/by-uuid/889D-C417";
     fsType = "vfat";
     options = [ "umask=0077" ];
   };
