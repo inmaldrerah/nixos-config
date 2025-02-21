@@ -75,7 +75,6 @@
     device = "zpool/nixos";
     fsType = "zfs";
     options = [ "zfsutil" ];
-    depends = [ "/nix" ];
   };
 
   fileSystems."/mnt/shared" = {
