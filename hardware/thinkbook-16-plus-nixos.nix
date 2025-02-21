@@ -72,7 +72,7 @@
   };
 
   fileSystems."/nix/persist" = {
-    device = "zpool/nixos";
+    device = "zpool/nixos/persist";
     fsType = "zfs";
     neededForBoot = true;
     options = [ "zfsutil" ];
