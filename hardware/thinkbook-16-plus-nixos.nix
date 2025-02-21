@@ -25,68 +25,12 @@
 
   boot.zfs.requestEncryptionCredentials = [];
 
-  boot.initrd.systemd.enable = true;
-  boot.initrd.systemd.services = let
-      zfsCmd = "${config.boot.zfs.package}/sbin/zfs";
-      askPasswd = "${config.boot.initrd.systemd.package}/bin/systemd-ask-password";
-  in {
-    zfs-unlock-zpool-keys = {
-      wants = [
-        "zfs-import-zpool.service"
-        "-.mount"
-      ];
-      after = [
-        "zfs-import-zpool.service"
-        "-.mount"
-      ];
-      requiredBy = [
-        "mnt-keys.mount"
-      ];
-      before = [
-        "mnt-keys.mount"
-        "shutdown.target"
-      ];
-      conflicts = [ "shutdown.target" ];
-      unitConfig = {
-        DefaultDependencies = "no";
-      };
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      script = ''
-        ${askPasswd} --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for zpool/keys:" | ${zfsCmd} load-key "zpool/keys"
-      '';
-    };
-    zfs-unlock-zpool-nixos = {
-      wants = [
-        "zfs-import-zpool.service"
-        "mnt-keys.mount"
-      ];
-      after = [
-        "zfs-import-zpool.service"
-        "mnt-keys.mount"
-      ];
-      requiredBy = [
-        "nix.mount"
-      ];
-      before = [
-        "nix.mount"
-        "shutdown.target"
-      ];
-      conflicts = [ "shutdown.target" ];
-      unitConfig = {
-        DefaultDependencies = "no";
-      };
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      script = ''
-        ${zfsCmd} load-key "zpool/nixos"
-      '';
-    };
-  };
+  boot.initrd.postResumeCommands = lib.mkAfter ''
+    zfs load-key -- zpool/keys
+    zfs mount zpool/keys
+    zfs load-key -a
+  '';
+  boot.initrd.systemd.enable = false;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -115,6 +59,7 @@
     device = "zpool/keys";
     fsType = "zfs";
     neededForBoot = true;
+    options = [ "zfsutil" ];
     depends = [ "/" ];
   };
 
@@ -122,13 +67,22 @@
     device = "zpool/nixos";
     fsType = "zfs";
     neededForBoot = true;
+    options = [ "zfsutil" ];
     depends = [ "/mnt/keys" ];
+  };
+
+  fileSystem."/nix/persist" = {
+    device = "zpool/nixos";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+    depends = [ "/nix" ];
   };
 
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/e08af0f6-084c-4e34-b2ea-918707a1d3dc";
     fsType = "btrfs";
     options = [ "compress=zstd" ];
+    depends = [ "/" ];
   };
 
   fileSystems."/boot" = {
