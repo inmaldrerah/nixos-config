@@ -71,10 +71,11 @@
     depends = [ "/mnt/keys" ];
   };
 
-  fileSystem."/nix/persist" = {
+  fileSystems."/nix/persist" = {
     device = "zpool/nixos";
     fsType = "zfs";
     options = [ "zfsutil" ];
+    depends = [ "/nix" ];
   };
 
   fileSystems."/mnt/shared" = {
