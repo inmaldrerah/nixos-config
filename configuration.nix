@@ -80,13 +80,23 @@ rec {
   programs.command-not-found.enable = false;
 
   # Enable regreet for Wayland greeter
-  programs.regreet = {
+  # programs.regreet = {
+  #   enable = true;
+  #   settings.GTK.theme_name = lib.mkForce "Adwaita-dark";
+  # };
+  # services.greetd.settings.default_session.command = let
+  #   cfg = config.programs.regreet;
+  # in "${pkgs.dbus}/bin/dbus-run-session -- sh -c '${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
+  services.greetd = {
     enable = true;
-    settings.GTK.theme_name = lib.mkForce "Adwaita-dark";
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.dbus}/bin/dbus-run-session -- ${lib.getExe programs.hyprland.package}";
+        user = "inme";
+      };
+      defualt_session = initial_session;
+    };
   };
-  services.greetd.settings.default_session.command = let
-    cfg = config.programs.regreet;
-  in "${pkgs.dbus}/bin/dbus-run-session -- sh -c '${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
 
   programs.xonsh.enable = true;
 
