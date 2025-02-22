@@ -89,12 +89,12 @@ rec {
   # in "${pkgs.dbus}/bin/dbus-run-session -- sh -c '${lib.getExe pkgs.cage} ${lib.escapeShellArgs cfg.cageArgs} -- ${lib.getExe cfg.package}'";
   services.greetd = {
     enable = true;
-    settings = lib.mkForce rec {
+    settings = rec {
       initial_session = {
         command = "Hyprland";
         user = "inme";
       };
-      defualt_session = initial_session;
+      default_session = initial_session;
     };
   };
 
