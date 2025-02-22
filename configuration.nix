@@ -91,7 +91,7 @@ rec {
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.dbus}/bin/dbus-run-session -- ${config.programs.hyprland.package}/bin/Hyprland";
+        command = "Hyprland";
         user = "inme";
       };
       defualt_session = initial_session;
