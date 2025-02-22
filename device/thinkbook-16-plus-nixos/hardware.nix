@@ -27,7 +27,8 @@
 
   boot.initrd.postResumeCommands = lib.mkAfter ''
     zfs load-key -- zpool/keys
-    mount -t zfs -o zfsutils zpool/keys /mnt/keys
+    mkdir -p /mnt/keys
+    mount -t zfs -o zfsutil zpool/keys /mnt/keys
     zfs load-key -a
     umount /mnt/keys
   '';
