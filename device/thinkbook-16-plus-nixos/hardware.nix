@@ -27,8 +27,9 @@
 
   boot.initrd.postResumeCommands = lib.mkAfter ''
     zfs load-key -- zpool/keys
-    zfs mount zpool/keys
+    mount -t zfs -o zfsutils zpool/keys /mnt/keys
     zfs load-key -a
+    umount /mnt/keys
   '';
   boot.initrd.systemd.enable = false;
 
@@ -55,14 +56,6 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
-  fileSystems."/mnt/keys" = {
-    device = "zpool/keys";
-    fsType = "zfs";
-    neededForBoot = true;
-    options = [ "zfsutil" ];
-    depends = [ "/" ];
-  };
-
   fileSystems."/nix" = {
     device = "zpool/nixos";
     fsType = "zfs";
@@ -80,7 +73,7 @@
   };
 
   fileSystems."/mnt/shared" = {
-    device = "zpool/nixos/shared";
+    device = "zpool/shared";
     fsType = "zfs";
     options = [ "zfsutil" ];
     depends = [ "/" ];
