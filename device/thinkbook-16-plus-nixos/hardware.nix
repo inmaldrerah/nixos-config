@@ -80,9 +80,9 @@
   };
 
   fileSystems."/mnt/shared" = {
-    device = "/dev/disk/by-uuid/e08af0f6-084c-4e34-b2ea-918707a1d3dc";
-    fsType = "btrfs";
-    options = [ "compress=zstd" ];
+    device = "zpool/nixos/shared";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
     depends = [ "/" ];
   };
 

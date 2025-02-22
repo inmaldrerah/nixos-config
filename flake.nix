@@ -68,7 +68,7 @@
           impermanence.nixosModules.impermanence
           (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
           ./configuration.nix
-          ./hardware
+          ./device/${hostName}
           ./network.nix
           ./storage.nix
           ./users
