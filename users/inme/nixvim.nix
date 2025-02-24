@@ -64,7 +64,7 @@ in {
       enable = true;
       nixGrammars = true;
       settings.indent.enable = true;
-      settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" "c3" ];
+      settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
       grammarPackages = pkgs.vimPlugins.nvim-treesitter.passthru.allGrammars ++ [
         treesitter-c3-grammar
       ];
