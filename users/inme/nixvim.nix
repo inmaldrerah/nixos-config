@@ -51,7 +51,7 @@ in {
       enable = true;
       nixGrammars = true;
       settings.indent.enable = true;
-      settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" "c3" ];
+      settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
       luaConfig.post = ''
         do
           local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
