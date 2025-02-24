@@ -8,6 +8,7 @@ let
       owner = "c3lang";
       repo = "tree-sitter-c3";
       rev = "v0.3.2";
+      hash = "sha256-fwTKCCNzxoWeb0V5a8zWoRIHXv7ADNrw/fjo9G5moa4=";
     };
     meta.homepage = "https://github.com/c3lang/tree-sitter-c3";
   };
