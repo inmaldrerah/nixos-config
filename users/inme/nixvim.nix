@@ -1,6 +1,16 @@
 { nixpkgs-stable, ... }:
 let
   pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
+  treesitter-c3-grammar = pkgs.tree-sitter.buildGrammar {
+    language = "c3";
+    version = "v0.3.2";
+    src = pkgs.fetchFromGitHub {
+      owner = "c3lang";
+      repo = "tree-sitter-c3";
+      rev = "v0.3.2";
+    };
+    meta.homepage = "https://github.com/c3lang/tree-sitter-c3";
+  };
 in {
 
   programs.nixvim = {
@@ -45,6 +55,8 @@ in {
     # Plugins
     extraPlugins = with pkgs.vimPlugins; [
       vim-suda
+    ] ++ [
+      treesitter-c3-grammar
     ];
     plugins.transparent.enable = true;
     plugins.treesitter = {
@@ -52,15 +64,19 @@ in {
       nixGrammars = true;
       settings.indent.enable = true;
       settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
+      grammarPackages = pkgs.vimPlugins.nvim-treesitter.passthru.allGrammars ++ [
+        treesitter-c3-grammar
+      ];
       luaConfig.post = ''
         do
           local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
           parser_config.c3 = {
             install_info = {
-              url = "https://github.com/c3lang/tree-sitter-c3",
+              url = "${treesitter-c3-grammar}",
               files = {"src/parser.c", "src/scanner.c"},
               branch = "main",
             },
+            filetype = "c3",
           }
         end
       '';
