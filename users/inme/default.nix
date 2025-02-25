@@ -200,6 +200,7 @@
       nodejs
       swappy
       trashy
+      comma
       p7zip
       samba
       typst
