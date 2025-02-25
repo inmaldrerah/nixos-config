@@ -92,6 +92,10 @@ in {
       servers.lua_ls.enable = true;
       servers.pylsp.enable = true;
     };
+    plugins.lsp-format.enable = true;
+    plugins.lsp-lines.enable = true;
+    plugins.lsp-signatures.enable = true;
+    plugins.lsp-status.enable = true;
     plugins.persistence.enable = true;
     plugins.neo-tree = {
       enable = true;
