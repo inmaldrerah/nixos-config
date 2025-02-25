@@ -27,10 +27,10 @@
 
   boot.initrd.postResumeCommands = lib.mkAfter ''
     zfs load-key -- zpool/keys
-    mkdir -p /mnt/keys
-    mount -t zfs -o zfsutil zpool/keys /mnt/keys
+    mkdir -p "/Y:/"
+    mount -t zfs -o zfsutil zpool/keys "/Y:/"
     zfs load-key -a
-    umount /mnt/keys
+    umount "/Y:/"
   '';
   boot.initrd.systemd.enable = false;
 
