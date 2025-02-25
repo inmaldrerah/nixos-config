@@ -84,6 +84,14 @@ in {
         end
       '';
     };
+    plugins.lsp = {
+      enable = true;
+      inlayHints = true;
+      servers.c3_lsp.enable = true;
+      servers.jdtls.enable = true;
+      servers.lua_ls.enable = true;
+      servers.pylsp.enable = true;
+    };
     plugins.persistence.enable = true;
     plugins.neo-tree = {
       enable = true;
