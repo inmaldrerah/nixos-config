@@ -87,7 +87,7 @@ in {
     plugins.lsp = {
       enable = true;
       inlayHints = true;
-      servers.c3_lsp.enable = true;
+      # servers.c3_lsp.enable = true;
       servers.jdtls.enable = true;
       servers.lua_ls.enable = true;
       servers.pylsp.enable = true;
