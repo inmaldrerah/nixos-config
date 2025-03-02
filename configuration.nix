@@ -152,6 +152,7 @@ rec {
   services.udev.packages = [
     pkgs.android-udev-rules
   ];
+  # Canokey udev rules
   services.udev.extraRules = ''
     # GnuPG/pcsclite
     SUBSYSTEM!="usb", GOTO="canokeys_rules_end"
@@ -239,15 +240,14 @@ rec {
     };
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
 
-  # List services that you want to enable:
+  # Canokey
+  services.pcscd.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
