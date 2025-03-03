@@ -28,37 +28,10 @@
   boot.initrd.extraUtilsCommands = let
     cfgZfs = config.boot.zfs;
   in ''
-    copy_bin_and_libs ${pkgs.gnupg}/bin/addgnupghome
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgscm
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgv
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-mail-tube
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/dirmngr_ldap
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-check-pattern
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-preset-passphrase
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-wks-client
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/scdaemon
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-auth
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-pair-tool
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-protect-tool
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/keyboxd
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/tpm2daemon
-    copy_bin_and_libs ${pkgs.gnupg}/bin/applygnupgdefaults
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgsm
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-agent
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-wks-client
-    copy_bin_and_libs ${pkgs.gnupg}/bin/watchgnupg
-    copy_bin_and_libs ${pkgs.gnupg}/bin/dirmngr
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgconf
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgsplit
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-card
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-wks-server
-    copy_bin_and_libs ${pkgs.gnupg}/bin/dirmngr-client
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgparsemail
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpgtar
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-connect-agent
-    copy_bin_and_libs ${pkgs.gnupg}/bin/kbxutil
-    copy_bin_and_libs ${pkgs.pcscliteWithPolkit}/bin/pcscd
+    copy_bin_and_libs ${pkgs.gnupg}/libexec/scdaemon
+    # copy_bin_and_libs ${pkgs.pcscliteWithPolkit}/bin/pcscd
     copy_bin_and_libs ${cfgZfs.package}/sbin/zfs
     copy_bin_and_libs ${cfgZfs.package}/sbin/zdb
     copy_bin_and_libs ${cfgZfs.package}/sbin/zpool
@@ -66,12 +39,15 @@
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/zvol_id
   '';
   boot.initrd.postResumeCommands = lib.mkAfter ''
-    mkdir -p /mnt/zpool/public
-    mount -t zfs -o zfsutil zpool/public /mnt/zpool/public
-    pcscd --auto-exit
-    gpg-agent --daemon
-    gpg --import /mnt/zpool/public/canokey.asc
-    gpg --pinentry-mode loopback --decrypt /mnt/zpool/public/zpool.key.gpg | zfs load-key -- zpool/keys
+    mkdir -p /crypt-ramfs
+    export GPG_TTY=$(tty)
+    export GNUPGHOME=/crypt-ramfs/.gnupg
+    mkdir -p /crypt-ramfs/public
+    mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
+    # pcscd --auto-exit
+    gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
+    gpg --import /crypt-ramfs/public/canokey.asc
+    gpg --pinentry-mode loopback --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
     mkdir -p "/Y:/"
     mount -t zfs -o zfsutil zpool/keys "/Y:/"
     zfs load-key -a
