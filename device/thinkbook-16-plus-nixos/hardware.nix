@@ -31,6 +31,7 @@
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-agent
     copy_bin_and_libs ${pkgs.gnupg}/libexec/scdaemon
+    copy_bin_and_libs ${pkgs.pcscliteWithPolkit}/bin/pcscd
     copy_bin_and_libs ${cfgZfs.package}/sbin/zfs
     copy_bin_and_libs ${cfgZfs.package}/sbin/zdb
     copy_bin_and_libs ${cfgZfs.package}/sbin/zpool
@@ -43,8 +44,11 @@
     mkdir -p /crypt-ramfs/public
     mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
     gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
+    pcscd -x
     gpg --import /crypt-ramfs/public/canokey.asc
     gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
+    # Require passphrase in case the above fails
+    zfs load-key -- zpool/keys
     mkdir -p "/Y:/"
     mount -t zfs -o zfsutil zpool/keys "/Y:/"
     zfs load-key -a
