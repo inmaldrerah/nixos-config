@@ -26,11 +26,17 @@
   boot.zfs.requestEncryptionCredentials = [];
 
   boot.initrd.postResumeCommands = lib.mkAfter ''
-    zfs load-key -- zpool/keys
+    mkdir -p /mnt/zpool/public
+    mount -t zfs -o zfsutil zpool/public /mnt/zpool/public
+    pcscd --auto-exit
+    gpg-agent --daemon
+    gpg --import /mnt/zpool/public/canokey.asc
+    gpg --pinentry-mode loopback --decrypt /mnt/zpool/public/zpool.key.gpg | zfs load-key -- zpool/keys
     mkdir -p "/Y:/"
     mount -t zfs -o zfsutil zpool/keys "/Y:/"
     zfs load-key -a
     umount "/Y:/"
+    umount /mnt/zpool/public
   '';
   boot.initrd.systemd.enable = false;
 
