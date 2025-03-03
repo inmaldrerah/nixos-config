@@ -28,13 +28,11 @@
   boot.initrd.extraUtilsCommands = let
     cfgZfs = config.boot.zfs;
   in ''
-    copy_bin_and_libs ${pkgs.gnupg}/bin/
     copy_bin_and_libs ${pkgs.gnupg}/bin/addgnupghome
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpgscm
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpgv
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-mail-tube
-    copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/
     copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/dirmngr_ldap
     copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-check-pattern
     copy_bin_and_libs ${pkgs.gnupg}/bin/libexec/gpg-preset-passphrase
