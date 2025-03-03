@@ -25,7 +25,7 @@
 
   boot.zfs.requestEncryptionCredentials = [];
 
-  boot.initrd.extraUtilCommands = let
+  boot.initrd.extraUtilsCommands = let
     cfgZfs = config.boot.zfs;
   in ''
     copy_bin_and_libs ${pkgs.gnupg}/bin/
