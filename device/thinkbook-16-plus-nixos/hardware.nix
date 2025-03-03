@@ -39,13 +39,12 @@
   '';
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir -p /crypt-ramfs
-    # export GPG_TTY=$(tty)
     export GNUPGHOME=/crypt-ramfs/.gnupg
     mkdir -p /crypt-ramfs/public
     mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
     gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
     gpg --import /crypt-ramfs/public/canokey.asc
-    gpg --pinentry-mode loopback --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
+    gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
     mkdir -p "/Y:/"
     mount -t zfs -o zfsutil zpool/keys "/Y:/"
     zfs load-key -a
