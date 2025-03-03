@@ -31,7 +31,6 @@
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-agent
     copy_bin_and_libs ${pkgs.gnupg}/libexec/scdaemon
-    # copy_bin_and_libs ${pkgs.pcscliteWithPolkit}/bin/pcscd
     copy_bin_and_libs ${cfgZfs.package}/sbin/zfs
     copy_bin_and_libs ${cfgZfs.package}/sbin/zdb
     copy_bin_and_libs ${cfgZfs.package}/sbin/zpool
@@ -40,11 +39,10 @@
   '';
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir -p /crypt-ramfs
-    export GPG_TTY=$(tty)
+    # export GPG_TTY=$(tty)
     export GNUPGHOME=/crypt-ramfs/.gnupg
     mkdir -p /crypt-ramfs/public
     mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
-    # pcscd --auto-exit
     gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
     gpg --import /crypt-ramfs/public/canokey.asc
     gpg --pinentry-mode loopback --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
