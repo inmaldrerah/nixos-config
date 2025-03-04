@@ -148,7 +148,6 @@ in {
         pick.key = "<C-p>";
       };
     };
-    plugins.orgmode.enable = true;
 
     # Keymaps
     keymaps = [
