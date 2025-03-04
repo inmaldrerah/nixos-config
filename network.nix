@@ -27,7 +27,7 @@ rec {
   services.dnsproxy.enable = true;
   services.dnsproxy.settings = {
     bootstrap = [ "https://223.5.5.5/dns-query" ];
-    listen-addrs = [ "127.0.0.1" ];
+    listen-addrs = [ "::1" ];
     listen-ports = [ 5553 ];
     upstream = [
       "[/centaur-centauri.ts.net/]100.100.100.100:53"
