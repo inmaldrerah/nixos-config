@@ -31,7 +31,7 @@
         def rebuild_system(args):
           rebuild_status = __rebuild_system(args)
           orig_env = ''${...}
-          ''${...} = xonsh.environ.Env(orig_env)
+          ''${...} = xonsh.environ.Env(orig_env.detype())
           if "SUDO_ASKPASS" in ''${...}:
             del $SUDO_ASKPASS
           if any(map(lambda x: x in args, ["switch", "boot"])):
