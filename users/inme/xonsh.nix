@@ -30,16 +30,17 @@
         
         def rebuild_system(args):
           rebuild_status = __rebuild_system(args)
-          orig_env = ''${...}
-          ''${...} = xonsh.environ.Env(orig_env.detype())
+          orig_askpass = None
           if "SUDO_ASKPASS" in ''${...}:
+            orig_askpass = $SUDO_ASKPASS
             del $SUDO_ASKPASS
           if any(map(lambda x: x in args, ["switch", "boot"])):
             target = $(sudo -A cat /boot/loader/loader.conf).split()[3]
             print(f"setting default to @saved and oneshot to {target}")
             ![sudo -A bootctl set-default "@saved"] && \
               ![sudo -A bootctl set-oneshot @(target)]
-          ''${...} = orig_env
+          if orig_askpass is not None:
+            $SUDO_ASKPASS = orig_askpass
           return rebuild_status
         
         aliases["rebuild-system"] = rebuild_system
