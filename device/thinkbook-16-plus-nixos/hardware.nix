@@ -5,6 +5,7 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
+      ./zfs.nix
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
@@ -57,38 +58,13 @@
   '');
   boot.initrd.systemd = let
     prefix = "/sysroot";
-    getMount = mountPoint: utils.escapeSystemdPath (prefix + (lib.removeSuffix "/" mountPoint)) + ".mount";
   in {
     enable = true;
-    packages = [ pkgs.gnupg pkgs.pcscliteWithPolkit ];
     initrdBin = [
       pkgs.gnupg
       pkgs.pcscliteWithPolkit
     ];
     services.zfs-decrypt-zpool-keys = {
-      description = "Decrypt ZFS dataset zpool/keys";
-      requires = [
-        "zfs-import.target"
-      ];
-      after = [
-        "zfs-import.target"
-        (getMount "/X:")
-      ];
-      requiredBy = [
-        (getMount "/Y:")
-      ];
-      before = [
-        (getMount "/Y:")
-        "shutdown.target"
-      ];
-      conflicts = [ "shutdown.target" ];
-      unitConfig = {
-        DefaultDependencies = "no";
-      };
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
       script = ''
         mkdir -p /crypt-ramfs
         export GNUPGHOME=/crypt-ramfs/.gnupg
@@ -96,34 +72,6 @@
         ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
         ${pkgs.gnupg}/bin/gpg --import ${prefix}/X:/canokey.asc
         ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
-      '';
-    };
-    services.zfs-decrypt-zpool-others = {
-      description = "Decrypt ZFS dataset zpool/*";
-      requires = [
-        "zfs-import.target"
-      ];
-      after = [
-        "zfs-import.target"
-        (getMount "/Y:")
-      ];
-      requiredBy = [
-        (getMount "/nix")
-      ];
-      before = [
-        (getMount "/nix")
-        "shutdown.target"
-      ];
-      conflicts = [ "shutdown.target" ];
-      unitConfig = {
-        DefaultDependencies = "no";
-      };
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      script = ''
-        ${config.boot.zfs.package}/sbin/zfs load-key -a
       '';
     };
   };
