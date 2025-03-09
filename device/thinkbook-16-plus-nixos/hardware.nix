@@ -25,7 +25,7 @@
 
   boot.zfs.requestEncryptionCredentials = [];
 
-  boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systed.enable) let
+  boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systed.enable) (let
     cfgZfs = config.boot.zfs;
   in ''
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
@@ -37,7 +37,7 @@
     copy_bin_and_libs ${cfgZfs.package}/sbin/zpool
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/vdev_id
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/zvol_id
-  '';
+  '');
   boot.initrd.postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (lib.mkAfter ''
     mkdir -p /crypt-ramfs
     export GNUPGHOME=/crypt-ramfs/.gnupg
