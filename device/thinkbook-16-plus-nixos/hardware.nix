@@ -25,7 +25,7 @@
 
   boot.zfs.requestEncryptionCredentials = [];
 
-  boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systed.enable) (let
+  boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (let
     cfgZfs = config.boot.zfs;
   in ''
     copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
