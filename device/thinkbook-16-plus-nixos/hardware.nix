@@ -38,7 +38,7 @@
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/vdev_id
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/zvol_id
   '';
-  boot.initrd.postResumeCommands = lib.mkIf !config.boot.initrd.systemd.enable (lib.mkAfter ''
+  boot.initrd.postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (lib.mkAfter ''
     mkdir -p /crypt-ramfs
     export GNUPGHOME=/crypt-ramfs/.gnupg
     mkdir -p /crypt-ramfs/public
