@@ -43,7 +43,7 @@ let
             tries=3
             success=false
             while [[ $success != true ]] && [[ $tries -gt 0 ]]; do
-              ${systemd}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for ${ds}:" | ${zfsCmd} load-key ${ds} \
+              ${systemd}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for ${ds}:" | ${zfsCmd} load-key '${ds}' \
                 && success=true \
                 || tries=$((tries - 1))
             done
@@ -51,12 +51,12 @@ let
             ;;
           * )
             if [[ "$kl" == file://* ]]; then
-              ${zfsCmd} load-key -L "file://${prefix}''${kl#file://}" ${ds}
+              ${zfsCmd} load-key -L "file://${prefix}''${kl#file://}" '${ds}'
             else
-              ${zfsCmd} load-key ${ds}
+              ${zfsCmd} load-key '${ds}'
             fi
             ;;
-        easc
+        esac
         } < /dev/null
       done
     '';
