@@ -151,7 +151,7 @@
   fileSystems."/Y:" = {
     device = "zpool/keys";
     fsType = "zfs";
-    neededForBot = true;
+    neededForBoot = true;
     options = [ "zfsutil" ];
     depends = [ "/X:" ];
   };
