@@ -10,7 +10,7 @@ let
   datasets = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs")));
   datasetsNeededForBoot = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs" && x.neededForBoot) config.system.build.fileSystems));
 
-  createDecryptService = { prefix ? "", ds }: lib.nameValuePair "zfs-decrypt-${utils.escapeSystemdPath ds}" {
+  createDecryptService = { ds, systemd, prefix ? "" }: lib.nameValuePair "zfs-decrypt-${utils.escapeSystemdPath ds}" {
     description = "Decrypt ZFS dataset ${ds}";
     requires = [
       "zfs-import.target"
@@ -43,7 +43,7 @@ let
               tries=3
               success=false
               while [[ $success != true ]] && [[ $tries -gt 0 ]]; do
-                ${systemdAskPassword} --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for ${ds}:" | ${zfsCmd} load-key "${ds}" \
+                ${systemd}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for ${ds}:" | ${zfsCmd} load-key "${ds}" \
                   && success=true \
                   || tries=$((tries - 1))
               done
@@ -64,11 +64,13 @@ let
 in {
   boot.initrd.systemd = {
     services = lib.listToAttrs (map (ds: createDecryptService {
-      prefix = "/sysroot";
       inherit ds;
+      systemd = config.boot.initrd.systemd.package;
+      prefix = "/sysroot";
     }) datasetsNeededForBoot);
   };
   systemd.services = lib.listToAttrs (map (ds: createDecryptService {
     inherit ds;
+    systemd = config.systemd.package;
   }) datasets);
 }
