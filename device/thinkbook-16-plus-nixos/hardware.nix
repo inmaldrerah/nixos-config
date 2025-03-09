@@ -64,22 +64,21 @@
       pkgs.pcscliteWithPolkit
     ];
     services.zfs-import-zpool.script = lib.mkAfter ''
-        mkdir -p /zfs-crypt-ramfs
-        mkdir -p /zfs-crypt-ramfs/public
-        mount -t zfs -o zfsutil zpool/public /zfs-crypt-ramfs/public
-        export GNUPGHOME=/zfs-crypt-ramfs/.gnupg
-        ${pkgs.gnupg}/bin/gpg-agent --daemon
-        ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-        ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.asc
-        ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
-        mkdir -p /Y:
-        mount -t zfs -o zfsutil zpool/keys /Y:
-        ${config.boot.zfs.package}/sbin/zfs load-key -a
-        umount /Y:
-        ${config.boot.zfs.package}/sbin/zfs unload-key zpool/keys
-        umount /zfs-crypt-ramfs/public
-      '';
-    };
+      mkdir -p /zfs-crypt-ramfs
+      mkdir -p /zfs-crypt-ramfs/public
+      mount -t zfs -o zfsutil zpool/public /zfs-crypt-ramfs/public
+      export GNUPGHOME=/zfs-crypt-ramfs/.gnupg
+      ${pkgs.gnupg}/bin/gpg-agent --daemon
+      ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
+      ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.asc
+      ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+      mkdir -p /Y:
+      mount -t zfs -o zfsutil zpool/keys /Y:
+      ${config.boot.zfs.package}/sbin/zfs load-key -a
+      umount /Y:
+      ${config.boot.zfs.package}/sbin/zfs unload-key zpool/keys
+      umount /zfs-crypt-ramfs/public
+    '';
   };
 
   hardware.graphics.enable = true;
