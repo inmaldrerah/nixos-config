@@ -66,7 +66,7 @@ in {
     services = lib.listToAttrs (map (ds: createDecryptService {
       prefix = "/sysroot";
       inherit ds;
-    }) datasetsNeededForBoot)
+    }) datasetsNeededForBoot);
   };
   systemd.services = lib.listToAttrs (map (ds: createDecryptService {
     inherit ds;
