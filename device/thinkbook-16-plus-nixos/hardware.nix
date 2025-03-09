@@ -79,7 +79,7 @@
       unitConfig = {
         DefaultDependencies = "no";
       };
-      sericeConfig = {
+      serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
       };
@@ -107,7 +107,7 @@
       unitConfig = {
         DefaultDependencies = "no";
       };
-      sericeConfig = {
+      serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
       };
