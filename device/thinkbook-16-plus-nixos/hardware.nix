@@ -61,6 +61,11 @@
   in {
     enable = true;
     packages = [ pkgs.gnupg pkgs.pcscliteWithPolkit ];
+    extraBin = {
+      gpg-agent = "${pkgs.gnupg}/bin/gnupg-agent";
+      gpg = "${pkgs.gnupg}/bin/gpg";
+      pcscd = "${pkgs.pcscliteWithPolkit}/bin/pcscd";
+    };
     services.zfs-decrypt-zpool-keys = {
       description = "Decrypt ZFS dataset zpool/keys";
       requires = [
@@ -90,8 +95,8 @@
         export GNUPGHOME=/cryptramfs/.gnupg
         ${pkgs.gnupg}/bin/gpg-agent --daemon
         ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-        ${pkgs.gnupg}/bin/gpg-agent --import ${prefix}/X:/canokey.asc
-        ${pkgs.gnupg}/bin/gpg-agent --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+        ${pkgs.gnupg}/bin/gpg --import ${prefix}/X:/canokey.asc
+        ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
       '';
     };
     services.zfs-decrypt-zpool-others = {
