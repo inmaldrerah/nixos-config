@@ -91,7 +91,7 @@
       };
       script = ''
         mkdir -p /crypt-ramfs
-        export GNUPGHOME=/cryptramfs/.gnupg
+        export GNUPGHOME=/crypt-ramfs/.gnupg
         ${pkgs.gnupg}/bin/gpg-agent --daemon
         ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
         ${pkgs.gnupg}/bin/gpg --import ${prefix}/X:/canokey.asc
