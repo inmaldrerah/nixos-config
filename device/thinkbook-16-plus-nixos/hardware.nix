@@ -60,6 +60,7 @@
     getMount = mountPoint: utils.escapeSystemdPath (prefix + (lib.removeSuffix "/" mountPoint)) + ".mount";
   in {
     enable = true;
+    packages = [ pkgs.gnupg pkgs.pcscliteWithPolkit ];
     services.zfs-decrypt-zpool-keys = {
       description = "Decrypt ZFS dataset zpool/keys";
       requires = [
@@ -87,10 +88,10 @@
       script = ''
         mkdir -p /crypt-ramfs
         export GNUPGHOME=/cryptramfs/.gnupg
-        ${pkgs.gpg-agent}/bin/gpg-agent --daemon
+        ${pkgs.gnupg}/bin/gpg-agent --daemon
         ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-        ${pkgs.gpg-agent}/bin/gpg-agent --import ${prefix}/X:/canokey.asc
-        ${pkgs.gpg-agent}/bin/gpg-agent --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+        ${pkgs.gnupg}/bin/gpg-agent --import ${prefix}/X:/canokey.asc
+        ${pkgs.gnupg}/bin/gpg-agent --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
       '';
     };
     services.zfs-decrypt-zpool-others = {
