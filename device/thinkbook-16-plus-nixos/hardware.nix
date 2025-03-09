@@ -56,7 +56,8 @@
     umount /mnt/zpool/public
   '');
   boot.initrd.systemd = let
-    getMount = mountPoint: utils.escapeSystemdPath ("/sysroot" + (lib.removeSuffix "/" mountPoint)) + ".mount";
+    prefix = "/sysroot";
+    getMount = mountPoint: utils.escapeSystemdPath (prefix + (lib.removeSuffix "/" mountPoint)) + ".mount";
   in {
     enable = true;
     services.zfs-decrypt-zpool-keys = {
@@ -84,7 +85,12 @@
         RemainAfterExit = true;
       };
       script = ''
-        ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+        mkdir -p /crypt-ramfs
+        export GNUPGHOME=/cryptramfs/.gnupg
+        ${pkgs.gpg-agent}/bin/gpg-agent --daemon
+        ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
+        ${pkgs.gpg-agent}/bin/gpg-agent --import ${prefix}/X:/canokey.asc
+        ${pkgs.gpg-agent}/bin/gpg-agent --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
       '';
     };
     services.zfs-decrypt-zpool-others = {
