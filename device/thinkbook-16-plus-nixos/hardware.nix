@@ -61,11 +61,10 @@
   in {
     enable = true;
     packages = [ pkgs.gnupg pkgs.pcscliteWithPolkit ];
-    extraBin = {
-      gpg-agent = "${pkgs.gnupg}/bin/gnupg-agent";
-      gpg = "${pkgs.gnupg}/bin/gpg";
-      pcscd = "${pkgs.pcscliteWithPolkit}/bin/pcscd";
-    };
+    initrdBin = [
+      pkgs.gnupg
+      pkgs.pcscliteWithPolkit
+    ];
     services.zfs-decrypt-zpool-keys = {
       description = "Decrypt ZFS dataset zpool/keys";
       requires = [
