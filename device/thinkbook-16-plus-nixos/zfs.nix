@@ -1,6 +1,6 @@
 { config, pkgs, lib, utils, ... }:
 let
-  getMount = prefix: mountPoint: (utils.escapeSystemdPath (prefix + (lib.removeSuffix "/" mountPoint))) + ".mount";
+  getMount = prefix: mountPoint: (utils.escapeSystemdPath ((x: if x == "/" then x else lib.removeSuffix "/" x) (prefix + mountPoint))) + ".mount";
   getDatasetFilesystems = ds: lib.filter (x: x.fsType == "zfs" && x.device == ds) config.system.build.fileSystems;
   getDatasetMounts = prefix: ds: map (fs: getMount prefix fs.mountPoint) (getDatasetFilesystems ds);
   getDatasetDependingMounts = prefix: ds: lib.concatLists (map (fs: map (x: getMount prefix x) fs.depends) (getDatasetFilesystems ds));
