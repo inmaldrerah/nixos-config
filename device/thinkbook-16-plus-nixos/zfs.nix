@@ -33,30 +33,30 @@ let
     script = ''
       ${zfsCmd} list -Ho keylocation,keystatus -t volume,filesystem ${ds} | while IFS=$'\t' read -r kl ks; do
         {
-          if [[ "$ks" != unavailable ]]; then
-            continue
-          fi
-          case "$kl" in
-            none )
-              ;;
-            prompt )
-              tries=3
-              success=false
-              while [[ $success != true ]] && [[ $tries -gt 0 ]]; do
-                ${systemd}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for ${ds}:" | ${zfsCmd} load-key "${ds}" \
-                  && success=true \
-                  || tries=$((tries - 1))
-              done
-              [[ $success = true ]]
-              ;;
-            * )
-              if [[ "$kl" == file://* ]]; then
-                ${zfsCmd} load-key -L "file://${prefix}''${kl#file://}" "${ds}"
-              else
-                ${zfsCmd} load-key "${ds}"
-              fi
-              ;;
-          easc
+        if [[ "$ks" != unavailable ]]; then
+          continue
+        fi
+        case "$kl" in
+          none )
+            ;;
+          prompt )
+            tries=3
+            success=false
+            while [[ $success != true ]] && [[ $tries -gt 0 ]]; do
+              ${systemd}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for ${ds}:" | ${zfsCmd} load-key "${ds}" \
+                && success=true \
+                || tries=$((tries - 1))
+            done
+            [[ $success = true ]]
+            ;;
+          * )
+            if [[ "$kl" == file://* ]]; then
+              ${zfsCmd} load-key -L "file://${prefix}''${kl#file://}" "${ds}"
+            else
+              ${zfsCmd} load-key "${ds}"
+            fi
+            ;;
+        easc
         } < /dev/null
       done
     '';
