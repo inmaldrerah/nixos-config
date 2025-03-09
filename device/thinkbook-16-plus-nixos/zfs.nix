@@ -10,8 +10,8 @@ let
   datasets = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs") config.system.build.fileSystems));
   datasetsNeededForBoot = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs" && x.neededForBoot) config.system.build.fileSystems));
 
-  createDecryptService = { ds, systemd, prefix ? "" }: lib.nameValuePair "zfs-decrypt-${utils.escapeSystemdPath ds}" {
-    description = "Decrypt ZFS dataset ${ds}";
+  createDecryptService = { ds, systemd, prefix ? "" }: lib.nameValuePair "zfs-load-key-${utils.escapeSystemdPath ds}" {
+    description = "Load the key for encrypted ZFS dataset ${ds}";
     requires = [
       "zfs-import.target"
     ] ++ (getDatasetDependingMounts prefix ds);

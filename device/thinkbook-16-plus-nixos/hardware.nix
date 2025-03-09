@@ -5,7 +5,6 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
-      ./zfs.nix
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
@@ -54,7 +53,7 @@
     mount -t zfs -o zfsutil zpool/keys "/Y:/"
     zfs load-key -a
     umount "/Y:/"
-    umount /mnt/zpool/public
+    umount /crypt-ramfs/public
   '');
   boot.initrd.systemd = let
     prefix = "/sysroot";
@@ -64,14 +63,21 @@
       pkgs.gnupg
       pkgs.pcscliteWithPolkit
     ];
-    services.zfs-decrypt-zpool-keys = {
-      script = ''
-        mkdir -p /crypt-ramfs
-        export GNUPGHOME=/crypt-ramfs/.gnupg
+    services.zfs-import-zpool.script = lib.mkAfter ''
+        mkdir -p /zfs-crypt-ramfs
+        mkdir -p /zfs-crypt-ramfs/public
+        mount -t zfs -o zfsutil zpool/public /zfs-crypt-ramfs/public
+        export GNUPGHOME=/zfs-crypt-ramfs/.gnupg
         ${pkgs.gnupg}/bin/gpg-agent --daemon
         ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-        ${pkgs.gnupg}/bin/gpg --import ${prefix}/X:/canokey.asc
-        ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt ${prefix}/X:/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+        ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.asc
+        ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+        mkdir -p /Y:
+        mount -t zfs -o zfsutil zpool/keys /Y:
+        ${config.boot.zfs.package}/sbin/zfs load-key -a
+        umount /Y:
+        ${config.boot.zfs.package}/sbin/zfs unload-key zpool/keys
+        umount /zfs-crypt-ramfs/public
       '';
     };
   };
@@ -99,28 +105,12 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
-  fileSystems."/X:" = {
-    device = "zpool/public";
-    fsType = "zfs";
-    neededForBoot = true;
-    options = [ "zfsutil" ];
-    depends = [ "/" ];
-  };
-
-  fileSystems."/Y:" = {
-    device = "zpool/keys";
-    fsType = "zfs";
-    neededForBoot = true;
-    options = [ "zfsutil" ];
-    depends = [ "/X:" ];
-  };
-
   fileSystems."/nix" = {
     device = "zpool/nixos";
     fsType = "zfs";
     neededForBoot = true;
     options = [ "zfsutil" ];
-    depends = [ "/Y:" ];
+    depends = [ "/" ];
   };
 
   fileSystems."/nix/persist" = {
@@ -128,14 +118,14 @@
     fsType = "zfs";
     neededForBoot = true;
     options = [ "zfsutil" ];
-    depends = [ "/nix" "/Y:" ];
+    depends = [ "/nix" ];
   };
 
   fileSystems."/mnt/shared" = {
     device = "zpool/shared";
     fsType = "zfs";
     options = [ "zfsutil" ];
-    depends = [ "/Y:" ];
+    depends = [ "/" ];
   };
 
   fileSystems."/boot" = {
