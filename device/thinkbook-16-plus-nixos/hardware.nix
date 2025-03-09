@@ -56,7 +56,7 @@
     umount /mnt/zpool/public
   '');
   boot.initrd.systemd = let
-    getMount = mountPoint: utils.escapeSystemdPath ("/sysroot" + (lib.removeSuffix "/" mountPoint));
+    getMount = mountPoint: utils.escapeSystemdPath ("/sysroot" + (lib.removeSuffix "/" mountPoint)) + ".mount";
   in {
     enable = true;
     services.zfs-decrypt-zpool-keys = {
