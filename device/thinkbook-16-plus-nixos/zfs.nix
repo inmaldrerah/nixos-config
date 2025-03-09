@@ -7,7 +7,7 @@ let
 
   zfsCmd = "${config.boot.zfs.package}/sbin/zfs";
 
-  datasets = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs")));
+  datasets = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs") config.system.build.fileSystems));
   datasetsNeededForBoot = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs" && x.neededForBoot) config.system.build.fileSystems));
 
   createDecryptService = { ds, systemd, prefix ? "" }: lib.nameValuePair "zfs-decrypt-${utils.escapeSystemdPath ds}" {
