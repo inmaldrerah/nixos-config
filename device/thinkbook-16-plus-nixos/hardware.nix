@@ -38,7 +38,7 @@
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/vdev_id
     copy_bin_and_libs ${cfgZfs.package}/lib/udev/zvol_id
   '';
-  boot.initrd.postResumeCommands = lib.mkAfter ''
+  boot.initrd.postResumeCommands = lib.mkIf !config.boot.initrd.systemd.enable (lib.mkAfter ''
     mkdir -p /crypt-ramfs
     export GNUPGHOME=/crypt-ramfs/.gnupg
     mkdir -p /crypt-ramfs/public
@@ -54,10 +54,10 @@
     zfs load-key -a
     umount "/Y:/"
     umount /mnt/zpool/public
-  '';
-  boot.initrd.systemd.enable = false;
+  '');
+  boot.initrd.systemd.enable = true;
   boot.initrd.systemd = let
-    getMount = mountPoint: utils.escapeSystemdPath ("/sysroot" + (lib.removeSuffix "/" mountPoint))
+    getMount = mountPoint: utils.escapeSystemdPath ("/sysroot" + (lib.removeSuffix "/" mountPoint));
   in {
     services.zfs-decrypt-zpool-keys = {
       description = "Decrypt ZFS dataset zpool/keys";
