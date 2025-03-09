@@ -56,6 +56,66 @@
     umount /mnt/zpool/public
   '';
   boot.initrd.systemd.enable = false;
+  boot.initrd.systemd = let
+    getMount = mountPoint: utils.escapeSystemdPath ("/sysroot" + (lib.removeSuffix "/" mountPoint))
+  in {
+    services.zfs-decrypt-zpool-keys = {
+      description = "Decrypt ZFS dataset zpool/keys";
+      requires = [
+        "zfs-import.target"
+      ];
+      after = [
+        "zfs-import.target"
+        (getMount "/X:")
+      ];
+      requiredBy = [
+        (getMount "/Y:")
+      ];
+      before = [
+        (getMount "/Y:")
+        "shutdown.target"
+      ];
+      conflicts = [ "shutdown.target" ];
+      unitConfig = {
+        DefaultDependencies = "no";
+      };
+      sericeConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        ${config.boot.zfs.package}/sbin/zfs load-key zpool/keys
+      '';
+    };
+    services.zfs-decrypt-zpool-others = {
+      description = "Decrypt ZFS dataset zpool/*";
+      requires = [
+        "zfs-import.target"
+      ];
+      after = [
+        "zfs-import.target"
+        (getMount "/Y:")
+      ];
+      requiredBy = [
+        (getMount "/nix")
+      ];
+      before = [
+        (getMount "/nix")
+        "shutdown.target"
+      ];
+      conflicts = [ "shutdown.target" ];
+      unitConfig = {
+        DefaultDependencies = "no";
+      };
+      sericeConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        ${config.boot.zfs.package}/sbin/zfs load-key -a
+      '';
+    };
+  };
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -80,12 +140,28 @@
     options = [ "defaults" "size=64G" "mode=755" ];
   };
 
+  fileSystems."/X:" = {
+    device = "zpool/public";
+    fsType = "zfs";
+    neededForBoot = true;
+    options = [ "zfsutil" ];
+    depends = [ "/" ];
+  };
+
+  fileSystems."/Y:" = {
+    device = "zpool/keys";
+    fsType = "zfs";
+    neededForBot = true;
+    options = [ "zfsutil" ];
+    depends = [ "/X:" ];
+  };
+
   fileSystems."/nix" = {
     device = "zpool/nixos";
     fsType = "zfs";
     neededForBoot = true;
     options = [ "zfsutil" ];
-    depends = [ "/mnt/keys" ];
+    depends = [ "/Y:" ];
   };
 
   fileSystems."/nix/persist" = {
@@ -93,14 +169,14 @@
     fsType = "zfs";
     neededForBoot = true;
     options = [ "zfsutil" ];
-    depends = [ "/nix" ];
+    depends = [ "/nix" "/Y:" ];
   };
 
   fileSystems."/mnt/shared" = {
     device = "zpool/shared";
     fsType = "zfs";
     options = [ "zfsutil" ];
-    depends = [ "/" ];
+    depends = [ "/Y:" ];
   };
 
   fileSystems."/boot" = {
