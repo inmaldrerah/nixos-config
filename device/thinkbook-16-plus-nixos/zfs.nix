@@ -3,7 +3,7 @@ let
   getMount = prefix: mountPoint: (utils.escapeSystemdPath (prefix + (lib.removeSuffix "/" mountPoint))) + ".mount";
   getDatasetFilesystems = ds: lib.filter (x: x.fsType == "zfs" && x.device == ds) config.system.build.fileSystems;
   getDatasetMounts = prefix: ds: map (fs: getMount prefix fs.mountPoint) (getDatasetFilesystems ds);
-  getDatasetDependingMounts = prefix: ds: map (fs: getMount prefix fs.depends) (getDatasetFilesystems ds);
+  getDatasetDependingMounts = prefix: ds: map (fs: map (x: getMount prefix x) fs.depends) (getDatasetFilesystems ds);
 
   zfsCmd = "${config.boot.zfs.package}/sbin/zfs";
 
