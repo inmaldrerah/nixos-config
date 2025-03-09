@@ -5,7 +5,7 @@ let
   getDatasetMounts = prefix: ds: map (fs: getMount prefix fs.mountPoint) (getDatasetFilesystems ds);
   getDatasetDependingMounts = prefix: ds: map (fs: getMount prefix fs.depends) (getDatasetFilesystems ds);
 
-  zfsCmd = "${config.boot.zfs.package}/sbin/zfs"
+  zfsCmd = "${config.boot.zfs.package}/sbin/zfs";
 
   datasets = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs")));
   datasetsNeededForBoot = lib.unique (map (x: x.device) (lib.filter (x: x.fsType == "zfs" && x.neededForBoot) config.system.build.fileSystems));
