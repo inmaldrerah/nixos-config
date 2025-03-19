@@ -75,14 +75,10 @@
       ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.asc
       ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${zfsPkg}/sbin/zfs load-key zpool/keys
       if [ "$(${zfsPkg}/sbin/zfs list -Ho keystatus zpool/keys)" = "unavailable" ]; then
-        tries=3
         success=false
-        while [[ $success != true ]] && [[ $tries -gt 0 ]]; do
-          ${systemdPkg}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for $ds:" | ${zfsPkg}/sbin/zfs load-key "$ds" \
-            && success=true \
-            || tries=$((tries - 1))
+        while [[ $success != true ]]; do
+          ${systemdPkg}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for $ds:" | ${zfsPkg}/sbin/zfs load-key "$ds" && success=true
         done
-        [[ $success = true ]]
       fi
       mkdir -p /Y:
       mount -t zfs -o zfsutil zpool/keys /Y:
