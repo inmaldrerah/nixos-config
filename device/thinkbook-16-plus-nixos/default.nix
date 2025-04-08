@@ -10,7 +10,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.uwsm}/bin/uwsm start ${lib.getExe config.programs.hyprland.package}";
+        command = "${lib.getExe config.programs.hyprland.package}";
         user = "inme";
       };
       default_session = initial_session;
