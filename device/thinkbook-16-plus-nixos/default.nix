@@ -10,7 +10,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.dbus}/bin/dbus-run-session -- ${lib.getExe config.programs.hyprland.package}";
+        command = "${lib.getExe config.programs.hyprland.package}";
         user = "inme";
       };
       default_session = initial_session;
