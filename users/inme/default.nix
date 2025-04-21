@@ -234,6 +234,7 @@
       "Downloads"
       "Games"
       "Share"
+      "Unity"
       "VirtualMachine"
       ".config/dconf"
       ".config/DeltaChat"
