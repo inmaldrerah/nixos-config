@@ -192,6 +192,7 @@
       swayidle
       swaylock
       tinymist
+      unityhub
       vscodium
       gtklock
       ripgrep
@@ -247,6 +248,8 @@
       ".config/obs-studio"
       ".config/pulse"
       ".config/swappy"
+      ".config/unity3d"
+      ".config/unityhub"
       ".config/VSCodium"
     ];
     files = [
