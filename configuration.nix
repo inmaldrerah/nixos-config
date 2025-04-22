@@ -209,8 +209,8 @@ rec {
           tpmSupport = true;
         }).fd];
       };
-    }
-  }
+    };
+  };
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
