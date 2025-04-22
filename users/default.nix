@@ -23,6 +23,11 @@ rec {
     shell = userconf.inme.shell;
   };
 
+  users.groups = {
+    libvirt = {};
+    libvirtd = {};
+  };
+
   home-manager.extraSpecialArgs = lib.getAttrs [
     "nixpkgs-stable"
     "nixvim"
