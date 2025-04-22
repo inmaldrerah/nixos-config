@@ -15,17 +15,11 @@ rec {
       "wheel"
       "rfkill"
       "scanner"
-      "libvirt"
       "adbusers"
       "libvirtd"
       "networkmanager"
     ];
     shell = userconf.inme.shell;
-  };
-
-  users.groups = {
-    libvirt = {};
-    libvirtd = {};
   };
 
   home-manager.extraSpecialArgs = lib.getAttrs [
