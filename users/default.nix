@@ -13,6 +13,7 @@ rec {
       "lp"
       "input"
       "wheel"
+      "docker"
       "rfkill"
       "scanner"
       "adbusers"
