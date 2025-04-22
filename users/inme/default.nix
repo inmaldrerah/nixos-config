@@ -221,6 +221,7 @@
       ".gnupg"
       ".gradle"
       ".local"
+      ".minikube"
       ".mozilla"
       ".npm"
       ".repoconfig"
