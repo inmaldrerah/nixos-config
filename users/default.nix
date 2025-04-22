@@ -15,6 +15,7 @@ rec {
       "wheel"
       "rfkill"
       "scanner"
+      "libvirt"
       "adbusers"
       "libvirtd"
       "networkmanager"
