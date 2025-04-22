@@ -208,9 +208,6 @@ rec {
   environment.variables = {
     TERMINAL = "alacritty";
     EDITOR = "nvim";
-    HTTP_PROXY = "http://localhost:1081";
-    HTTPS_PROXY = "http://localhost:1081";
-    FTP_PROXY = "http://localhost:1081";
   };
 
   environment.sessionVariables = {
