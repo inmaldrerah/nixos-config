@@ -79,6 +79,7 @@
   in
   {
     nixosConfigurations = builtins.listToAttrs (builtins.map nixosConfig [
+      "framework-nixos"
       "thinkbook-16-plus-nixos"
       "dell-nixos"
     ]);
