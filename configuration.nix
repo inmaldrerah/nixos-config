@@ -187,6 +187,8 @@ rec {
   services.nscd.enable = false;
   system.nssModules = lib.mkForce [];
 
+  services.upower.enable = true;
+
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
