@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable-small";
-      # url = "github:nixos/nixpkgs/nixos-unstable";
+      # url = "github:nixos/nixpkgs/nixos-unstable-small";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nixpkgs-stable = {
       url = "github:nixos/nixpkgs/nixos-unstable";
@@ -15,9 +15,15 @@
     };
     hm-extension = {
       url = "github:inmaldrerah/hm-extension";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
       url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -38,6 +44,7 @@
     nixpkgs, nixpkgs-stable,
     home-manager, hm-extension,
     impermanence,
+    lix-module,
     neovim-nightly-overlay,
     nixvim,
     nur-linyinfeng, ... }:
@@ -65,6 +72,7 @@
           ./overlays.nix
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
+          lin-module.nixosModules.default
           (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
           ./configuration.nix
           ./device/${hostName}
