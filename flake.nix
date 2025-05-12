@@ -72,7 +72,7 @@
           ./overlays.nix
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
-          lin-module.nixosModules.default
+          lix-module.nixosModules.default
           (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
           ./configuration.nix
           ./device/${hostName}
