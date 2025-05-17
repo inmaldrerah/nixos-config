@@ -146,6 +146,11 @@ rec {
       languages = [ "eng" ];
       symbolsFile = xkb/symbols/us-custom;
     };
+    se-custom = {
+      description = "Swedish Custom layout";
+      languages = [ "swe" ];
+      symbolsFile = xkb/symbols/se-custom;
+    };
   };
 
   # Set adb/fastboot udev rules
