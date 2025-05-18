@@ -12,11 +12,6 @@
     home.stateVersion = "22.11";
     programs.home-manager.enable = true;
 
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
     programs.bash = {
       enable = false;
       shellOptions = [ "globstar" ];
@@ -27,6 +22,11 @@
         export PATH=~/.local/bin:$PATH
         ulimit -Sn 524288
       '';
+    };
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
 
     programs.kitty = {
@@ -58,6 +58,11 @@
         manager.sort_reverse = false;
         manager.sort_sensitive = true;
       };
+    };
+
+    programs.zed-editor = {
+      enable = true;
+      extensions = [ "nix" "toml" "c#" "make" ];
     };
 
     programs.zoxide.enable = true;
