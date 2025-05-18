@@ -2,35 +2,36 @@ xkb_symbols "se-custom" {
   include "se(basic)"
   include "level3(ralt_switch)"
 
-  key <AD01> { [         q,          Q, semicolon,      colon ] };
-  key <AD02> { [         m,          M,         y,          Y ] };
-  key <AD03> { [         d,          D,         u,          U ] };
-  key <AD04> { [         p,          P,         f,          F ] };
-  key <AD05> { [         f,          F,         j,          J ] };
-  key <AD06> { [         y,          Y,         c,          C ] };
-  key <AD07> { [         u,          U,         p,          P ] };
-  key <AD08> { [         k,          K,         l,          L ] };
-  key <AD09> { [         l,          L,         w,          W ] };
-  key <AD10> { [ semicolon,      colon,         d,          D ] };
+  key <AD01> { [         q,          Q,          Greek_omega,          Greek_OMEGA ] };
+  key <AD02> { [         m,          M,                   mu,            masculine ] };
+  key <AD03> { [         d,          D,                  eth,                  ETH ] };
+  key <AD04> { [         p,          P,             Greek_pi,             Greek_PI ] };
+  key <AD05> { [         f,          F,              dstroke,          ordfeminine ] };
+  key <AD06> { [         y,          Y,            leftarrow,                  yen ] };
+  key <AD07> { [         u,          U,            downarrow,              uparrow ] };
+  key <AD08> { [         k,          K,           rightarrow,                  kra ] };
+  key <AD09> { [         l,          L,              lstroke,              Lstroke ] };
+  key <AD10> { [odiaeresis, Odiaeresis,               oslash,               Oslash ] };
 
-  key <AC01> { [         n,          N,         i,          I ] };
-  key <AC02> { [         s,          S,         o,          O ] };
-  key <AC03> { [         r,          R,         e,          E ] };
-  key <AC04> { [         t,          T,         a,          A ] };
-  key <AC05> { [         g,          G,         h,          H ] };
-  key <AC06> { [         h,          H,         q,          Q ] };
-  key <AC07> { [         a,          A,         t,          T ] };
-  key <AC08> { [         i,          I,         n,          N ] };
-  key <AC09> { [         o,          O,         r,          R ] };
-  key <AC10> { [         e,          E,         s,          S ] };
+  key <AC01> { [         n,          N,          ordfemenine,            masculine ] };
+  key <AC02> { [         s,          S,               ssharp,                U1E9E ] };
+  key <AC03> { [         r,          R,           registered,            trademark ] };
+  key <AC04> { [         t,          T,               tslash,               Tslash ] };
+  key <AC05> { [         g,          G,                  eng,                  ENG ] };
+  key <AC06> { [         h,          H,              hstroke,              Hstroke ] };
+  key <AC07> { [         a,          A,            dead_hook,            dead_horn ] };
+  key <AC08> { [         i,          I,             idotless,               dagger ] };
+  key <AC09> { [         o,          O,                   oe,                   OE ] };
+  key <AC10> { [         e,          E,             EuroSign,                 cent ] };
 
-  key <AB01> { [         z,          Z,     slash,   question ] };
-  key <AB02> { [         x,          X,    period,    greater ] };
-  key <AB03> { [         c,          C,     comma,       less ] };
-  key <AB04> { [         v,          V,         v,          V ] };
-  key <AB05> { [         b,          B,         k,          K ] };
-  key <AB06> { [         j,          J,         b,          B ] };
-  key <AB07> { [         w,          W,         m,          M ] };
+  key <AB01> { [         z,          Z,        guillemotleft,                 less ] };
+  key <AB02> { [         x,          X,       guillemotright,              greater ] };
+  key <AB03> { [         c,          C,            copyright,               U1F12F ] };
+  //                                                                🄯  (copyleft)
+  key <AB04> { [         v,          V,   doublelowquotemark,   singlelowquotemark ] };
+  key <AB05> { [         b,          B,  leftdoublequotemark,  leftsinglequotemark ] };
+  key <AB06> { [         j,          J, rightdoublequotemark, rightsinglequotemark ] };
+  key <AB07> { [         w,          W,          Greek_sigma,          Greek_SIGMA ] };
 
   key <LEFT>  {[ Left,  Home  ], type[group1]="PC_SUPER_LEVEL2"};
   key <RIGHT> {[ Right, End   ], type[group1]="PC_SUPER_LEVEL2"};
