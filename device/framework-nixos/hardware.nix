@@ -9,7 +9,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" "9p" "9pnet" "9pnet_virtio" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [ "overlay" "btrfs" "zfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
