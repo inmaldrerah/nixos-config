@@ -70,7 +70,7 @@
     wayland.windowManager.hyprland = {
       enable = true;
       plugins = with pkgs.hyprlandPlugins; [
-        hyprscroller
+        hyprscrolling
       ];
       extraConfig = builtins.readFile ./hypr/hyprland.conf;
     };
