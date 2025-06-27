@@ -197,7 +197,6 @@
       swayidle
       swaylock
       tinymist
-      unityhub
       vscodium
       gtklock
       ripgrep
@@ -232,7 +231,6 @@
       ".repoconfig"
       ".rustup"
       ".ssh"
-      ".texlive2022"
       ".vscode-oss"
       ".wine"
       "Builds"
@@ -240,7 +238,6 @@
       "Downloads"
       "Games"
       "Share"
-      "Unity"
       "VirtualMachine"
       ".config/dconf"
       ".config/DeltaChat"
@@ -255,8 +252,6 @@
       ".config/obs-studio"
       ".config/pulse"
       ".config/swappy"
-      ".config/unity3d"
-      ".config/unityhub"
       ".config/VSCodium"
     ];
     files = [
