@@ -5,7 +5,7 @@
     rcFiles."nix-helper.xsh".text = ''
       def __nix_helper_init():
         def __rebuild_system_local(args):
-          return ![nixos-rebuild -v --use-remote-sudo --flake /etc/nixos --impure @(args)]
+          return ![nixos-rebuild -v --sudo --flake /etc/nixos --impure @(args)]
         
         def __commit_nixos_config():
           current_pwd = $PWD
