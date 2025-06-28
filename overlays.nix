@@ -31,7 +31,7 @@ let
     nur-linyinfeng.overlays.default
     (self: super: {
       hyprlandPlugins.hyprscrolling = super.hyprlandPlugins.hyprscrolling.overrideAttrs (old: {
-        src = lib.fetchFromGitHub {
+        src = super.fetchFromGitHub {
           owner = "hyprwm";
           repo = "hyprland-plugins";
           tag = "dd28351a6181c37553cca1ce437f0049dcd3ee5f";
