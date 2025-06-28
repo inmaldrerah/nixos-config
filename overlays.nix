@@ -29,18 +29,6 @@ let
     })
     # neovim-nightly-overlay.overlay
     nur-linyinfeng.overlays.default
-    (self: super: {
-      hyprlandPlugins.hyprscrolling = super.hyprlandPlugins.hyprscrolling.overrideAttrs (old:
-      let
-        hyprland-plugins-src = super.fetchFromGitHub {
-          owner = "hyprwm";
-          repo = "hyprland-plugins";
-          rev = "dd28351a6181c37553cca1ce437f0049dcd3ee5f";
-          hash = "sha256-z6SyE2jxpLqW7zJGl5bgH5zTWPv6vhVZaSHx/JW6Faw=";
-        };
-      in {
-        src = "${hyprland-plugins-src}/hyprscrolling";
-      });
     })
   ];
 in {
