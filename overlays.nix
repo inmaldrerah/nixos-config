@@ -34,7 +34,7 @@ let
         src = super.fetchFromGitHub {
           owner = "hyprwm";
           repo = "hyprland-plugins";
-          tag = "dd28351a6181c37553cca1ce437f0049dcd3ee5f";
+          ref = "dd28351a6181c37553cca1ce437f0049dcd3ee5f";
           hash = "sha256-DcR9jQ29IUuBfPg2BqG/73ketYr+wztK4LamArA0JL4=";
         };
       });
