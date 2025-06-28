@@ -35,7 +35,7 @@ let
           owner = "hyprwm";
           repo = "hyprland-plugins";
           rev = "dd28351a6181c37553cca1ce437f0049dcd3ee5f";
-          hash = "sha256-DcR9jQ29IUuBfPg2BqG/73ketYr+wztK4LamArA0JL4=";
+          hash = "sha256-z6SyE2jxpLqW7zJGl5bgH5zTWPv6vhVZaSHx/JW6Faw=";
         };
       });
     })
