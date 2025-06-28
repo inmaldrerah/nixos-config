@@ -29,7 +29,6 @@ let
     })
     # neovim-nightly-overlay.overlay
     nur-linyinfeng.overlays.default
-    })
   ];
 in {
   nixpkgs.overlays = packageOverlays;
