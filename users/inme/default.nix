@@ -69,6 +69,7 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = hyprland.packages.x86_64-linux.hyprland;
       plugins = with pkgs.hyprlandPlugins; [
         hyprscrolling
       ];

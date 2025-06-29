@@ -31,6 +31,14 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +53,8 @@
     lix-module,
     neovim-nightly-overlay,
     nixvim,
+    hyprland,
+    hyprland-plugins,
     nur-linyinfeng, ... }:
   let
     triple = "x86_64-unknown-linux-gnu";
@@ -59,6 +69,8 @@
           inherit neovim-nightly-overlay;
           inherit nixvim;
           inherit hm-extension;
+          inherit hyprland;
+          inherit hyprland-plugins;
           inherit nur-linyinfeng;
         };
         modules = [
