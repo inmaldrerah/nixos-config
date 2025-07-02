@@ -20,7 +20,7 @@ rec {
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
-  security.sudo.extraConfig = ''
+  security.sudo-rs.extraConfig = ''
     Defaults env_keep += "http_proxy https_proxy ftp_proxy rsync_proxy no_proxy"
   '';
 

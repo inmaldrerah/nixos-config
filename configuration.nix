@@ -117,7 +117,8 @@ rec {
   # For OBS virtual camera
   security.polkit.enable = true;
 
-  security.sudo.package = pkgs.sudo-rs;
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
 
   programs.dconf.enable = true;
 
