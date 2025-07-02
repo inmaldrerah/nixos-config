@@ -117,6 +117,8 @@ rec {
   # For OBS virtual camera
   security.polkit.enable = true;
 
+  security.sudo.package = pkgs.sudo-rs;
+
   programs.dconf.enable = true;
 
   # Keyring management
