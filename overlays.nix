@@ -38,5 +38,5 @@ let
     nur-linyinfeng.overlays.default
   ];
 in {
-  nixpkgs.overlays = packageOverlays;
+  nixpkgs.overlays = lib.mkAfter packageOverlays;
 }
