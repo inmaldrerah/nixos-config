@@ -46,7 +46,7 @@
     mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
     gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
     pcscd -x
-    gpg --import /crypt-ramfs/public/canokey.asc
+    gpg --import /crypt-ramfs/public/canokey.pgp
     gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
     # Require passphrase in case the above fails
     zfs load-key -- zpool/keys
