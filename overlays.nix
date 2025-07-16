@@ -27,16 +27,11 @@ let
         '';
       };
     })
-    (final: prev: {
-      lix = prev.lix.overrideAttrs (_: {
-        separateDebugInfo = false;
-      });
-    })
     # neovim-nightly-overlay.overlay
     hyprland.overlays.default
     hyprland-plugins.overlays.default
     nur-linyinfeng.overlays.default
   ];
 in {
-  nixpkgs.overlays = lib.mkAfter packageOverlays;
+  nixpkgs.overlays = packageOverlays;
 }
