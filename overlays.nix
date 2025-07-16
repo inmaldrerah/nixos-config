@@ -2,8 +2,8 @@
 
 let
   packageOverlays = [
-    (self: super: {
-      ccacheWrapper = super.ccacheWrapper.override {
+    (final: prev: {
+      ccacheWrapper = prev.ccacheWrapper.override {
         extraConfig = ''
           export CCACHE_COMPRESS=1
           export CCACHE_DIR="${config.programs.ccache.cacheDir}"
@@ -26,6 +26,11 @@ let
           fi
         '';
       };
+    })
+    (final: prev: {
+      lix = prev.lix.overrideAttrs (_: {
+        separateDebugInfo = false;
+      });
     })
     # neovim-nightly-overlay.overlay
     hyprland.overlays.default
