@@ -73,7 +73,7 @@
       export GNUPGHOME=/zfs-crypt-ramfs/.gnupg
       ${pkgs.gnupg}/bin/gpg-agent --daemon
       ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-      ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.asc
+      ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.pgp
       ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${zfsPkg}/sbin/zfs load-key zpool/keys
       if [ "$(${zfsPkg}/sbin/zfs list -Ho keystatus zpool/keys)" = "unavailable" ]; then
         success=false
