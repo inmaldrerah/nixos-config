@@ -218,6 +218,7 @@ rec {
     neovim # make sure other users have this
     brightnessctl
     alsa-utils # for amixer
+    gparted
     uwsm
     wget
   ];
