@@ -122,6 +122,7 @@ rec {
     enable = true;
     execWheelOnly = true;
   };
+  security.pam.services.systemd-run0 = {};
 
   programs.dconf.enable = true;
 
