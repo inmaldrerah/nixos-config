@@ -20,7 +20,7 @@
       url = "github:nix-community/impermanence";
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay = {
