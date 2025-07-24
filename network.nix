@@ -31,8 +31,7 @@ rec {
     listen-ports = [ 5553 ];
     upstream = [
       "[/centaur-centauri.ts.net/]100.100.100.100:53"
-      "[/mail.nju.edu.cn/]https://223.5.5.5/dns-query"
-      "[/nju.edu.cn/]210.28.129.251:53"
+      # "[/nju.edu.cn/]210.28.129.251:53"
       "[/cn/]https://223.5.5.5/dns-query"
       "https://dns.nextdns.io/996cfa"
     ];
