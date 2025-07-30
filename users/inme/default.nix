@@ -201,7 +201,7 @@
       gtklock
       ripgrep
       wlogout
-      feishu
+      # feishu
       nodejs
       swappy
       trashy
