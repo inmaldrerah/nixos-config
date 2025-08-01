@@ -44,10 +44,10 @@ rec {
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 12345 ];
+    allowedTCPPorts = [ 12345 2121 ];
     allowedUDPPorts = [ 12345 ];
     trustedInterfaces = [ "tailscale0" ];
-    interfaces."wlan0".allowedUDPPorts = [ 41641 2121 ];
+    interfaces."wlan0".allowedUDPPorts = [ 41641 ];
     interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
   };
   # Or disable the firewall altogether.
