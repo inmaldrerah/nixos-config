@@ -33,7 +33,7 @@ rec {
       "[/centaur-centauri.ts.net/]100.100.100.100:53"
       # "[/nju.edu.cn/]210.28.129.251:53"
       "[/cn/]https://223.5.5.5/dns-query"
-      "1.1.1.1:53"
+      "https://dns.nextdns.io/996cfa/dns-query"
     ];
     upstream-mode = "parallel";
   };
