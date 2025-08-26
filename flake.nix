@@ -19,10 +19,10 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lix-module = {
+    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,7 @@
     nixpkgs, nixpkgs-stable,
     home-manager, hm-extension,
     impermanence,
-    lix-module,
+    # lix-module,
     neovim-nightly-overlay,
     nixvim,
     hyprland,
@@ -82,7 +82,7 @@
           ./overlays.nix
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
-          lix-module.nixosModules.default
+          # lix-module.nixosModules.default
           (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
           ./configuration.nix
           ./device/${hostName}

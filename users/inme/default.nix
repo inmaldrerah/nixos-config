@@ -3,7 +3,7 @@
   shell = pkgs.xonsh;
   home-manager = { config, pkgs, nixvim, hm-extension, ... }: {
     imports = [
-      nixvim.homeManagerModules.nixvim
+      nixvim.homeModules.nixvim
       hm-extension.homeManagerModules.default
       ./nixvim.nix
       ./xonsh.nix
