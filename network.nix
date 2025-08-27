@@ -32,6 +32,7 @@ rec {
     upstream = [
       "[/centaur-centauri.ts.net/]100.100.100.100:53"
       # "[/nju.edu.cn/]210.28.129.251:53"
+      "[/cn/]https://dns.alidns.com/dns-query"
       "[/cn/]https://doh.pub/dns-query"
       "https://dns.nextdns.io/996cfa/dns-query"
     ];
