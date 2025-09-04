@@ -34,6 +34,7 @@ rec {
       "[/nju.edu.cn/]210.28.129.251:53"
       "https://dns.alidns.com/dns-query"
       "https://doh.pub/dns-query"
+      "223.5.5.5:53"
     ];
     upstream-mode = "parallel";
   };
