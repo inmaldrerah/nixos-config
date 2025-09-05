@@ -31,9 +31,10 @@
 
     programs.element-desktop = {
       enable = true;
-      package = pkgs.element-desktop.overrideAttrs (cur: (prev: {
-        commandLineArgs = "--password-store=gnome-libsecret";
-      }));
+      package = pkgs.writeScriptBin "element-desktop" ''
+        #!/bin/sh
+        ${pkgs.element-desktop}/bin/element-desktop --password-store=gnome-libsecret $@
+      '';
     };
 
     programs.kitty = {
