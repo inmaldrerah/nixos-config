@@ -29,7 +29,12 @@
       nix-direnv.enable = true;
     };
 
-    programs.element-desktop.enable = true;
+    programs.element-desktop = {
+      enable = true;
+      package = pkgs.element-desktop.overrideAttrs (cur: (prev: {
+        commandLineArgs = "--password-store=gnome-libsecret"
+      }));
+    };
 
     programs.kitty = {
       enable = true;
