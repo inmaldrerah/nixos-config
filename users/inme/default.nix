@@ -32,7 +32,7 @@
     programs.element-desktop = {
       enable = true;
       package = pkgs.element-desktop.overrideAttrs (cur: (prev: {
-        commandLineArgs = "--password-store=gnome-libsecret"
+        commandLineArgs = "--password-store=gnome-libsecret";
       }));
     };
 
