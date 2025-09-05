@@ -29,6 +29,8 @@
       nix-direnv.enable = true;
     };
 
+    programs.element-desktop.enable = true;
+
     programs.kitty = {
       enable = true;
       font.name = "Fira Code";
