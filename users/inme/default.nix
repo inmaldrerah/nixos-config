@@ -29,14 +29,6 @@
       nix-direnv.enable = true;
     };
 
-    programs.element-desktop = {
-      enable = true;
-      package = pkgs.writeScriptBin "element-desktop" ''
-        #!/bin/sh
-        ${pkgs.element-desktop}/bin/element-desktop --password-store=gnome-libsecret $@
-      '';
-    };
-
     programs.kitty = {
       enable = true;
       font.name = "Fira Code";
