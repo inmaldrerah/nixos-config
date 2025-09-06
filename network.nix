@@ -44,7 +44,7 @@ rec {
 
   # Open ports in the firewall.
   networking.firewall = {
-    enable = true;
+    enable = false;
     allowedTCPPorts = [ 12345 ];
     allowedUDPPorts = [ 12345 ];
     trustedInterfaces = [ "lo" "tailscale0" ];

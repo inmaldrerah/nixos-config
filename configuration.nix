@@ -206,13 +206,9 @@ rec {
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
-    dockerCompat = false;
+    dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
-  virtualisation.docker = {
-    enable = true;
-  };
-
   # virtualisation.waydroid.enable = true;
 
   # List packages installed in system profile.
