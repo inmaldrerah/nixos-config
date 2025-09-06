@@ -10,7 +10,7 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.supportedFilesystems = [ "overlay" "btrfs" "zfs" ];
+  boot.supportedFilesystems = [ "overlay" "btrfs" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
@@ -23,72 +23,6 @@
     "amd_pstate=active"
   ];
   networking.hostId = "4ce220a9";
-
-  boot.zfs.requestEncryptionCredentials = [];
-
-  boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (let
-    cfgZfs = config.boot.zfs;
-  in ''
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
-    copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-agent
-    copy_bin_and_libs ${pkgs.gnupg}/libexec/scdaemon
-    copy_bin_and_libs ${pkgs.pcscliteWithPolkit}/bin/pcscd
-    copy_bin_and_libs ${cfgZfs.package}/sbin/zfs
-    copy_bin_and_libs ${cfgZfs.package}/sbin/zdb
-    copy_bin_and_libs ${cfgZfs.package}/sbin/zpool
-    copy_bin_and_libs ${cfgZfs.package}/lib/udev/vdev_id
-    copy_bin_and_libs ${cfgZfs.package}/lib/udev/zvol_id
-  '');
-  boot.initrd.postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (lib.mkAfter ''
-    mkdir -p /crypt-ramfs
-    export GNUPGHOME=/crypt-ramfs/.gnupg
-    mkdir -p /crypt-ramfs/public
-    mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
-    gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
-    pcscd -x
-    gpg --import /crypt-ramfs/public/canokey.pgp
-    gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
-    # Require passphrase in case the above fails
-    zfs load-key -- zpool/keys
-    mkdir -p "/Y:/"
-    mount -t zfs -o zfsutil zpool/keys "/Y:/"
-    zfs load-key -a
-    umount "/Y:/"
-    umount /crypt-ramfs/public
-  '');
-  boot.initrd.systemd = let
-    prefix = "/sysroot";
-    zfsPkg = config.boot.zfs.package;
-    systemdPkg = config.boot.initrd.systemd.package;
-  in {
-    enable = true;
-    initrdBin = [
-      pkgs.gnupg
-      pkgs.pcscliteWithPolkit
-    ];
-    services.zfs-import-zpool.script = lib.mkAfter ''
-      mkdir -p /zfs-crypt-ramfs
-      mkdir -p /zfs-crypt-ramfs/public
-      mount -t zfs -o zfsutil zpool/public /zfs-crypt-ramfs/public
-      export GNUPGHOME=/zfs-crypt-ramfs/.gnupg
-      ${pkgs.gnupg}/bin/gpg-agent --daemon
-      ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-      ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.pgp
-      ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${zfsPkg}/sbin/zfs load-key zpool/keys
-      if [ "$(${zfsPkg}/sbin/zfs list -Ho keystatus zpool/keys)" = "unavailable" ]; then
-        success=false
-        while [[ $success != true ]]; do
-          ${systemdPkg}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for $ds:" | ${zfsPkg}/sbin/zfs load-key "$ds" && success=true
-        done
-      fi
-      mkdir -p /Y:
-      mount -t zfs -o zfsutil zpool/keys /Y:
-      ${zfsPkg}/sbin/zfs load-key -a
-      umount /Y:
-      ${zfsPkg}/sbin/zfs unload-key zpool/keys
-      umount /zfs-crypt-ramfs/public
-    '';
-  };
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -105,52 +39,5 @@
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.enableRedistributableFirmware = true;
-
-  fileSystems."/" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
-    neededForBoot = true;
-    options = [ "defaults" "size=64G" "mode=755" ];
-  };
-
-  fileSystems."/nix" = {
-    device = "zpool/nixos";
-    fsType = "zfs";
-    neededForBoot = true;
-    options = [ "zfsutil" ];
-    depends = [ "/" ];
-  };
-
-  fileSystems."/nix/persist" = {
-    device = "zpool/nixos/persist";
-    fsType = "zfs";
-    neededForBoot = true;
-    options = [ "zfsutil" ];
-    depends = [ "/nix" ];
-  };
-
-  fileSystems."/mnt/shared" = {
-    device = "zpool/shared";
-    fsType = "zfs";
-    options = [ "zfsutil" ];
-    depends = [ "/" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/889D-C417";
-    fsType = "vfat";
-    options = [ "umask=0077" ];
-  };
-
-  swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/2dec9ec9-8ea9-4cb7-8250-dd1fd9757614";
-    }
-  ];
-
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-  };
 
 }

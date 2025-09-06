@@ -28,10 +28,8 @@ rec {
   services.dnsproxy.settings = {
     bootstrap = [ "https://223.5.5.5/dns-query" ];
     listen-addrs = [ "::1" ];
-    listen-ports = [ 5553 ];
+    listen-ports = [ 53 ];
     upstream = [
-      "[/centaur-centauri.ts.net/]100.100.100.100:53"
-      "[/nju.edu.cn/]210.28.129.251:53"
       "https://dns.alidns.com/dns-query"
       "https://doh.pub/dns-query"
       "223.5.5.5:53"
@@ -47,10 +45,23 @@ rec {
     enable = true;
     allowedTCPPorts = [ 12345 ];
     allowedUDPPorts = [ 12345 ];
-    trustedInterfaces = [ "lo" "tailscale0" ];
-    interfaces."wlan0".allowedUDPPorts = [ 41641 ];
-    interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
+    trustedInterfaces = [ "lo" ];
   };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.proxy.default = "http://localhost:1081/";
+  networking.proxy.noProxy = "127.0.0.1,localhost,::1";
+
+  services._3proxy = {
+    enable = true;
+    services = [
+      {
+        type = "proxy";
+        bindAddress = "127.0.0.1";
+        bindPort = 1081;
+        auth = [ "none" ];
+      }
+    ];
+  };
 }
