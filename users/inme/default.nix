@@ -176,7 +176,7 @@
     home.packages = with pkgs; [
       # linyinfeng.wemeet
       lxqt.lxqt-policykit
-      lxde.lxsession
+      lxsession
       wineWowPackages.waylandFull
       swaynotificationcenter
       networkmanagerapplet
