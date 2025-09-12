@@ -188,7 +188,7 @@ rec {
     SUBSYSTEMS=="usb", ATTR{idVendor}=="20a0", ATTR{idProduct}=="42d4", TAG+="uaccess"
     '';
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
 
   services.sunshine = {
     enable = true;
