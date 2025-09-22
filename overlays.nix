@@ -28,8 +28,8 @@ let
       };
     })
     # neovim-nightly-overlay.overlay
-    hyprland.overlays.default
-    hyprland-plugins.overlays.default
+    # hyprland.overlays.default
+    # hyprland-plugins.overlays.default
     nur-linyinfeng.overlays.default
   ];
 in {
