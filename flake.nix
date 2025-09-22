@@ -3,10 +3,6 @@
 
   inputs = {
     nixpkgs = {
-      # url = "github:nixos/nixpkgs/nixos-unstable-small";
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
-    nixpkgs-stable = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     home-manager = {
@@ -19,21 +15,9 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
@@ -43,14 +27,11 @@
 
   outputs = {
     self,
-    nixpkgs, nixpkgs-stable,
+    nixpkgs,
     home-manager, hm-extension,
     impermanence,
     # lix-module,
-    neovim-nightly-overlay,
     nixvim,
-    hyprland,
-    hyprland-plugins,
     nur-linyinfeng, ... }:
   let
     triple = "x86_64-unknown-linux-gnu";
@@ -61,12 +42,8 @@
         specialArgs = {
           inherit hostName;
           nixpkgsInput = nixpkgs;
-          inherit nixpkgs-stable;
-          inherit neovim-nightly-overlay;
           inherit nixvim;
           inherit hm-extension;
-          inherit hyprland;
-          inherit hyprland-plugins;
           inherit nur-linyinfeng;
         };
         modules = [

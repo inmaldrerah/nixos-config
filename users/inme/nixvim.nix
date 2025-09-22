@@ -1,6 +1,5 @@
-{ nixpkgs-stable, ... }:
+{ pkgs, ... }:
 let
-  pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
   treesitter-c3-grammar = pkgs.tree-sitter.buildGrammar {
     language = "c3";
     version = "v0.3.2";

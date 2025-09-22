@@ -1,4 +1,4 @@
-{ config, lib, nixpkgsInput, neovim-nightly-overlay, hyprland, hyprland-plugins, nur-linyinfeng, ... }:
+{ config, lib, nixpkgsInput, nur-linyinfeng, ... }:
 
 let
   packageOverlays = [
@@ -27,9 +27,6 @@ let
         '';
       };
     })
-    # neovim-nightly-overlay.overlay
-    # hyprland.overlays.default
-    # hyprland-plugins.overlays.default
     nur-linyinfeng.overlays.default
   ];
 in {

@@ -24,7 +24,6 @@ rec {
   };
 
   home-manager.extraSpecialArgs = lib.getAttrs [
-    "nixpkgs-stable"
     "nixvim"
     "hm-extension"
   ] args;
