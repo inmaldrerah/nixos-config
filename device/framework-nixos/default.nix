@@ -5,7 +5,7 @@
   ];
 
   boot.loader.systemd-boot.extraEntries."freebsd.conf" = ''
-    title FreeBSD
+    title FreeBSD Boot Loader
     efi /EFI/freebsd/loader.efi
     sort-key z_freebsd
   '';
