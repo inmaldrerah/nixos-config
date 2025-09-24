@@ -123,6 +123,10 @@ rec {
   security.sudo-rs = {
     enable = true;
     execWheelOnly = true;
+    extraConfig = ''
+      Defaults env_keep += "XDG_RUNTIME_DIR"
+      Defaults env_keep += "WAYLAND_DISPLAY"
+    '';
   };
   security.pam.services.systemd-run0 = {};
 
