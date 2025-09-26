@@ -4,12 +4,6 @@
     ./hardware.nix
   ];
 
-  boot.loader.systemd-boot.extraEntries."freebsd.conf" = ''
-    title FreeBSD Boot Loader
-    efi /EFI/freebsd/loader.efi
-    sort-key z_freebsd
-  '';
-
   services.greetd = {
     enable = true;
     settings = rec {
