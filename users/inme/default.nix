@@ -125,13 +125,12 @@
         ulimit -Sn 524288
     '';
 
-    # home.file.".config/hypr/hyprland.conf".source = ./hypr/hyprland.conf;
     home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
 
     home.file.".config/waybar/config".source = ./waybar/config;
     home.file.".config/waybar/style.css".source = ./waybar/style.css;
 
-    home.file.".config/wofi/style.css".source = ./wofi/style.css;
+    # home.file.".config/wofi/style.css".source = ./wofi/style.css;
 
     home.file.".local/bin/caffine" = {
       executable = true;
@@ -202,6 +201,7 @@
       ripgrep
       wlogout
       # feishu
+      fuzzel
       nodejs
       swappy
       trashy
@@ -211,7 +211,7 @@
       samba
       typst
       mono
-      wofi
+      # wofi
       dex
       git
       zig
