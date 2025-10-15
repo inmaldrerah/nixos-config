@@ -93,11 +93,9 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = [
-    pkgs.amdvlk # for Vulkan
     # pkgs.rocmPackages.clr.icd # for OpenCL support
   ];
   hardware.graphics.extraPackages32 = [
-    pkgs.driversi686Linux.amdvlk # for Vulkan
   ];
   hardware.amdgpu.initrd.enable = true;
 
