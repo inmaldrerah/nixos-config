@@ -99,8 +99,10 @@ in {
     plugins.persistence.enable = true;
     plugins.neo-tree = {
       enable = true;
-      filesystem.filtered_items.visible = true;
-      source_selector.statusline = true;
+      settings = {
+        filesystem.filtered_items.visible = true;
+        source_selector.statusline = true;
+      };
     };
     plugins.telescope = {
       enable = true;
