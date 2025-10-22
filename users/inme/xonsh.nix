@@ -65,7 +65,7 @@
     '';
     extraPackages = ps: [
       ps.xonsh.xontribs.xonsh-direnv
-      ps.xonsh.xontribs.xonsh-fish-completer
+      ps.xonsh.xontribs.xontrib-fish-completer
     ];
   };
 }
