@@ -49,6 +49,7 @@
       del __nix_helper_init
     '';
     extraConfig = ''
+      xontrib load coreutils
       xontrib load direnv
       def __env_setup():
         user = $USER
