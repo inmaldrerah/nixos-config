@@ -49,6 +49,7 @@
       del __nix_helper_init
     '';
     extraConfig = ''
+      xontrib load direnv
       def __env_setup():
         user = $USER
         if not ''${...}.get(f"__USER_{user}_SETUP_DONE"):
@@ -60,5 +61,6 @@
       __env_setup()
       del __env_setup
     '';
+    extraPackages = ps: [ ps.xonsh.xontribs.xonsh-direnv ];
   };
 }
