@@ -51,6 +51,7 @@
     extraConfig = ''
       xontrib load coreutils
       xontrib load direnv
+      xontrib load fish-completer
       def __env_setup():
         user = $USER
         if not ''${...}.get(f"__USER_{user}_SETUP_DONE"):
@@ -62,6 +63,9 @@
       __env_setup()
       del __env_setup
     '';
-    extraPackages = ps: [ ps.xonsh.xontribs.xonsh-direnv ];
+    extraPackages = ps: [
+      ps.xonsh.xontribs.xonsh-direnv
+      ps.xonsh.xontribs.xonsh-fish-completer
+    ];
   };
 }
