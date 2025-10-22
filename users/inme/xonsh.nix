@@ -51,7 +51,7 @@
     extraConfig = ''
       xontrib load coreutils
       xontrib load direnv
-      xontrib load fish-completer
+      xontrib load fish_completer
       def __env_setup():
         user = $USER
         if not ''${...}.get(f"__USER_{user}_SETUP_DONE"):
