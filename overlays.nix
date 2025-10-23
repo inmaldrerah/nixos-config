@@ -29,7 +29,7 @@ let
     })
     nur-linyinfeng.overlays.default
     (final: prev: {
-      shell = final.writeShellApplication {
+      shell = prev.writeShellApplication {
         name = "shell-starter";
         text = ''
           /bin/sh $HOME/.shell $@
