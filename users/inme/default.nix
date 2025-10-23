@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  shell = pkgs.xonsh;
+  shell = pkgs.shell;
   home-manager = { config, pkgs, nixvim, hm-extension, ... }: {
     imports = [
       nixvim.homeModules.nixvim
@@ -169,6 +169,10 @@
               sleep 1
             done;;
         esac
+      '';
+
+      home.file.".shell".text = ''
+        ${config.programs.xonsh.finalPackage} $@
       '';
     };
 
