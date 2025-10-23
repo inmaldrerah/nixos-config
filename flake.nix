@@ -6,7 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nixpkgs-extension = {
-      url = "github:inmaldrerah/nixpkgs-extension";
+      url = "github:inmaldrerah/nixos-extension";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -31,7 +31,7 @@
 
   outputs = {
     self,
-    nixpkgs,
+    nixpkgs, nixpkgs-extension,
     home-manager, hm-extension,
     impermanence,
     # lix-module,
@@ -57,6 +57,7 @@
             # systemd.services.tailscaled.after = ["NetworkManager-wait-online.service"];
           }
           ./overlays.nix
+          nixpkgs-extension.nixosModules.default
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
           # lix-module.nixosModules.default
