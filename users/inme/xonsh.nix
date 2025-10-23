@@ -57,7 +57,9 @@
             home = $HOME
             $PATH.insert(0, f"{home}/.local/bin")
             $TERM = "xterm-256color"
-            ''${f"__USER_{user}_SETUP_DONE"} = "1"
+            ''${f"__USER_{user}_SETUP_DONE"} = True
+          if not ''${...}.get("__IS_USER_XONSH"):
+            $__IS_USER_XONSH = True
             ![xonsh]
             ![exit]
           else:
