@@ -220,14 +220,8 @@ rec {
     brightnessctl
     alsa-utils # for amixer
     gparted
-    # shell
     uwsm
     wget
-  ];
-
-  environment.shells = [
-    # "/run/current-system/sw/bin/shell-starter"
-    # "${pkgs.shell}/bin/shell-starter"
   ];
 
   environment.variables = {

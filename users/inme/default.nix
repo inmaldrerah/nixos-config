@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  shell = pkgs.xonsh;
+  shell = pkgs.shell;
   home-manager = { config, pkgs, nixvim, hm-extension, ... }: {
     imports = [
       nixvim.homeModules.nixvim
