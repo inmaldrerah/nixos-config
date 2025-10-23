@@ -170,11 +170,11 @@
             done;;
         esac
       '';
-
-      home.file.".shell".text = ''
-        ${config.programs.xonsh.finalPackage} $@
-      '';
     };
+
+    home.file.".shell".text = ''
+      ${config.programs.xonsh.finalPackage} $@
+    '';
 
     home.packages = with pkgs; [
       # linyinfeng.wemeet
