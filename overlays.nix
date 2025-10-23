@@ -2,8 +2,8 @@
 
 let
   packageOverlays = [
-    (final: prev: {
-      shell = prev.writeShellApplication {
+    (pkgs: {
+      shell = pkgs.writeShellApplication {
         name = "shell-starter";
         text = ''
           /bin/sh $HOME/.shell $@
