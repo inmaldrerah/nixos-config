@@ -225,6 +225,26 @@
         "type": "github"
       }
     },
+    "nixpkgs-extension": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761191458,
+        "narHash": "sha256-rM0WykT0hafaTtK7WEybUVk376tp9YA5v2z8/JWD5BA=",
+        "owner": "inmaldrerah",
+        "repo": "nixos-extensions",
+        "rev": "d612bf6d4c66400d19ddced891c852058430227c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inmaldrerah",
+        "repo": "nixos-extensions",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -334,6 +354,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-extension": "nixpkgs-extension",
         "nixvim": "nixvim",
         "nur-linyinfeng": "nur-linyinfeng"
       }
