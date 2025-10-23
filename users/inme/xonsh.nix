@@ -66,6 +66,7 @@
             xontrib load coreutils
             xontrib load direnv
             xontrib load fish_completer
+            $__IS_USER_XONSH = False
 
         __env_setup()
         del __env_setup
