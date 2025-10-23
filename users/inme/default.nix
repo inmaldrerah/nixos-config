@@ -258,6 +258,7 @@
       ".config/pulse"
       ".config/swappy"
       ".config/VSCodium"
+      ".config/zeditor"
     ];
     files = [
       ".bash_history"
