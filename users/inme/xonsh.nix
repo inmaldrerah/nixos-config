@@ -58,6 +58,8 @@
             $PATH.insert(0, f"{home}/.local/bin")
             $TERM = "xterm-256color"
             ''${f"__USER_{user}_SETUP_DONE"} = "1"
+            ![xonsh]
+            ![exit]
           else:
             xontrib load coreutils
             xontrib load direnv
