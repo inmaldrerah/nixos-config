@@ -177,7 +177,7 @@
     '';
 
     home.packages = with pkgs; [
-      # linyinfeng.wemeet
+      linyinfeng.wemeet
       lxqt.lxqt-policykit
       lxsession
       wineWowPackages.waylandFull
