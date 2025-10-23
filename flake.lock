@@ -232,11 +232,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761191458,
-        "narHash": "sha256-rM0WykT0hafaTtK7WEybUVk376tp9YA5v2z8/JWD5BA=",
+        "lastModified": 1761191633,
+        "narHash": "sha256-iTr8SZV/u/+SYHWkg5DGMUPxPGZb+lQo+5/CCUjTKJY=",
         "owner": "inmaldrerah",
         "repo": "nixos-extensions",
-        "rev": "d612bf6d4c66400d19ddced891c852058430227c",
+        "rev": "db1da884d90da3f01d220eb390ee057aa6becf75",
         "type": "github"
       },
       "original": {
