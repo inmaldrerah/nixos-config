@@ -232,17 +232,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1761191912,
-        "narHash": "sha256-bYz8+P4RV1HBbnguLuVeDot2HfQAnVaX7cT2JC0kQzY=",
-        "owner": "inmaldrerah",
-        "repo": "nixos-extensions",
-        "rev": "06527af712d1832fad4e854393304e054bcde9ab",
-        "type": "github"
+        "lastModified": 1761192277,
+        "narHash": "sha256-aTYHiZwXtoCSFcqiXD42YBGHurrLYMR+peNE7yP4EFo=",
+        "path": "/home/inme/Builds/nixpkgs-extension",
+        "type": "path"
       },
       "original": {
-        "owner": "inmaldrerah",
-        "repo": "nixos-extensions",
-        "type": "github"
+        "path": "/home/inme/Builds/nixpkgs-extension",
+        "type": "path"
       }
     },
     "nixvim": {
