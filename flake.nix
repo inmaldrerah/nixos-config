@@ -6,7 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     nixpkgs-extension = {
-      url = "github:inmaldrerah/nixos-extension";
+      url = "github:inmaldrerah/nixos-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
