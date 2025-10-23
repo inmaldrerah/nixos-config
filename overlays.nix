@@ -2,8 +2,8 @@
 
 let
   packageOverlays = [
-    nixpkgs-extension.overlays.default
-    # nur-linyinfeng.overlays.default
+    # nixpkgs-extension.overlays.default
+    nur-linyinfeng.overlays.default
   ];
 in {
   nixpkgs.overlays = packageOverlays;
