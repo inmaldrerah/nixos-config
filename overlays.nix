@@ -3,6 +3,15 @@
 let
   packageOverlays = [
     (final: prev: {
+      shell = prev.writeShellApplication {
+        name = "shell-starter";
+        text = ''
+          /bin/sh $HOME/.shell $@
+        '';
+      };
+    })
+    nur-linyinfeng.overlays.default
+    (final: prev: {
       ccacheWrapper = prev.ccacheWrapper.override {
         extraConfig = ''
           export CCACHE_COMPRESS=1
@@ -24,15 +33,6 @@ let
             echo "====="
             exit 1
           fi
-        '';
-      };
-    })
-    nur-linyinfeng.overlays.default
-    (final: prev: {
-      shell = prev.writeShellApplication {
-        name = "shell-starter";
-        text = ''
-          /bin/sh $HOME/.shell $@
         '';
       };
     })
