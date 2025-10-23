@@ -50,7 +50,7 @@
         del __nix_helper_init
     '';
     extraConfig = ''
-      if XONSH_INTERACTIVE:
+      if $XONSH_INTERACTIVE:
         def __env_setup():
           user = $USER
           if not ''${...}.get(f"__USER_{user}_SETUP_DONE"):
