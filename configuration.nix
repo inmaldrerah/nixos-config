@@ -227,7 +227,7 @@ rec {
 
   environment.shells = [
     "/run/current-system/sw/bin/shell-starter"
-    "${lib.getExe pkgs.shell}"
+    "${pkgs.shell}/bin/shell-starter"
   ];
 
   environment.variables = {
