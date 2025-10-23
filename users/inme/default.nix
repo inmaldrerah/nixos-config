@@ -173,7 +173,7 @@
     };
 
     home.file.".shell".text = ''
-      ${config.programs.xonsh.finalPackage} $@
+      ${lib.getExe config.programs.xonsh.finalPackage} $@
     '';
 
     home.packages = with pkgs; [
