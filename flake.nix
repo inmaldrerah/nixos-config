@@ -49,6 +49,7 @@
           inherit nixvim;
           inherit hm-extension;
           inherit nur-linyinfeng;
+          inherit nixpkgs-extension;
         };
         modules = [
           {
