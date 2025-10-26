@@ -241,8 +241,8 @@ rec {
       source-han-sans
       source-han-serif
       source-han-mono
-      maple-mono.CN-NF
       maple-mono.NF
+      maple-mono.NF-CN
       maple-mono.opentype
       noto-fonts
       noto-fonts-cjk-sans
