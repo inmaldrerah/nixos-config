@@ -48,7 +48,8 @@ rec {
     allowedTCPPorts = [ 12345 ];
     allowedUDPPorts = [ 12345 ];
     trustedInterfaces = [ "lo" "tailscale0" ];
-    interfaces."wlan0".allowedUDPPorts = [ 41641 ];
+    interfaces."wlan0".allowedTCPPorts = [ 47984 47989 47990 48010 ];
+    interfaces."wlan0".allowedUDPPorts = [ 41641 47998 47999 48000 ];
     interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
   };
   # Or disable the firewall altogether.
