@@ -58,16 +58,14 @@
             $PATH.insert(0, f"{home}/.local/bin")
             $TERM = "xterm-256color"
             ''${f"__USER_{user}_SETUP_DONE"} = True
-          if len(xonsh.xontribs.xontribs_loaded()) == 0 \
-            and not ''${...}.get("__SHOULD_LOAD_XONTRIB"):
-            $__SHOULD_LOAD_XONTRIB = True
-            ![xonsh]
-            ![exit]
-          else:
-            xontrib load coreutils
-            xontrib load direnv
-            xontrib load fish_completer
-            $__SHOULD_LOAD_XONTRIB = False
+          if len(xonsh.xontribs.xontribs_loaded()) == 0:
+            if len(xonsh.xontribs.get_xontribs()) == 1: # only coreutils
+              ![xonsh]
+              ![exit]
+            else:
+              xontrib load coreutils
+              xontrib load direnv
+              xontrib load fish_completer
 
         __env_setup()
         del __env_setup
