@@ -235,6 +235,7 @@ rec {
 
   fonts = {
     packages = with pkgs; [
+      google-fonts
       source-sans
       source-serif
       source-code-pro
