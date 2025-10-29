@@ -58,7 +58,8 @@
             $PATH.insert(0, f"{home}/.local/bin")
             $TERM = "xterm-256color"
             ''${f"__USER_{user}_SETUP_DONE"} = True
-          if not ''${...}.get("__SHOULD_LOAD_XONTRIB"):
+          if len(xonsh.xontribs.xontribs_loaded()) == 0 \
+            and not ''${...}.get("__SHOULD_LOAD_XONTRIB"):
             $__SHOULD_LOAD_XONTRIB = True
             ![xonsh]
             ![exit]
