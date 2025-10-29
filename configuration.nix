@@ -235,7 +235,9 @@ rec {
 
   fonts = {
     packages = with pkgs; [
-      google-fonts
+      atkinson-hyperlegible-next
+      atkinson-hyperlegible
+      libertinus
       source-sans
       source-serif
       source-code-pro
