@@ -58,6 +58,7 @@
             $PATH.insert(0, f"{home}/.local/bin")
             $TERM = "xterm-256color"
             ''${f"__USER_{user}_SETUP_DONE"} = True
+          import xonsh
           if len(xonsh.xontribs.xontribs_loaded()) == 0:
             if len(xonsh.xontribs.get_xontribs()) == 1: # only coreutils
               ![xonsh]
