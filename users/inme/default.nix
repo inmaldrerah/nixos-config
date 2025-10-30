@@ -13,7 +13,7 @@
     programs.home-manager.enable = true;
 
     programs.bash = {
-      enable = false;
+      enable = true;
       shellOptions = [ "globstar" ];
       shellAliases = {
       };
@@ -21,6 +21,9 @@
         export TERM=xterm-256color
         export PATH=~/.local/bin:$PATH
         ulimit -Sn 524288
+      '';
+      initExtra = ''
+        exec xonsh $@
       '';
     };
 
