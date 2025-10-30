@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 {
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      exec xonsh $@
+    '';
+  }
+
   programs.xonsh = {
     enable = true;
     rcFiles."nix-helper.xsh".text = ''
