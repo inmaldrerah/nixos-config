@@ -23,7 +23,7 @@
         ulimit -Sn 524288
       '';
       initExtra = ''
-        [ $# -eq 0 ] && exec xonsh
+        [ "$START_BASH" != "1" ] && exec xonsh
       '';
     };
 
