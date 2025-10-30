@@ -5,7 +5,7 @@
     initExtra = ''
       exec xonsh $@
     '';
-  }
+  };
 
   programs.xonsh = {
     enable = true;
