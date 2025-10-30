@@ -22,9 +22,6 @@
         export PATH=~/.local/bin:$PATH
         ulimit -Sn 524288
       '';
-      initExtra = ''
-        [ "$START_BASH" != "1" ] && exec xonsh
-      '';
     };
 
     programs.direnv = {
