@@ -23,7 +23,7 @@
         ulimit -Sn 524288
       '';
       initExtra = ''
-        exec xonsh $@
+        [ $# -eq 0 ] && exec xonsh
       '';
     };
 
