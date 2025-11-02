@@ -37,6 +37,7 @@ rec {
       "223.5.5.5:53"
     ];
     upstream-mode = "parallel";
+    verbose = true;
   };
 
   # Enable the OpenSSH daemon.
