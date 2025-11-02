@@ -31,7 +31,7 @@
 
     programs.kitty = {
       enable = true;
-      font.name = "Fira Code";
+      font.name = "Maple Mono NF CN";
       font.size = 14;
       settings = {
         background_opacity = "0.8";
