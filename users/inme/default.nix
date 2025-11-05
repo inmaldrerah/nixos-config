@@ -13,7 +13,7 @@
     programs.home-manager.enable = true;
 
     programs.bash = {
-      enable = true;
+      enable = false;
       shellOptions = [ "globstar" ];
       shellAliases = {
       };
@@ -122,6 +122,7 @@
         shopt -s globstar
         export TERM=xterm-256color
         export PATH=~/.local/bin:$PATH
+        export TERMINAL=kitty
         ulimit -Sn 524288
     '';
 
@@ -204,7 +205,6 @@
       gtklock
       ripgrep
       wlogout
-      # feishu
       fuzzel
       nodejs
       swappy
@@ -215,7 +215,6 @@
       samba
       typst
       mono
-      # wofi
       dex
       git
       zig
