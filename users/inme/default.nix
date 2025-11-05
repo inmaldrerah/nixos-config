@@ -122,7 +122,6 @@
         shopt -s globstar
         export TERM=xterm-256color
         export PATH=~/.local/bin:$PATH
-        export TERMINAL=kitty
         ulimit -Sn 524288
     '';
 

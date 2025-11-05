@@ -220,12 +220,13 @@ rec {
     brightnessctl
     alsa-utils # for amixer
     gparted
+    kitty
     uwsm
     wget
   ];
 
   environment.variables = {
-    TERMINAL = "alacritty";
+    TERMINAL = "kitty";
     EDITOR = "nvim";
   };
 
