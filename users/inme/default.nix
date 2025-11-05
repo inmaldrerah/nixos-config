@@ -131,8 +131,6 @@
     home.file.".config/waybar/config".source = ./waybar/config;
     home.file.".config/waybar/style.css".source = ./waybar/style.css;
 
-    # home.file.".config/wofi/style.css".source = ./wofi/style.css;
-
     home.file.".local/bin/caffine" = {
       executable = true;
       text = ''
