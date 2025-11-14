@@ -42,7 +42,7 @@
         name = "nix";
         auto-format = true;
         formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-      }]
+      }];
     };
 
     programs.kitty = {
