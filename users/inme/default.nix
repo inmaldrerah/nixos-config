@@ -29,6 +29,10 @@
       nix-direnv.enable = true;
     };
 
+    programs.helix = {
+      enable = true;
+    };
+
     programs.kitty = {
       enable = true;
       font.name = "Maple Mono NF CN";
