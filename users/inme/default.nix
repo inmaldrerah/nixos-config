@@ -54,6 +54,10 @@
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
           }
         ];
+        themes.default_transparent = {
+          inherits = "default";
+          "ui.background" = {};
+        }
       };
 
       programs.kitty = {
