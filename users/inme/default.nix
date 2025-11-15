@@ -40,7 +40,7 @@
       programs.helix = {
         enable = true;
         settings = {
-          theme = "default_transparent";
+          theme = "dracula_transparent";
           editor.cursor-shape = {
             normal = "block";
             insert = "bar";
@@ -54,8 +54,8 @@
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
           }
         ];
-        themes.default_transparent = {
-          inherits = "default";
+        themes.dracula_transparent = {
+          inherits = "dracula";
           "ui.background" = { };
         };
       };
