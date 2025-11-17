@@ -11,10 +11,11 @@ let
     };
     meta.homepage = "https://github.com/c3lang/tree-sitter-c3";
   };
-in {
+in
+{
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
 
     # Color Scheme
     colorschemes.base16 = {
@@ -29,8 +30,14 @@ in {
       name = "wl-copy";
       copy."+" = [ "wl-copy" ];
       copy."*" = [ "wl-copy" ];
-      paste."+" = [ "wl-paste" "-n" ];
-      paste."*" = [ "wl-paste" "-n" ];
+      paste."+" = [
+        "wl-paste"
+        "-n"
+      ];
+      paste."*" = [
+        "wl-paste"
+        "-n"
+      ];
       cache_enabled = true;
     };
 
@@ -53,16 +60,25 @@ in {
     };
 
     # Plugins
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-suda
-    ] ++ [
-      treesitter-c3-grammar
-    ];
+    extraPlugins =
+      with pkgs.vimPlugins;
+      [
+        vim-suda
+      ]
+      ++ [
+        treesitter-c3-grammar
+      ];
     plugins.transparent.enable = true;
     plugins.treesitter = {
       enable = true;
       nixGrammars = true;
-      settings.ensure_installed = [ "nix" "c" "zig" "python" "typst" ];
+      settings.ensure_installed = [
+        "nix"
+        "c"
+        "zig"
+        "python"
+        "typst"
+      ];
       settings.highlight.enable = true;
       settings.incremental_selection.enable = true;
       settings.indent.enable = true;
@@ -155,7 +171,11 @@ in {
       {
         key = "<A-n>";
         action = "<cmd>Neotree toggle<CR>";
-        mode = ["n" "v" "i"];
+        mode = [
+          "n"
+          "v"
+          "i"
+        ];
         options = {
           silent = true;
         };
