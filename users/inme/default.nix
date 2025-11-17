@@ -85,9 +85,9 @@
         enable = true;
         enableXonshIntegration = true;
         settings = {
-          manager.sort_by = "natural";
-          manager.sort_reverse = false;
-          manager.sort_sensitive = true;
+          mgr.sort_by = "natural";
+          mgr.sort_reverse = false;
+          mgr.sort_sensitive = true;
         };
       };
 
