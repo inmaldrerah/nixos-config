@@ -227,7 +227,6 @@
         lua-language-server
         nix-output-monitor
         deltachat-desktop
-        firefox-wayland
         mission-center
         onlyoffice-bin
         wl-clipboard
@@ -242,6 +241,7 @@
         swaylock
         tinymist
         vscodium
+        firefox
         gtklock
         ripgrep
         wlogout
