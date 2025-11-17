@@ -222,13 +222,13 @@
         lxqt.lxqt-policykit
         lxsession
         wineWowPackages.waylandFull
+        onlyoffice-desktopeditors
         swaynotificationcenter
         networkmanagerapplet
         lua-language-server
         nix-output-monitor
         deltachat-desktop
         mission-center
-        onlyoffice-bin
         wl-clipboard
         libreoffice
         winetricks
