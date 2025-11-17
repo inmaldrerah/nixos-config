@@ -175,10 +175,6 @@ rec {
     };
   };
 
-  # Set adb/fastboot udev rules
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
   # Canokey udev rules
   services.udev.extraRules = ''
     # GnuPG/pcsclite
