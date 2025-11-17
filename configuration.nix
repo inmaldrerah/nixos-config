@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, nixpkgsInput, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixpkgsInput,
+  ...
+}:
 
 rec {
   nix = {
@@ -10,7 +16,10 @@ rec {
     package = pkgs.lixPackageSets.latest.lix;
     # package = pkgs.nixVersions.latest;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       keep-outputs = true;
       keep-derivations = true;
       keep-going = true;
@@ -62,24 +71,25 @@ rec {
     fcitx5 = {
       addons = with pkgs; [
         fcitx5-rime
-        fcitx5-configtool
+        qt6Packages.fcitx5-configtool
       ];
       waylandFrontend = true;
     };
   };
 
   # Fake glibc locales package
-  i18n.glibcLocales = if pkgs.stdenv.hostPlatform.isGnu
-    then pkgs.glibcLocales
-    else pkgs.stdenv.mkDerivation {
-      name = "empty";
-      dontUnpack = true;
-      installPhase = "touch $out";
-      version = "0.0";
-    };
+  i18n.glibcLocales =
+    if pkgs.stdenv.hostPlatform.isGnu then
+      pkgs.glibcLocales
+    else
+      pkgs.stdenv.mkDerivation {
+        name = "empty";
+        dontUnpack = true;
+        installPhase = "touch $out";
+        version = "0.0";
+      };
 
   programs.command-not-found.enable = false;
-
 
   programs.xonsh.enable = true;
 
@@ -112,8 +122,8 @@ rec {
   };
 
   # Allow swaylock to check password
-  security.pam.services.swaylock = {};
-  security.pam.services.gtklock = {};
+  security.pam.services.swaylock = { };
+  security.pam.services.gtklock = { };
 
   # For OBS virtual camera
   security.polkit.enable = true;
@@ -127,7 +137,7 @@ rec {
       Defaults env_keep += "WAYLAND_DISPLAY"
     '';
   };
-  security.pam.services.systemd-run0 = {};
+  security.pam.services.systemd-run0 = { };
 
   programs.dconf.enable = true;
 
@@ -189,7 +199,7 @@ rec {
     # note if you use "plugdev", make sure you have this group and the wanted user is in that group
     #SUBSYSTEMS=="usb", ATTR{idVendor}=="20a0", ATTR{idProduct}=="42d4", GROUP="plugdev", MODE="0660"
     SUBSYSTEMS=="usb", ATTR{idVendor}=="20a0", ATTR{idProduct}=="42d4", TAG+="uaccess"
-    '';
+  '';
 
   # services.tailscale.enable = true;
 
@@ -202,7 +212,7 @@ rec {
 
   # Disable nscd
   services.nscd.enable = false;
-  system.nssModules = lib.mkForce [];
+  system.nssModules = lib.mkForce [ ];
 
   services.upower.enable = true;
 
@@ -257,9 +267,22 @@ rec {
       font-awesome
     ];
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Noto Serif CJK SC" "Symbols Nerd Font" ];
-      sansSerif = [ "Noto Sans" "Noto Sans CJK SC" "Symbols Nerd Font" ];
-      monospace = [ "Fira Code" "Noto Sans Mono" "Noto Sans Mono CJK SC" "Symbols Nerd Fonts Mono" ];
+      serif = [
+        "Noto Serif"
+        "Noto Serif CJK SC"
+        "Symbols Nerd Font"
+      ];
+      sansSerif = [
+        "Noto Sans"
+        "Noto Sans CJK SC"
+        "Symbols Nerd Font"
+      ];
+      monospace = [
+        "Fira Code"
+        "Noto Sans Mono"
+        "Noto Sans Mono CJK SC"
+        "Symbols Nerd Fonts Mono"
+      ];
     };
   };
 
@@ -286,4 +309,3 @@ rec {
   system.stateVersion = "23.05"; # Did you read the comment?
 
 }
-
