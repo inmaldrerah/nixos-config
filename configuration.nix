@@ -222,7 +222,7 @@ rec {
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    helix-editor # make sure other users have this
+    helix # make sure other users have this
     brightnessctl
     alsa-utils # for amixer
     gparted
