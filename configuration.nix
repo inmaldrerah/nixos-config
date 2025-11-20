@@ -222,7 +222,7 @@ rec {
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    neovim # make sure other users have this
+    helix-editor # make sure other users have this
     brightnessctl
     alsa-utils # for amixer
     gparted
@@ -233,7 +233,7 @@ rec {
 
   environment.variables = {
     TERMINAL = "kitty";
-    EDITOR = "nvim";
+    EDITOR = "hx";
   };
 
   environment.sessionVariables = {
