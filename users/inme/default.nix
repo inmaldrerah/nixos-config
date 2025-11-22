@@ -235,6 +235,7 @@
         alacritty
         git-graph
         libnotify
+        p7zip-rar
         htop-vim
         hyprshot
         swayidle
@@ -251,7 +252,6 @@
         trashy
         waybar
         comma
-        p7zip
         samba
         typst
         mono
