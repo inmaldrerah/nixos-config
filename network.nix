@@ -1,4 +1,10 @@
-{ config, lib, hostName, private, ... }:
+{
+  config,
+  lib,
+  hostName,
+  private,
+  ...
+}:
 
 rec {
   # Use nftables backend
@@ -6,7 +12,7 @@ rec {
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   # networking.wireless.iwd.enable = true;
 
   networking.networkmanager.dns = "none";
@@ -45,12 +51,25 @@ rec {
 
   # Open ports in the firewall.
   networking.firewall = {
-    enable = true;
+    enable = false;
     allowedTCPPorts = [ 12345 ];
     allowedUDPPorts = [ 12345 ];
-    trustedInterfaces = [ "lo" "tailscale0" ];
-    interfaces."wlp1s0".allowedTCPPorts = [ 47984 47989 47990 48010 ];
-    interfaces."wlp1s0".allowedUDPPorts = [ 41641 47998 47999 48000 ];
+    trustedInterfaces = [
+      "lo"
+      "tailscale0"
+    ];
+    interfaces."wlp1s0".allowedTCPPorts = [
+      47984
+      47989
+      47990
+      48010
+    ];
+    interfaces."wlp1s0".allowedUDPPorts = [
+      41641
+      47998
+      47999
+      48000
+    ];
     interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
   };
   # Or disable the firewall altogether.
