@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs.xonsh = {
     enable = true;
@@ -49,7 +54,7 @@
         __nix_helper_init()
         del __nix_helper_init
     '';
-    extraConfig = ''
+    extraConfig = lib.mkBefore ''
       if $XONSH_INTERACTIVE:
         def __env_setup():
           user = $USER
@@ -57,7 +62,6 @@
             home = $HOME
             $PATH.insert(0, f"{home}/.local/bin")
             $TERM = "xterm-256color"
-            $_ZO_RESOLVE_SYMLINKS = 1
             ''${f"__USER_{user}_SETUP_DONE"} = True
           import xonsh
           if len(xonsh.xontribs.xontribs_loaded()) == 0:
