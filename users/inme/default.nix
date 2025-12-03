@@ -256,7 +256,7 @@
             vscjava.vscode-java-pack
             vscjava.vscode-java-test
             vscjava.vscode-maven
-            vscjava.vscode-sprint-initializr
+            vscjava.vscode-spring-initializr
           ];
         })
         firefox
