@@ -242,6 +242,24 @@
         swaylock
         tinymist
         vscodium
+        vscode-with-extensions.override
+        {
+          vscodeExtensions = with vscode-extensions; [
+            asciidoctor.asciidoctor-vscode
+            github.copilot
+            github.copilot-chat
+            llvm-vs-code-extensions.vscode-clangd
+            mhutchie.git-graph
+            mkhl.direnv
+            vscjava.vscode-gradle
+            vscjava.vscode-java-debug
+            vscjava.vscode-java-dependency
+            vscjava.vscode-java-pack
+            vscjava.vscode-java-test
+            vscjava.vscode-maven
+            vscjava.vscode-sprint-initializr
+          ];
+        }
         firefox
         gtklock
         ripgrep
