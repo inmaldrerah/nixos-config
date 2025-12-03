@@ -28,15 +28,18 @@ rec {
         "https://nix-community.cachix.org"
         "https://cache.garnix.io"
         "https://cache.nixos.org"
+        "https://hydra.iohk.io"
       ];
       trusted-substituters = [
         "https://nix-community.cachix.org"
         "https://cache.garnix.io"
         "https://cache.nixos.org"
+        "https://hydra.iohk.io"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       ];
       trusted-users = [
         "root"
