@@ -241,8 +241,8 @@
         swayidle
         swaylock
         tinymist
-        vscodium
         (vscode-with-extensions.override {
+          vscode = pkgs.vscodium;
           vscodeExtensions = with nix-vscode-extensions.vscode-marketplace; [
             asciidoctor.asciidoctor-vscode
             github.copilot
