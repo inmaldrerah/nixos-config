@@ -243,7 +243,7 @@
         tinymist
         vscodium
         (vscode-with-extensions.override {
-          vscodeExtensions = with nix-vscode-extensions; [
+          vscodeExtensions = with nix-vscode-extensions.vscode-marketplace; [
             asciidoctor.asciidoctor-vscode
             github.copilot
             github.copilot-chat
