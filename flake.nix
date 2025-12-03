@@ -26,64 +26,71 @@
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs, nixpkgs-extension,
-    home-manager, hm-extension,
-    impermanence,
-    # lix-module,
-    nixvim,
-    nix-vscode-extensions,
-    nur-linyinfeng, ... }:
-  let
-    triple = "x86_64-unknown-linux-gnu";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-extension,
+      home-manager,
+      hm-extension,
+      impermanence,
+      # lix-module,
+      nixvim,
+      nix-vscode-extensions,
+      nur-linyinfeng,
+      ...
+    }:
+    let
+      triple = "x86_64-unknown-linux-gnu";
 
-    nixosConfig = hostName: {
-      name = hostName;
-      value = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit hostName;
-          nixpkgsInput = nixpkgs;
-          inherit nixvim;
-          inherit hm-extension;
-          inherit nur-linyinfeng;
-          inherit nixpkgs-extension;
-          inherit nix-vscode-extensions;
+      nixosConfig = hostName: {
+        name = hostName;
+        value = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit hostName;
+            nixpkgsInput = nixpkgs;
+            inherit nixvim;
+            inherit hm-extension;
+            inherit nur-linyinfeng;
+            inherit nixpkgs-extension;
+            inherit nix-vscode-extensions;
+          };
+          modules = [
+            {
+              nixpkgs.hostPlatform.config = triple;
+              networking.hostName = hostName;
+              # systemd.services.tailscaled.after = ["NetworkManager-wait-online.service"];
+            }
+            ./overlays.nix
+            nixpkgs-extension.nixosModules.default
+            home-manager.nixosModules.home-manager
+            impermanence.nixosModules.impermanence
+            # lix-module.nixosModules.default
+            (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
+            ./configuration.nix
+            ./device/${hostName}
+            ./network.nix
+            ./storage.nix
+            ./users
+            ./xkb
+          ];
         };
-        modules = [
-          {
-            nixpkgs.hostPlatform.config = triple;
-            networking.hostName = hostName;
-            # systemd.services.tailscaled.after = ["NetworkManager-wait-online.service"];
-          }
-          ./overlays.nix
-          nixpkgs-extension.nixosModules.default
-          home-manager.nixosModules.home-manager
-          impermanence.nixosModules.impermanence
-          # lix-module.nixosModules.default
-          (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
-          ./configuration.nix
-          ./device/${hostName}
-          ./network.nix
-          ./storage.nix
-          ./users
-          ./xkb
-        ];
       };
+    in
+    {
+      nixosConfigurations = builtins.listToAttrs (
+        builtins.map nixosConfig [
+          "framework-nixos"
+          "thinkbook-16-plus-nixos"
+          "dell-nixos"
+        ]
+      );
     };
-  in
-  {
-    nixosConfigurations = builtins.listToAttrs (builtins.map nixosConfig [
-      "framework-nixos"
-      "thinkbook-16-plus-nixos"
-      "dell-nixos"
-    ]);
-  };
 }
