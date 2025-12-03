@@ -23,6 +23,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions"
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +40,7 @@
     impermanence,
     # lix-module,
     nixvim,
+    nix-vscode-extensions,
     nur-linyinfeng, ... }:
   let
     triple = "x86_64-unknown-linux-gnu";
@@ -50,6 +55,7 @@
           inherit hm-extension;
           inherit nur-linyinfeng;
           inherit nixpkgs-extension;
+          inherit nix-vscode-extensions;
         };
         modules = [
           {

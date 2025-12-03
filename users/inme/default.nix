@@ -243,7 +243,7 @@
         tinymist
         vscodium
         (vscode-with-extensions.override {
-          vscodeExtensions = with vscode-extensions; [
+          vscodeExtensions = with nix-vscode-extensions; [
             asciidoctor.asciidoctor-vscode
             github.copilot
             github.copilot-chat
@@ -256,7 +256,6 @@
             vscjava.vscode-java-pack
             vscjava.vscode-java-test
             vscjava.vscode-maven
-            vscjava.vscode-spring-initializr
           ];
         })
         firefox
