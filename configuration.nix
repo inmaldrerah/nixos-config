@@ -41,7 +41,7 @@ rec {
       trusted-users = [
         "root"
         "@wheel"
-      ]
+      ];
     };
     daemonCPUSchedPolicy = "idle";
     gc = {
