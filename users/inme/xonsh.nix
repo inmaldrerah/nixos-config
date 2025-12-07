@@ -92,7 +92,7 @@
           lib,
           ...
         }:
-        buildPythonPackage rec {
+        (buildPythonPackage rec {
           pname = "xontrib-sh";
           version = "0.3.1";
           pyproject = false;
@@ -121,7 +121,7 @@
             license = lib.licenses.mit;
             maintainers = with lib.maintainers; [ ];
           };
-        }
+        })
       ))
     ];
   };
