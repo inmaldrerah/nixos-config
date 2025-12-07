@@ -15,6 +15,7 @@ let
     (self: super: {
       xonsh.xontribs.xontrib-sh =
         with super;
+        with super.python3Packages;
         (buildPythonPackage rec {
           pname = "xontrib-sh";
           version = "0.3.1";
