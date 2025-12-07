@@ -81,10 +81,17 @@
     extraPackages = ps: [
       ps.xonsh.xontribs.xonsh-direnv
       ps.xonsh.xontribs.xontrib-fish-completer
-      (
-        with pkgs;
-        with ps;
-        (buildPythonPackage rec {
+      (ps.callPackage (
+        {
+          buildPythonPackage,
+          fetchFromGitHub,
+          setuptools,
+          writableTmpDirAsHomeHook,
+          xonsh,
+          lib,
+          ...
+        }:
+        buildPythonPackage rec {
           pname = "xontrib-sh";
           version = "0.3.1";
           pyproject = false;
@@ -113,8 +120,8 @@
             license = lib.licenses.mit;
             maintainers = with lib.maintainers; [ ];
           };
-        })
-      )
+        }
+      ))
     ];
   };
 }
