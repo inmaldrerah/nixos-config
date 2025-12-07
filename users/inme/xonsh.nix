@@ -115,7 +115,7 @@
 
           installPhase = ''
             mkdir -p $out
-            cp -r xontribs/ $out/xontribs/
+            cp -r xontrib/ $out/xontrib/
           '';
 
           passthru.updateScript = nix-update-script { };
