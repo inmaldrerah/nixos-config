@@ -95,7 +95,7 @@
         buildPythonPackage rec {
           pname = "xontrib-sh";
           version = "0.3.1";
-          pyproject = false;
+          format = "setuptools";
 
           src = fetchFromGitHub {
             owner = "anki-code";
@@ -112,11 +112,6 @@
             writableTmpDirAsHomeHook
             xonsh
           ];
-
-          installPhase = ''
-            mkdir -p $out
-            cp -r xontrib/ $out/xontrib/
-          '';
 
           passthru.updateScript = nix-update-script { };
 
