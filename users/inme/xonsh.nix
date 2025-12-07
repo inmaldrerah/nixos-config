@@ -123,6 +123,48 @@
           };
         }
       ) { })
+      (ps.callPackage (
+        {
+          buildPythonPackage,
+          fetchFromGitHub,
+          setuptools,
+          writableTmpDirAsHomeHook,
+          xonsh,
+          nix-update-script,
+          lib,
+          ...
+        }:
+        buildPythonPackage rec {
+          pname = "xontrib-pipeliner";
+          version = "0.5.0";
+          format = "setuptools";
+
+          src = fetchFromGitHub {
+            owner = "anki-code";
+            repo = "xontrib-pipeliner";
+            tag = version;
+            hash = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
+          };
+
+          build-system = [
+            setuptools
+          ];
+
+          nativeCheckInputs = [
+            writableTmpDirAsHomeHook
+            xonsh
+          ];
+
+          passthru.updateScript = nix-update-script { };
+
+          meta = {
+            description = "Let your pipe lines flow thru the Python code in xonsh";
+            homepage = "https://github.com/anki-code/xontrib-pipeliner";
+            license = lib.licenses.bsd2;
+            maintainers = with lib.maintainers; [ ];
+          };
+        }
+      ) { })
     ];
   };
 }
