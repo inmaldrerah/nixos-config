@@ -113,6 +113,11 @@
             xonsh
           ];
 
+          installPhase = ''
+            mkdir -p $out
+            cp -r xontribs/ $out/xontribs/
+          '';
+
           passthru.updateScript = nix-update-script { };
 
           meta = {
