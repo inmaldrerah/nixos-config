@@ -80,6 +80,7 @@
     extraPackages = ps: [
       ps.xonsh.xontribs.xonsh-direnv
       ps.xonsh.xontribs.xontrib-fish-completer
+      ps.xonsh.xontribs.xontrib-sh
     ];
   };
 }
