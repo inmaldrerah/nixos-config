@@ -13,8 +13,8 @@ let
     nix-vscode-extensions.overlays.default
     nur-linyinfeng.overlays.default
     (self: super: {
-      xonsh = super.xonsh // {
-        xontribs.xontrib-sh =
+      xonsh = super.pythonPackages // {
+        xonsh.xontribs.xontrib-sh =
           with super;
           with super.python3Packages;
           (buildPythonPackage rec {
