@@ -73,6 +73,7 @@
               xontrib load coreutils
               xontrib load direnv
               xontrib load fish_completer
+              xontrib load pipeliner
               xontrib load sh
 
         __env_setup()
