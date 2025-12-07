@@ -143,7 +143,7 @@
             owner = "anki-code";
             repo = "xontrib-pipeliner";
             tag = version;
-            hash = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
+            hash = "sha256-KL-AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
           };
 
           build-system = [
