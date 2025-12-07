@@ -88,6 +88,7 @@
           setuptools,
           writableTmpDirAsHomeHook,
           xonsh,
+          nix-update-script,
           lib,
           ...
         }:
