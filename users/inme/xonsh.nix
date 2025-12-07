@@ -73,6 +73,7 @@
               xontrib load coreutils
               xontrib load direnv
               xontrib load fish_completer
+              xontrib load sh
 
         __env_setup()
         del __env_setup
@@ -92,7 +93,7 @@
             owner = "anki-code";
             repo = "xontrib-sh";
             tag = version;
-            hash = "sha256-R1DCGMrRCJLnz/QMk6QB8ai4nx88vvyPdaCKg3od5/I=";
+            hash = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
           };
 
           build-system = [
