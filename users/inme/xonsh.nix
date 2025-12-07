@@ -154,6 +154,7 @@
           nativeCheckInputs = [
             writableTmpDirAsHomeHook
             xonsh
+            six
           ];
 
           passthru.updateScript = nix-update-script { };
