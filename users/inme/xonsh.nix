@@ -83,7 +83,7 @@
       ps.xonsh.xontribs.xontrib-fish-completer
       (
         with pkgs;
-        with pkgs.python3Packages;
+        with ps;
         (buildPythonPackage rec {
           pname = "xontrib-sh";
           version = "0.3.1";
@@ -102,7 +102,6 @@
 
           nativeCheckInputs = [
             writableTmpDirAsHomeHook
-            pytestCheckHook
             xonsh
           ];
 
