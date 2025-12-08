@@ -157,7 +157,7 @@
             xonsh
           ];
 
-          buildInputs = [
+          propagatedBuildInputs = [
             six
           ];
 
