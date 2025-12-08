@@ -154,6 +154,9 @@
           nativeCheckInputs = [
             writableTmpDirAsHomeHook
             xonsh
+          ];
+
+          buildInputs = [
             six
           ];
 
