@@ -68,7 +68,7 @@
           if len(xontribs.xontribs_loaded()) == 0:
             if len(xontribs.get_xontribs()) == 1: # only coreutils
               pass
-            xontribs.xontrib_load(["coreutils", "direnv", "fish_completer", "pipliner", "sh"])
+            xontribs.xontribs_load(["coreutils", "direnv", "fish_completer", "pipliner", "sh"])
 
         __env_setup()
         del __env_setup

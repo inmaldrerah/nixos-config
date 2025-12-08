@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  shell = pkgs.xonsh;
+  shell = pkgs.bash;
   home-manager =
     {
       config,
