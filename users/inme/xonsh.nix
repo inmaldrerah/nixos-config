@@ -67,10 +67,9 @@
           import xonsh
           if len(xonsh.xontribs.xontribs_loaded()) == 0:
             if len(xonsh.xontribs.get_xontribs()) == 1: # only coreutils
-              orig_python_path = ''${...}.get("PYTHON_PATH")
-              if orig_python_path is None:
-                orig_python_path = []
-              $PYTHON_PATH = "${config.programs.xonsh.package}" + orig_python_path
+              if "PYTHON_PATH" not in ''${...}:
+                $PYTHON_PATH = []
+              $PYTHON_PATH.insert(0, "${config.programs.xonsh.package}")
             xontrib load coreutils
             xontrib load direnv
             xontrib load fish_completer
