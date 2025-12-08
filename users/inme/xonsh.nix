@@ -67,14 +67,16 @@
           import xonsh
           if len(xonsh.xontribs.xontribs_loaded()) == 0:
             if len(xonsh.xontribs.get_xontribs()) == 1: # only coreutils
-              ![xonsh]
-              ![exit]
-            else:
-              xontrib load coreutils
-              xontrib load direnv
-              xontrib load fish_completer
-              xontrib load pipeliner
-              xontrib load sh
+              orig_python_path = ''${...}.get("PYTHON_PATH")
+              if orig_python_path is None:
+                orig_python_path = []
+              $PYTHON_PATH = "${config.program.xonsh.package}" + orig_python_path
+            xontrib load coreutils
+            xontrib load direnv
+            xontrib load fish_completer
+            xontrib load pipeliner
+            xontrib load sh
+          del xonsh
 
         __env_setup()
         del __env_setup
