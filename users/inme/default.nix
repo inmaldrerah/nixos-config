@@ -1,9 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, callPackage, ... }:
 let
   xonsh = import ./xonsh.nix
 in
 {
-  shell = pkgs.bash;
+  shell = callPackage xonsh.package {};
   home-manager =
     {
       config,

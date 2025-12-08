@@ -77,99 +77,101 @@
         '';
       };
     };
-  package = xonsh.override (old: {
-    extraPackages = ps: [
-      ps.xonsh.xontribs.xonsh-direnv
-      ps.xonsh.xontribs.xontrib-fish-completer
-      (ps.callPackage (
-        {
-          buildPythonPackage,
-          fetchFromGitHub,
-          setuptools,
-          writableTmpDirAsHomeHook,
-          xonsh,
-          nix-update-script,
-          lib,
-          ...
-        }:
-        buildPythonPackage rec {
-          pname = "xontrib-sh";
-          version = "0.3.1";
-          format = "setuptools";
+  package =
+    { xonsh, ... }:
+    xonsh.override (old: {
+      extraPackages = ps: [
+        ps.xonsh.xontribs.xonsh-direnv
+        ps.xonsh.xontribs.xontrib-fish-completer
+        (ps.callPackage (
+          {
+            buildPythonPackage,
+            fetchFromGitHub,
+            setuptools,
+            writableTmpDirAsHomeHook,
+            xonsh,
+            nix-update-script,
+            lib,
+            ...
+          }:
+          buildPythonPackage rec {
+            pname = "xontrib-sh";
+            version = "0.3.1";
+            format = "setuptools";
 
-          src = fetchFromGitHub {
-            owner = "anki-code";
-            repo = "xontrib-sh";
-            tag = version;
-            hash = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
-          };
+            src = fetchFromGitHub {
+              owner = "anki-code";
+              repo = "xontrib-sh";
+              tag = version;
+              hash = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
+            };
 
-          build-system = [
-            setuptools
-          ];
+            build-system = [
+              setuptools
+            ];
 
-          nativeCheckInputs = [
-            writableTmpDirAsHomeHook
-            xonsh
-          ];
+            nativeCheckInputs = [
+              writableTmpDirAsHomeHook
+              xonsh
+            ];
 
-          passthru.updateScript = nix-update-script { };
+            passthru.updateScript = nix-update-script { };
 
-          meta = {
-            description = "Paste and run commands from bash, zsh, fish, tcsh, pwsh in xonsh shell";
-            homepage = "https://github.com/anki-code/xontrib-sh";
-            license = lib.licenses.mit;
-            maintainers = with lib.maintainers; [ ];
-          };
-        }
-      ) { })
-      (ps.callPackage (
-        {
-          buildPythonPackage,
-          fetchFromGitHub,
-          setuptools,
-          writableTmpDirAsHomeHook,
-          xonsh,
-          nix-update-script,
-          six,
-          lib,
-          ...
-        }:
-        buildPythonPackage rec {
-          pname = "xontrib-pipeliner";
-          version = "0.5.0";
-          format = "setuptools";
+            meta = {
+              description = "Paste and run commands from bash, zsh, fish, tcsh, pwsh in xonsh shell";
+              homepage = "https://github.com/anki-code/xontrib-sh";
+              license = lib.licenses.mit;
+              maintainers = with lib.maintainers; [ ];
+            };
+          }
+        ) { })
+        (ps.callPackage (
+          {
+            buildPythonPackage,
+            fetchFromGitHub,
+            setuptools,
+            writableTmpDirAsHomeHook,
+            xonsh,
+            nix-update-script,
+            six,
+            lib,
+            ...
+          }:
+          buildPythonPackage rec {
+            pname = "xontrib-pipeliner";
+            version = "0.5.0";
+            format = "setuptools";
 
-          src = fetchFromGitHub {
-            owner = "anki-code";
-            repo = "xontrib-pipeliner";
-            tag = version;
-            hash = "sha256-rL0tssLtGE5dEovFpFnN95Jd0yaCyzciU0RUTakCUZ8=";
-          };
+            src = fetchFromGitHub {
+              owner = "anki-code";
+              repo = "xontrib-pipeliner";
+              tag = version;
+              hash = "sha256-rL0tssLtGE5dEovFpFnN95Jd0yaCyzciU0RUTakCUZ8=";
+            };
 
-          build-system = [
-            setuptools
-          ];
+            build-system = [
+              setuptools
+            ];
 
-          nativeCheckInputs = [
-            writableTmpDirAsHomeHook
-            xonsh
-          ];
+            nativeCheckInputs = [
+              writableTmpDirAsHomeHook
+              xonsh
+            ];
 
-          propagatedBuildInputs = [
-            six
-          ];
+            propagatedBuildInputs = [
+              six
+            ];
 
-          passthru.updateScript = nix-update-script { };
+            passthru.updateScript = nix-update-script { };
 
-          meta = {
-            description = "Let your pipe lines flow thru the Python code in xonsh";
-            homepage = "https://github.com/anki-code/xontrib-pipeliner";
-            license = lib.licenses.bsd2;
-            maintainers = with lib.maintainers; [ ];
-          };
-        }
-      ) { })
-    ];
-  });
+            meta = {
+              description = "Let your pipe lines flow thru the Python code in xonsh";
+              homepage = "https://github.com/anki-code/xontrib-pipeliner";
+              license = lib.licenses.bsd2;
+              maintainers = with lib.maintainers; [ ];
+            };
+          }
+        ) { })
+      ];
+    });
 }
