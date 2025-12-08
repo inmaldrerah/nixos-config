@@ -68,7 +68,7 @@
           if len(xontribs.xontribs_loaded()) == 0:
             if len(xontribs.get_xontribs()) == 1: # only coreutils
               import sys
-              sys.path.append(g`${config.programs.xonsh.finalPackage.python.buildEnv}/*/site-packages`)
+              sys.path.append("${config.programs.xonsh.finalPackage.python.buildEnv}/lib/python3.13/site-packages")
             xontribs.xontribs_load(["coreutils", "direnv", "fish_completer", "pipliner", "sh"])
 
         __env_setup()
