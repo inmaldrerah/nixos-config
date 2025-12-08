@@ -1,4 +1,7 @@
 { pkgs, lib, ... }:
+let
+  xonsh = import ./xonsh.nix
+in
 {
   shell = pkgs.bash;
   home-manager =
@@ -14,7 +17,7 @@
         nixvim.homeModules.nixvim
         hm-extension.homeManagerModules.default
         ./nixvim.nix
-        ./xonsh.nix
+        xonsh.module
       ];
 
       home.stateVersion = "22.11";
@@ -162,11 +165,10 @@
 
       home.file.".bashrc".text = ''
         [[ $- == *i* ]] || return
-        # shopt -s globstar
-        # export TERM=xterm-256color
-        # export PATH=~/.local/bin:$PATH
-        # ulimit -Sn 524288
-        exec xonsh
+        shopt -s globstar
+        export TERM=xterm-256color
+        export PATH=~/.local/bin:$PATH
+        ulimit -Sn 524288
       '';
 
       home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
