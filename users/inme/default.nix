@@ -217,10 +217,6 @@
         '';
       };
 
-      home.file.".shell".text = ''
-        ${lib.getExe config.programs.xonsh.finalPackage} $@
-      '';
-
       home.packages = with pkgs; [
         wemeet
         lxqt.lxqt-policykit
