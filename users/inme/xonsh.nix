@@ -132,6 +132,7 @@
           writableTmpDirAsHomeHook,
           xonsh,
           nix-update-script,
+          six,
           lib,
           ...
         }:
