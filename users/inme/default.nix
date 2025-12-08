@@ -3,9 +3,6 @@
   lib,
   ...
 }:
-let
-  xonsh = import ./xonsh.nix;
-in
 {
   shell = pkgs.xonsh;
   home-manager =
@@ -21,7 +18,7 @@ in
         nixvim.homeModules.nixvim
         hm-extension.homeManagerModules.default
         ./nixvim.nix
-        xonsh.module
+        ./xonsh.nix
       ];
 
       home.stateVersion = "22.11";
