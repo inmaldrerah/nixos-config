@@ -159,12 +159,6 @@ in
             $TERM = "xterm-256color"
             ''${f"__USER_{user}_SETUP_DONE"} = True
             $_ZO_RESOLVE_SYMLINKS = "1"
-          from xonsh import xontribs
-          if len(xontribs.xontribs_loaded()) == 0:
-            if len(xontribs.get_xontribs()) == 1: # only coreutils
-              import sys
-              sys.path.insert(0, "${xontrib-env}/${xontrib-env.sitePackages}")
-            xontribs.xontribs_load(["coreutils", "direnv", "fish_completer", "pipeliner", "sh"])
 
         __env_setup()
         del __env_setup
