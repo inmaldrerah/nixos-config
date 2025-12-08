@@ -7,7 +7,7 @@ let
   xonsh = import ./xonsh.nix;
 in
 {
-  shell = pkgs.callPackage xonsh.package { };
+  shell = pkgs.xonsh;
   home-manager =
     {
       config,

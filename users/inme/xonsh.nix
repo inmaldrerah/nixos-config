@@ -75,11 +75,11 @@
             __env_setup()
             del __env_setup
         '';
-      };
-    };
-  package =
-    { xonsh, ... }:
-    xonsh.override (old: {
+#       };
+#     };
+#   package =
+#     { xonsh, ... }:
+#     xonsh.override (old: {
       extraPackages = ps: [
         ps.xonsh.xontribs.xonsh-direnv
         ps.xonsh.xontribs.xontrib-fish-completer
