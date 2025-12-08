@@ -162,10 +162,11 @@
 
       home.file.".bashrc".text = ''
         [[ $- == *i* ]] || return
-        shopt -s globstar
-        export TERM=xterm-256color
-        export PATH=~/.local/bin:$PATH
-        ulimit -Sn 524288
+        # shopt -s globstar
+        # export TERM=xterm-256color
+        # export PATH=~/.local/bin:$PATH
+        # ulimit -Sn 524288
+        xonsh
       '';
 
       home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;

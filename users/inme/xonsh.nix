@@ -64,18 +64,10 @@
             $TERM = "xterm-256color"
             ''${f"__USER_{user}_SETUP_DONE"} = True
             $_ZO_RESOLVE_SYMLINKS = "1"
-          import xonsh
-          if len(xonsh.xontribs.xontribs_loaded()) == 0:
-            if len(xonsh.xontribs.get_xontribs()) == 1: # only coreutils
-              if "PYTHON_PATH" not in ''${...}:
-                $PYTHON_PATH = []
-              $PYTHON_PATH.insert(0, "${config.programs.xonsh.package}")
-            xontrib load coreutils
-            xontrib load direnv
-            xontrib load fish_completer
-            xontrib load pipeliner
-            xontrib load sh
-          del xonsh
+          from xonsh import xontribs
+          if len(xontribs.xontribs_loaded()) == 0:
+            if len(xontribs.get_xontribs()) == 1: # only coreutils
+            xontribs.xontrib_load(["coreutils", "direnv", "fish_completer", "pipliner", "sh"])
 
         __env_setup()
         del __env_setup
