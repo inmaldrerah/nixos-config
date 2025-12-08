@@ -1,14 +1,13 @@
 {
   pkgs,
   lib,
-  callPackage,
   ...
 }:
 let
   xonsh = import ./xonsh.nix;
 in
 {
-  shell = callPackage xonsh.package { };
+  shell = pkgs.callPackage xonsh.package { };
   home-manager =
     {
       config,
