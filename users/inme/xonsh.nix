@@ -70,7 +70,7 @@
               orig_python_path = ''${...}.get("PYTHON_PATH")
               if orig_python_path is None:
                 orig_python_path = []
-              $PYTHON_PATH = "${config.program.xonsh.package}" + orig_python_path
+              $PYTHON_PATH = "${config.programs.xonsh.package}" + orig_python_path
             xontrib load coreutils
             xontrib load direnv
             xontrib load fish_completer
