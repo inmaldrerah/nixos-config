@@ -19,12 +19,31 @@
     "sd_mod"
     "sdhci_pci"
   ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+    # crypto related modules
+    "dm_mod"
+    "dm_crypt"
+    "aes"
+    "aes_generic"
+    "blowfish"
+    "twofish"
+    "serpent"
+    "cbc"
+    "xts"
+    "lrw"
+    "sha1"
+    "sha256"
+    "af_alg"
+    "algif_skcipher"
+    "cryptd"
+    "input_leds"
+    "ecb"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [
     "overlay"
     "btrfs"
-    "zfs"
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -39,78 +58,32 @@
   ];
   networking.hostId = "4ce220a9";
 
-  boot.zfs.requestEncryptionCredentials = [ ];
-
-  boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
-    let
-      cfgZfs = config.boot.zfs;
-    in
-    ''
-      copy_bin_and_libs ${pkgs.gnupg}/bin/gpg
-      copy_bin_and_libs ${pkgs.gnupg}/bin/gpg-agent
-      copy_bin_and_libs ${pkgs.gnupg}/libexec/scdaemon
-      copy_bin_and_libs ${pkgs.pcscliteWithPolkit}/bin/pcscd
-      copy_bin_and_libs ${cfgZfs.package}/sbin/zfs
-      copy_bin_and_libs ${cfgZfs.package}/sbin/zdb
-      copy_bin_and_libs ${cfgZfs.package}/sbin/zpool
-      copy_bin_and_libs ${cfgZfs.package}/lib/udev/vdev_id
-      copy_bin_and_libs ${cfgZfs.package}/lib/udev/zvol_id
-    ''
-  );
-  boot.initrd.postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
-    lib.mkAfter ''
-      mkdir -p /crypt-ramfs
-      export GNUPGHOME=/crypt-ramfs/.gnupg
-      mkdir -p /crypt-ramfs/public
-      mount -t zfs -o zfsutil zpool/public /crypt-ramfs/public
-      gpg-agent --daemon --scdaemon-program $out/bin/scdaemon
-      pcscd -x
-      gpg --import /crypt-ramfs/public/canokey.pgp
-      gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /crypt-ramfs/public/zpool.key.gpg | zfs load-key -- zpool/keys
-      # Require passphrase in case the above fails
-      zfs load-key -- zpool/keys
-      mkdir -p "/Y:/"
-      mount -t zfs -o zfsutil zpool/keys "/Y:/"
-      zfs load-key -a
-      umount "/Y:/"
-      umount /crypt-ramfs/public
-    ''
-  );
   boot.initrd.systemd =
     let
-      prefix = "/sysroot";
-      zfsPkg = config.boot.zfs.package;
       systemdPkg = config.boot.initrd.systemd.package;
     in
     {
       enable = true;
       initrdBin = [
-        pkgs.gnupg
-        pkgs.pcscliteWithPolkit
+        pkgs.veracrypt
       ];
-      services.zfs-import-zpool.script = lib.mkAfter ''
-        mkdir -p /zfs-crypt-ramfs
-        mkdir -p /zfs-crypt-ramfs/public
-        mount -t zfs -o zfsutil zpool/public /zfs-crypt-ramfs/public
-        export GNUPGHOME=/zfs-crypt-ramfs/.gnupg
-        ${pkgs.gnupg}/bin/gpg-agent --daemon
-        ${pkgs.pcscliteWithPolkit}/bin/pcscd -x
-        ${pkgs.gnupg}/bin/gpg --import /zfs-crypt-ramfs/public/canokey.pgp
-        ${pkgs.gnupg}/bin/gpg --pinentry-mode loopback --passphrase 101223zy --decrypt /zfs-crypt-ramfs/public/zpool.key.gpg | ${zfsPkg}/sbin/zfs load-key zpool/keys
-        if [ "$(${zfsPkg}/sbin/zfs list -Ho keystatus zpool/keys)" = "unavailable" ]; then
-          success=false
-          while [[ $success != true ]]; do
-            ${systemdPkg}/bin/systemd-ask-password --timeout=${toString config.boot.zfs.passwordTimeout} "Enter key for $ds:" | ${zfsPkg}/sbin/zfs load-key "$ds" && success=true
-          done
-        fi
-        mkdir -p /Y:
-        mount -t zfs -o zfsutil zpool/keys /Y:
-        ${zfsPkg}/sbin/zfs load-key -a
-        umount /Y:
-        ${zfsPkg}/sbin/zfs unload-key zpool/keys
-        umount /zfs-crypt-ramfs/public
+      contents."/etc/crypttab".source = pkgs.writeText "initrd-crypttab" ''
+        ROOT /dev/disk/by-partuuid/a52a6915-6021-47bd-9685-bc138e5f127c - tcrypt,tcrypt-veracrypt
       '';
+      extraBin.systemd-cryptsetup = "${systemdPkg}/bin/systemd-cryptsetup";
+      additionalUpstreamUnits = [
+        "cryptsetup-pre.target"
+        "cryptsetup.target"
+        "remote-cryptsetup.target"
+      ];
+      storePaths = [
+        "${systemdPkg}/bin/systemd-cryptsetup"
+        "${systemdPkg}/lib/systemd/system-generators/systemd-cryptsetup-generator"
+      ];
     };
+
+  services.lvm.enable = true;
+  boot.initrd.services.lvm.enable = true;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -138,27 +111,22 @@
   };
 
   fileSystems."/nix" = {
-    device = "zpool/nixos";
-    fsType = "zfs";
+    device = "/dev/mapper/ROOT";
+    fsType = "btrfs";
     neededForBoot = true;
-    options = [ "zfsutil" ];
+    options = [
+      "subvol=nixos/nix"
+      "compress=zstd"
+    ];
     depends = [ "/" ];
   };
 
-  fileSystems."/nix/persist" = {
-    device = "zpool/nixos/persist";
-    fsType = "zfs";
-    neededForBoot = true;
-    options = [ "zfsutil" ];
-    depends = [ "/nix" ];
+  fileSystems."/mnt/pool" = {
+    device = "/dev/mapper/ROOT";
+    fsType = "btrfs";
+    options = [ "compress=zstd" ];
+    depends = [ "/" ];
   };
-
-  # fileSystems."/mnt/shared" = {
-  #   device = "zpool/shared";
-  #   fsType = "zfs";
-  #   options = [ "zfsutil" ];
-  #   depends = [ "/" ];
-  # };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/889D-C417";
@@ -178,7 +146,6 @@
   };
 
   systemd.tmpfiles.rules = [
-    "L+ /mnt/shared - - - - /mnt/zpool/shared"
+    "L+ /mnt/shared - - - - /mnt/pool/shared"
   ];
-
 }
