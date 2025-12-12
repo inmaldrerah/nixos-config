@@ -47,6 +47,6 @@ rec {
     };
 
   environment.persistence."/nix/persist".users.inme = userconf.inme.persistence;
-  environment.persistence."/mnt/zpool/shared/linux-home/nixos".users.inme =
+  environment.persistence."/mnt/pool/shared/linux-home/nixos".users.inme =
     userconf.inme.shared-persistence;
 }
