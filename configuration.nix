@@ -101,6 +101,8 @@ rec {
   services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
   hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;
 
+  services.udisks2.enable = true;
+
   services.power-profiles-daemon.enable = true;
 
   # Enable sound.
