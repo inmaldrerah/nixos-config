@@ -59,16 +59,24 @@ rec {
       "tailscale0"
     ];
     interfaces."wlp1s0".allowedTCPPorts = [
+      # Sunshine
       47984
       47989
       47990
       48010
+      # Delta Chat
+      45515
+      45516
     ];
     interfaces."wlp1s0".allowedUDPPorts = [
+      # Sunshine
       41641
       47998
       47999
       48000
+      # Delta Chat
+      45515
+      45516
     ];
     interfaces."enp1s0".allowedUDPPorts = [ 41641 ];
   };
