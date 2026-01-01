@@ -71,7 +71,7 @@
                 expr = expr.strip().replace("\\", "\\\\").replace("'", "\\'")
                 return f" pl '{expr}' "
 
-              return __xonsh__.imp.re.sub(r">\s*((?:[^|\n])+)", rewrite, cmd)
+              return __xonsh__.imp.re.sub(r"^>\s*((?:[^|\n])+)", rewrite, cmd)
 
         __env_setup()
         del __env_setup
