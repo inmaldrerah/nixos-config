@@ -65,7 +65,10 @@
             @events.on_transform_command
             def pl_rewrite(cmd):
               def rewrite(match):
-                expr = match.group(1).strip().replace("\\", "\\\\").replace("'", "\\'")
+                expr = match.group(1)
+                if expr is None:
+                  return match.group(0)
+                expr = expr.strip().replace("\\", "\\\\").replace("'", "\\'")
                 return f"| pl '{expr}' "
 
               return __xonsh__.imp.re.sub(r"|>\s*((?:[^|\n])+)", rewrite, cmd)
