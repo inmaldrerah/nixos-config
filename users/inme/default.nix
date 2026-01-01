@@ -59,7 +59,7 @@
           }
         ];
         extraPackages = with pkgs; [
-          clangd
+          clang-tools
           jdtls
           lua-language-server
           nixd
