@@ -60,7 +60,7 @@
         ];
         extraPackages = with pkgs; [
           clang-tools
-          jdtls
+          jdt-language-server
           lua-language-server
           nixd
           taplo
