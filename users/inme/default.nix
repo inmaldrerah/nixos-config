@@ -1,13 +1,11 @@
 {
   pkgs,
-  lib,
   ...
 }:
 {
   shell = pkgs.xonsh;
   home-manager =
     {
-      config,
       pkgs,
       nixvim,
       hm-extension,
