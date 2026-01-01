@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   lib,
   ...
 }:
@@ -64,6 +62,10 @@
             ''${f"__USER_{user}_SETUP_DONE"} = True
             $_ZO_RESOLVE_SYMLINKS = "1"
 
+            @events.on_transform_command
+            def pl_rewrite(cmd: str):
+              return __xonsh__.imp.re.sub(r">\s+([^|\n]+)", r"pl '\1'", cmd)
+
         __env_setup()
         del __env_setup
     '';
@@ -109,7 +111,7 @@
               description = "Paste and run commands from bash, zsh, fish, tcsh, pwsh in xonsh shell";
               homepage = "https://github.com/anki-code/xontrib-sh";
               license = lib.licenses.mit;
-              maintainers = with lib.maintainers; [ ];
+              maintainers = [ ];
             };
           }
         ) { })
@@ -156,7 +158,7 @@
               description = "Let your pipe lines flow thru the Python code in xonsh";
               homepage = "https://github.com/anki-code/xontrib-pipeliner";
               license = lib.licenses.bsd2;
-              maintainers = with lib.maintainers; [ ];
+              maintainers = [ ];
             };
           }
         ) { })
