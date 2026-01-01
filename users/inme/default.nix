@@ -58,6 +58,17 @@
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
           }
         ];
+        extraPackages = with pkgs; [
+          clangd
+          jdtls
+          lua-language-server
+          nixd
+          taplo
+          ty
+          vscode-json-languageserver
+          yaml-language-server
+          zls
+        ];
         themes.dracula_transparent = {
           inherits = "dracula";
           "ui.background" = { };
