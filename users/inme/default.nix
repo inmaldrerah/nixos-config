@@ -28,7 +28,6 @@
         shellAliases = {
         };
         bashrcExtra = ''
-          export TERM=xterm-256color
           export PATH=~/.local/bin:$PATH
           ulimit -Sn 524288
         '';
@@ -176,7 +175,6 @@
       home.file.".bashrc".text = ''
         [[ $- == *i* ]] || return
         shopt -s globstar
-        export TERM=xterm-256color
         export PATH=~/.local/bin:$PATH
         ulimit -Sn 524288
       '';
