@@ -63,8 +63,12 @@
             $_ZO_RESOLVE_SYMLINKS = "1"
 
             @events.on_transform_command
-            def pl_rewrite(cmd: str):
-              return __xonsh__.imp.re.sub(r"|>\s*((?:[^|\n])+)", r"| pl @(py!(\1)) ", cmd)
+            def pl_rewrite(cmd):
+              def rewrite(match):
+                expr = match.group(1).strip().replace(r"\", r"\\").replace(r"'", r"\'")
+                return f"| pl '{expr}' "
+
+              return __xonsh__.imp.re.sub(r"|>\s*((?:[^|\n])+)", rewrite, cmd)
 
         __env_setup()
         del __env_setup
