@@ -64,7 +64,7 @@
 
             @events.on_transform_command
             def pl_rewrite(cmd: str):
-              return __xonsh__.imp.re.sub(r"|>\s+((?:\|\||[^|\n])+)", r"| pl @(py!(\1)) ", cmd)
+              return __xonsh__.imp.re.sub(r"|>\s*((?:[^|\n])+)", r"| pl @(py!(\1)) ", cmd)
 
         __env_setup()
         del __env_setup
