@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  utils,
   modulesPath,
   ...
 }:
@@ -116,7 +115,7 @@
     neededForBoot = true;
     options = [
       "subvol=nixos/nix"
-      "compress=zstd"
+      "compress=zstd:8"
     ];
     depends = [ "/" ];
   };
@@ -124,7 +123,7 @@
   fileSystems."/mnt/pool" = {
     device = "/dev/mapper/ROOT";
     fsType = "btrfs";
-    options = [ "compress=zstd" ];
+    options = [ "compress=zstd:8" ];
     depends = [ "/" ];
   };
 

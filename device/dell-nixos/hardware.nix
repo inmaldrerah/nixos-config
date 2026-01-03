@@ -78,7 +78,7 @@
     depends = [ "/" ];
     options = [
       "subvol=@nixos/nix"
-      "compress=zstd:5"
+      "compress=zstd"
     ];
   };
 
@@ -87,7 +87,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@shared"
-      "compress=zstd:10"
+      "compress=zstd"
     ];
   };
 
