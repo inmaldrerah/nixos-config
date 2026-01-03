@@ -76,7 +76,7 @@
     fsType = "btrfs";
     neededForBoot = true;
     depends = [ "/" ];
-    options = [ "subvol=@nixos/nix,compress=zstd" ];
+    options = [ "subvol=@nixos/nix,compress=zstd:5" ];
   };
 
   fileSystems."/mnt/shared" = {
