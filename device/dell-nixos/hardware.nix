@@ -76,13 +76,19 @@
     fsType = "btrfs";
     neededForBoot = true;
     depends = [ "/" ];
-    options = [ "subvol=@nixos/nix,compress=zstd:5" ];
+    options = [
+      "subvol=@nixos/nix"
+      "compress=zstd:5"
+    ];
   };
 
   fileSystems."/mnt/shared" = {
     device = "/dev/disk/by-uuid/da3111a8-4051-4066-a015-ecf824b26757";
     fsType = "btrfs";
-    options = [ "subvol=@shared,compress=zstd:10" ];
+    options = [
+      "subvol=@shared"
+      "compress=zstd:10"
+    ];
   };
 
   swapDevices = [
