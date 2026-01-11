@@ -249,6 +249,22 @@
         swaylock
         tinymist
         vscodium
+        firefox
+        gtklock
+        ripgrep
+        wlogout
+        fuzzel
+        nodejs
+        swappy
+        waybar
+        comma
+        samba
+        typst
+        mono
+        dex
+        rmw
+        git
+        zig
         (vscode-with-extensions.override {
           vscodeExtensions =
             with (nix-vscode-extensions.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
@@ -266,22 +282,6 @@
               vscjava.vscode-maven
             ];
         })
-        firefox
-        gtklock
-        ripgrep
-        wlogout
-        fuzzel
-        nodejs
-        swappy
-        trashy
-        waybar
-        comma
-        samba
-        typst
-        mono
-        dex
-        git
-        zig
       ];
     };
 
@@ -327,6 +327,7 @@
       ".bash_history"
       ".gitconfig"
       ".repo_.gitconfig.json"
+      ".config/rmwrc"
     ];
   };
 

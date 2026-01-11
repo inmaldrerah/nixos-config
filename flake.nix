@@ -35,13 +35,11 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       nixpkgs-extension,
       home-manager,
       hm-extension,
       impermanence,
-      # lix-module,
       nixvim,
       nix-vscode-extensions,
       nur-linyinfeng,
@@ -72,7 +70,6 @@
             nixpkgs-extension.nixosModules.default
             home-manager.nixosModules.home-manager
             impermanence.nixosModules.impermanence
-            # lix-module.nixosModules.default
             (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
             ./configuration.nix
             ./device/${hostName}
@@ -86,7 +83,7 @@
     in
     {
       nixosConfigurations = builtins.listToAttrs (
-        builtins.map nixosConfig [
+        map nixosConfig [
           "framework-nixos"
           "thinkbook-16-plus-nixos"
           "dell-nixos"
