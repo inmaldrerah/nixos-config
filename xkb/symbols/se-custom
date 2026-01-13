@@ -19,9 +19,9 @@ xkb_symbols "se-custom" {
   key <AC04> { [         t,          T,               tslash,               Tslash ] };
   key <AC05> { [         g,          G,                  eng,                  ENG ] };
   key <AC06> { [         h,          H,              hstroke,              Hstroke ] };
-  key <AC07> { [         a,          A,            dead_hook,            dead_horn ] };
+  key <AC07> { [         o,          O,                   oe,                   OE ] };
   key <AC08> { [         i,          I,             idotless,               dagger ] };
-  key <AC09> { [         o,          O,                   oe,                   OE ] };
+  key <AC09> { [         a,          A,            dead_hook,            dead_horn ] };
   key <AC10> { [         e,          E,             EuroSign,                 cent ] };
 
   key <AB01> { [         z,          Z,        guillemotleft,                 less ] };
