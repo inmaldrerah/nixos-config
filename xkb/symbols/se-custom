@@ -4,8 +4,8 @@ xkb_symbols "se-custom" {
 
   key <AD01> { [         q,          Q,          Greek_omega,          Greek_OMEGA ] };
   key <AD02> { [         w,          W,          Greek_sigma,          Greek_SIGMA ] };
-  key <AD03> { [         p,          P,             Greek_pi,             Greek_PI ] };
-  key <AD04> { [         r,          R,           registered,            trademark ] };
+  key <AD03> { [         d,          D,                  eth,                  ETH ] };
+  key <AD04> { [         p,          P,             Greek_pi,             Greek_PI ] };
   key <AD05> { [         f,          F,              dstroke,          ordfeminine ] };
   key <AD06> { [         y,          Y,            leftarrow,                  yen ] };
   key <AD07> { [         u,          U,            downarrow,              uparrow ] };
@@ -15,7 +15,7 @@ xkb_symbols "se-custom" {
 
   key <AC01> { [         n,          N,          ordfeminine,            masculine ] };
   key <AC02> { [         s,          S,               ssharp,                U1E9E ] };
-  key <AC03> { [         d,          D,                  eth,                  ETH ] };
+  key <AC03> { [         r,          R,           registered,            trademark ] };
   key <AC04> { [         t,          T,               tslash,               Tslash ] };
   key <AC05> { [         g,          G,                  eng,                  ENG ] };
   key <AC06> { [         h,          H,              hstroke,              Hstroke ] };
