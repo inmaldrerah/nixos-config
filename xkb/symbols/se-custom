@@ -9,7 +9,7 @@ xkb_symbols "se-custom" {
   key <AD05> { [         f,          F,              dstroke,          ordfeminine ] };
   key <AD06> { [         y,          Y,            leftarrow,                  yen ] };
   key <AD07> { [         u,          U,            downarrow,              uparrow ] };
-  key <AD08> { [         k,          K,           rightarrow,                  kra ] };
+  key <AD08> { [         m,          M,                   mu,            masculine ] };
   key <AD09> { [         l,          L,              lstroke,              Lstroke ] };
   key <AD10> { [odiaeresis, Odiaeresis,               oslash,               Oslash ] };
 
@@ -19,9 +19,9 @@ xkb_symbols "se-custom" {
   key <AC04> { [         t,          T,               tslash,               Tslash ] };
   key <AC05> { [         g,          G,                  eng,                  ENG ] };
   key <AC06> { [         h,          H,              hstroke,              Hstroke ] };
-  key <AC07> { [         o,          O,                   oe,                   OE ] };
+  key <AC07> { [         a,          A,            dead_hook,            dead_horn ] };
   key <AC08> { [         i,          I,             idotless,               dagger ] };
-  key <AC09> { [         a,          A,            dead_hook,            dead_horn ] };
+  key <AC09> { [         o,          O,                   oe,                   OE ] };
   key <AC10> { [         e,          E,             EuroSign,                 cent ] };
 
   key <AB01> { [         z,          Z,        guillemotleft,                 less ] };
@@ -31,7 +31,7 @@ xkb_symbols "se-custom" {
   key <AB04> { [         v,          V,   doublelowquotemark,   singlelowquotemark ] };
   key <AB05> { [         b,          B,  leftdoublequotemark,  leftsinglequotemark ] };
   key <AB06> { [         j,          J, rightdoublequotemark, rightsinglequotemark ] };
-  key <AB07> { [         m,          M,                   mu,            masculine ] };
+  key <AB07> { [         k,          K,           rightarrow,                  kra ] };
 
   key <LEFT>  {[ Left,  Home  ], type[group1]="PC_SUPER_LEVEL2"};
   key <RIGHT> {[ Right, End   ], type[group1]="PC_SUPER_LEVEL2"};
