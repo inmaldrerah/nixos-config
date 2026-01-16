@@ -13,13 +13,13 @@ xkb_symbols "se-custom" {
   key <AD09> { [         l,          L,              lstroke,              Lstroke ] };
   key <AD10> { [odiaeresis, Odiaeresis,               oslash,               Oslash ] };
 
-  key <AC01> { [         a,          A,            dead_hook,            dead_horn ] };
+  key <AC01> { [         n,          N,          ordfeminine,            masculine ] };
   key <AC02> { [         s,          S,               ssharp,                U1E9E ] };
   key <AC03> { [         r,          R,           registered,            trademark ] };
   key <AC04> { [         t,          T,               tslash,               Tslash ] };
   key <AC05> { [         g,          G,                  eng,                  ENG ] };
   key <AC06> { [         h,          H,              hstroke,              Hstroke ] };
-  key <AC07> { [         n,          N,          ordfeminine,            masculine ] };
+  key <AC07> { [         a,          A,            dead_hook,            dead_horn ] };
   key <AC08> { [         i,          I,             idotless,               dagger ] };
   key <AC09> { [         o,          O,                   oe,                   OE ] };
   key <AC10> { [         e,          E,             EuroSign,                 cent ] };
