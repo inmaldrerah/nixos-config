@@ -20,6 +20,24 @@
   ];
   boot.initrd.kernelModules = [
     "amdgpu"
+    # crypto related modules
+    "dm_mod"
+    "dm_crypt"
+    "aes"
+    "aes_generic"
+    "blowfish"
+    "twofish"
+    "serpent"
+    "cbc"
+    "xts"
+    "lrw"
+    "sha1"
+    "sha256"
+    "af_alg"
+    "algif_skcipher"
+    "cryptd"
+    "input_leds"
+    "ecb"
   ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.supportedFilesystems = [
@@ -39,12 +57,40 @@
   ];
   networking.hostId = "4ce220a9";
 
-  boot.initrd.systemd = {
-    enable = true;
-  };
+  boot.initrd.systemd =
+    let
+      systemdPkg = config.boot.initrd.systemd.package;
+    in
+    {
+      enable = true;
+      # initrdBin = [
+      #   pkgs.veracrypt
+      # ];
+      # contents."/etc/crypttab".source = pkgs.writeText "initrd-crypttab" ''
+      #   ROOT /dev/disk/by-partuuid/a52a6915-6021-47bd-9685-bc138e5f127c - tcrypt,tcrypt-veracrypt
+      # '';
+      # extraBin.systemd-cryptsetup = "${systemdPkg}/bin/systemd-cryptsetup";
+      # additionalUpstreamUnits = [
+      #   "cryptsetup-pre.target"
+      #   "cryptsetup.target"
+      #   "remote-cryptsetup.target"
+      # ];
+      # storePaths = [
+      #   "${systemdPkg}/bin/systemd-cryptsetup"
+      #   "${systemdPkg}/lib/systemd/system-generators/systemd-cryptsetup-generator"
+      # ];
+    };
+
+  # services.lvm.enable = true;
+  # boot.initrd.services.lvm.enable = true;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = [
+    # pkgs.rocmPackages.clr.icd # for OpenCL support
+  ];
+  hardware.graphics.extraPackages32 = [
+  ];
   hardware.amdgpu.initrd.enable = true;
 
   hardware.bluetooth.enable = true;
@@ -64,6 +110,7 @@
   };
 
   fileSystems."/nix" = {
+    # device = "/dev/mapper/ROOT";
     device = "PARTUUID=a52a6915-6021-47bd-9685-bc138e5f127c";
     fsType = "btrfs";
     neededForBoot = true;
