@@ -70,7 +70,7 @@
             nixpkgs-extension.nixosModules.default
             home-manager.nixosModules.home-manager
             impermanence.nixosModules.impermanence
-            (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
+            (builtins.getFlake "path:/mnt/etc/nixos/private").nixosModules.default
             ./configuration.nix
             ./device/${hostName}
             ./network.nix

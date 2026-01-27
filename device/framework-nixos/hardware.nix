@@ -63,26 +63,26 @@
     in
     {
       enable = true;
-      initrdBin = [
-        pkgs.veracrypt
-      ];
-      contents."/etc/crypttab".source = pkgs.writeText "initrd-crypttab" ''
-        ROOT /dev/disk/by-partuuid/a52a6915-6021-47bd-9685-bc138e5f127c - tcrypt,tcrypt-veracrypt
-      '';
-      extraBin.systemd-cryptsetup = "${systemdPkg}/bin/systemd-cryptsetup";
-      additionalUpstreamUnits = [
-        "cryptsetup-pre.target"
-        "cryptsetup.target"
-        "remote-cryptsetup.target"
-      ];
-      storePaths = [
-        "${systemdPkg}/bin/systemd-cryptsetup"
-        "${systemdPkg}/lib/systemd/system-generators/systemd-cryptsetup-generator"
-      ];
+      # initrdBin = [
+      #   pkgs.veracrypt
+      # ];
+      # contents."/etc/crypttab".source = pkgs.writeText "initrd-crypttab" ''
+      #   ROOT /dev/disk/by-partuuid/a52a6915-6021-47bd-9685-bc138e5f127c - tcrypt,tcrypt-veracrypt
+      # '';
+      # extraBin.systemd-cryptsetup = "${systemdPkg}/bin/systemd-cryptsetup";
+      # additionalUpstreamUnits = [
+      #   "cryptsetup-pre.target"
+      #   "cryptsetup.target"
+      #   "remote-cryptsetup.target"
+      # ];
+      # storePaths = [
+      #   "${systemdPkg}/bin/systemd-cryptsetup"
+      #   "${systemdPkg}/lib/systemd/system-generators/systemd-cryptsetup-generator"
+      # ];
     };
 
-  services.lvm.enable = true;
-  boot.initrd.services.lvm.enable = true;
+  # services.lvm.enable = true;
+  # boot.initrd.services.lvm.enable = true;
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
@@ -110,7 +110,8 @@
   };
 
   fileSystems."/nix" = {
-    device = "/dev/mapper/ROOT";
+    # device = "/dev/mapper/ROOT";
+    device = "PARTUUID=a52a6915-6021-47bd-9685-bc138e5f127c";
     fsType = "btrfs";
     neededForBoot = true;
     options = [
@@ -121,7 +122,7 @@
   };
 
   fileSystems."/mnt/pool" = {
-    device = "/dev/mapper/ROOT";
+    device = "PARTUUID=a52a6915-6021-47bd-9685-bc138e5f127c";
     fsType = "btrfs";
     options = [ "compress=zstd:8" ];
     depends = [ "/" ];
