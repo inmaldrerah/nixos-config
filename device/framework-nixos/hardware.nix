@@ -87,7 +87,7 @@
   };
 
   fileSystems."/mnt/shared" = {
-    device = "/mnt/data/Shared";
+    device = "/mnt/data/shared";
     fsType = "none";
     options = [ "bind" ];
     depends = [ "/mnt/data" ];
