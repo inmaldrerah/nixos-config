@@ -64,7 +64,7 @@
   };
 
   fileSystems."/nix" = {
-    device = "PARTUUID=a52a6915-6021-47bd-9685-bc138e5f127c";
+    device = "PARTUUID=f2053f95-2ab6-49b4-851c-82122925182a";
     fsType = "btrfs";
     neededForBoot = true;
     options = [
@@ -74,11 +74,23 @@
     depends = [ "/" ];
   };
 
-  fileSystems."/mnt/pool" = {
-    device = "PARTUUID=a52a6915-6021-47bd-9685-bc138e5f127c";
+  fileSystems."/mnt/root" = {
+    device = "PARTUUID=f2053f95-2ab6-49b4-851c-82122925182a";
     fsType = "btrfs";
     options = [ "compress=zstd:8" ];
-    depends = [ "/" ];
+  };
+
+  fileSystems."/mnt/data" = {
+    device = "PARTUUID=b9acc69d-7110-4095-b670-ad04e8d38a96";
+    fsType = "ntfs3";
+    options = [ "windows_names" ];
+  };
+
+  fileSystems."/mnt/shared" = {
+    device = "/mnt/data/Shared";
+    fsType = "none";
+    options = [ "bind" ];
+    depends = [ "/mnt/data" ];
   };
 
   fileSystems."/boot" = {
@@ -99,6 +111,6 @@
   };
 
   systemd.tmpfiles.rules = [
-    "L+ /mnt/shared - - - - /mnt/pool/shared"
+    # "L+ /mnt/shared - - - - /mnt/pool/shared"
   ];
 }
