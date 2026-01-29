@@ -7,15 +7,12 @@
   home-manager =
     {
       pkgs,
-      nixvim,
       hm-extension,
       ...
     }:
     {
       imports = [
-        nixvim.homeModules.nixvim
         hm-extension.homeManagerModules.default
-        ./nixvim.nix
         ./xonsh.nix
       ];
 
