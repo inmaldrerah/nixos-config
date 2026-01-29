@@ -7,7 +7,7 @@
 let
   userconf.inme = import ./inme args;
 in
-rec {
+{
   # Configure users
   users.mutableUsers = false;
 
@@ -29,7 +29,6 @@ rec {
   };
 
   home-manager.extraSpecialArgs = lib.getAttrs [
-    "nixvim"
     "hm-extension"
   ] args;
   home-manager.useUserPackages = true;
