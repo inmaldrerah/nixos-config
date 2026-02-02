@@ -178,6 +178,8 @@
 
       home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
 
+      home.file.".config/niri/config.kdl".source = ./niri/config.kdl;
+
       home.file.".config/waybar/config".source = ./waybar/config;
       home.file.".config/waybar/style.css".source = ./waybar/style.css;
 
