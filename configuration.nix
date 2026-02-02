@@ -10,7 +10,7 @@
   ...
 }:
 
-rec {
+{
   nix = {
     nixPath = [ "nixpkgs=${nixpkgsInput}" ];
     package = pkgs.lixPackageSets.latest.lix;
@@ -154,6 +154,11 @@ rec {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
+  };
+
+  programs.niri.enable = {
+    enable = true;
   };
 
   programs.appimage = {
