@@ -15,6 +15,8 @@ input {
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            layout "se-custom"
+            options "altwin:swap_lalt_lwin"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
