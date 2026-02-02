@@ -157,7 +157,7 @@
     withUWSM = true;
   };
 
-  programs.niri.enable = {
+  programs.niri = {
     enable = true;
   };
 
