@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "uwsm stop",
+    "action" : "niri msg action quit",
     "text" : "Logout",
     "keybind" : "e"
 }
