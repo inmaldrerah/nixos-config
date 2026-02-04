@@ -256,6 +256,7 @@
         fuzzel
         nodejs
         swappy
+        swaybg
         waybar
         comma
         samba
