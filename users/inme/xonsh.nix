@@ -83,6 +83,7 @@
       ps: [
         ps.xonsh.xontribs.xonsh-direnv
         ps.xonsh.xontribs.xontrib-fish-completer
+        ps.xonsh.xontribs.xontrib-vox
         (ps.callPackage (
           {
             buildPythonPackage,
