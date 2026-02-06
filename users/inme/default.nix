@@ -180,6 +180,7 @@
 
       home.file.".config/niri/config.kdl".source = ./niri/config.kdl;
       home.file.".config/niri/wlogout-layout".source = ./niri/wlogout-layout;
+      home.file.".config/niri/idle.xsh".source = ./niri/idle.xsh;
 
       home.file.".config/waybar/config".source = ./waybar/config;
       home.file.".config/waybar/style.css".source = ./waybar/style.css;
