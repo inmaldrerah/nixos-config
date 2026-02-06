@@ -23,6 +23,10 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,26 +38,26 @@
       nixpkgs,
       nixpkgs-extension,
       home-manager,
-      hm-extension,
       impermanence,
-      nix-vscode-extensions,
-      nur-linyinfeng,
       ...
-    }:
+    }@inputs:
     let
       triple = "x86_64-unknown-linux-gnu";
-
+      lib = nixpkgs.lib;
       nixosConfig = hostName: {
         name = hostName;
-        value = nixpkgs.lib.nixosSystem {
+        value = lib.nixosSystem {
           specialArgs = {
             inherit hostName;
             nixpkgsInput = nixpkgs;
-            inherit hm-extension;
-            inherit nur-linyinfeng;
-            inherit nixpkgs-extension;
-            inherit nix-vscode-extensions;
-          };
+          }
+          // (lib.filterAttrs (
+            k: v:
+            !(lib.elem k [
+              "self"
+              "nixpkgs"
+            ])
+          ) inputs);
           modules = [
             {
               nixpkgs.hostPlatform.config = triple;

@@ -8,11 +8,13 @@
     {
       pkgs,
       hm-extension,
+      noctalia,
       ...
     }:
     {
       imports = [
         hm-extension.homeManagerModules.default
+        noctalia.homeModules.default
         ./xonsh.nix
       ];
 
@@ -237,6 +239,7 @@
         nix-output-monitor
         deltachat-desktop
         mission-center
+        noctalia-shell
         wl-clipboard
         libreoffice
         winetricks

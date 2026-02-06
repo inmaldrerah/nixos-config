@@ -123,8 +123,6 @@ layout {
     //   together with the previously focused column.
     center-focused-column "never"
 
-    background-color "transparent"
-
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
         // Proportion sets the width as a fraction of the output width, taking gaps into account.
@@ -278,7 +276,6 @@ spawn-at-startup "~/.config/niri/idle.xsh"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-spawn-sh-at-startup "swaybg --image ~/Pictures/Wallpapers/wallpaper"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -354,7 +351,7 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^wallpaper$"
+    match namespace="^noctalia-overview$"
     place-within-backdrop true
 }
 
