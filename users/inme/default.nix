@@ -84,6 +84,10 @@
       programs.noctalia-shell = {
         enable = true;
         settings = {
+          dock = {
+            enabled = true;
+            pinnedApps = [ "Fcitx" ];
+          };
           wallpapers = {
             enabled = true;
             overviewEnabled = true;
