@@ -49,9 +49,8 @@
         value = lib.nixosSystem {
           specialArgs = {
             inherit hostName;
-            nixpkgsInput = nixpkgs;
-          }
-          // inputs;
+            inherit inputs;
+          };
           modules = [
             {
               nixpkgs.hostPlatform.config = triple;

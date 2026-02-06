@@ -1,9 +1,8 @@
 {
   config,
-  pkgs,
-  lib,
+  inputs,
   ...
-}@args:
+}:
 let
   userconf.inme = import ./inme args;
 in
@@ -28,9 +27,9 @@ in
     shell = userconf.inme.shell;
   };
 
-  home-manager.extraSpecialArgs = lib.getAttrs [
-    "hm-extension"
-  ] args;
+  home-manager.extraSpecialArgs = {
+    inherit inputs;
+  };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.inme = userconf.inme.home-manager;

@@ -6,13 +6,13 @@
   config,
   pkgs,
   lib,
-  nixpkgsInput,
+  inputs,
   ...
 }:
 
 {
   nix = {
-    nixPath = [ "nixpkgs=${nixpkgsInput}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     package = pkgs.lixPackageSets.latest.lix;
     # package = pkgs.nixVersions.latest;
     settings = {

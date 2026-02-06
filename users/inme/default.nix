@@ -7,14 +7,13 @@
   home-manager =
     {
       pkgs,
-      hm-extension,
-      noctalia,
+      inputs,
       ...
     }:
     {
       imports = [
-        hm-extension.homeManagerModules.default
-        noctalia.homeModules.default
+        inputs.hm-extension.homeManagerModules.default
+        inputs.noctalia.homeModules.default
         ./xonsh.nix
       ];
 
