@@ -2,7 +2,7 @@
   config,
   inputs,
   ...
-}:
+}@args:
 let
   userconf.inme = import ./inme args;
 in
