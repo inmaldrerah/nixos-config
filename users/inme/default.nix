@@ -281,7 +281,7 @@
         zig
         (vscode-with-extensions.override {
           vscodeExtensions =
-            with (nix-vscode-extensions.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
+            with (inputs.nix-vscode-extensions.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
               asciidoctor.asciidoctor-vscode
               github.copilot
               github.copilot-chat

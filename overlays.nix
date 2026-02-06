@@ -1,14 +1,13 @@
 {
   config,
-  nix-vscode-extensions,
-  nur-linyinfeng,
+  inputs,
   ...
 }:
 
 let
   packageOverlays = [
-    nix-vscode-extensions.overlays.default
-    nur-linyinfeng.overlays.default
+    inputs.nix-vscode-extensions.overlays.default
+    inputs.nur-linyinfeng.overlays.default
   ];
 in
 {
