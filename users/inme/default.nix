@@ -127,14 +127,6 @@
 
       programs.zoxide.enable = true;
 
-      wayland.windowManager.hyprland = {
-        enable = true;
-        plugins = with pkgs.hyprlandPlugins; [
-          hyprscrolling
-        ];
-        extraConfig = builtins.readFile ./hypr/hyprland.conf;
-      };
-
       gtk = {
         enable = true;
         theme.name = "Adwaita-dark";
@@ -197,63 +189,11 @@
         };
       };
 
-      home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
-
       home.file.".config/niri/config.kdl".source = ./niri/config.kdl;
-      home.file.".config/niri/wlogout-layout".source = ./niri/wlogout-layout;
-      home.file.".config/niri/idle.xsh".source = ./niri/idle.xsh;
-
-      home.file.".config/waybar/config".source = ./waybar/config;
-      home.file.".config/waybar/style.css".source = ./waybar/style.css;
-
-      home.file.".local/bin/caffine" = {
-        executable = true;
-        text = ''
-          #!/bin/sh
-          case "$@" in 
-            "toggle"|"")
-              if [ -f "$HOME/.caffine" ]; then
-                err="$(rm "$HOME/.caffine" 2>&1 > /dev/null)"
-              else
-                err="$(touch "$HOME/.caffine" 2>&1 > /dev/null)"
-              fi
-              if [ "$err" == "" ]; then
-                if [[ -f "$HOME/.caffine" ]]; then
-                  notify-send "Caffine ON" "Caffine is toggled on." --icon=dialog-information
-                else
-                  notify-send "Caffine OFF" "Caffine is toggled off." --icon=dialog-information
-                fi
-              else
-                notify-send "Caffine Toggle Error" "Error: $err" --icon=dialog-error
-              fi;;
-            "waybar")
-              prev="none"
-              while :; do
-                if [ -f "$HOME/.caffine" ]; then
-                  if [ $prev != "on" ]; then
-                    echo '{"text": "on", "alt": "on", "tooltip": "", "class": "on"}'
-                    prev="on"
-                  fi
-                else
-                  if [ $prev != "off" ]; then
-                    echo '{"text": "off", "alt": "off", "tooltip": "", "class": "off"}'
-                    prev="off"
-                  fi
-                fi
-                sleep 1
-              done;;
-          esac
-        '';
-      };
 
       home.packages = with pkgs; [
-        wemeet
-        lxqt.lxqt-policykit
-        lxsession
         wineWowPackages.waylandFull
         onlyoffice-desktopeditors
-        swaynotificationcenter
-        networkmanagerapplet
         lua-language-server
         nix-output-monitor
         deltachat-desktop
@@ -266,20 +206,16 @@
         libnotify
         p7zip-rar
         htop-vim
-        hyprshot
-        swayidle
-        swaylock
         tinymist
         vscodium
         firefox
         gtklock
         ripgrep
-        wlogout
-        fuzzel
         nodejs
         swappy
         swaybg
         waybar
+        wemeet
         comma
         samba
         typst
