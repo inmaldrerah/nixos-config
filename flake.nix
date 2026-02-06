@@ -51,13 +51,7 @@
             inherit hostName;
             nixpkgsInput = nixpkgs;
           }
-          // (lib.filterAttrs (
-            k: v:
-            !(lib.elem k [
-              "self"
-              "nixpkgs"
-            ])
-          ) inputs);
+          // inputs;
           modules = [
             {
               nixpkgs.hostPlatform.config = triple;

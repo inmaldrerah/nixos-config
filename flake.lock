@@ -239,6 +239,26 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770355954,
+        "narHash": "sha256-uDPtQtk8iq9cu2xqfselI/Ui7Z4I8/vlat16jze+ODk=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "4a06e2f85522805e52a1a79b7205b09116e82340",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
     "nur-linyinfeng": {
       "inputs": {
         "devshell": "devshell",
@@ -303,6 +323,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-extension": "nixpkgs-extension",
+        "noctalia": "noctalia",
         "nur-linyinfeng": "nur-linyinfeng"
       }
     },
