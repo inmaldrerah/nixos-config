@@ -83,6 +83,10 @@
 
       programs.noctalia-shell = {
         enable = true;
+        wallpaper = {
+          enabled = true;
+          overviewEnabled = true;
+        };
       };
 
       programs.obs-studio = {

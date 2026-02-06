@@ -271,7 +271,6 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "noctalia-shell"
-// spawn-at-startup "swaync"
 spawn-at-startup "~/.config/niri/idle.xsh"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -351,7 +350,7 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^noctalia-overview$"
+    match namespace="^noctalia-overview.*"
     place-within-backdrop true
 }
 
