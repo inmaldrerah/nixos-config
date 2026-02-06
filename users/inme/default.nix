@@ -248,7 +248,6 @@
         nix-output-monitor
         deltachat-desktop
         mission-center
-        noctalia-shell
         wl-clipboard
         libreoffice
         winetricks
