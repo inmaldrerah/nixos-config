@@ -83,9 +83,11 @@
 
       programs.noctalia-shell = {
         enable = true;
-        wallpapers = {
-          enabled = true;
-          overviewEnabled = true;
+        settings = {
+          wallpapers = {
+            enabled = true;
+            overviewEnabled = true;
+          };
         };
       };
 
