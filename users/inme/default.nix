@@ -82,6 +82,10 @@
 
       programs.nix-index.enable = true;
 
+      programs.noctalia-shell = {
+        enable = true;
+      };
+
       programs.obs-studio = {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [
@@ -177,6 +181,12 @@
         export PATH=~/.local/bin:$PATH
         ulimit -Sn 524288
       '';
+
+      home.file.".cache/noctalia/wallpapers.json" = {
+        text = builtins.toJSON {
+          defaultWallpaper = "/home/inme/Pictures/Wallpapers/wallpaper";
+        };
+      };
 
       home.file.".config/hypr/wlogout-layout".source = ./hypr/wlogout-layout;
 
