@@ -276,6 +276,7 @@
       ".config/libreoffice"
       ".config/libvirt"
       ".config/nixpkgs"
+      ".config/noctalia"
       ".config/obs-studio"
       ".config/pulse"
       ".config/swappy"
