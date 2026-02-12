@@ -30,22 +30,6 @@ rec {
     Defaults env_keep += "http_proxy https_proxy ftp_proxy rsync_proxy no_proxy"
   '';
 
-  services.dnsproxy.enable = true;
-  services.dnsproxy.settings = {
-    bootstrap = [ "https://223.5.5.5/dns-query" ];
-    listen-addrs = [ "::1" ];
-    listen-ports = [ 5553 ];
-    upstream = [
-      # "[/centaur-centauri.ts.net/]100.100.100.100:53"
-      # "[/nju.edu.cn/]210.28.129.251:53"
-      "https://dns.alidns.com/dns-query"
-      "https://doh.pub/dns-query"
-      "223.5.5.5:53"
-    ];
-    upstream-mode = "parallel";
-    verbose = true;
-  };
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
