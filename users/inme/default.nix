@@ -192,7 +192,7 @@
       home.file.".config/niri/config.kdl".source = ./niri/config.kdl;
 
       home.packages = with pkgs; [
-        wineWowPackages.waylandFull
+        wineWow64Packages.waylandFull
         onlyoffice-desktopeditors
         lua-language-server
         nix-output-monitor
