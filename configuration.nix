@@ -166,6 +166,10 @@
     binfmt = true;
   };
 
+  programs.steam = {
+    enable = true;
+  };
+
   programs.nix-ld.enable = true;
 
   services.xserver.xkb.extraLayouts = {
