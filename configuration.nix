@@ -244,6 +244,7 @@
     kitty
     uwsm
     wget
+    xwayland-satellite
   ];
 
   environment.variables = {
