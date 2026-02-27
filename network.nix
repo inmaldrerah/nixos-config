@@ -48,7 +48,7 @@ rec {
       47989
       47990
       48010
-      10800
+      1081
     ];
     interfaces."wlp1s0".allowedUDPPorts = [
       # Sunshine
