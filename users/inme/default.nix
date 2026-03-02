@@ -127,6 +127,8 @@
 
       programs.zoxide.enable = true;
 
+      services.hyprpolkitagent.enable = true;
+
       gtk = {
         enable = true;
         theme.name = "Adwaita-dark";
