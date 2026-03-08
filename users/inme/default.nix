@@ -210,12 +210,6 @@
         ulimit -Sn 524288
       '';
 
-      home.file.".cache/noctalia/wallpapers.json" = {
-        text = builtins.toJSON {
-          defaultWallpaper = "/home/inme/Pictures/Wallpapers/wallpaper";
-        };
-      };
-
       home.file.".config/niri/config.kdl".source = ./niri/config.kdl;
 
       home.packages = with pkgs; [
