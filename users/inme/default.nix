@@ -70,42 +70,6 @@
         };
       };
 
-      programs.hypridle = {
-        enable = true;
-        settings = {
-          general = {
-            lock_cmd = "noctalia-shell ipc call lockScreen lock";
-            before_sleep_cmd = "loginctl lock-session";
-            after_sleep_cmd = "niri msg action power-on-monitors";
-          };
-          listener = [
-            {
-              timeout = 150;
-              on-timeout = "brightnessctl -s set 10";
-              on-resume = "brightnessctl -r";
-            }
-            {
-              timeout = 150;
-              on-timeout = "brightnessctl -sd chromeos::kbd_backlight set 0";
-              on-resume = "brightnessctl -rd chromeos::kbd_backlight";
-            }
-            {
-              timeout = 300;
-              on-timeout = "loginctl lock-session";
-            }
-            {
-              timeout = 330;
-              on-timeout = "niri msg action power-off-monitors";
-              on-resume = "niri msg action power-on-monitors";
-            }
-            {
-              timeout = 1800;
-              on-timeout = "systemctl suspend";
-            }
-          ];
-        };
-      };
-
       programs.kitty = {
         enable = true;
         font.name = "Maple Mono NF CN";
@@ -151,6 +115,42 @@
       };
 
       programs.zoxide.enable = true;
+
+      services.hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = "noctalia-shell ipc call lockScreen lock";
+            before_sleep_cmd = "loginctl lock-session";
+            after_sleep_cmd = "niri msg action power-on-monitors";
+          };
+          listener = [
+            {
+              timeout = 150;
+              on-timeout = "brightnessctl -s set 10";
+              on-resume = "brightnessctl -r";
+            }
+            {
+              timeout = 150;
+              on-timeout = "brightnessctl -sd chromeos::kbd_backlight set 0";
+              on-resume = "brightnessctl -rd chromeos::kbd_backlight";
+            }
+            {
+              timeout = 300;
+              on-timeout = "loginctl lock-session";
+            }
+            {
+              timeout = 330;
+              on-timeout = "niri msg action power-off-monitors";
+              on-resume = "niri msg action power-on-monitors";
+            }
+            {
+              timeout = 1800;
+              on-timeout = "systemctl suspend";
+            }
+          ];
+        };
+      };
 
       services.hyprpolkitagent.enable = true;
 
