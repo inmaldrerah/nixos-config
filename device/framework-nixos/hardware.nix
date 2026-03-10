@@ -87,7 +87,6 @@
     options = [
       "iocharset=utf8"
       "discard"
-      "sys_immutable"
       "windows_names"
     ];
   };
