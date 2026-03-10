@@ -84,7 +84,12 @@
   fileSystems."/mnt/data" = {
     device = "PARTUUID=b9acc69d-7110-4095-b670-ad04e8d38a96";
     fsType = "ntfs";
-    options = [ "windows_names" ];
+    options = [
+      "windows_names=true"
+      "acl=true"
+      "sys_immutable=true"
+      "case_sensitive=false"
+    ];
   };
 
   fileSystems."/mnt/shared" = {
