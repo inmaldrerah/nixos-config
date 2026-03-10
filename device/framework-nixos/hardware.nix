@@ -25,6 +25,7 @@
   boot.supportedFilesystems = [
     "overlay"
     "btrfs"
+    "ntfs"
   ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -82,7 +83,7 @@
 
   fileSystems."/mnt/data" = {
     device = "PARTUUID=b9acc69d-7110-4095-b670-ad04e8d38a96";
-    fsType = "ntfs3";
+    fsType = "ntfs";
     options = [ "windows_names" ];
   };
 
