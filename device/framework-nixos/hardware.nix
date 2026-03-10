@@ -83,11 +83,10 @@
 
   fileSystems."/mnt/data" = {
     device = "PARTUUID=b9acc69d-7110-4095-b670-ad04e8d38a96";
-    fsType = "ntfs";
+    fsType = "ntfs3";
     options = [
       "iocharset=utf8"
       "discard"
-      "nocase"
       "sys_immutable"
       "windows_names"
     ];
