@@ -241,7 +241,7 @@
         git
         zig
         (vscode-with-extensions.override {
-          vscodeExtensions = nix4vscode.forVSCodeVersion pkgs.vscode.version [
+          vscodeExtensions = nix4vscode.forVscodeVersion pkgs.vscode.version [
             "asciidoctor.asciidoctor-vscode"
             "github.copilot-chat"
             "llvm-vs-code-extensions.vscode-clangd"

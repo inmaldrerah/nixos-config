@@ -60,7 +60,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -171,6 +171,27 @@
         "type": "github"
       }
     },
+    "nix4vscode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1773283648,
+        "narHash": "sha256-8iiCD3Jx+fGXi2VE1NgC0oQeMWskQS0Hx4I+pzX9Pqo=",
+        "owner": "nix-community",
+        "repo": "nix4vscode",
+        "rev": "f750385435013c68ddd4f29dfe9a4a400f174636",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix4vscode",
+        "type": "github"
+      }
+    },
     "nixos-stable": {
       "locked": {
         "lastModified": 1773068389,
@@ -266,7 +287,7 @@
           "noctalia",
           "nixpkgs"
         ],
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1773175685,
@@ -344,6 +365,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nix-vscode-extensions": "nix-vscode-extensions",
+        "nix4vscode": "nix4vscode",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-extension": "nixpkgs-extension",
         "noctalia": "noctalia",
@@ -351,6 +373,22 @@
       }
     },
     "systems": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
@@ -365,7 +403,7 @@
         "type": "github"
       }
     },
-    "systems_2": {
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
