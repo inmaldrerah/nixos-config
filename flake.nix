@@ -25,7 +25,7 @@
     };
     nix4vscode = {
       url = "github:nix-community/nix4vscode";
-      input.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
