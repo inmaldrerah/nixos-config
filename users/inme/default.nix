@@ -241,20 +241,19 @@
         git
         zig
         (vscode-with-extensions.override {
-          vscodeExtensions =
-            with (nix-vscode-extensions.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
-              asciidoctor.asciidoctor-vscode
-              github.copilot-chat
-              llvm-vs-code-extensions.vscode-clangd
-              mhutchie.git-graph
-              mkhl.direnv
-              vscjava.vscode-gradle
-              vscjava.vscode-java-debug
-              vscjava.vscode-java-dependency
-              vscjava.vscode-java-pack
-              vscjava.vscode-java-test
-              vscjava.vscode-maven
-            ];
+          vscodeExtensions = nix4vscode.forVSCodeVersion pkgs.vscode.version [
+            "asciidoctor.asciidoctor-vscode"
+            "github.copilot-chat"
+            "llvm-vs-code-extensions.vscode-clangd"
+            "mhutchie.git-graph"
+            "mkhl.direnv"
+            "vscjava.vscode-gradle"
+            "vscjava.vscode-java-debug"
+            "vscjava.vscode-java-dependency"
+            "vscjava.vscode-java-pack"
+            "vscjava.vscode-java-test"
+            "vscjava.vscode-maven"
+          ];
         })
       ];
     };

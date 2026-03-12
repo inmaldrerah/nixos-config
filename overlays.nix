@@ -6,6 +6,7 @@
 
 let
   packageOverlays = [
+    inputs.nix4vscode.overlays.default
     inputs.nix-vscode-extensions.overlays.default
     inputs.nur-linyinfeng.overlays.default
   ];
