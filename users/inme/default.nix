@@ -245,7 +245,7 @@
             with (nix-vscode-extensions.forVSCodeVersion pkgs.vscode.version).vscode-marketplace; [
               asciidoctor.asciidoctor-vscode
               github.copilot
-              github.copilot-chat
+              # github.copilot-chat
               llvm-vs-code-extensions.vscode-clangd
               mhutchie.git-graph
               mkhl.direnv
