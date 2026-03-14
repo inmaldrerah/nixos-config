@@ -17,7 +17,6 @@ rec {
 
   networking.networkmanager.dns = "none";
   networking.nameservers = [
-    "113.31.107.233"
     "::1"
   ];
 
