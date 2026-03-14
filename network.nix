@@ -16,7 +16,10 @@ rec {
   # networking.wireless.iwd.enable = true;
 
   networking.networkmanager.dns = "none";
-  networking.nameservers = [ "::1" ];
+  networking.nameservers = [
+    "113.31.107.233"
+    "::1"
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
