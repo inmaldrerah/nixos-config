@@ -302,6 +302,8 @@
       ".gitconfig"
       ".repo_.gitconfig.json"
       ".config/rmwrc"
+      ".config/zoom.conf"
+      ".config/zoomus.conf"
     ];
   };
 
