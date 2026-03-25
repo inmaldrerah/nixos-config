@@ -227,6 +227,7 @@
         firefox
         gtklock
         ripgrep
+        zoom-us
         nodejs
         swappy
         swaybg
