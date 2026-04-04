@@ -38,10 +38,11 @@ in
     { pkgs, ... }:
     {
       home.stateVersion = "22.11";
-      gtk = {
+      gtk = rec {
         enable = true;
         theme.name = "Adwaita-dark";
         theme.package = pkgs.gnome-themes-extra;
+        gtk4.theme = theme;
       };
     };
 
