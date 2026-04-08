@@ -330,7 +330,8 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^zoom$"#
+    match app-id=r#"^(zoom|us.zoom.Zoom)$"#
+    exclude title=r#"^.*Zoom Workplace"#
     open-floating true
 }
 
