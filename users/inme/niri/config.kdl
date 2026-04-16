@@ -306,6 +306,8 @@ animations {
     // slowdown 3.0
 }
 
+workspace "email"
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
@@ -327,6 +329,11 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match app-id=r#"^thunderbird$"#
+    open-on-workspace "email"
 }
 
 window-rule {
