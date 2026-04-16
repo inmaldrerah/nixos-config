@@ -94,6 +94,8 @@
         ];
       };
 
+      programs.thunderbird.enable = true;
+
       programs.yazi = {
         enable = true;
         enableXonshIntegration = true;
@@ -274,6 +276,7 @@
       ".repoconfig"
       ".rustup"
       ".ssh"
+      ".thunderbird"
       ".vscode-oss"
       ".wine"
       "Builds"
