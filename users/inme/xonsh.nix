@@ -15,10 +15,10 @@
             current_pwd = $PWD
             $[cd /etc/nixos]
             $[git add .]
-            $[git commit -m @("snapshot@{}".format(str($(date -u +%m/%d/%Y-%T)).strip()))]
+            $[@error_ignore git commit -m @("snapshot@{}".format(str($(date -u +%m/%d/%Y-%T)).strip()))]
             $[cd /etc/nixos/private]
             $[git add .]
-            $[git commit -m @("snapshot@{}".format(str($(date -u +%m/%d/%Y-%T)).strip()))]
+            $[@error_ignore git commit -m @("snapshot@{}".format(str($(date -u +%m/%d/%Y-%T)).strip()))]
             $[cd @(current_pwd)]
           
           def __update_system():
