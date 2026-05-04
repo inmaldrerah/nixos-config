@@ -231,6 +231,7 @@
         gtklock
         ripgrep
         zoom-us
+        logseq
         nodejs
         swappy
         swaybg
