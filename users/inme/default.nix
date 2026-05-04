@@ -231,8 +231,8 @@
         gtklock
         ripgrep
         zoom-us
-        logseq
         nodejs
+        siyuan
         swappy
         swaybg
         waybar
@@ -271,7 +271,6 @@
       ".gnupg"
       ".gradle"
       ".local"
-      ".logseq"
       ".minikube"
       ".mozilla"
       ".npm"
@@ -300,6 +299,7 @@
       ".config/noctalia"
       ".config/obs-studio"
       ".config/pulse"
+      ".config/siyuan"
       ".config/swappy"
       ".config/VSCodium"
       ".config/zeditor"
