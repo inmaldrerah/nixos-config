@@ -271,6 +271,7 @@
       ".gnupg"
       ".gradle"
       ".local"
+      ".logseq"
       ".minikube"
       ".mozilla"
       ".npm"
