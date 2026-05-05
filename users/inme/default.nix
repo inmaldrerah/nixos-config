@@ -219,6 +219,7 @@
         mission-center
         wl-clipboard
         libreoffice
+        apostrophe
         winetricks
         alacritty
         git-graph
