@@ -293,6 +293,7 @@
       ".config/fcitx5"
       ".config/fontconfig"
       ".config/Google"
+      ".config/git"
       ".config/gtk-3.0"
       ".config/libreoffice"
       ".config/libvirt"
@@ -308,7 +309,6 @@
     files = [
       ".bash_history"
       ".gitconfig"
-      ".git-credentials"
       ".repo_.gitconfig.json"
       ".config/rmwrc"
       ".config/zoom.conf"
