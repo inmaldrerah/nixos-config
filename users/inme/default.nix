@@ -308,6 +308,7 @@
     files = [
       ".bash_history"
       ".gitconfig"
+      ".git-credentials"
       ".repo_.gitconfig.json"
       ".config/rmwrc"
       ".config/zoom.conf"
