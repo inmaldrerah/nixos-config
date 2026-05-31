@@ -98,8 +98,8 @@
   programs.xonsh.enable = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
-  hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;
+  # services.printing.enable = pkgs.stdenv.hostPlatform.isGnu;
+  # hardware.sane.enable = pkgs.stdenv.hostPlatform.isGnu;
 
   services.udisks2.enable = true;
 
