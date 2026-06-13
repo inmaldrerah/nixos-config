@@ -246,21 +246,21 @@
         rmw
         git
         zig
-        (vscode-with-extensions.override {
-          vscodeExtensions = nix4vscode.forVscodeVersion pkgs.vscode.version [
-            "asciidoctor.asciidoctor-vscode"
-            "github.copilot-chat"
-            "llvm-vs-code-extensions.vscode-clangd"
-            "mhutchie.git-graph"
-            "mkhl.direnv"
-            "vscjava.vscode-gradle"
-            "vscjava.vscode-java-debug"
-            "vscjava.vscode-java-dependency"
-            "vscjava.vscode-java-pack"
-            "vscjava.vscode-java-test"
-            "vscjava.vscode-maven"
-          ];
-        })
+        # (vscode-with-extensions.override {
+        #   vscodeExtensions = nix4vscode.forVscodeVersion pkgs.vscode.version [
+        #     "asciidoctor.asciidoctor-vscode"
+        #     "github.copilot-chat"
+        #     "llvm-vs-code-extensions.vscode-clangd"
+        #     "mhutchie.git-graph"
+        #     "mkhl.direnv"
+        #     "vscjava.vscode-gradle"
+        #     "vscjava.vscode-java-debug"
+        #     "vscjava.vscode-java-dependency"
+        #     "vscjava.vscode-java-pack"
+        #     "vscjava.vscode-java-test"
+        #     "vscjava.vscode-maven"
+        #   ];
+        # })
       ];
     };
 
