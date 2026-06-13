@@ -82,7 +82,7 @@
       programs.nix-index.enable = true;
 
       # config in-app, only enable here
-      programs.noctalia-shell.enable = true;
+      programs.noctalia.enable = true;
 
       programs.obs-studio = {
         enable = true;
