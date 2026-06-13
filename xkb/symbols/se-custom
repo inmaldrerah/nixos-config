@@ -24,7 +24,7 @@ xkb_symbols "se-custom" {
   key <AC09> { [         o,          O,                   oe,                   OE ] };
   key <AC10> { [         e,          E,             EuroSign,                 cent ] };
 
-  key <LSGT> { [         m,          M,                   mu,            masculine ] };
+  key <LSGT>  {[      less,    greater,                  bar,            brokenbar ] };
   key <AB01> { [         z,          Z,        guillemotleft,                 less ] };
   key <AB02> { [         x,          X,       guillemotright,              greater ] };
   key <AB03> { [         c,          C,            copyright,               U1F12F ] };
@@ -32,7 +32,7 @@ xkb_symbols "se-custom" {
   key <AB04> { [         v,          V,   doublelowquotemark,   singlelowquotemark ] };
   key <AB05> { [         b,          B,  leftdoublequotemark,  leftsinglequotemark ] };
   key <AB06> { [         j,          J, rightdoublequotemark, rightsinglequotemark ] };
-  key <AB07>  {[      less,    greater,                  bar,            brokenbar ] };
+  key <AB07> { [         m,          M,                   mu,            masculine ] };
 
   key <LEFT>  {[ Left,  Home  ], type[group1]="PC_SUPER_LEVEL2"};
   key <RIGHT> {[ Right, End   ], type[group1]="PC_SUPER_LEVEL2"};
