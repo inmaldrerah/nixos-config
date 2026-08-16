@@ -302,6 +302,7 @@
       ".config/nixpkgs"
       ".config/noctalia"
       ".config/obs-studio"
+      ".config/opencode"
       ".config/pulse"
       ".config/siyuan"
       ".config/swappy"
