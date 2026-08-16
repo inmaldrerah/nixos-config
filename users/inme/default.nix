@@ -94,6 +94,8 @@
         ];
       };
 
+      programs.opencode.enable = true;
+
       programs.thunderbird.enable = true;
 
       programs.yazi = {
