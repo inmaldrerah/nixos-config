@@ -8,6 +8,7 @@
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
       "/var/log"
+      "/var/lib/bluetooth"
       "/var/lib/iwd"
       "/var/lib/libvirt"
       "/var/lib/nixos"
