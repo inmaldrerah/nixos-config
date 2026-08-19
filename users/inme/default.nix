@@ -73,7 +73,7 @@
       programs.kitty = {
         enable = true;
         font.name = "Maple Mono NF CN";
-        font.size = 14;
+        font.size = 12;
         settings = {
           background_opacity = "0.8";
         };
