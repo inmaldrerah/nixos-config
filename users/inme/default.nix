@@ -10,6 +10,19 @@
       inputs,
       ...
     }:
+    let
+      lsp = with pkgs; [
+        clang-tools
+        jdt-language-server
+        lua-language-server
+        nixd
+        taplo
+        ty
+        vscode-json-languageserver
+        yaml-language-server
+        zls
+      ];
+    in
     {
       imports = [
         inputs.hm-extension.homeManagerModules.default
@@ -53,17 +66,7 @@
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
           }
         ];
-        extraPackages = with pkgs; [
-          clang-tools
-          jdt-language-server
-          lua-language-server
-          nixd
-          taplo
-          ty
-          vscode-json-languageserver
-          yaml-language-server
-          zls
-        ];
+        extraPackages = lsp ++ [ ];
         themes.dracula_transparent = {
           inherits = "dracula";
           "ui.background" = { };
@@ -94,7 +97,10 @@
         ];
       };
 
-      programs.opencode.enable = true;
+      programs.opencode = {
+        enable = true;
+        extraPackages = lsp ++ [ ];
+      };
 
       programs.thunderbird.enable = true;
 
