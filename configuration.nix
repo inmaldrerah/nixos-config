@@ -154,13 +154,12 @@
     modulePath = "${pkgs.pam}/lib/security/pam_exec.so";
     args = [
       "quiet_log"
-      "${pkgs.libnotify}/bin/notify-send"
-      "-a"
-      "sudo"
-      "-u"
-      "critical"
-      "sudo"
-      "password required"
+      # pam_exec's child gets an empty PAM env (no XDG_RUNTIME_DIR), so the
+      # script points notify-send at the invoking user's bus explicitly.
+      "${pkgs.writeShellScript "sudo-notify" ''
+        export XDG_RUNTIME_DIR="/run/user/$(${pkgs.coreutils}/bin/id -u)"
+        exec ${pkgs.libnotify}/bin/notify-send -a sudo -u critical sudo "password required"
+      ''}"
     ];
   };
 
