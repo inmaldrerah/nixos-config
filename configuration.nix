@@ -145,6 +145,25 @@
   };
   security.pam.services.systemd-run0 = { };
 
+  # Notify the desktop when sudo is about to ask for a password, so we
+  # don't forget a backgrounded rebuild is waiting on us. Runs before the
+  # pam_unix password prompt as the invoking user (pam_exec default).
+  security.pam.services.sudo.rules.auth.sudo-notify = {
+    order = config.security.pam.services.sudo.rules.auth.unix.order - 10;
+    control = "optional";
+    modulePath = "${pkgs.pam}/lib/security/pam_exec.so";
+    args = [
+      "quiet_log"
+      "${pkgs.libnotify}/bin/notify-send"
+      "-a"
+      "sudo"
+      "-u"
+      "critical"
+      "sudo"
+      "password required"
+    ];
+  };
+
   programs.dconf.enable = true;
 
   # Keyring management
