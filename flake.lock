@@ -139,14 +139,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1788341137,
-        "narHash": "sha256-xzQ7JXKMyRWXBUNa6lOkl1GW3Jtv6098DMTqAa8mqWw=",
-        "path": "/home/inme/Builds/imap-to-jmap",
-        "type": "path"
+        "lastModified": 1788341396,
+        "narHash": "sha256-kGPnNbCOYcv09zDuIWOv+AWW7EO9gxfYea24+l6Gtxo=",
+        "owner": "inmaldrerah",
+        "repo": "imap-to-jmap",
+        "rev": "cf168cae610dd53c0e51d2312b812e467fe9de12",
+        "type": "github"
       },
       "original": {
-        "path": "/home/inme/Builds/imap-to-jmap",
-        "type": "path"
+        "owner": "inmaldrerah",
+        "repo": "imap-to-jmap",
+        "type": "github"
       }
     },
     "impermanence": {
