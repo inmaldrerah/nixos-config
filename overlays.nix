@@ -10,7 +10,10 @@ let
     inputs.nix-vscode-extensions.overlays.default
     # inputs.nur-linyinfeng.overlays.default
   ];
+  imapToJmap = final: prev: {
+    stalwart-imap-proxy = inputs.imap-to-jmap.packages.${final.system}.default;
+  };
 in
 {
-  nixpkgs.overlays = packageOverlays;
+  nixpkgs.overlays = packageOverlays ++ [ imapToJmap ];
 }

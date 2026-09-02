@@ -31,6 +31,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    imap-to-jmap = {
+      url = "path:/home/inme/Builds/imap-to-jmap";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";

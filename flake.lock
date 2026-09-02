@@ -132,6 +132,23 @@
         "type": "github"
       }
     },
+    "imap-to-jmap": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788341137,
+        "narHash": "sha256-xzQ7JXKMyRWXBUNa6lOkl1GW3Jtv6098DMTqAa8mqWw=",
+        "path": "/home/inme/Builds/imap-to-jmap",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/inme/Builds/imap-to-jmap",
+        "type": "path"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": "home-manager_2",
@@ -362,6 +379,7 @@
       "inputs": {
         "hm-extension": "hm-extension",
         "home-manager": "home-manager",
+        "imap-to-jmap": "imap-to-jmap",
         "impermanence": "impermanence",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nix4vscode": "nix4vscode",

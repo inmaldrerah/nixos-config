@@ -11,6 +11,8 @@
 }:
 
 {
+  imports = [ ./services/imap-to-jmap.nix ];
+
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     package = pkgs.lixPackageSets.latest.lix;
@@ -161,6 +163,14 @@
         exec ${pkgs.libnotify}/bin/notify-send -a sudo -u critical sudo "password required"
       ''}"
     ];
+  };
+
+  # IMAP -> JMAP bridge so Thunderbird can read Mailbux (JMAP-only) over IMAP.
+  # Sending stays on your own SMTP2GO server, so no Mailbux SMTP is used.
+  services.imap-to-jmap = {
+    enable = true;
+    jmapUrl = "https://my.mailbux.com";
+    trustedHosts = "my.mailbux.com";
   };
 
   programs.dconf.enable = true;

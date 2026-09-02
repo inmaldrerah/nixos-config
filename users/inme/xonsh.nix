@@ -29,7 +29,10 @@
             if "--update" in args:
               __update_system()
               args.remove("--update")
-            __commit_nixos_config()
+            if "--no-commit" not in args:
+              __commit_nixos_config()
+            else:
+              args.remove("--no-commit")
             return __rebuild_system_local(args)
           
           def rebuild_system(args):
