@@ -46,6 +46,7 @@
       nixpkgs,
       nixpkgs-extension,
       home-manager,
+      imap-to-jmap,
       impermanence,
       ...
     }@inputs:
@@ -68,6 +69,7 @@
             ./overlays.nix
             nixpkgs-extension.nixosModules.default
             home-manager.nixosModules.home-manager
+            imap-to-jmap.nixosModules.default
             impermanence.nixosModules.impermanence
             (builtins.getFlake "path:/etc/nixos/private").nixosModules.default
             ./configuration.nix

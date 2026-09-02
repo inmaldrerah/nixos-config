@@ -11,8 +11,6 @@
 }:
 
 {
-  imports = [ inputs.imap-to-jmap.nixosModules.default ];
-
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     package = pkgs.lixPackageSets.latest.lix;
