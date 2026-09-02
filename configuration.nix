@@ -11,7 +11,7 @@
 }:
 
 {
-  imports = [ ./services/imap-to-jmap.nix ];
+  imports = [ inputs.imap-to-jmap.nixosModules.default ];
 
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

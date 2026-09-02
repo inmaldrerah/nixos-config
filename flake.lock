@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788341396,
-        "narHash": "sha256-kGPnNbCOYcv09zDuIWOv+AWW7EO9gxfYea24+l6Gtxo=",
+        "lastModified": 1788342343,
+        "narHash": "sha256-tzkatqzMFvxpsJuSf2VlMLHMAkwHz9cWjd9sgMFKh7I=",
         "owner": "inmaldrerah",
         "repo": "imap-to-jmap",
-        "rev": "cf168cae610dd53c0e51d2312b812e467fe9de12",
+        "rev": "6d8b01b73446ff9fc924231ad868a95e56caead3",
         "type": "github"
       },
       "original": {
