@@ -274,6 +274,7 @@
 
   persistence = {
     directories = [
+      ".agents"
       ".android"
       ".cache"
       ".cargo"
