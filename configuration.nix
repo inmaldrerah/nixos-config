@@ -131,8 +131,10 @@
   security.pam.services.swaylock = { };
   security.pam.services.gtklock = { };
 
-  # For OBS virtual camera
-  security.polkit.enable = true;
+  security.polkit = {
+    enable = true;
+    enablePkexecWrapper = true;
+  };
 
   security.sudo.enable = false;
   security.sudo-rs = {
