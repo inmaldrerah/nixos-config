@@ -52,8 +52,7 @@
 
       programs.dsh = {
         enable = true;
-        profiles.tui.bundles = [ pkgs.dsh.bundles.tui ];
-        defaultProfile = "nix-tui";
+        defaultProfile = "local";
       };
 
       programs.helix = {
@@ -257,6 +256,7 @@
         samba
         typst
         mono
+        pnpm
         dex
         rmw
         git
@@ -286,6 +286,8 @@
       ".cache"
       ".cargo"
       ".dsh"
+      ".dsh-cc"
+      ".dsh-tui"
       ".gnupg"
       ".gradle"
       ".local"
