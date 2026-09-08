@@ -50,10 +50,7 @@
         nix-direnv.enable = true;
       };
 
-      programs.dsh = {
-        enable = true;
-        defaultProfile = "local";
-      };
+      programs.dsh.enable = true;
 
       programs.helix = {
         enable = true;
