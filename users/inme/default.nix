@@ -285,6 +285,7 @@
       ".android"
       ".cache"
       ".cargo"
+      ".dsh"
       ".gnupg"
       ".gradle"
       ".local"
