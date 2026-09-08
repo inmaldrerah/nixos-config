@@ -26,16 +26,19 @@
       builders-use-substitutes = true;
       substituters = [
         "https://nix-community.cachix.org"
+        "https://deepseek-harness-nix.cachix.org"
         # "https://cache.garnix.io"
         "https://cache.nixos.org"
       ];
       trusted-substituters = [
         "https://nix-community.cachix.org"
+        "https://deepseek-harness-nix.cachix.org"
         # "https://cache.garnix.io"
         "https://cache.nixos.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "deepseek-harness-nix.cachix.org-1:5NrkwLN9veNMhiINtU5ZeV4isXFhFsOwn6Ms7J1M+TA="
         # "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
       trusted-users = [

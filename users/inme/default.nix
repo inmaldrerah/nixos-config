@@ -27,6 +27,7 @@
       imports = [
         inputs.hm-extension.homeManagerModules.default
         inputs.noctalia.homeModules.default
+        inputs.deepseek-harness.homeModules.default
         ./xonsh.nix
       ];
 
@@ -47,6 +48,12 @@
       programs.direnv = {
         enable = true;
         nix-direnv.enable = true;
+      };
+
+      programs.dsh = {
+        enable = true;
+        profiles.tui.bundles = [ pkgs.dsh.bundles.tui ];
+        defaultProfile = "nix-tui";
       };
 
       programs.helix = {

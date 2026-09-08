@@ -39,6 +39,10 @@
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    deepseek-harness = {
+      url = "github:Moraxyc/deepseek-harness.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -48,6 +52,7 @@
       home-manager,
       imap-to-jmap,
       impermanence,
+      deepseek-harness,
       ...
     }@inputs:
     let
