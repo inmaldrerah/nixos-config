@@ -15,10 +15,10 @@ rec {
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   # networking.wireless.iwd.enable = true;
 
-  networking.networkmanager.dns = "none";
-  networking.nameservers = [
-    "::1"
-  ];
+  # networking.networkmanager.dns = "none";
+  # networking.nameservers = [
+  #   "::1"
+  # ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
