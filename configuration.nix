@@ -245,6 +245,21 @@
 
   # services.tailscale.enable = true;
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      "global" = {
+        "security" = "user";
+        "passwd program" = "/run/wrappers/bin/passwd %u";
+        "invalid users" = [ "root" ];
+      };
+      "public" = {
+        "path" = "/mnt/shared/Backup";
+      };
+    };
+  };
+
   services.sunshine = {
     enable = true;
     autoStart = false;
