@@ -253,7 +253,7 @@
         security = "user";
         "invalid users" = [ "root" ];
       };
-      public = {
+      Backup = {
         path = "/mnt/shared/Backup";
         browseable = "yes";
         "read only" = "no";
