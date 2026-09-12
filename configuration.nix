@@ -251,7 +251,6 @@
     settings = {
       "global" = {
         "security" = "user";
-        "passwd program" = "/run/current-system/sw/bin/passwd %u";
         "invalid users" = [ "root" ];
       };
       "public" = {
