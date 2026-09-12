@@ -249,12 +249,17 @@
     enable = true;
     openFirewall = true;
     settings = {
-      "global" = {
-        "security" = "user";
+      global = {
+        security = "user";
         "invalid users" = [ "root" ];
       };
-      "public" = {
-        "path" = "/mnt/shared/Backup";
+      public = {
+        path = "/mnt/shared/Backup";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
       };
     };
   };
