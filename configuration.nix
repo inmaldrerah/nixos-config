@@ -251,7 +251,7 @@
     settings = {
       "global" = {
         "security" = "user";
-        "passwd program" = "/run/wrappers/bin/passwd %u";
+        "passwd program" = "/run/current-system/sw/bin/passwd %u";
         "invalid users" = [ "root" ];
       };
       "public" = {
