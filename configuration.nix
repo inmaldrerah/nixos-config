@@ -247,7 +247,7 @@
 
   services.samba = {
     enable = true;
-    openFirewall = true;
+    # openFirewall = true;
     settings = {
       global = {
         security = "user";
