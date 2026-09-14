@@ -13,8 +13,8 @@
 {
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    package = pkgs.lixPackageSets.latest.lix;
-    # package = pkgs.nixVersions.latest;
+    # package = pkgs.lixPackageSets.latest.lix;
+    package = pkgs.nixVersions.latest;
     settings = {
       experimental-features = [
         "nix-command"
