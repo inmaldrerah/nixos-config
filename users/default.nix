@@ -46,7 +46,7 @@ in
       };
     };
 
-  environment.persistence."/nix/persist".users.inme = userconf.inme.persistence;
+  # environment.persistence."/nix/persist".users.inme = userconf.inme.persistence;
   environment.persistence."/mnt/shared/linux-home/nixos".users.inme =
     userconf.inme.shared-persistence;
 }

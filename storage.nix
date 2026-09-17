@@ -16,6 +16,7 @@
       "/var/lib/systemd"
       "/var/lib/tailscale"
       "/root/.ssh"
+      "/home"
     ];
     files = [
       "/etc/machine-id"
