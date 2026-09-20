@@ -283,6 +283,8 @@
   };
   # virtualisation.waydroid.enable = true;
 
+  systemd.tmpfiles.rules = [ "d /run/media 0755 root root -" ];
+
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     helix # make sure other users have this
