@@ -28,12 +28,13 @@ in
     shell = userconf.inme.shell;
   };
 
+  # inme's home-manager config lives in the standalone flake at
+  # ~/.config/home-manager; only root stays on the NixOS module here.
   home-manager.extraSpecialArgs = {
     inherit inputs;
   };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
-  home-manager.users.inme = userconf.inme.home-manager;
   home-manager.users.root =
     { pkgs, ... }:
     {

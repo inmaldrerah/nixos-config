@@ -1,18 +1,9 @@
-{
-  config,
-  inputs,
-  ...
-}:
-
+{ inputs, ... }:
 let
-  packageOverlays = [
-    inputs.nix4vscode.overlays.default
-    inputs.nix-vscode-extensions.overlays.default
-    inputs.imap-to-jmap.overlays.default
-    inputs.deepseek-harness.overlays.default
-    # inputs.nur-linyinfeng.overlays.default
-  ];
+  # Shared with the home flake, see ./nixpkgs-shared.nix
+  shared = import ./nixpkgs-shared.nix { inherit inputs; };
 in
 {
-  nixpkgs.overlays = packageOverlays;
+  nixpkgs.overlays = shared.overlays;
+  nixpkgs.config = shared.config;
 }

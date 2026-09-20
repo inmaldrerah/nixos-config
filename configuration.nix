@@ -54,10 +54,8 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-30.5.1" # for deltachat
-  ];
+  # nixpkgs.config and overlays live in overlays.nix, shared with the home
+  # flake so both instantiate identical packages.
 
   # Use EFI boot loader.
   boot.loader.systemd-boot = {
