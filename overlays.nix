@@ -1,9 +1,13 @@
 { inputs, ... }:
-let
-  # Shared with the home flake, see ./nixpkgs-shared.nix
-  shared = import ./nixpkgs-shared.nix { inherit inputs; };
-in
 {
-  nixpkgs.overlays = shared.overlays;
-  nixpkgs.config = shared.config;
+  nixpkgs.overlays = [
+    inputs.imap-to-jmap.overlays.default
+  ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-30.5.1" # for deltachat
+    ];
+  };
 }

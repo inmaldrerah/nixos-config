@@ -13,34 +13,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hm-extension = {
-      url = "github:inmaldrerah/hm-extension";
-    };
     impermanence = {
       url = "github:nix-community/impermanence";
     };
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix4vscode = {
-      url = "github:nix-community/nix4vscode";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     imap-to-jmap = {
       url = "github:inmaldrerah/imap-to-jmap";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nur-linyinfeng = {
-      url = "github:linyinfeng/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    deepseek-harness = {
-      url = "github:Moraxyc/deepseek-harness.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -52,7 +29,6 @@
       home-manager,
       imap-to-jmap,
       impermanence,
-      deepseek-harness,
       ...
     }@inputs:
     let
