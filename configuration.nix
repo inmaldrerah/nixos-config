@@ -196,20 +196,20 @@
   programs.nix-ld.enable = true;
 
   services.xserver.xkb.extraLayouts = {
-    us-qwpr = {
+    usqwpr = {
       description = "US QWPR layout";
       languages = [ "eng" ];
-      symbolsFile = xkb/symbols/us-qwpr;
+      symbolsFile = xkb/symbols/usqwpr;
     };
-    us-custom = {
+    uscustom = {
       description = "US Custom layout";
       languages = [ "eng" ];
-      symbolsFile = xkb/symbols/us-custom;
+      symbolsFile = xkb/symbols/uscustom;
     };
-    se-custom = {
+    secustom = {
       description = "Swedish Custom layout";
       languages = [ "swe" ];
-      symbolsFile = xkb/symbols/se-custom;
+      symbolsFile = xkb/symbols/secustom;
     };
   };
 
