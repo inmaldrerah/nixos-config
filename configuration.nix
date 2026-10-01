@@ -286,6 +286,7 @@
     alsa-utils # for amixer
     gparted
     kitty
+    nh
     uwsm
     wget
     xwayland-satellite
