@@ -1,5 +1,44 @@
 {
   "nodes": {
+    "hm-extension": {
+      "locked": {
+        "lastModified": 1765184260,
+        "narHash": "sha256-oYZrM/i43a/pJ0a7b0TsYFYrVhOV/II9PhS60FIr9Lg=",
+        "owner": "inmaldrerah",
+        "repo": "hm-extension",
+        "rev": "1a35318ec93f95723bdbb63a41fb827fd6041530",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inmaldrerah",
+        "repo": "hm-extension",
+        "type": "github"
+      }
+    },
+    "home-config-inme": {
+      "inputs": {
+        "hm-extension": "hm-extension",
+        "home-manager": [
+          "home-manager"
+        ],
+        "nix-vscode-extensions": "nix-vscode-extensions",
+        "nix4vscode": "nix4vscode",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "noctalia": "noctalia"
+      },
+      "locked": {
+        "lastModified": 1792736094,
+        "narHash": "sha256-bYa+Lq8ccGzEVOTrI+K7KbaGwNElfX4y3rgKFKhJUP0=",
+        "path": "/home/inme/.config/home-manager",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/inme/.config/home-manager",
+        "type": "path"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -80,6 +119,49 @@
         "type": "github"
       }
     },
+    "nix-vscode-extensions": {
+      "inputs": {
+        "nixpkgs": [
+          "home-config-inme",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792728804,
+        "narHash": "sha256-9ylfkYOvq0SiMYaDJ/wVjSD1MPclnewbL2a5SVxXSg8=",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "rev": "38be83a22538cc79c3d14d53e8d312d5c32eedea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "type": "github"
+      }
+    },
+    "nix4vscode": {
+      "inputs": {
+        "nixpkgs": [
+          "home-config-inme",
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1792729632,
+        "narHash": "sha256-8iNP3j3WjC7Bv6FBWxAMfqb1Ns9tbFuhr+t1T7/SVj0=",
+        "owner": "nix-community",
+        "repo": "nix4vscode",
+        "rev": "7c0931ac93cc952a7dbba0f36d54f590f346e073",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix4vscode",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1768564909,
@@ -148,14 +230,52 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "home-config-inme",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792724653,
+        "narHash": "sha256-uRWUwtNuhaFESC1wEqA652+9vM/OGumIxgIQuJ24rZI=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "6423cc232e5b0900f28852b97f50d2836f4d39b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "home-config-inme": "home-config-inme",
         "home-manager": "home-manager",
         "imap-to-jmap": "imap-to-jmap",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-extension": "nixpkgs-extension",
         "nixpkgs-small": "nixpkgs-small"
+      }
+    },
+    "systems": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     }
   },

@@ -2,7 +2,8 @@
 {
   nixpkgs.overlays = [
     inputs.imap-to-jmap.overlays.default
-  ];
+  ]
+  ++ inputs.home-config-inme.overlays;
 
   nixpkgs.config = {
     allowUnfree = true;
