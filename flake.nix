@@ -5,6 +5,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nixpkgs-small = {
+      url = "github:nixos/nixpkgs/nixos-unstable-small";
+    };
     nixpkgs-extension = {
       url = "github:inmaldrerah/nixos-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
