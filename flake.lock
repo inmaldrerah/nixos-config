@@ -29,8 +29,8 @@
         "noctalia": "noctalia"
       },
       "locked": {
-        "lastModified": 1792736770,
-        "narHash": "sha256-qEpCHFv0tM2kjZ/ie0oOl7U/sb52J3rk50jbyclnf+k=",
+        "lastModified": 1792736827,
+        "narHash": "sha256-P/MfH/SU7aXG8WdDlYZ6km0bKVaj1Yeu7shk5xaCLv0=",
         "path": "/home/inme/.config/home-manager",
         "type": "path"
       },
