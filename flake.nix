@@ -28,6 +28,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-small,
       nixpkgs-extension,
       home-manager,
       imap-to-jmap,
